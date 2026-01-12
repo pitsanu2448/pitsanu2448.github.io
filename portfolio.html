@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Pitsanu Tongsri</title>
+    
+    <!-- Google Fonts: Prompt for Thai/English modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Image Preview Overlay -->
+    <div id="imagePreview" class="image-preview">
+        <div class="image-preview-close" id="closePreview">
+            <i class="fas fa-times"></i>
+        </div>
+        <img id="previewImage" src="" alt="Preview Image">
+        <div id="imageTitle" class="image-title"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">Pitsanu<span class="highlight">.AI</span></div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#achievements">Achievements</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <!-- Placeholder image using picsum as requested, replace with your real photo -->
+            <img src="img/pitsanu_profile.jpg" alt="Pitsanu Tongsri" class="profile-pic" data-image="img/pitsanu_profile.jpg" data-title="Profile Picture">
+            
+            <h1>นายพิษณุ ทองศรี</h1>
+            <p class="text-english">Mr. Pitsanu Tongsri</p>
+            <p style="color: var(--secondary); font-weight: 500; margin-top: 0.5rem;">Aspiring AI Engineer, Cybersecurity & Data Scientist</p>
+
+            <div class="quote-box">
+                "เราเพียงสิ่งหนึ่งที่กวัดแกว่งไปตามสิ่งเร้า ในวันที่โดดเดี่ยวชอบที่เจริญสติปัฏฐาน เพื่อที่จิตจะอิสระจากระบบกรรมอันนิรันดร์"
+            </div>
+
+            <div class="contact-info">
+                <a href="tel:0962034387" class="contact-item"><i class="fas fa-phone"></i> 096-203-4387</a>
+                <a href="mailto:pitsanu2448@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> pitsanu2448@gmail.com</a>
+                <a href="https://github.com/pitsanu2448" target="_blank" class="contact-item"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>การศึกษา (Education)</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>มหาวิทยาลัยทักษิณ (Thaksin University)</h3>
+                        <p class="text-english">Faculty of Science and Digital Innovation, Data Science</p>
+                    </div>
+                    <span class="card-date">กำลังศึกษา(Current) GPAX 3.94</span>
+                </div>
+                <div class="card-body">
+                    <p>คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล สาขาวิชาเอกวิทยาการข้อมูล</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3>โรงเรียนมัธยมสิริวัณวรี 2 สงขลา</h3>
+                        <p class="text-english">Matthayomsiriwanwari II Songkhla School</p>
+                    </div>
+                    <span class="card-date">จบการศึกษา 2566(2023) GPAX 3.88</span>
+                </div>
+                <div class="card-body">
+                    <p style="margin-top:0.5rem; font-size:0.9rem; color:var(--accent);">TCAS1/67 วท.บ. วิทยาการคอมพิวเตอร์และสารสนเทศ มหาวิทยาลัยทักษิณ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" style="background-color: #162033;">
+        <div class="container">
+            <div class="section-header">
+                <h2>ประสบการณ์ทำงาน (Experience)</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 data-image="img/AI-Engineering-Internship.jpg" data-title="AI Engineering Internship - V89 Technology Co., Ltd.">AI Engineering Internship</h3>
+                        <p class="text-english">บจก. วี89 เทคโนโลยี (V89 Technology Co., Ltd.)</p>
+                    </div>
+                    <span class="card-date">สิงหาคม 2568 - พฤศจิกายน 2568</span>
+                </div>
+                
+                <div class="card-body">
+                    <div class="exp-subsection">
+                        <div class="exp-title"><i class="fas fa-database"></i> รวบรวมและเตรียมข้อมูล (Data Collection & Preprocessing)</div>
+                        <ul>
+                            <li>ดึงข้อมูลจากแหล่งข้อมูลทางการแพทย์ (mental health counseling, ChatDoctor, PubMed causal, Medical QA).</li>
+                            <li>พัฒนา Translation Tool ด้วย <span>RobustTranslator</span> รองรับหลายเครื่องมือ (googletrans, deep-translator) พร้อมระบบ cache และ rate limiting.</li>
+                            <li>ทำความสะอาดข้อมูล (Data Cleaning) จัดการ Text truncation และ Missing values.</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-subsection">
+                        <div class="exp-title"><i class="fas fa-brain"></i> ปรับแต่งโมเดล (Model Fine-Tuning)</div>
+                        <ul>
+                            <li>ใช้โมเดลพื้นฐาน: <span>OpenThaiGPT</span>, <span>iapp/chinda-qwen3-4b</span>, <span>Typhoon 2.1</span>, <span>Gemma3 4B</span>.</li>
+                            <li>ปรับปรุงโครงสร้างด้วยเทคนิค <span>LoRA (Low-Rank Adaptation)</span> เพื่อลดพารามิเตอร์และป้องกัน Catastrophic forgetting.</li>
+                            <li>กำหนด Hyperparameters (learning rate, epochs, batch size).</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-subsection">
+                        <div class="exp-title"><i class="fas fa-chart-line"></i> การประเมินผล (Evaluation)</div>
+                        <ul>
+                            <li>วัดผลด้วย <span>Perplexity</span> และ <span>Loss</span>.</li>
+                            <li>ทดสอบการให้คำตอบด้วยข้อความทางการแพทย์ตัวอย่าง.</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-subsection">
+                        <div class="exp-title"><i class="fas fa-rocket"></i> การนำไปใช้ (Deployment)</div>
+                        <ul>
+                            <li>พัฒนาระบบ <span>AI Agent แบบ Multi-Modal</span> (สนทนา, วิเคราะห์ภาพ, ประมวลผลเสียง).</li>
+                            <li>สร้างระบบ <span>RAG (Retrieval-Augmented Generation)</span> สำหรับดึงข้อมูลทางการแพทย์.</li>
+                            <li>ออกแบบอินเทอร์เฟซผู้ใช้ด้วย <span>Gradio</span>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>ทักษะและการอบรม (Skills & Training)</h2>
+            </div>
+
+            <h3 style="text-align: left; margin-top: 2rem;">AI & Data Science</h3>
+            <div class="skills-grid">
+                <div class="skill-tag" data-image="img/AI-for-Schools-L4.jpg" data-title="AI for Schools L4"><i class="fas fa-robot"></i>AI for Schools L4</div>
+                <div class="skill-tag" data-image="img/Data-Science.jpg" data-title="Data Science"><i class="fas fa-project-diagram"></i>Data Science</div>
+                <div class="skill-tag" data-image="img/Robotics-and-AI.jpg" data-title="Robotics and AI"><i class="fas fa-robot"></i>Robotics and AI</div>
+                <div class="skill-tag" data-image="img/Python-for-Beginners.jpg" data-title="Python for Beginners"><i class="fas fa-python"></i>Python for Beginners</div>
+                <div class="skill-tag" data-image="img/img/Introduction-to-Deep-Learning.jpg" data-title="Introduction to Deep Learning"><i class="fas fa-users-cog"><i class="fas fa-network-wired"></i>Introduction to Deep Learning</div>
+                <div class="skill-tag" data-image="img/Basic-AI-Course.jpg" data-title="Basic AI Course"><i class="fas fa-brain"></i>Basic AI Course</div>
+                <div class="skill-tag" data-image="img/Data-Analytics-Basic.jpg" data-title="Data Analytics Basic"><i class="fas fa-chart-bar"></i>Data Analytics Basic</div>
+                <div class="skill-tag" data-image="img/AI-Platform-for-Thai.jpg" data-title="AI Platform for Thai"><i class="fas fa-users-cog"></i>AI Platform for Thai</div>
+                <div class="skill-tag" data-image="img/AI-Image.jpg" data-title="AI Image"><i class="fas fa-users-cog"></i>AI Image</div>
+            </div>
+
+            <h3 style="text-align: left; margin-top: 2rem;">Cybersecurity & Network</h3>
+            <div class="skills-grid">
+                <div class="skill-tag" data-image="img/Cybersecurity-Basic.jpg" data-title="Cybersecurity Basic"><i class="fas fa-shield-alt"></i>Cybersecurity Basic</div>
+                <div class="skill-tag" data-image="img/Cybersecurity-Expert.jpg" data-title="Cybersecurity Expert"><i class="fas fa-user-secret"></i>Cybersecurity Expert</div>
+                <div class="skill-tag" data-image="img/Basic-Cybersecurity-Lab.jpg" data-title="Basic Cyber Lab"><i class="fas fa-laptop-code"></i>Basic Cyber Lab</div>
+                <div class="skill-tag" data-image="img/Network-&-Security.jpg" data-title="Network & Security"><i class="fas fa-wifi"></i>Network & Security</div>
+                <div class="skill-tag" data-image="img/Digital-Literacy.jpg" data-title="Digital Literacy"><i class="fas fa-lock"></i>Digital Literacy</div>
+            </div>
+
+            <h3 style="text-align: left; margin-top: 2rem;">Programming & Development</h3>
+            <div class="skills-grid">
+                <div class="skill-tag" data-image="img/Java-Programming.jpg" data-title="Java Programming"><i class="fab fa-java"></i>Java Programming</div>
+                <div class="skill-tag" data-image="img/C-Programming.jpg" data-title="C Programming"><i class="fas fa-code"></i>C Programming</div>
+                <div class="skill-tag" data-image="img/Web-Dev-Basic.jpg" data-title="Web Dev Basic"><i class="fas fa-globe"></i>Web Dev Basic</div>
+                <div class="skill-tag" data-image="img/Computer-Software.jpg" data-title="Computer Software"><i class="fas fa-cube"></i>Computer Software</div> 
+                <div class="skill-tag" data-image="img/Computer-Graphic-&-Animation.jpg" data-title="Computer Graphic & Animation><i class="fas fa-cube"></i>Computer Graphic & Animation</div>
+            </div>
+
+            <h3 style="text-align: left; margin-top: 2rem;">Emerging Technologies</h3>
+            <div class="skills-grid">
+                <div class="skill-tag" data-image="img/VR-AR-MR.jpg" data-title="VR / AR / MR"><i class="fas fa-vr-cardboard"></i>VR / AR / MR</div>
+                <div class="skill-tag" data-image="img/Blockchain.jpg" data-title="Blockchain"><i class="fas fa-link"></i>Blockchain</div>
+                <div class="skill-tag" data-image="img/Smart-Farm.jpg" data-title="Smart Farm"><i class="fas fa-seedling"></i>Smart Farm</div>
+                <div class="skill-tag" data-image="img/Smart-City.jpg" data-title="Smart City"><i class="fas fa-city"></i>Smart City</div>
+                <div class="skill-tag" data-image="img/IoT-Applications.jpg" data-title="IoT Applications"><i class="fas fa-microchip"></i>IoT Applications</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" style="background-color: #162033;">
+        <div class="container">
+            <div class="section-header">
+                <h2>ประกาศนียบัตรวิชาชีพ (Certificates)</h2>
+            </div>
+            
+            <div class="cert-list">
+                <div class="cert-item" data-image="img/นักจัดการความมั่นคงระบบสารสนเทศ-ระดับ4.jpg" data-title="นักจัดการความมั่นคงระบบสารสนเทศ">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <div style="font-weight: 600;">นักจัดการความมั่นคงระบบสารสนเทศ</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">ระดับ 4</div>
+                    </div>
+                </div>
+                <div class="cert-item" data-image="img/นักบริหารจัดการความมั่นคงปลอดภัยระบบเครือข่าย-ระดับ4.jpg" data-title="นักบริหารจัดการความมั่นคงปลอดภัยระบบเครือข่าย">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <div style="font-weight: 600;">นักบริหารจัดการความมั่นคงปลอดภัยระบบเครือข่าย</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">ระดับ 4</div>
+                    </div>
+                </div>
+                <div class="cert-item" data-image="img/นักวิทยาศาสตร์ข้อมูล-ระดับ5.jpg" data-title="นักวิทยาศาสตร์ข้อมูล (Data Scientist)">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <div style="font-weight: 600;">นักวิทยาศาสตร์ข้อมูล (Data Scientist)</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">ระดับ 5</div>
+                    </div>
+                </div>
+                <div class="cert-item" data-image="img/นักจัดการอุปกรณ์พกพาและเครือข่ายไร้สาย-ระดับ5.jpg" data-title="นักจัดการอุปกรณ์พกพาและเครือข่ายไร้สาย">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <div style="font-weight: 600;">นักจัดการอุปกรณ์พกพาและเครือข่ายไร้สาย</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">ระดับ 5</div>
+                    </div>
+                </div>
+                <div class="cert-item" data-image="img/นักพัฒนาซอฟต์แวร์เพื่ออินเตอร์เน็ตของสรรพสิ่ง-ระดับ4.jpg" data-title="นักพัฒนาซอฟต์แวร์เพื่ออินเตอร์เน็ตของสรรพสิ่ง">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <div style="font-weight: 600;">นักพัฒนาซอฟต์แวร์เพื่ออินเตอร์เน็ตของสรรพสิ่ง</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">ระดับ 4</div>
+                    </div>
+                </div>
+                <div class="cert-item" data-image="img/นักจัดการคุ้มครองข้อมูลส่วนบุคคล-ระดับ5.jpg" data-title="นักจัดการคุ้มครองข้อมูลส่วนบุคคล">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <div style="font-weight: 600;">นักจัดการคุ้มครองข้อมูลส่วนบุคคล</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">ระดับ 5</div>
+                    </div>
+                </div>
+                <div class="cert-item" data-image="img/EnglishScore-Core-Skills.jpg" data-title="EnglishScore Core Skills">
+                    <i class="fas fa-language"></i>
+                    <div>
+                        <div style="font-weight: 600;">EnglishScore Core Skills</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Level B1 (Intermediate)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2>ผลงานและรางวัล (Achievements)</h2>
+            </div>
+
+            <div class="achievement-item" data-image="img/Data-Science-Project-2042-Contest.jpg" data-title="Data Science Project Contest - Gold Medal">
+                <div>
+                    <span class="achievement-medal"><i class="fas fa-medal"></i></span>
+                    <strong>Data Science Project Contest</strong> (General Category)
+                </div>
+                <span class="card-date">2567 (2024) - Gold Medal</span>
+            </div>
+
+            <div class="achievement-item" data-image="img/Forecasting-Electricity-Consumption.jpg" data-title="AI Hackathon - Forecasting Electricity Consumption">
+                <div><strong>AI Hackathon Online - Forecasting Electricity Consumption</strong></div>
+                <span class="card-date">Passed Basic Criteria</span>
+            </div>
+
+            <div class="achievement-item" data-image="img/MD&A-Disclosure-Quality-Assessment.jpg" data-title="AI Hackathon - MD&A Disclosure Quality Assessment">
+                <div><strong>AI Hackathon Online - MD&A Disclosure Quality Assessment</strong></div>
+                <span class="card-date">Passed Basic Criteria</span>
+            </div>
+
+            <div class="achievement-item" data-image="img/Signal-Processing.png" data-title="AI Hackathon - Signal Processing">
+                <div><strong>AI Hackathon Online - Signal Processing</strong></div>
+                <span class="card-date">Passed Basic Criteria</span>
+            </div>
+
+            <div class="achievement-item" data-image="img/5-Domains.png" data-title="AI Hackathon - 5 Domains">
+                <div><strong>AI Hackathon Online - 5 Domains</strong></div>
+                <span class="card-date">Passed Basic Criteria</span>
+            </div>
+
+            <div class="achievement-item" data-image="img/AI-Engineering-Knowledge-Test-Theoretical.png" data-title="AI Engineering Knowledge Test (Theoretical)">
+                <div><strong>AI Engineering Knowledge Test (Theoretical)</strong></div>
+                <span class="card-date">Passed</span>
+            </div>
+
+            <div class="achievement-item" data-image="img/AI-Innovator-Training.png" data-title="AI Innovator Training">
+                <div><strong>AI Innovator Training</strong></div>
+                <span class="card-date">Completed</span>
+            </div>
+
+            <div class="achievement-item" data-image="img/Advanced-AI-Engineer-Training.png" data-title="Advanced AI Engineer Training">
+                <div><strong>Advanced AI Engineer Training</strong></div>
+                <span class="card-date">Completed</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>นายพิษณุ ทองศรี</h3>
+            <p class="text-english">Mr. Pitsanu Tongsri</p>
+            <div style="margin: 1.5rem 0;">
+                <a href="https://github.com/pitsanu2448" target="_blank" style="margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/pitsanu2448" target="_blank" style="margin: 0 10px; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:pitsanu2448@gmail.com" style="margin: 0 10px; font-size: 1.5rem;"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2024 Pitsanu Tongsri. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
