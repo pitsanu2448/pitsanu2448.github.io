@@ -75,6 +75,13 @@
             box-shadow: 0 2px 8px rgba(13,148,136,0.4);
         }
         /* sections */
+        .slide-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem 1.5rem;
+            border-bottom: 1px solid #E2E8F0;
+            scroll-margin-top: 70px;
+        }
         .slide-header {
             background: var(--bg-dark);
             margin: -2rem -1.5rem 2rem -1.5rem;
@@ -82,34 +89,36 @@
             border-radius: 0 0 24px 24px;
             display: flex;
             align-items: center;
-            /* กระจายหัวข้อไปซ้าย และ logo ไปขวา */
-            justify-content: space-between; 
+            justify-content: space-between;
         }
-
         .slide-header-text {
-        /* ไม่ต้องใส่ flex: 1 เพื่อให้พื้นที่ที่เหลือว่างเปล่า */
-            flex: 0 1 auto;
+            flex: 1;
         }
-
+        .slide-header h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.3px;
+        }
+        .slide-header .sub {
+            font-size: 0.8rem;
+            color: var(--teal-light);
+            margin-top: 0.2rem;
+        }
         .slide-header-logos {
             display: flex;
             align-items: center;
-            gap: 12px; /* เพิ่มช่องว่างระหว่าง logo นิดหน่อยให้ดูโปร่งขึ้น */
+            gap: 8px;
             flex-shrink: 0;
-    
-            /* แก้ไขตรงนี้ */
-            margin-left: auto; /* ดันตัวเองไปทางขวาสุด */
-            margin-right: 10px; /* ห่างจากขอบขวา 10px ตามโจทย์ */
-            order: 0; /* เอา -1 ออกเพื่อให้กลับมาอยู่ลำดับปกติ (หลังข้อความ) */
+            margin-right: 10px;
+            order: 0;
         }
-
         .slide-header-logos img {
-            height: 45px; /* กำหนดความสูงให้แน่นอนจะดู Modern กว่าใช้ % */
+            height: 80%;
+            max-height: 56px;
             width: auto;
             object-fit: contain;
             display: block;
-            /* เพิ่ม filter ให้รูปดูสว่างหรือคมขึ้นถ้าจำเป็น */
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); 
         }
 
         @media (max-width: 760px) {
