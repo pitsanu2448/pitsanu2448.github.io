@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>โปสเตอร์ : ความเหลื่อมล้ำรายได้ครัวเรือนไทย 2566</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700;800;900&family=Sarabun:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── PRINT / SCREEN SIZE: A0 = 841mm × 1189mm ─── */
+@page {
+  size: 841mm 1189mm;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:    #071528;
+  --navy2:   #0C2040;
+  --indigo:  #132F55;
+  --blue:    #1D5DBF;
+  --sky:     #38B6F8;
+  --cyan:    #04C4D5;
+  --gold:    #F5A623;
+  --amber:   #F9C02B;
+  --red:     #E5334A;
+  --rose:    #F76F82;
+  --green:   #0FB981;
+  --emerald: #07836A;
+  --purple:  #7E4FE2;
+  --white:   #FFFFFF;
+  --muted:   #94A3B8;
+  --paper:   #F0F4FA;
+  --border:  rgba(255,255,255,0.1);
+}
+
+html, body {
+  width: 841mm;
+  height: 1189mm;
+  overflow: hidden;
+  background: var(--navy);
+  font-family: 'Noto Sans Thai', 'Sarabun', sans-serif;
+  color: var(--white);
+  font-size: 10pt;
+  line-height: 1.45;
+}
+
+/* ─── GRID LAYOUT ─── */
+.poster {
+  width: 841mm;
+  height: 1189mm;
+  display: grid;
+  grid-template-rows: 90mm 1fr 28mm;
+  grid-template-columns: 1fr;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background orbs */
+.poster::before {
+  content: '';
+  position: absolute;
+  top: -60mm;
+  right: -60mm;
+  width: 280mm;
+  height: 280mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,93,191,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.poster::after {
+  content: '';
+  position: absolute;
+  bottom: 80mm;
+  left: -80mm;
+  width: 320mm;
+  height: 320mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(7,131,106,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ─── HEADER ─── */
+.header {
+  grid-row: 1;
+  background: linear-gradient(135deg, #0A1F45 0%, #0C2040 55%, #0A2D50 100%);
+  border-bottom: 1.5mm solid var(--sky);
+  display: grid;
+  grid-template-columns: 22mm 1fr 110mm;
+  align-items: center;
+  padding: 0 14mm;
+  gap: 8mm;
+  position: relative;
+  z-index: 10;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1mm;
+  background: linear-gradient(90deg, transparent, var(--sky), var(--cyan), var(--sky), transparent);
+}
+
+.logo-circle {
+  width: 18mm;
+  height: 18mm;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10mm;
+  box-shadow: 0 0 8mm rgba(56,182,248,0.4);
+}
+
+.header-center {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+}
+.conf-tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 5.5pt;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--sky);
+  opacity: 0.85;
+}
+.main-title {
+  font-size: 22pt;
+  font-weight: 900;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #ffffff 0%, var(--sky) 60%, var(--amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sub-title {
+  font-size: 9pt;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2mm;
+}
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm;
+  justify-content: flex-end;
+}
+.badge {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 5pt;
+  font-weight: 700;
+  padding: 1.2mm 3.5mm;
+  border-radius: 10mm;
+  letter-spacing: 0.5px;
+  border: 0.5mm solid;
+}
+.badge-blue  { background: rgba(29,93,191,0.25); border-color: rgba(56,182,248,0.5); color: var(--sky); }
+.badge-gold  { background: rgba(245,166,35,0.2);  border-color: rgba(249,192,43,0.4); color: var(--amber); }
+.badge-green { background: rgba(15,185,129,0.2);  border-color: rgba(15,185,129,0.4); color: #34D399; }
+.badge-purple{ background: rgba(126,79,226,0.2);  border-color: rgba(126,79,226,0.4); color: #A78BFA; }
+.authors {
+  font-size: 6pt;
+  color: var(--muted);
+  text-align: right;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ─── MAIN BODY ─── */
+.body {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 195mm 220mm 1fr;
+  grid-template-rows: 1fr;
+  gap: 6mm;
+  padding: 6mm 10mm;
+  overflow: hidden;
+}
+
+/* ─── COLUMNS ─── */
+.col { display: flex; flex-direction: column; gap: 5mm; }
+
+/* ─── SECTION CARD ─── */
+.section-card {
+  background: rgba(255,255,255,0.04);
+  border: 0.4mm solid rgba(255,255,255,0.08);
+  border-radius: 5mm;
+  padding: 5mm 6mm;
+  backdrop-filter: blur(2px);
+  flex-shrink: 0;
+}
+.section-card.accent-blue  { border-left: 1.5mm solid var(--blue); }
+.section-card.accent-sky   { border-left: 1.5mm solid var(--sky); }
+.section-card.accent-gold  { border-left: 1.5mm solid var(--gold); }
+.section-card.accent-green { border-left: 1.5mm solid var(--green); }
+.section-card.accent-red   { border-left: 1.5mm solid var(--red); }
+.section-card.accent-purple{ border-left: 1.5mm solid var(--purple); }
+.section-card.accent-cyan  { border-left: 1.5mm solid var(--cyan); }
+
+.sec-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 4.5pt;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sky);
+  margin-bottom: 1mm;
+  opacity: 0.8;
+}
+.sec-title {
+  font-size: 10.5pt;
+  font-weight: 800;
+  margin-bottom: 3mm;
+  color: #fff;
+  line-height: 1.2;
+}
+.sec-body {
+  font-size: 7.5pt;
+  color: #CBD5E1;
+  line-height: 1.55;
+}
+
+/* ─── KPI GRID ─── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3mm;
+  margin-bottom: 3mm;
+}
+.kpi-box {
+  background: rgba(255,255,255,0.05);
+  border: 0.4mm solid rgba(255,255,255,0.1);
+  border-radius: 3.5mm;
+  padding: 3mm 3.5mm;
+  text-align: center;
+}
+.kpi-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14pt;
+  font-weight: 800;
+  line-height: 1;
+}
+.kpi-unit { font-size: 5pt; color: var(--muted); margin: 0.8mm 0 0; font-family: 'Space Grotesk'; }
+.kpi-label { font-size: 6pt; color: var(--muted); margin-top: 0.5mm; }
+
+/* ─── OCCUPATION TABLE ─── */
+.occ-table { width: 100%; border-collapse: collapse; font-size: 7pt; }
+.occ-table th {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 5.5pt;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 2mm 2.5mm;
+  background: rgba(29,93,191,0.3);
+  text-align: left;
+  color: var(--sky);
+  border-bottom: 0.4mm solid rgba(56,182,248,0.3);
+}
+.occ-table td {
+  padding: 2mm 2.5mm;
+  border-bottom: 0.3mm solid rgba(255,255,255,0.05);
+  vertical-align: middle;
+  font-size: 6.8pt;
+  color: #CBD5E1;
+}
+.occ-table tr:hover td { background: rgba(255,255,255,0.03); }
+.rank-pill {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 5.5pt;
+  font-weight: 700;
+  padding: 0.8mm 2mm;
+  border-radius: 5mm;
+  display: inline-block;
+}
+.rank-high { background: rgba(15,185,129,0.25); color: #34D399; }
+.rank-mid  { background: rgba(245,166,35,0.2);  color: var(--amber); }
+.rank-low  { background: rgba(229,51,74,0.2);   color: var(--rose); }
+
+/* ─── BAR CHART ─── */
+.bar-chart { display: flex; flex-direction: column; gap: 2.2mm; }
+.bar-item {}
+.bar-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 6.5pt;
+  margin-bottom: 0.8mm;
+  color: #CBD5E1;
+}
+.bar-val { font-family: 'Space Grotesk'; font-weight: 700; color: #fff; font-size: 6.5pt; }
+.bar-track {
+  background: rgba(255,255,255,0.08);
+  border-radius: 3mm;
+  height: 5mm;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 3mm;
+}
+
+/* ─── INEQUALITY TABLE ─── */
+.ineq-table { width: 100%; border-collapse: collapse; font-size: 6.8pt; }
+.ineq-table th {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 5pt;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 2mm 2mm;
+  background: rgba(229,51,74,0.2);
+  text-align: left;
+  color: var(--rose);
+  border-bottom: 0.4mm solid rgba(229,51,74,0.3);
+}
+.ineq-table td {
+  padding: 1.8mm 2mm;
+  border-bottom: 0.3mm solid rgba(255,255,255,0.05);
+  color: #CBD5E1;
+  vertical-align: middle;
+}
+.cv-bar {
+  display: inline-block;
+  height: 3mm;
+  border-radius: 2mm;
+  background: linear-gradient(90deg, var(--red), var(--rose));
+  vertical-align: middle;
+}
+
+/* ─── INCOME STRUCTURE ─── */
+.struct-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5mm;
+}
+.struct-item {
+  background: rgba(255,255,255,0.04);
+  border-radius: 3mm;
+  padding: 3mm 4mm;
+  border-left: 1mm solid var(--purple);
+}
+.struct-item .occ-name { font-size: 7pt; font-weight: 700; margin-bottom: 1.5mm; }
+.struct-bars { display: flex; gap: 1.5mm; height: 6mm; border-radius: 2mm; overflow: hidden; }
+.bar-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk';
+  font-size: 4.5pt;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  transition: width 0.5s;
+}
+
+/* ─── INSIGHT BOX ─── */
+.insight-box {
+  border-radius: 3.5mm;
+  padding: 3.5mm 4mm;
+}
+.insight-box.blue   { background: rgba(29,93,191,0.15); border: 0.4mm solid rgba(56,182,248,0.2); }
+.insight-box.amber  { background: rgba(245,166,35,0.12); border: 0.4mm solid rgba(249,192,43,0.25); }
+.insight-box.red    { background: rgba(229,51,74,0.12);  border: 0.4mm solid rgba(247,111,130,0.25); }
+.insight-box.green  { background: rgba(15,185,129,0.12); border: 0.4mm solid rgba(15,185,129,0.25); }
+.insight-box.purple { background: rgba(126,79,226,0.15); border: 0.4mm solid rgba(126,79,226,0.3); }
+.insight-title {
+  font-size: 7.5pt;
+  font-weight: 800;
+  margin-bottom: 1.5mm;
+  display: flex;
+  align-items: center;
+  gap: 1.5mm;
+}
+.insight-body { font-size: 6.8pt; color: #CBD5E1; line-height: 1.55; }
+
+/* ─── FLOW DIAGRAM ─── */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+.flow-node {
+  background: rgba(255,255,255,0.06);
+  border: 0.4mm solid rgba(255,255,255,0.12);
+  border-top: 1mm solid var(--sky);
+  border-radius: 3mm;
+  padding: 3mm;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+}
+.flow-node strong { display: block; font-size: 6.5pt; margin-bottom: 1mm; color: #fff; }
+.flow-node small { font-size: 5pt; color: var(--muted); }
+.flow-arrow { color: var(--sky); font-size: 8pt; flex-shrink: 0; }
+
+/* ─── PERCENTILE VISUAL ─── */
+.percentile-row {
+  display: flex;
+  gap: 1.5mm;
+  align-items: flex-end;
+  height: 30mm;
+  padding: 0 1mm;
+}
+.pct-bar {
+  flex: 1;
+  border-radius: 1.5mm 1.5mm 0 0;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.pct-bar .pct-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 4.5pt;
+  color: #fff;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding-top: 1mm;
+  line-height: 1;
+}
+.pct-label {
+  text-align: center;
+  font-family: 'Space Grotesk';
+  font-size: 5pt;
+  color: var(--muted);
+  margin-top: 1mm;
+}
+
+/* ─── POLICY GRID ─── */
+.policy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm;
+}
+.policy-card {
+  background: rgba(255,255,255,0.04);
+  border-radius: 3mm;
+  padding: 3.5mm 4mm;
+  border-top: 1mm solid;
+}
+.policy-card .p-icon { font-size: 9pt; margin-bottom: 1.5mm; }
+.policy-card .p-title { font-size: 7pt; font-weight: 800; margin-bottom: 1mm; }
+.policy-card .p-body { font-size: 6pt; color: var(--muted); line-height: 1.5; }
+
+/* ─── SDG BADGES ─── */
+.sdg-row {
+  display: flex;
+  gap: 2.5mm;
+  justify-content: center;
+}
+.sdg-badge {
+  border-radius: 3mm;
+  padding: 2.5mm 4mm;
+  text-align: center;
+  flex: 1;
+}
+.sdg-badge .sdg-num {
+  font-family: 'Space Grotesk';
+  font-size: 14pt;
+  font-weight: 800;
+  line-height: 1;
+}
+.sdg-badge .sdg-lbl { font-size: 5.5pt; margin-top: 1mm; font-weight: 600; }
+
+/* ─── QA BOX ─── */
+.qa-block {
+  background: rgba(255,255,255,0.04);
+  border-radius: 3.5mm;
+  overflow: hidden;
+  border: 0.4mm solid rgba(255,255,255,0.08);
+}
+.qa-header {
+  background: linear-gradient(90deg, rgba(29,93,191,0.5), rgba(4,196,213,0.2));
+  padding: 2.5mm 4mm;
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--sky);
+  display: flex;
+  align-items: center;
+  gap: 2mm;
+}
+.qa-item { padding: 2.5mm 4mm; border-bottom: 0.3mm solid rgba(255,255,255,0.05); }
+.qa-q { font-size: 6.5pt; font-weight: 700; color: var(--sky); margin-bottom: 1mm; }
+.qa-a { font-size: 6.5pt; color: #CBD5E1; line-height: 1.5; }
+.qa-a strong { color: var(--amber); font-family: 'Space Grotesk'; }
+
+/* ─── SEPARATOR ─── */
+.sep {
+  height: 0.4mm;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  margin: 1mm 0;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  grid-row: 3;
+  background: rgba(0,0,0,0.4);
+  border-top: 0.5mm solid rgba(56,182,248,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14mm;
+  font-size: 6pt;
+  color: var(--muted);
+  font-family: 'Space Grotesk', sans-serif;
+}
+.footer-left { display: flex; align-items: center; gap: 8mm; }
+.footer-tag { color: var(--sky); font-weight: 700; font-size: 6pt; letter-spacing: 1px; }
+.source-pills { display: flex; gap: 2mm; }
+.src-pill {
+  background: rgba(255,255,255,0.07);
+  border: 0.3mm solid rgba(255,255,255,0.15);
+  border-radius: 5mm;
+  padding: 0.8mm 2.5mm;
+  font-size: 5.5pt;
+  color: #94A3B8;
+}
+.footer-right { text-align: right; }
+
+/* ─── UTILITY ─── */
+.text-sky    { color: var(--sky); }
+.text-gold   { color: var(--amber); }
+.text-red    { color: var(--rose); }
+.text-green  { color: #34D399; }
+.text-purple { color: #A78BFA; }
+.text-muted  { color: var(--muted); }
+.fw-900 { font-weight: 900; }
+.font-mono { font-family: 'DM Mono', monospace; }
+.font-grotesk { font-family: 'Space Grotesk', sans-serif; }
+.small-label {
+  font-family: 'Space Grotesk';
+  font-size: 5pt;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ═══════════════════════════════════ HEADER ═══════════════════════════════════ -->
+  <header class="header">
+    <div class="logo-circle">💰</div>
+
+    <div class="header-center">
+      <div class="conf-tag">การประชุมวิชาการระดับชาติ มหาวิทยาลัยทักษิณ ครั้งที่ 37 ประจำปี 2569</div>
+      <div class="main-title">การวิเคราะห์ความเหลื่อมล้ำรายได้ครัวเรือนไทย ปี 2566</div>
+      <div class="sub-title">ด้วยเทคนิค Data Storytelling และโมเดลภาษาขนาดใหญ่ (Typhoon AI App) · ภาควิชาวิทยาการข้อมูล คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล มหาวิทยาลัยทักษิณ</div>
+    </div>
+
+    <div class="header-right">
+      <div class="badge-row">
+        <span class="badge badge-blue">🐍 Python · Pandas · Plotly</span>
+        <span class="badge badge-gold">🤖 Typhoon AI (4B)</span>
+        <span class="badge badge-green">📊 Data Storytelling</span>
+        <span class="badge badge-purple">🗃️ NSO 2566</span>
+        <span class="badge badge-blue">6,829 Records · 77 จังหวัด</span>
+      </div>
+      <div class="authors">นายพิษณุ ทองศรี &nbsp;·&nbsp; นายนันท์นภัส หรือชู &nbsp;·&nbsp; 2569</div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════ BODY ═══════════════════════════════════ -->
+  <div class="body">
+
+    <!-- ══════════ COLUMN 1 ══════════ -->
+    <div class="col">
+
+      <!-- บทนำ / ปัญหา -->
+      <div class="section-card accent-red">
+        <div class="sec-eyebrow">01 · Problem Statement</div>
+        <div class="sec-title">ปัญหาและความสำคัญ</div>
+        <div class="sec-body">
+          ความเหลื่อมล้ำรายได้ครัวเรือนไทยยังคงเป็นประเด็นสำคัญ แม้เศรษฐกิจจะเติบโตต่อเนื่อง ผลประโยชน์กลับกระจายไม่เท่าเทียม อัตราส่วนรายได้สูงสุดต่อต่ำสุดสูงถึง <strong class="text-gold">40.7 เท่า</strong> กรุงเทพฯ/ภาคกลางมีรายได้สูงกว่าภาคอีสาน/เหนืออย่างมีนัยสำคัญ กลุ่มเกษตรกรพึ่งพารายได้ไม่ประจำสูง ขาด Safety Net รองรับ นักวิจัยและผู้กำหนดนโยบายจึงต้องการเครื่องมือวิเคราะห์เร็วและแม่นยำ
+        </div>
+        <div class="sep" style="margin:3mm 0;"></div>
+        <div class="insight-box red" style="margin-top:0;">
+          <div class="insight-title">💡 Research Gap</div>
+          <div class="insight-body">ยังขาดงานวิจัยที่บูรณาการ <strong>Data Storytelling Interactive</strong> กับ <strong>ระบบ AI ตอบคำถามนโยบาย</strong> บนข้อมูลรายได้ครัวเรือนระดับจังหวัดอย่างครบถ้วน</div>
+        </div>
+      </div>
+
+      <!-- วัตถุประสงค์ -->
+      <div class="section-card accent-sky">
+        <div class="sec-eyebrow">02 · Objectives</div>
+        <div class="sec-title">วัตถุประสงค์การวิจัย</div>
+        <div class="sec-body">
+          <strong style="color:var(--sky);">Q1</strong> &nbsp;ใครได้รับค่าตอบแทนแค่ไหน? กลุ่มอาชีพใดมีรายได้สูง/ต่ำสุด?<br>
+          <strong style="color:var(--gold);">Q2</strong> &nbsp;ความเหลื่อมล้ำอยู่ที่ไหน? จังหวัดใดมีช่องว่างภายในสูง?<br>
+          <strong style="color:var(--green);">Q3</strong> &nbsp;รายได้มาจากไหน? แต่ละกลุ่มอาชีพพึ่งพาแหล่งรายได้ใด?<br>
+          <strong style="color:#A78BFA;">AI</strong> &nbsp;ใช้ Typhoon AI App ตอบคำถามนโยบายเชิงลึกจากข้อมูลจริง
+        </div>
+      </div>
+
+      <!-- ระเบียบวิธี -->
+      <div class="section-card accent-blue">
+        <div class="sec-eyebrow">03 · Methodology</div>
+        <div class="sec-title">ระเบียบวิธีวิจัย</div>
+        <div class="flow">
+          <div class="flow-node">
+            <strong>📥 Data</strong>
+            <small>NSO 2566<br>6,829 records</small>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <strong>🧹 Clean</strong>
+            <small>Pandas<br>CSV/RAG</small>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <strong>📊 EDA</strong>
+            <small>Plotly<br>Storytelling</small>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <strong>🤖 Typhoon</strong>
+            <small>4B · 256K ctx<br>RAG System</small>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <strong>💡 Insight</strong>
+            <small>Policy<br>Action</small>
+          </div>
+        </div>
+        <div class="sec-body" style="margin-top:3mm;">
+          ใช้โมเดล <span class="font-mono text-sky">typhoon-ai/typhoon2.5-qwen3-4b</span> (Apache 2.0) รองรับภาษาไทย–อังกฤษ Context 256K tokens GPU 15 GB พร้อม RAG จากข้อมูล NSO
+        </div>
+      </div>
+
+      <!-- ชุดข้อมูล -->
+      <div class="section-card accent-cyan">
+        <div class="sec-eyebrow">04 · Dataset</div>
+        <div class="sec-title">แหล่งข้อมูลและขอบเขต</div>
+        <div class="sec-body">
+          สำนักงานสถิติแห่งชาติ (NSO) &mdash; ตาราง <span class="font-mono text-sky" style="font-size:6pt;">SFD_SPB0802_66</span><br>
+          ขอบเขต: รายได้ครัวเรือนไทย ปี 2566 ครบ 77 จังหวัด<br>
+          ตัวแปรหลัก: กลุ่มอาชีพ (soc_eco_class1/2), แหล่งรายได้ (source_income1/2), จังหวัด, ภาค<br>
+          จำนวนแถวที่ใช้วิเคราะห์: <strong class="text-gold">6,829 records</strong> (Q1: 744 แถว)
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════ COLUMN 2 ══════════ -->
+    <div class="col">
+
+      <!-- KPI Overview -->
+      <div class="section-card accent-sky">
+        <div class="sec-eyebrow">05 · Key Statistics</div>
+        <div class="sec-title">ภาพรวมรายได้ครัวเรือนไทย ปี 2566</div>
+        <div class="kpi-grid" style="grid-template-columns: repeat(3,1fr); margin-bottom:3mm;">
+          <div class="kpi-box">
+            <div class="kpi-val text-sky">26,279</div>
+            <div class="kpi-unit">บาท/เดือน</div>
+            <div class="kpi-label">รายได้เฉลี่ย</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-val text-gold">3,860</div>
+            <div class="kpi-unit">บาท/เดือน</div>
+            <div class="kpi-label">มัธยฐาน (P50)</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-val" style="color:var(--rose);">40.7×</div>
+            <div class="kpi-unit">เท่า</div>
+            <div class="kpi-label">อัตราส่วน Max/Min</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-val text-green">181,322</div>
+            <div class="kpi-unit">บาท/เดือน</div>
+            <div class="kpi-label">รายได้สูงสุด</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-val text-red">4,452</div>
+            <div class="kpi-unit">บาท/เดือน</div>
+            <div class="kpi-label">รายได้ต่ำสุด</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-val text-purple">77</div>
+            <div class="kpi-unit">จังหวัด</div>
+            <div class="kpi-label">ครอบคลุมทั้งหมด</div>
+          </div>
+        </div>
+
+        <!-- Percentile bars -->
+        <div class="small-label" style="margin-bottom:2mm;">📈 Percentile Distribution (บาท/เดือน)</div>
+        <div class="percentile-row">
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:28mm;">
+            <div style="width:100%; background:linear-gradient(180deg,#38B6F8,#1D5DBF); height:3%; border-radius:1.5mm 1.5mm 0 0; position:relative; min-height:2mm;">
+            </div>
+            <div class="pct-label">P1<br><span class="font-mono" style="font-size:4pt;">4</span></div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:28mm;">
+            <div style="width:100%; background:linear-gradient(180deg,#38B6F8,#1D5DBF); height:5%; border-radius:1.5mm 1.5mm 0 0; min-height:3mm;"></div>
+            <div class="pct-label">P5<br><span class="font-mono" style="font-size:4pt;">41</span></div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:28mm;">
+            <div style="width:100%; background:linear-gradient(180deg,#38B6F8,#1D5DBF); height:10%; border-radius:1.5mm 1.5mm 0 0;"></div>
+            <div class="pct-label">P10<br><span class="font-mono" style="font-size:4pt;">126</span></div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:28mm;">
+            <div style="width:100%; background:linear-gradient(180deg,#04C4D5,#1D5DBF); height:20%; border-radius:1.5mm 1.5mm 0 0;"></div>
+            <div class="pct-label">P25<br><span class="font-mono" style="font-size:4pt;">651</span></div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:28mm;">
+            <div style="width:100%; background:linear-gradient(180deg,#F5A623,#B87A00); height:42%; border-radius:1.5mm 1.5mm 0 0;"></div>
+            <div class="pct-label">P50<br><span class="font-mono" style="font-size:4pt;">3,860</span></div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:28mm;">
+            <div style="width:100%; background:linear-gradient(180deg,#0FB981,#07836A); height:60%; border-radius:1.5mm 1.5mm 0 0;"></div>
+            <div class="pct-label">P75<br><span class="font-mono" style="font-size:4pt;">18,124</span></div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:28mm;">
+            <div style="width:100%; background:linear-gradient(180deg,#7E4FE2,#4B2EB5); height:78%; border-radius:1.5mm 1.5mm 0 0;"></div>
+            <div class="pct-label">P90<br><span class="font-mono" style="font-size:4pt;">29,240</span></div>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:28mm;">
+            <div style="width:100%; background:linear-gradient(180deg,#E5334A,#8B1F2C); height:90%; border-radius:1.5mm 1.5mm 0 0;"></div>
+            <div class="pct-label">P99<br><span class="font-mono" style="font-size:4pt;">55,238</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q1: กลุ่มอาชีพ -->
+      <div class="section-card accent-green">
+        <div class="sec-eyebrow">06 · Q1 — Who Earns What?</div>
+        <div class="sec-title">รายได้เฉลี่ยครัวเรือนจำแนกตามกลุ่มอาชีพ</div>
+        <div class="bar-chart">
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span>👔 ผู้จัดการ/นักวิชาการ/วิชาชีพ</span>
+              <span class="bar-val text-green">48,293 ฿</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%; background:linear-gradient(90deg,#0FB981,#04C4D5);"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span>🏪 ผู้ประกอบธุรกิจ (ไม่ใช่เกษตร)</span>
+              <span class="bar-val text-green">33,299 ฿</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:69%; background:linear-gradient(90deg,#0FB981,#38B6F8);"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span>🌾 เกษตร (เช่าที่ดิน)</span>
+              <span class="bar-val text-sky">29,402 ฿</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:61%; background:linear-gradient(90deg,#38B6F8,#1D5DBF);"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span>🌾 เกษตร (เจ้าของที่ดิน)</span>
+              <span class="bar-val text-sky">27,623 ฿</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:57%; background:linear-gradient(90deg,#38B6F8,#1D5DBF);"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span>🛒 เสมียน/พนักงานขายและให้บริการ</span>
+              <span class="bar-val" style="color:var(--amber);">25,684 ฿</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:53%; background:linear-gradient(90deg,#F5A623,#B87A00);"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span>⚙️ ผลิต/ก่อสร้าง/เหมืองแร่</span>
+              <span class="bar-val" style="color:var(--amber);">21,971 ฿</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:45%; background:linear-gradient(90deg,#F9C02B,#B87A00);"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span>🚌 คนงานขนส่งและงานพื้นฐาน</span>
+              <span class="bar-val text-red">18,547 ฿</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:38%; background:linear-gradient(90deg,#F76F82,#E5334A);"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label-row">
+              <span>🌿 คนงานเกษตร/ป่าไม้/ประมง</span>
+              <span class="bar-val text-red">15,804 ฿</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:33%; background:linear-gradient(90deg,#E5334A,#8B1F2C);"></div></div>
+          </div>
+        </div>
+        <div class="insight-box green" style="margin-top:3mm;">
+          <div class="insight-title">📌 Insight Q1</div>
+          <div class="insight-body">ช่องว่างรายได้ระหว่างกลุ่มอาชีพสูงสุดและต่ำสุดกว้างถึง <strong class="text-green">3.1 เท่า</strong> กลุ่มนักวิชาการ/วิชาชีพได้ <strong>48,293 บาท/เดือน</strong> สูงกว่าเฉลี่ย 84% ขณะที่คนงานเกษตรได้เพียง 15,804 บาท/เดือน ต่ำกว่าเฉลี่ย 40%</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════ COLUMN 3 ══════════ -->
+    <div class="col">
+
+      <!-- Q2: ความเหลื่อมล้ำจังหวัด -->
+      <div class="section-card accent-red">
+        <div class="sec-eyebrow">07 · Q2 — Where is Inequality?</div>
+        <div class="sec-title">จังหวัดที่มีความเหลื่อมล้ำภายในสูงสุด (CV)</div>
+        <table class="ineq-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>จังหวัด</th>
+              <th>ภาค</th>
+              <th>CV (%)</th>
+              <th>Range</th>
+              <th>เฉลี่ย (฿K)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong class="text-rose">จันทบุรี</strong></td>
+              <td>กลาง</td>
+              <td><span class="font-grotesk text-red fw-900">95.7%</span> <span class="cv-bar" style="width:24mm;"></span></td>
+              <td>10.0×</td>
+              <td>50.9K</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>หนองบัวลำภู</td>
+              <td>เหนือ</td>
+              <td><span class="font-grotesk text-red">79.8%</span> <span class="cv-bar" style="width:20mm;"></span></td>
+              <td>7.0×</td>
+              <td>28.8K</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>ศรีสะเกษ</td>
+              <td>กลาง</td>
+              <td><span class="font-grotesk text-red">79.7%</span> <span class="cv-bar" style="width:20mm;"></span></td>
+              <td>6.7×</td>
+              <td>29.0K</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>ยโสธร</td>
+              <td>กลาง</td>
+              <td><span class="font-grotesk" style="color:var(--rose);">76.0%</span> <span class="cv-bar" style="width:19mm;"></span></td>
+              <td>5.2×</td>
+              <td>26.5K</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>นราธิวาส</td>
+              <td>ใต้</td>
+              <td><span class="font-grotesk" style="color:var(--amber);">73.6%</span> <span class="cv-bar" style="width:18mm;"></span></td>
+              <td>6.9×</td>
+              <td>17.5K</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>แม่ฮ่องสอน</td>
+              <td>เหนือ</td>
+              <td><span class="font-grotesk" style="color:var(--amber);">68.2%</span> <span class="cv-bar" style="width:17mm;"></span></td>
+              <td>6.9×</td>
+              <td>18.9K</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>ราชบุรี</td>
+              <td>ตะวันตก</td>
+              <td><span class="font-grotesk" style="color:var(--amber);">62.3%</span> <span class="cv-bar" style="width:15mm;"></span></td>
+              <td>6.2×</td>
+              <td>36.6K</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="insight-box red" style="margin-top:3mm;">
+          <div class="insight-title">📌 Insight Q2</div>
+          <div class="insight-body"><strong class="text-rose">จันทบุรี</strong> มีความเหลื่อมล้ำภายในสูงสุด CV=95.7% มีทั้งกลุ่มรายได้สูงและต่ำอยู่ร่วมกัน &nbsp;|&nbsp; <strong>นราธิวาส, เชียงราย, พะเยา</strong> มีรายได้เฉลี่ยต่ำกว่าประเทศกว่า 7-8K บาท/เดือน ควรดึงดูดอุตสาหกรรมและพัฒนา Infrastructure</div>
+        </div>
+      </div>
+
+      <!-- Q3: โครงสร้างรายได้ -->
+      <div class="section-card accent-purple">
+        <div class="sec-eyebrow">08 · Q3 — Income Structure</div>
+        <div class="sec-title">โครงสร้างรายได้จำแนกตามกลุ่มอาชีพ</div>
+        <div class="struct-row">
+          <div class="struct-item">
+            <div class="occ-name">👔 ผู้จัดการ/นักวิชาการ/วิชาชีพ &nbsp;<span class="font-mono text-sky" style="font-size:6pt;">48,293 ฿/เดือน</span></div>
+            <div class="struct-bars">
+              <div class="bar-seg" style="flex:72; background:linear-gradient(90deg,#0FB981,#07836A);">72%</div>
+              <div class="bar-seg" style="flex:27; background:linear-gradient(90deg,#38B6F8,#1D5DBF);">27%</div>
+              <div class="bar-seg" style="flex:1;  background:rgba(255,255,255,0.15);font-size:3.5pt;">1%</div>
+            </div>
+          </div>
+          <div class="struct-item">
+            <div class="occ-name">🏪 ผู้ประกอบธุรกิจ (ไม่ใช่เกษตร) &nbsp;<span class="font-mono text-sky" style="font-size:6pt;">33,299 ฿/เดือน</span></div>
+            <div class="struct-bars">
+              <div class="bar-seg" style="flex:68; background:linear-gradient(90deg,#7E4FE2,#4B2EB5);">68%</div>
+              <div class="bar-seg" style="flex:28; background:linear-gradient(90deg,#A78BFA,#7E4FE2);">28%</div>
+              <div class="bar-seg" style="flex:4;  background:rgba(255,255,255,0.2);">4%</div>
+            </div>
+          </div>
+          <div class="struct-item">
+            <div class="occ-name">🌾 เกษตรกร (เจ้าของที่ดิน) &nbsp;<span class="font-mono text-sky" style="font-size:6pt;">27,623 ฿/เดือน</span></div>
+            <div class="struct-bars">
+              <div class="bar-seg" style="flex:64; background:linear-gradient(90deg,#F5A623,#B87A00);">64%</div>
+              <div class="bar-seg" style="flex:30; background:linear-gradient(90deg,#04C4D5,#1D5DBF);">30%</div>
+              <div class="bar-seg" style="flex:6;  background:rgba(229,51,74,0.5);">6%</div>
+            </div>
+          </div>
+          <div class="struct-item">
+            <div class="occ-name">🌿 คนงานเกษตร/ป่าไม้/ประมง &nbsp;<span class="font-mono text-red" style="font-size:6pt;">15,804 ฿/เดือน</span></div>
+            <div class="struct-bars">
+              <div class="bar-seg" style="flex:69; background:linear-gradient(90deg,#E5334A,#8B1F2C);">69%</div>
+              <div class="bar-seg" style="flex:30; background:linear-gradient(90deg,#F76F82,#E5334A);">30%</div>
+              <div class="bar-seg" style="flex:1;  background:rgba(255,255,255,0.15);font-size:3.5pt;">1%</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:3mm; margin-top:2.5mm; font-size:5.5pt; color:var(--muted); font-family:'Space Grotesk'; align-items:center;">
+          <span style="display:inline-block;width:4mm;height:3mm;border-radius:1mm;background:linear-gradient(90deg,#0FB981,#07836A);"></span>รายได้ทั้งสิ้น
+          <span style="display:inline-block;width:4mm;height:3mm;border-radius:1mm;background:linear-gradient(90deg,#38B6F8,#1D5DBF);"></span>รายได้ประจำ (เงินสด)
+          <span style="display:inline-block;width:4mm;height:3mm;border-radius:1mm;background:rgba(229,51,74,0.5);"></span>รายได้ไม่ประจำ
+        </div>
+        <div class="insight-box purple" style="margin-top:3mm;">
+          <div class="insight-title">📌 Insight Q3</div>
+          <div class="insight-body">กลุ่มเกษตรกรมีรายได้ไม่ประจำสัดส่วนสูง มีความเปราะบางทางเศรษฐกิจมากกว่ากลุ่มอื่น รายได้ไม่ประจำ (ที่เป็นตัวเงิน) เฉลี่ยเพียง <strong>309 บาท/เดือน</strong> แต่มีความผันผวนสูง</div>
+        </div>
+      </div>
+
+      <!-- AI Insights -->
+      <div class="section-card accent-cyan">
+        <div class="sec-eyebrow">09 · AI Policy Insights</div>
+        <div class="sec-title">ผลการถามตอบด้วย Typhoon AI</div>
+        <div class="qa-block">
+          <div class="qa-header">🤖 Typhoon AI · typhoon2.5-qwen3-4b · RAG System</div>
+          <div class="qa-item">
+            <div class="qa-q">Q: กลุ่มอาชีพใดมีความเสี่ยงทางเศรษฐกิจสูงที่สุด?</div>
+            <div class="qa-a">กลุ่มเกษตรกรและแรงงานไม่เป็นทางการมีความเสี่ยงสูงสุด เนื่องจากพึ่งพาฤดูกาลและขาดระบบประกันรายได้ รายได้ประจำ (เงินสด) เฉลี่ยเพียง <strong>8,195 บาท/เดือน</strong></div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Q: จังหวัดใดควรได้รับการสนับสนุนจากรัฐเร่งด่วน?</div>
+            <div class="qa-a"><strong>นราธิวาส, เชียงราย, พะเยา, แม่ฮ่องสอน</strong> มีรายได้เฉลี่ยต่ำกว่าระดับประเทศกว่า 7-9K บาท/เดือน ควรดึงดูดอุตสาหกรรมและพัฒนา Infrastructure อย่างเร่งด่วน</div>
+          </div>
+          <div class="qa-item">
+            <div class="qa-q">Q: นโยบายใดตอบโจทย์ลดความเหลื่อมล้ำได้ดีที่สุด?</div>
+            <div class="qa-a">ยกระดับ <strong>ค่าแรงขั้นต่ำ</strong> สำหรับจังหวัด CV สูง &amp; สร้าง <strong>Social Safety Net</strong> สำหรับกลุ่มเกษตรและแรงงานไม่เป็นทางการ ควบคู่กับส่งเสริมทักษะอาชีพ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- นโยบายและ SDGs -->
+      <div class="section-card accent-gold">
+        <div class="sec-eyebrow">10 · Policy Recommendations & SDGs</div>
+        <div class="sec-title">ข้อเสนอแนะเชิงนโยบาย</div>
+        <div class="policy-grid">
+          <div class="policy-card" style="border-top-color:#E5334A;">
+            <div class="p-icon">💼</div>
+            <div class="p-title">ค่าแรงขั้นต่ำ</div>
+            <div class="p-body">จังหวัดที่ CV สูง ควรปรับค่าแรงขั้นต่ำให้สูงขึ้น เพื่อลดช่องว่างรายได้ภายใน</div>
+          </div>
+          <div class="policy-card" style="border-top-color:#0FB981;">
+            <div class="p-icon">🛡️</div>
+            <div class="p-title">Social Safety Net</div>
+            <div class="p-body">สร้างระบบรองรับสำหรับกลุ่มเกษตรกรและแรงงานนอกระบบในช่วง Off-Season</div>
+          </div>
+          <div class="policy-card" style="border-top-color:#38B6F8;">
+            <div class="p-icon">🎓</div>
+            <div class="p-title">พัฒนาทักษะอาชีพ</div>
+            <div class="p-body">ส่งเสริมทักษะอาชีพแก่กลุ่มเกษตรกรเพื่อหารายได้เสริมนอกภาคเกษตร</div>
+          </div>
+          <div class="policy-card" style="border-top-color:#7E4FE2;">
+            <div class="p-icon">🏭</div>
+            <div class="p-title">ดึงดูดอุตสาหกรรม</div>
+            <div class="p-body">จังหวัดรายได้ต่ำควรพัฒนา Infrastructure เพื่อดึงดูดอุตสาหกรรมสร้างงาน</div>
+          </div>
+        </div>
+        <div class="sdg-row" style="margin-top:4mm;">
+          <div class="sdg-badge" style="background:rgba(229,51,74,0.15); border:0.4mm solid rgba(229,51,74,0.3);">
+            <div class="sdg-num text-red">1</div>
+            <div class="sdg-lbl text-red">No Poverty</div>
+          </div>
+          <div class="sdg-badge" style="background:rgba(245,166,35,0.15); border:0.4mm solid rgba(245,166,35,0.3);">
+            <div class="sdg-num text-gold">8</div>
+            <div class="sdg-lbl text-gold">Decent Work</div>
+          </div>
+          <div class="sdg-badge" style="background:rgba(15,185,129,0.15); border:0.4mm solid rgba(15,185,129,0.3);">
+            <div class="sdg-num text-green">10</div>
+            <div class="sdg-lbl text-green">Reduced Inequality</div>
+          </div>
+          <div class="sdg-badge" style="background:rgba(56,182,248,0.15); border:0.4mm solid rgba(56,182,248,0.3);">
+            <div class="sdg-num text-sky">17</div>
+            <div class="sdg-lbl text-sky">Partnerships</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- สรุป -->
+      <div class="section-card accent-blue">
+        <div class="sec-eyebrow">11 · Conclusions</div>
+        <div class="sec-title">สรุปและข้อค้นพบสำคัญ</div>
+        <div class="sec-body">
+          งานวิจัยนี้แสดงให้เห็นว่าความเหลื่อมล้ำรายได้ครัวเรือนไทยปี 2566 มีความซับซ้อนทั้งมิติกลุ่มอาชีพและมิติภูมิศาสตร์ การบูรณาการ <strong class="text-sky">Data Storytelling</strong> กับ <strong class="text-gold">Typhoon AI (RAG)</strong> ช่วยให้ผู้กำหนดนโยบายสามารถเข้าถึงข้อมูลเชิงลึกได้รวดเร็วและแม่นยำ โดยไม่ต้องอาศัยผู้เชี่ยวชาญเฉพาะทาง เป็นต้นแบบสำหรับการวิเคราะห์ข้อมูลสาธารณสุขและสังคมในอนาคต
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="footer-tag">💰 รายได้ไทย 2566 · TSU SCIDI</span>
+      <div class="source-pills">
+        <span class="src-pill">📊 NSO Thailand 2566</span>
+        <span class="src-pill">🤖 Typhoon AI 2.5-Qwen3-4B</span>
+        <span class="src-pill">🐍 Python · Pandas · Plotly</span>
+        <span class="src-pill">📁 household_income_clean.csv</span>
+      </div>
+    </div>
+    <div class="footer-right">
+      นายพิษณุ ทองศรี &nbsp;·&nbsp; นายนันท์นภัส หรือชู &nbsp;·&nbsp; ภาควิชาวิทยาการข้อมูล คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล มหาวิทยาลัยทักษิณ &nbsp;·&nbsp; 2569
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
