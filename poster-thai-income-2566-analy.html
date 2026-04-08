@@ -419,17 +419,15 @@
       padding: 16px 36px;
       border-radius: 60px;
       text-decoration: none;
-      margin: 16px 0 12px;
       transition: background 0.2s, transform 0.1s;
       box-shadow: 0 6px 14px rgba(14,165,233,0.3);
       letter-spacing: 0.5px;
+      display: table;      /* ให้กว้างเท่ากับเนื้อหาข้างใน */
+      margin: 0 auto;     /* จัดกึ่งกลางซ้าย-ขวา */
     }
     .demo-button:hover {
       background: #0c8bc2;
       transform: scale(1.02);
-      display: table;      /* ให้กว้างเท่ากับเนื้อหาข้างใน */
-      margin: 0 auto;     /* จัดกึ่งกลางซ้าย-ขวา */
-      text-decoration: none;
     }
     .demo-url {
       font-size: 17px;
@@ -501,8 +499,8 @@
       z-index: 20;
     }
     .footer-logos-left img, .footer-logos-right img {
-      width: 160px;
-      height: 160px;
+      width: 150px;
+      height: 150px;
       object-fit: contain;
       background: rgba(255,255,255,0.85);
       border-radius: 20px;
@@ -660,10 +658,11 @@
         <div class="img-wrapper"><img src="img/tsucon2026/9.png" alt="treemap hierarchical"><div class="caption-fig">ภาพที่ 6: Treemap แสดงโครงสร้างรายได้ตามภูมิภาคและจังหวัด</div></div>
       </div>
       <div class="card">
-        <div class="card-title">💬 Multi-turn Chat | 📊 Visualisation | 🗃️ Knowledge Base</div>
+        <div class="card-title"> 💬 Typhoon AI Household Income Chat</div>
         <!-- Demo Live Typhoon AI App  -->
-          <a href="https://pitsanu2448.github.io/tsu-scidi-household-income-gradio.html#slide2" target="_blank">
-            📱 Demo Live Typhoon AI App
+        <div class="demo-block">
+          <a href="https://pitsanu2448.github.io/tsu-scidi-household-income-gradio.html#slide2" target="_blank" rel="noopener noreferrer" class="demo-button">
+            📱 Demo Typhoon AI Household Income Chat
           </a>
       </div>
     </div>
