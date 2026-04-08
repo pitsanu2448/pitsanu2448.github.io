@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>โปสเตอร์ | โครงสร้างรายได้ครัวเรือนไทย 2566 : Data Storytelling + Thai LLM (ปรับปรุง Header/Footer)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    :root {
+      --navy:      #0F2551;
+      --blue:      #1E4DB7;
+      --mid-blue:  #2563EB;
+      --sky:       #38BDF8;
+      --sky-light: #BAE6FD;
+      --gold:      #F59E0B;
+      --gold-lt:   #FCD34D;
+      --gold-bg:   #FFFBEB;
+      --teal:      #0EA5E9;
+      --bg-page:   #E8EFF9;
+      --bg-poster: #F0F5FC;
+      --card-bg:   #FFFFFF;
+      --card-border: #E2EAF6;
+      --text-dark:  #0F172A;
+      --text-mid:   #1E3A5F;
+      --text-muted: #475569;
+      --divider:    #CBD5E8;
+      --sh-sm: 0 4px 14px -2px rgba(15,37,81,0.07), 0 2px 6px -2px rgba(15,37,81,0.04);
+      --sh-md: 0 10px 28px -6px rgba(15,37,81,0.10), 0 4px 10px -4px rgba(15,37,81,0.05);
+    }
+
+    body {
+      background: var(--bg-page);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 32px;
+      font-family: 'Sarabun', 'IBM Plex Sans Thai', 'Noto Sans Thai', system-ui, sans-serif;
+    }
+
+    .poster {
+      width: 3179px;
+      min-height: 4494px;
+      background: var(--bg-poster);
+      box-shadow: 0 60px 120px -30px rgba(15,37,81,0.35);
+      border-radius: 56px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ========= HEADER - ปรับเนื้อหาให้อยู่กึ่งกลางทั้งหมด ========= */
+    .poster-header {
+      width: 100%;
+      height: auto;
+      min-height: 400px;
+      background: linear-gradient(135deg, #0D1B2A 0%, #0F2551 35%, #1E4DB7 70%, #38BDF8 100%);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;          /* จัดแนวนอนกึ่งกลาง */
+      justify-content: center;      /* จัดแนวตั้งกึ่งกลาง */
+      text-align: center;           /* ข้อความภายในทั้งหมดกึ่งกลาง */
+      padding: 40px 80px;
+      color: #fff;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .poster-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 85%, rgba(56,189,248,0.22) 0%, transparent 48%),
+                  radial-gradient(circle at 85% 20%, rgba(245,158,11,0.14) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    .poster-header::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #0EA5E9, #38BDF8, #F59E0B, #38BDF8, #0EA5E9);
+    }
+
+    .header-left { 
+      position: relative; 
+      z-index: 1; 
+      max-width: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .conf-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(14,165,233,0.18);
+      color: #BAE6FD;
+      border: 1px solid rgba(14,165,233,0.35);
+      padding: 10px 28px;
+      border-radius: 60px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+      backdrop-filter: blur(6px);
+    }
+
+    .main-title {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.18;
+      margin-bottom: 16px;
+      background: linear-gradient(110deg, #ffffff 40%, #FCD34D 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .sub-title {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgba(186,230,253,0.9);
+      line-height: 1.4;
+    }
+
+    .badge-group {
+      margin: 18px 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .tech-badge {
+      background: var(--gold);
+      color: #0F172A;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+
+    .tech-badge.blue {
+      background: rgba(14,165,233,0.22);
+      color: #BAE6FD;
+      border: 1px solid rgba(14,165,233,0.4);
+    }
+
+    .author-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-top: 12px;
+    }
+
+    .author-advisor {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(186,230,253,0.85);
+      margin-top: 8px;
+    }
+
+    /* ========= BODY 2 คอลัมน์ (คงเดิม) ========= */
+    .poster-body {
+      flex: 1;
+      display: flex;
+      gap: 40px;
+      padding: 52px 64px;
+      background: var(--bg-poster);
+    }
+
+    .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 36px;
+      box-shadow: var(--sh-sm);
+      padding: 34px 38px;
+      border: 1px solid var(--card-border);
+    }
+
+    .card-title {
+      font-size: 29px;
+      font-weight: 700;
+      color: var(--navy);
+      border-left: 8px solid var(--gold);
+      padding-left: 22px;
+      margin-bottom: 22px;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+    }
+
+    .card-title.teal { border-left-color: var(--teal); }
+    .card-title.navy { border-left-color: var(--navy); }
+    .card-title.sky { border-left-color: var(--sky); }
+
+    .body-text {
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--text-dark);
+      text-align: justify;
+    }
+
+    .keyword-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .keyword {
+      background: #EFF6FF;
+      color: var(--blue);
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-size: 17px;
+      font-weight: 600;
+      border: 1px solid #BFDBFE;
+    }
+
+    .img-wrapper {
+      margin: 20px 0 14px;
+      text-align: center;
+      background: #F8FAFC;
+      border-radius: 28px;
+      padding: 14px;
+      border: 1px solid var(--card-border);
+    }
+
+    .img-wrapper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(15,37,81,0.07);
+    }
+
+    .caption-fig {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 20px 0;
+    }
+
+    .stat-badge {
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      border: 1px solid #BFDBFE;
+      border-radius: 28px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .highlight {
+      background: var(--gold-bg);
+      border-left: 6px solid var(--gold);
+      border-radius: 22px;
+      padding: 20px 26px;
+      margin: 18px 0;
+      font-size: 18px;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+
+    .highlight.teal { background: #F0FDFA; border-left-color: var(--teal); }
+    .highlight.blue { background: #EFF6FF; border-left-color: var(--mid-blue); }
+
+    .arch-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .arch-node {
+      background: #F0F5FC;
+      border: 1px solid #BFDBFE;
+      border-left: 4px solid var(--teal);
+      border-radius: 18px;
+      padding: 14px 22px;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .arch-arrow {
+      color: var(--sky);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .step-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      font-size: 17px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .qa-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .qa-item {
+      background: #F8FAFC;
+      border-radius: 18px;
+      padding: 14px 20px;
+      font-size: 17px;
+      line-height: 1.5;
+      border: 1px solid var(--card-border);
+    }
+
+    .qa-q { color: var(--blue); font-weight: 700; }
+    .qa-a { color: var(--text-dark); margin-top: 4px; }
+
+    hr.div-line {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sky-light), var(--gold-lt), var(--sky-light));
+      margin: 22px 0;
+    }
+
+    .ref {
+      font-size: 15.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .bert-badge {
+      display: inline-block;
+      background: var(--teal);
+      color: white;
+      font-weight: 700;
+      font-size: 17px;
+      padding: 7px 22px;
+      border-radius: 40px;
+      margin: 10px 6px 0 0;
+    }
+
+    /* ========= FOOTER ใหม่ : โลโก้ layer top ซ้าย/ขวา ขนาด 100x100 ========= */
+    .poster-footer {
+      width: 100%;
+      min-height: 180px;
+      background: linear-gradient(135deg, #0D1B2A 0%, #0F2551 40%, #1E4DB7 80%, #38BDF8 100%);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 80px;
+      color: white;
+      position: relative;
+      overflow: visible; /* ให้โลโก้ layer top เกินขอบได้เล็กน้อย */
+    }
+
+    .poster-footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 50%, rgba(14,165,233,0.18) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    .poster-footer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #0EA5E9, #38BDF8, #F59E0B, #38BDF8, #0EA5E9);
+    }
+
+    /* container หลักของ footer ให้ relative เพื่อวางโลโก้ absolute */
+    .footer-inner {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* โลโก้ layer top ซ้าย (SCIDI.png และ TSU.png) */
+    .footer-logos-left {
+      position: absolute;
+      left: 20px;
+      top: -30px;          /* ชิดขอบบน (layer top) */
+      display: flex;
+      gap: 20px;
+      z-index: 20;
+    }
+
+    .footer-logos-left img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      padding: 6px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    /* โลโก้ layer top ขวา (BDI.png และ NSO.png) */
+    .footer-logos-right {
+      position: absolute;
+      right: 20px;
+      top: -30px;
+      display: flex;
+      gap: 20px;
+      z-index: 20;
+    }
+
+    .footer-logos-right img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      padding: 6px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .footer-logos-left img:hover, .footer-logos-right img:hover {
+      transform: scale(1.02);
+    }
+
+    .footer-center {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .footer-tags {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .footer-tag {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #BAE6FD;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .footer-tag a {
+      color: #BAE6FD;
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      font-size: 15.5px;
+      color: rgba(186,230,253,0.72);
+      line-height: 1.55;
+    }
+
+    .gold-text { color: var(--gold-lt); font-weight: 600; }
+
+    /* responsive friendly - แต่คงขนาด A0 ตามโจทย์ */
+    @media (max-width: 3200px) {
+      .poster {
+        width: 100%;
+        max-width: 3179px;
+      }
+      .poster-header {
+        padding: 40px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- HEADER - ปรับเนื้อหากึ่งกลางทั้งหมด (align-items:center, text-align:center) -->
+  <header class="poster-header">
+    <div class="header-left">
+      <!-- เส้นประดับบน/ล่างแบบกึ่งกลาง -->
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 10px 0;">
+      </div>
+      <div class="author-advisor">🎓 การประชุมวิชาการระดับชาติ มหาวิทยาลัยทักษิณ ครั้งที่ 37 ประจำปี 2569<br>(ภายใต้หัวข้อ: ขยายพลังนวัตกรรมสังคม สู่อนาคตโลกที่ยั่งยืน)</div>
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 10px 0;">
+      </div>
+      <div class="conf-badge">การวิเคราะห์โครงสร้างรายได้ของครัวเรือนไทยในปี 2566 ด้วยเทคนิคการเล่าเรื่องด้วยข้อมูลร่วมกับการประยุกต์ใช้โมเดลภาษาขนาดใหญ่</div>
+      <div class="badge-group">
+        <span class="tech-badge">🐍 Python · Pandas · Plotly</span>
+        <span class="tech-badge">🤖 Typhoon2.5-Qwen3-4B</span>
+        <span class="tech-badge">🔍 Hybrid RAG (BGE-M3+BM25+RRF+HyDE+Reranker)</span>
+        <span class="tech-badge">📊 NSO 2566 · 6,829 records</span>
+      </div>
+      <div class="author-advisor">ที่ปรึกษา: ผู้ช่วยศาสตราจารย์สุดา เธียรมนตรี </div>
+      <div class="author-advisor">นักวิจัย: นายพิษณุ ทองศรี · ภาควิชาวิทยาการข้อมูล · คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล · มหาวิทยาลัยทักษิณ · วิทยาเขตพัทลุง</div>
+    </div>
+  </header>
+
+  <!-- BODY 2 คอลัมน์ (เนื้อหาเหมือนเดิมทุกประการ) -->
+  <div class="poster-body">
+    <!-- คอลัมน์ซ้าย -->
+    <div class="col">
+      <div class="card">
+        <div class="card-title">📄 บทคัดย่อ (Abstract)</div>
+        <div class="body-text">
+          การศึกษาครั้งนี้วิเคราะห์โครงสร้างและความเหลื่อมล้ำของรายได้ครัวเรือนไทย ปี 2566
+          โดยใช้ข้อมูล NSO จำนวน <strong>6,829 ครัวเรือน 77 จังหวัด</strong>
+          ผสานเทคนิค Data Storytelling (Python, Pandas, Plotly) กับระบบ RAG บนโมเดล
+          <strong>Typhoon2.5-Qwen3-4b (4-bit quantization)</strong> เพื่อตอบคำถามเชิงนโยบายแบบโต้ตอบ
+          ผลพบว่ารายได้เฉลี่ย <strong>26,279 บาท/เดือน</strong> ช่องว่างรายได้สูงสุด-ต่ำสุด <strong>40.7 เท่า</strong>
+          จังหวัดนครราชสีมามีความเหลื่อมล้ำสูงสุด (CV=0.801) และกลุ่มผู้จัดการ/นักวิชาการมีรายได้สูงสุด 48,293 บาท
+          ขณะที่กลุ่มเกษตรกรต่ำสุด 15,804 บาท ระบบ AI บรรลุ BERTScore F1 = <strong>0.7928</strong>
+          แสดงศักยภาพในการสนับสนุนการตัดสินใจเชิงหลักฐาน
+        </div>
+        <div class="keyword-row">
+          <span class="keyword">#ความเหลื่อมล้ำรายได้</span>
+          <span class="keyword">#DataStorytelling</span>
+          <span class="keyword">#TyphoonAI</span>
+          <span class="keyword">#HybridRAG</span>
+          <span class="keyword">#นโยบายสาธารณะ</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title teal">🔍 บทนำ (Introduction)</div>
+        <div class="body-text">
+          ความเหลื่อมล้ำทางรายได้เป็นปัญหาเชิงโครงสร้างที่สำคัญของเศรษฐกิจไทย
+          แม้ประเทศไทยมีการเติบโตทางเศรษฐกิจต่อเนื่อง แต่ผลประโยชน์ยังกระจายไม่เท่าเทียม
+          โดยเฉพาะระหว่างกลุ่มอาชีพและพื้นที่ (World Bank, 2023) วิกฤตโควิด-19 ซ้ำเติมแรงงานนอกระบบและเกษตรกร
+          ขณะที่การเข้าถึงข้อมูลเชิงลึกสำหรับผู้กำหนดนโยบายยังเป็นอุปสรรค
+        </div>
+        <div class="highlight teal" style="margin-top:18px;">
+          💡 <strong>แรงบันดาลใจ:</strong> สร้างเครื่องมือที่ช่วยให้ผู้กำหนดนโยบายเข้าถึงข้อมูลเชิงลึกได้ทันที
+          โดยไม่ต้องเป็นนักวิเคราะห์ข้อมูลมืออาชีพ — ผสาน Human Capital Theory (Becker, 1964)
+          กับ Data Storytelling และ Generative AI
+        </div>
+        <div class="img-wrapper">
+          <img src="img/tsucon2026/1.png" alt="overview distribution KPI">
+          <div class="caption-fig">ภาพที่ 1: การกระจายรายได้และภาพรวม KPI ระดับประเทศ ปี 2566</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title sky">⚙️ กระบวนการสร้างสรรค์ (Methodology)</div>
+        <div class="arch-flow">
+          <div class="arch-node">📂 NSO Data<br><small>7,700 rows</small></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">🧹 Data Clean<br><small>6,829 rows</small></div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">📊 EDA &<br>Storytelling</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">🔍 RAG<br>Index</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">🤖 Typhoon AI<br>Chatbot</div>
+        </div>
+        <ul class="step-list">
+          <li><span class="step-num">1</span><span><strong>แหล่งข้อมูล:</strong> NSO ปี 2566 (data.go.th) 7,700 แถว → หลัง Data Cleaning คงเหลือ 6,829 แถว ครอบคลุม 77 จังหวัด</span></li>
+          <li><span class="step-num">2</span><span><strong>Data Storytelling:</strong> EDA ด้วย Python (Pandas, Plotly) สร้าง 13 ภาพ Visualization — Cleveland Dot Plot, Boxplot, Diverging Bar, Treemap, Heatmap, Sankey</span></li>
+          <li><span class="step-num">3</span><span><strong>RAG Architecture:</strong> BGE-M3 (Dense) + BM25 (Sparse) + Reciprocal Rank Fusion (RRF) + Cross-encoder Reranker → Knowledge Base 6,829 docs</span></li>
+          <li><span class="step-num">4</span><span><strong>LLM:</strong> typhoon-ai/typhoon2.5-qwen3-4b ประมวลผล 4-bit quantization บน Kaggle T4 GPU (vRAM 16 GB) ผ่าน Gradio Web UI</span></li>
+          <li><span class="step-num">5</span><span><strong>การประเมิน:</strong> ชุดคำถาม 51 ข้อ วัดด้วย BERTScore F1 = <strong>0.7928</strong> และ Faithfulness Score</span></li>
+        </ul>
+        <div class="img-wrapper"><img src="img/tsucon2026/2.png" alt="boxplot กลุ่มอาชีพ"><div class="caption-fig">ภาพที่ 2: Boxplot เปรียบเทียบรายได้ตามกลุ่มอาชีพหลัก</div></div>
+        <div class="img-wrapper"><img src="img/tsucon2026/3.png" alt="grouped bar Max/Min ratio"><div class="caption-fig">ภาพที่ 3: ช่องว่างรายได้ระหว่างกลุ่มอาชีพ (Max/Min ratio)</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📊 ผลงานสร้างสรรค์ (Visual Insights)</div>
+        <div class="img-wrapper"><img src="img/tsucon2026/4.png" alt="lollipop deviation"><div class="caption-fig">ภาพที่ 4: Deviation รายได้เทียบกับค่าเฉลี่ยประเทศ ตามกลุ่มอาชีพ</div></div>
+        <div class="img-wrapper"><img src="img/tsucon2026/6.png" alt="inequality matrix"><div class="caption-fig">ภาพที่ 5: Inequality Matrix – รายได้เฉลี่ย vs CV ระดับจังหวัด</div></div>
+        <div class="img-wrapper"><img src="img/tsucon2026/9.png" alt="treemap hierarchical"><div class="caption-fig">ภาพที่ 6: Treemap แสดงโครงสร้างรายได้ตามภูมิภาคและจังหวัด</div></div>
+      </div>
+    </div>
+
+    <!-- คอลัมน์ขวา -->
+    <div class="col">
+      <div class="card">
+        <div class="card-title navy">💰 KPI ภาพรวมรายได้ครัวเรือนไทย ปี 2566</div>
+        <div class="stat-grid">
+          <div class="stat-badge"><span class="stat-number">26,279</span><div class="stat-label">บาท/เดือน (Mean)</div></div>
+          <div class="stat-badge"><span class="stat-number">3,860</span><div class="stat-label">Median (P50)</div></div>
+          <div class="stat-badge"><span class="stat-number">40.7×</span><div class="stat-label">Max/Min Ratio</div></div>
+          <div class="stat-badge"><span class="stat-number">181,322</span><div class="stat-label">รายได้สูงสุด (บาท)</div></div>
+          <div class="stat-badge"><span class="stat-number">4,452</span><div class="stat-label">รายได้ต่ำสุด (บาท)</div></div>
+          <div class="stat-badge"><span class="stat-number" style="font-size:32px;">0.7928</span><div class="stat-label">BERTScore F1</div></div>
+        </div>
+        <div class="highlight">💡 <strong>P10 = 126 บาท/เดือน · P99 = 55,238 บาท</strong><br>สะท้อนความเหลื่อมล้ำรุนแรง — เจ้าของกิจการ ≥5 คน มีรายได้เฉลี่ยสูงสุด <strong>71,543 บาท/เดือน</strong></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title teal">👥 Q1: ใครได้รับค่าตอบแทนเท่าใด?</div>
+        <div class="img-wrapper"><img src="img/tsucon2026/5.png" alt="diverging bar กลุ่มอาชีพ"><div class="caption-fig">ภาพที่ 7: % รายได้เทียบค่าเฉลี่ยประเทศ กลุ่มอาชีพ (Diverging Bar)</div></div>
+        <div class="body-text"><strong>📌 สูงสุด:</strong> ผู้จัดการ/นักวิชาการ/วิชาชีพ — 48,293 บาท/เดือน (+84%)<br><strong>📌 ต่ำสุด:</strong> คนงานเกษตร ป่าไม้ ประมง — 15,804 บาท/เดือน (−40%)<br><strong>📊 Gap สูงสุด-ต่ำสุด 3.1 เท่า</strong><br><em>ข้อเสนอ: ยกระดับทักษะแรงงานเกษตร และปรับค่าแรงขั้นต่ำให้เหมาะสม</em></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📍 Q2: ความเหลื่อมล้ำอยู่ที่ไหน?</div>
+        <div class="img-wrapper"><img src="img/tsucon2026/7.png" alt="inequality matrix cv vs mean"><div class="caption-fig">ภาพที่ 8: รายได้เฉลี่ย vs CV จังหวัด (ขนาดจุด = จำนวนข้อมูล)</div></div>
+        <div class="img-wrapper"><img src="img/tsucon2026/8.png" alt="treemap ภาค"><div class="caption-fig">ภาพที่ 9: การกระจายรายได้แยกตามภูมิภาค (Treemap)</div></div>
+        <div class="body-text"><strong>🏆 CV สูงสุด (เหลื่อมล้ำรุนแรง):</strong> นครราชสีมา (0.801) · อุบลราชธานี (0.765) · กรุงเทพฯ (0.746)<br><strong>📉 รายได้เฉลี่ยต่ำสุด:</strong> นราธิวาส 17,456 · เชียงราย 17,462 · พะเยา 18,627 บาท/เดือน<br><strong>🔍 Insight:</strong> รายได้สูงไม่ตรงกับความเหลื่อมล้ำต่ำ — กทม. CV สูง, นราธิวาสรายได้ต่ำ+CV สูง</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title sky">📊 Q3: โครงสร้างรายได้ & ความเปราะบาง</div>
+        <div class="img-wrapper"><img src="img/tsucon2026/10.png" alt="100% stacked bar income structure"><div class="caption-fig">ภาพที่ 10: สัดส่วนรายได้ทั้งสิ้น ประจำ และไม่ประจำ ตามกลุ่มอาชีพ</div></div>
+        <div class="img-wrapper"><img src="img/tsucon2026/12.png" alt="vulnerability plot"><div class="caption-fig">ภาพที่ 11: Vulnerability – สัดส่วนรายได้ไม่ประจำต่อรายได้รวม</div></div>
+        <div class="body-text"><strong>🔹 ค้นพบสำคัญ:</strong> ทุกกลุ่มอาชีพพึ่งพารายได้ประจำ 27–30% ของรายได้รวม รายได้ไม่ประจำต่ำมาก (&lt;1%) ขัดกับสมมติฐานเริ่มแรกที่คาดว่าเกษตรกรพึ่งรายได้ไม่ประจำสูง<br><strong>⚠️ กลุ่มเปราะบาง:</strong> เกษตรกรผู้เช่าที่ดิน คนงานเกษตร ประมง — รายได้ผันผวนตามฤดูกาล ไม่มีสวัสดิการ<br><strong>📌 นโยบาย:</strong> สร้างหลักประกันรายได้สำหรับแรงงานนอกระบบ ประกันรายได้เกษตรกร</div>
+        <div class="img-wrapper"><img src="img/tsucon2026/13.png" alt="sankey diagram"><div class="caption-fig">ภาพที่ 12: Sankey Diagram — กระแสรายได้จากกลุ่มอาชีพสู่แหล่งรายได้</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title teal">🤖 การวิเคราะห์ & อภิปรายผล (Typhoon AI + RAG)</div>
+        <div class="body-text">ระบบ AI (Typhoon2.5-Qwen3-4b + Hybrid RAG) สามารถตอบคำถามเชิงนโยบายได้แม่นยำ โดยดึงหลักฐานจาก Knowledge Base 6,829 เอกสาร:</div>
+        <div class="qa-list">
+          <div class="qa-item"><div class="qa-q">❓ กลุ่มอาชีพใดมีรายได้เฉลี่ยสูงสุด?</div><div class="qa-a">✅ ผู้จัดการ/นักวิชาการ — 48,293 บาท/เดือน (ถูกต้อง)</div></div>
+          <div class="qa-item"><div class="qa-q">❓ จังหวัดใดมีความเหลื่อมล้ำสูงสุด?</div><div class="qa-a">✅ นครราชสีมา CV = 0.801 (ถูกต้อง)</div></div>
+          <div class="qa-item"><div class="qa-q">❓ นโยบายลดความเหลื่อมล้ำภาคเกษตร?</div><div class="qa-a">✅ สนับสนุนรายได้โดยตรง ประกันรายได้ เกษตรรวมกลุ่ม (ถูกต้อง)</div></div>
+        </div>
+        <div class="highlight teal">🌟 <strong>คุณค่าเชิงนโยบาย:</strong> ลดภาระนักวิเคราะห์ เพิ่มการเข้าถึงข้อมูลเชิงลึก สำหรับผู้กำหนดนโยบายและสาธารณะ · ข้อจำกัด: แนะนำ Human-in-the-loop + Citation<br><span class="bert-badge">BERTScore F1 = 0.7928</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📌 บทสรุป & ข้อเสนอแนะ (Conclusion)</div>
+        <div class="body-text"><strong>สรุปผลสำเร็จ:</strong> งานวิจัยเผยความเหลื่อมล้ำ 2 มิติหลัก (1) มิติกลุ่มอาชีพ Gap 3.1 เท่า และ (2) มิติพื้นที่ CV สูงสุด 0.801 โครงสร้างรายได้ของไทยพึ่งพารายได้ประจำเป็นหลัก และระบบ AI ที่พัฒนาขึ้นสามารถตอบคำถามนโยบายได้รวดเร็ว ถูกต้อง เป็นนวัตกรรมในการวิเคราะห์ข้อมูลสาธารณะ</div>
+        <div class="highlight blue"><strong>ข้อเสนอแนะ:</strong><br>1) ยกระดับรายได้กลุ่มล่างผ่าน Upskilling &amp; ค่าแรงขั้นต่ำที่เหมาะสม<br>2) กระจายการลงทุนสู่จังหวัดรายได้ต่ำ (ภาคใต้ชายแดน ภาคเหนือตอนบน)<br>3) สร้างหลักประกันรายได้สำหรับเกษตรกรและแรงงานอิสระ<br>4) พัฒนาระบบติดตามข้อมูล Real-time ร่วมกับ AI Causal Inference</div>
+        <hr class="div-line">
+        <div class="card-title" style="font-size:24px; margin-bottom:14px;">📚 บรรณานุกรม (References)</div>
+        <div class="ref">[1.] ปริสุทธิ์ จิตต์ภักดี, (2569). <em> Data Storytelling การใช้ประโยชน์จากข้อมูล Open Data.</em> สถาบันข้อมูลขนาดใหญ่ (องค์การมหาชน).<br>[2.] สำนักงานสถิติแห่งชาติ. (2566). <em>ข้อมูลรายได้เฉลี่ยต่อเดือนของครัวเรือนในประเทศไทย. https://data.go.th/dataset/os_08_00007</em><br>[3.] Becker, G. S. (1964). <em>Human capital. NBER.</em><br> [4.] Plotly Technologies Inc. (2015). <em>Collaborative data science.</em>  Plotly Technologies Inc. https://plot.ly<br>[5.] Typhoon AI. (2025). <em>typhoon2.5-qwen3-4b.</em> HuggingFace.<br>[6.] World Bank. (2023). <em>Thailand Economic Monitor: Equity and Inclusion. The World Bank Group.</em><br>[7.] Zhang, T. et al. (2019). <em>BERTScore: Evaluating text generation with BERT.</em> ICLR 2020.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER ปรับใหม่: โลโก้ layer top ซ้าย SCIDI.png และ TSU.png, ขวา BDI.png และ NSO.png ขนาด 100x100 px -->
+  <footer class="poster-footer">
+    <div class="footer-inner">
+      <!-- โลโก้ฝั่งซ้าย: SCIDI.png , TSU.png -->
+      <div class="footer-logos-left">
+        <img src="img/tsucon2026/SCIDI.png" alt="SCIDI Logo" title="คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล">
+        <img src="img/tsucon2026/TSU.png" alt="TSU Logo" title="มหาวิทยาลัยทักษิณ">
+      </div>
+      <!-- โลโก้ฝั่งขวา: BDI.png , NSO.png -->
+      <div class="footer-logos-right">
+        <img src="img/tsucon2026/BDI.png" alt="BDI Logo" title="สถาบันข้อมูลขนาดใหญ่ (BDI)">
+        <img src="img/tsucon2026/NSO.png" alt="NSO Logo" title="สำนักงานสถิติแห่งชาติ">
+      </div>
+      
+      <div class="footer-center">
+        <div class="footer-tags">
+          <span class="footer-tag">📧 <a href="mailto:pitsanu2448@gmail.com">pitsanu2448@gmail.com</a></span>
+          <span class="footer-tag">🌐 <a href="https://pitsanu2448.github.io/portfolio.html">Portfolio</a></span>
+          <span class="footer-tag">🔗 <a href="https://github.com/pitsanu2448">GitHub</a></span>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <hr style="width: 40%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 12px auto;">
+        </div>
+        <div class="footer-copy">© 2026 มหาวิทยาลัยทักษิณ (TSU) | สำนักงานสถิติแห่งชาติ (NSO) | สถาบันข้อมูลขนาดใหญ่ (BDI)</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
