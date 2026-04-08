@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>โปสเตอร์ | โครงสร้างรายได้ครัวเรือนไทย 2566 : Data Storytelling + Thai LLM</title>
+  <title>โปสเตอร์ | โครงสร้างรายได้ครัวเรือนไทย 2566 : Data Storytelling + Thai LLM (ปรับปรุง Header/Footer)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@
       flex-direction: column;
     }
 
-    /* HEADER */
+    /* ========= HEADER - ปรับเนื้อหาให้อยู่กึ่งกลางทั้งหมด ========= */
     .poster-header {
       width: 100%;
       height: auto;
@@ -63,8 +63,9 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
+      align-items: center;          /* จัดแนวนอนกึ่งกลาง */
+      justify-content: center;      /* จัดแนวตั้งกึ่งกลาง */
+      text-align: center;           /* ข้อความภายในทั้งหมดกึ่งกลาง */
       padding: 40px 80px;
       color: #fff;
       flex-shrink: 0;
@@ -88,7 +89,15 @@
       background: linear-gradient(90deg, #0EA5E9, #38BDF8, #F59E0B, #38BDF8, #0EA5E9);
     }
 
-    .header-left { position: relative; z-index: 1; max-width: 100%; }
+    .header-left { 
+      position: relative; 
+      z-index: 1; 
+      max-width: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     .conf-badge {
       display: inline-flex;
@@ -130,6 +139,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      justify-content: center;
     }
 
     .tech-badge {
@@ -163,7 +173,7 @@
       margin-top: 8px;
     }
 
-    /* BODY */
+    /* ========= BODY 2 คอลัมน์ (คงเดิม) ========= */
     .poster-body {
       flex: 1;
       display: flex;
@@ -391,7 +401,7 @@
       margin: 10px 6px 0 0;
     }
 
-    /* FOOTER */
+    /* ========= FOOTER ใหม่ : โลโก้ layer top ซ้าย/ขวา ขนาด 100x100 ========= */
     .poster-footer {
       width: 100%;
       min-height: 180px;
@@ -403,7 +413,7 @@
       padding: 30px 80px;
       color: white;
       position: relative;
-      overflow: hidden;
+      overflow: visible; /* ให้โลโก้ layer top เกินขอบได้เล็กน้อย */
     }
 
     .poster-footer::before {
@@ -422,10 +432,67 @@
       background: linear-gradient(90deg, #0EA5E9, #38BDF8, #F59E0B, #38BDF8, #0EA5E9);
     }
 
+    /* container หลักของ footer ให้ relative เพื่อวางโลโก้ absolute */
+    .footer-inner {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* โลโก้ layer top ซ้าย (SCIDI.png และ TSU.png) */
+    .footer-logos-left {
+      position: absolute;
+      left: 20px;
+      top: -30px;          /* ชิดขอบบน (layer top) */
+      display: flex;
+      gap: 20px;
+      z-index: 20;
+    }
+
+    .footer-logos-left img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      padding: 6px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    /* โลโก้ layer top ขวา (BDI.png และ NSO.png) */
+    .footer-logos-right {
+      position: absolute;
+      right: 20px;
+      top: -30px;
+      display: flex;
+      gap: 20px;
+      z-index: 20;
+    }
+
+    .footer-logos-right img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.85);
+      border-radius: 20px;
+      padding: 6px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .footer-logos-left img:hover, .footer-logos-right img:hover {
+      transform: scale(1.02);
+    }
+
     .footer-center {
       position: relative;
-      z-index: 1;
+      z-index: 5;
       text-align: center;
+      max-width: 80%;
     }
 
     .footer-tags {
@@ -458,20 +525,32 @@
     }
 
     .gold-text { color: var(--gold-lt); font-weight: 600; }
+
+    /* responsive friendly - แต่คงขนาด A0 ตามโจทย์ */
+    @media (max-width: 3200px) {
+      .poster {
+        width: 100%;
+        max-width: 3179px;
+      }
+      .poster-header {
+        padding: 40px 60px;
+      }
+    }
   </style>
 </head>
 <body>
 <div class="poster">
 
-  <!-- HEADER -->
+  <!-- HEADER - ปรับเนื้อหากึ่งกลางทั้งหมด (align-items:center, text-align:center) -->
   <header class="poster-header">
     <div class="header-left">
-      <div>
-        <hr style="width: 50%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 20px 0;">
+      <!-- เส้นประดับบน/ล่างแบบกึ่งกลาง -->
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <hr style="width: 40%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 12px auto;">
       </div>
       <div class="author-advisor">🎓 การประชุมวิชาการระดับชาติ มหาวิทยาลัยทักษิณ ครั้งที่ 37 ประจำปี 2569<br>(ภายใต้หัวข้อ: ขยายพลังนวัตกรรมสังคม สู่อนาคตโลกที่ยั่งยืน)</div>
-      <div>
-        <hr style="width: 50%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 20px 0;">
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <hr style="width: 40%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 12px auto;">
       </div>
       <div class="conf-badge">การวิเคราะห์โครงสร้างรายได้ของครัวเรือนไทยในปี 2566 ด้วยเทคนิคการเล่าเรื่องด้วยข้อมูลร่วมกับการประยุกต์ใช้โมเดลภาษาขนาดใหญ่</div>
       <div class="badge-group">
@@ -485,9 +564,8 @@
     </div>
   </header>
 
-  <!-- BODY 2 คอลัมน์ -->
+  <!-- BODY 2 คอลัมน์ (เนื้อหาเหมือนเดิมทุกประการ) -->
   <div class="poster-body">
-
     <!-- คอลัมน์ซ้าย -->
     <div class="col">
       <div class="card">
@@ -620,18 +698,31 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER ปรับใหม่: โลโก้ layer top ซ้าย SCIDI.png และ TSU.png, ขวา BDI.png และ NSO.png ขนาด 100x100 px -->
   <footer class="poster-footer">
-    <div class="footer-center">
-      <div class="footer-tags">
-        <span class="footer-tag">📧 <a href="mailto:pitsanu2448@gmail.com">pitsanu2448@gmail.com</a></span>
-        <span class="footer-tag">🌐 <a href="https://pitsanu2448.github.io/portfolio.html">Portfolio</a></span>
-        <span class="footer-tag">🔗 <a href="https://github.com/pitsanu2448">GitHub</a></span>
+    <div class="footer-inner">
+      <!-- โลโก้ฝั่งซ้าย: SCIDI.png , TSU.png -->
+      <div class="footer-logos-left">
+        <img src="img/tsucon2026/SCIDI.png" alt="SCIDI Logo" title="คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล">
+        <img src="img/tsucon2026/TSU.png" alt="TSU Logo" title="มหาวิทยาลัยทักษิณ">
       </div>
-      <div>
-        <hr style="width: 50%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 20px auto;">
+      <!-- โลโก้ฝั่งขวา: BDI.png , NSO.png -->
+      <div class="footer-logos-right">
+        <img src="img/tsucon2026/BDI.png" alt="BDI Logo" title="สถาบันข้อมูลขนาดใหญ่ (BDI)">
+        <img src="img/tsucon2026/NSO.png" alt="NSO Logo" title="สำนักงานสถิติแห่งชาติ">
       </div>
-      <div class="footer-copy">© 2026 มหาวิทยาลัยทักษิณ (TSU) | สำนักงานสถิติแห่งชาติ (NSO) | สถาบันข้อมูลขนาดใหญ่ (BDI)</div>
+      
+      <div class="footer-center">
+        <div class="footer-tags">
+          <span class="footer-tag">📧 <a href="mailto:pitsanu2448@gmail.com">pitsanu2448@gmail.com</a></span>
+          <span class="footer-tag">🌐 <a href="https://pitsanu2448.github.io/portfolio.html">Portfolio</a></span>
+          <span class="footer-tag">🔗 <a href="https://github.com/pitsanu2448">GitHub</a></span>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <hr style="width: 40%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 12px auto;">
+        </div>
+        <div class="footer-copy">© 2026 มหาวิทยาลัยทักษิณ (TSU) | สำนักงานสถิติแห่งชาติ (NSO) | สถาบันข้อมูลขนาดใหญ่ (BDI)</div>
+      </div>
     </div>
   </footer>
 
