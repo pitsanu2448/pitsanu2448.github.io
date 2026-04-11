@@ -39,7 +39,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 10px;
+      padding: 20px;
       font-family: 'Sarabun', 'IBM Plex Sans Thai', 'Noto Sans Thai', system-ui, sans-serif;
     }
 
@@ -66,10 +66,10 @@
       align-items: center;          /* จัดแนวนอนกึ่งกลาง */
       justify-content: center;      /* จัดแนวตั้งกึ่งกลาง */
       text-align: center;           /* ข้อความภายในทั้งหมดกึ่งกลาง */
-      padding: 10px;
+      padding: 10px 10px;
       color: #fff;
       flex-shrink: 0;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .poster-header::before {
@@ -91,12 +91,38 @@
 
     .header-left { 
       position: relative; 
-      z-index: 1; 
+      z-index: 2; 
       max-width: 100%;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    /* โลโก้กลุ่มที่มุมขวาบน - layer สูงสุด ขนาด 86x86 px ห่างขอบ 20px */
+    .logo-group {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 30;
+      margin-bottom: 20px; /* ระยะห่างระหว่างโลโก้กับข้อความด้านล่าง (กรณี overlap) */
+    }
+
+    .logo-group img {
+      width: 86px;
+      height: 86px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.92);
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .logo-group img:hover {
+      transform: scale(1.02);
     }
 
     .conf-badge {
@@ -106,12 +132,12 @@
       background: rgba(14,165,233,0.18);
       color: #BAE6FD;
       border: 1px solid rgba(14,165,233,0.35);
-      padding: 10px 10px;
-      border-radius: 20px;
+      padding: 10px 20px;
+      border-radius: 30px;
       font-size: 22px;
       font-weight: 600;
       letter-spacing: 0.04em;
-      margin-bottom: 10px;
+      margin-bottom: 22px;
       backdrop-filter: blur(6px);
     }
 
@@ -119,7 +145,7 @@
       font-size: 64px;
       font-weight: 800;
       line-height: 1.18;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
       background: linear-gradient(110deg, #ffffff 40%, #FCD34D 100%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -135,7 +161,7 @@
     }
 
     .badge-group {
-      margin: 10px 0 10px;
+      margin: 18px 0 16px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -146,7 +172,7 @@
       background: var(--gold);
       color: #0F172A;
       font-weight: 700;
-      padding: 6px 10px;
+      padding: 6px 18px;
       border-radius: 20px;
       font-size: 15px;
       letter-spacing: 0.02em;
@@ -163,7 +189,7 @@
       font-weight: 700;
       color: #fff;
       line-height: 1.3;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .author-advisor {
@@ -177,8 +203,8 @@
     .poster-body {
       flex: 1;
       display: flex;
-      gap: 40px;
-      padding: 10px 10px;
+      gap: 20px;
+      padding: 20px 20px;
       background: var(--bg-poster);
     }
 
@@ -186,14 +212,14 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 36px;
+      gap: 20px;
     }
 
     .card {
       background: var(--card-bg);
       border-radius: 20px;
       box-shadow: var(--sh-sm);
-      padding: 10px 10px;
+      padding: 20px 20px;
       border: 1px solid var(--card-border);
     }
 
@@ -202,8 +228,8 @@
       font-weight: 700;
       color: var(--navy);
       border-left: 8px solid var(--gold);
-      padding-left: 10px;
-      margin-bottom: 10px;
+      padding-left: 20px;
+      margin-bottom: 22px;
       letter-spacing: -0.2px;
       line-height: 1.3;
     }
@@ -223,13 +249,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 10px;
+      margin-top: 22px;
     }
 
     .keyword {
       background: #EFF6FF;
       color: var(--blue);
-      padding: 8px 10px;
+      padding: 8px 20px;
       border-radius: 20px;
       font-size: 17px;
       font-weight: 600;
@@ -237,11 +263,11 @@
     }
 
     .img-wrapper {
-      margin: 10px 0 10px;
+      margin: 20px 0 14px;
       text-align: center;
       background: #F8FAFC;
       border-radius: 20px;
-      padding: 10px;
+      padding: 14px;
       border: 1px solid var(--card-border);
     }
 
@@ -255,7 +281,7 @@
     .caption-fig {
       font-size: 16px;
       color: var(--text-muted);
-      margin-top: 10px;
+      margin-top: 12px;
       font-style: italic;
       line-height: 1.4;
     }
@@ -264,14 +290,14 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      margin: 10px 0;
+      margin: 20px 0;
     }
 
     .stat-badge {
       background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
       border: 1px solid #BFDBFE;
       border-radius: 20px;
-      padding: 10px 10px;
+      padding: 18px 16px;
       text-align: center;
     }
 
@@ -294,8 +320,8 @@
       background: var(--gold-bg);
       border-left: 6px solid var(--gold);
       border-radius: 20px;
-      padding: 10px 10px;
-      margin: 10px 0;
+      padding: 20px 20px;
+      margin: 18px 0;
       font-size: 18px;
       color: var(--text-mid);
       line-height: 1.55;
@@ -309,7 +335,7 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 12px;
-      margin: 10px 0;
+      margin: 18px 0;
     }
 
     .arch-node {
@@ -317,7 +343,7 @@
       border: 1px solid #BFDBFE;
       border-left: 4px solid var(--teal);
       border-radius: 18px;
-      padding: 10px 10px;
+      padding: 14px 20px;
       font-size: 17px;
       font-weight: 600;
       color: var(--navy);
@@ -335,7 +361,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin-top: 10px;
+      margin-top: 14px;
     }
 
     .step-list li {
@@ -362,13 +388,13 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 10px;
+      margin-top: 14px;
     }
 
     .qa-item {
       background: #F8FAFC;
       border-radius: 18px;
-      padding: 10px 10px;
+      padding: 14px 20px;
       font-size: 17px;
       line-height: 1.5;
       border: 1px solid var(--card-border);
@@ -381,7 +407,7 @@
       border: none;
       height: 2px;
       background: linear-gradient(90deg, var(--sky-light), var(--gold-lt), var(--sky-light));
-      margin: 10px 0;
+      margin: 22px 0;
     }
 
     .ref {
@@ -396,24 +422,25 @@
       color: white;
       font-weight: 700;
       font-size: 17px;
-      padding: 7px 10px;
+      padding: 7px 20px;
       border-radius: 20px;
       margin: 10px 6px 0 0;
     }
 
-    /* ========= FOOTER ใหม่ : โลโก้ layer top ซ้าย/ขวา ขนาด 100x100 ========= */
+    /* ========= FOOTER - เพิ่มรูปด้านบนกึ่งกลาง 495x114px ========= */
     .poster-footer {
       width: 100%;
-      min-height: 180px;
+      min-height: auto;
       background: linear-gradient(135deg, #0D1B2A 0%, #0F2551 40%, #1E4DB7 80%, #38BDF8 100%);
       flex-shrink: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 10px 10px;
+      padding: 10px 10px 10px 10px;
       color: white;
       position: relative;
-      overflow: visible; /* ให้โลโก้ layer top เกินขอบได้เล็กน้อย */
+      overflow: hidden;
     }
 
     .poster-footer::before {
@@ -432,72 +459,39 @@
       background: linear-gradient(90deg, #0EA5E9, #38BDF8, #F59E0B, #38BDF8, #0EA5E9);
     }
 
-    /* container หลักของ footer ให้ relative เพื่อวางโลโก้ absolute */
-    .footer-inner {
+    /* รูปกึ่งกลางด้านบนของ footer: ขนาด 495x114px ห่างขอบบน 10px */
+    .footer-top-img {
       position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      z-index: 12;
+      text-align: center;
+      margin-top: 10px;          /* ห่างจากขอบบน 10px */
+      margin-bottom: 10px;       /* ขอบล่างรูปห่างจากข้อความ 10px */
     }
-
-    /* โลโก้ layer top ซ้าย (SCIDI.png และ TSU.png) */
-    .footer-logos-left {
-      position: absolute;
-      left: 20px;
-      top: -30px;          /* ชิดขอบบน (layer top) */
-      display: flex;
-      gap: 20px;
-      z-index: 20;
-    }
-
-    .footer-logos-left img {
-      width: 140px;
-      height: 140px;
+    .footer-top-img img {
+      width: 495px;
+      height: 114px;
       object-fit: contain;
-      background: rgba(255,255,255,0.85);
-      border-radius: 20px;
-      padding: 6px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(2px);
       box-shadow: 0 8px 18px rgba(0,0,0,0.2);
       transition: transform 0.2s ease;
     }
-
-    /* โลโก้ layer top ขวา (BDI.png และ NSO.png) */
-    .footer-logos-right {
-      position: absolute;
-      right: 20px;
-      top: -30px;
-      display: flex;
-      gap: 20px;
-      z-index: 20;
-    }
-
-    .footer-logos-right img {
-      width: 140px;
-      height: 140px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.85);
-      border-radius: 20px;
-      padding: 6px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
-    }
-
-    .footer-logos-left img:hover, .footer-logos-right img:hover {
-      transform: scale(1.02);
+    .footer-top-img img:hover {
+      transform: scale(1.01);
     }
 
     .footer-center {
       position: relative;
       z-index: 5;
       text-align: center;
-      max-width: 80%;
+      max-width: 90%;
+      width: 100%;
     }
 
     .footer-tags {
       display: flex;
-      gap: 20px;
+      gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
       margin-bottom: 10px;
@@ -507,7 +501,7 @@
       background: rgba(255,255,255,0.10);
       border: 1px solid rgba(255,255,255,0.2);
       color: #BAE6FD;
-      padding: 5px 10px;
+      padding: 5px 16px;
       border-radius: 20px;
       font-size: 15px;
       font-weight: 500;
@@ -524,16 +518,36 @@
       line-height: 1.55;
     }
 
+    .gradio-link {
+      display: inline-block;
+      margin: 8px auto 6px;
+      background: rgba(14,165,233,0.2);
+      border-radius: 32px;
+      padding: 6px 20px;
+      font-size: 17px;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(14,165,233,0.5);
+    }
+    .gradio-link a {
+      color: #FCD34D;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+    .gradio-link a:hover {
+      text-decoration: underline;
+      color: white;
+    }
+
     .gold-text { color: var(--gold-lt); font-weight: 600; }
 
-    /* responsive friendly - แต่คงขนาด A0 ตามโจทย์ */
     @media (max-width: 3200px) {
       .poster {
         width: 100%;
         max-width: 3179px;
       }
       .poster-header {
-        padding: 10px 10px;
+        padding: 20px 20px;
       }
     }
   </style>
@@ -541,10 +555,17 @@
 <body>
 <div class="poster">
 
-  <!-- HEADER - ปรับเนื้อหากึ่งกลางทั้งหมด (align-items:center, text-align:center) -->
+  <!-- HEADER - ปรับเนื้อหากึ่งกลางทั้งหมด พร้อมโลโก้ที่มุมขวาบน layer สูงสุด -->
   <header class="poster-header">
+    <!-- โลโก้กลุ่มมุมขวาบน ขนาด 86x86 px ห่างขอบ 20px -->
+    <div class="logo-group">
+      <img src="img/tsucon2026/ตรา-อว.png" alt="อว. Logo" title="กระทรวงการอุดมศึกษา วิทยาศาสตร์ วิจัยและนวัตกรรม">
+      <img src="img/tsucon2026/ตรา-สกสว.png" alt="สกสว. Logo" title="สำนักงานคณะกรรมการส่งเสริมวิทยาศาสตร์ วิจัยและนวัตกรรม">
+      <img src="img/tsucon2026/ตรา-บพท.png" alt="บพท. Logo" title="หน่วยบริหารและจัดการทุนด้านการพัฒนาระดับพื้นที่">
+      <img src="img/tsucon2026/TSU.png" alt="TSU Logo" title="มหาวิทยาลัยทักษิณ">
+    </div>
+
     <div class="header-left">
-      <!-- เส้นประดับบน/ล่างแบบกึ่งกลาง -->
       <div style="width: 100%; display: flex; justify-content: center;">
         <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 10px 0;">
       </div>
@@ -597,7 +618,7 @@
           โดยเฉพาะระหว่างกลุ่มอาชีพและพื้นที่ (World Bank, 2023) วิกฤตโควิด-19 ซ้ำเติมแรงงานนอกระบบและเกษตรกร
           ขณะที่การเข้าถึงข้อมูลเชิงลึกสำหรับผู้กำหนดนโยบายยังเป็นอุปสรรค
         </div>
-        <div class="highlight teal" style="margin-top:10px;">
+        <div class="highlight teal" style="margin-top:18px;">
           💡 <strong>แรงบันดาลใจ:</strong> สร้างเครื่องมือที่ช่วยให้ผู้กำหนดนโยบายเข้าถึงข้อมูลเชิงลึกได้ทันที
           โดยไม่ต้องเป็นนักวิเคราะห์ข้อมูลมืออาชีพ — ผสาน Human Capital Theory (Becker, 1964)
           กับ Data Storytelling และ Generative AI
@@ -637,7 +658,8 @@
         <div class="img-wrapper"><img src="img/tsucon2026/4.png" alt="lollipop deviation"><div class="caption-fig">ภาพที่ 4: Deviation รายได้เทียบกับค่าเฉลี่ยประเทศ ตามกลุ่มอาชีพ</div></div>
         <div class="img-wrapper"><img src="img/tsucon2026/6.png" alt="inequality matrix"><div class="caption-fig">ภาพที่ 5: Inequality Matrix – รายได้เฉลี่ย vs CV ระดับจังหวัด</div></div>
         <div class="img-wrapper"><img src="img/tsucon2026/9.png" alt="treemap hierarchical"><div class="caption-fig">ภาพที่ 6: Treemap แสดงโครงสร้างรายได้ตามภูมิภาคและจังหวัด</div></div>
-      </div>        
+      </div>
+      
     </div>
 
     <!-- คอลัมน์ขวา -->
@@ -686,57 +708,44 @@
         </div>
         <div class="highlight teal">🌟 <strong>คุณค่าเชิงนโยบาย:</strong> ลดภาระนักวิเคราะห์ เพิ่มการเข้าถึงข้อมูลเชิงลึก สำหรับผู้กำหนดนโยบายและสาธารณะ · ข้อจำกัด: แนะนำ Human-in-the-loop + Citation<br><span class="bert-badge">BERTScore F1 = 0.7928</span></div>
       </div>
-      
-      <div class="card">
-        <div class="card-title">💬 ระบบปัญญาประดิษฐ์สำหรับวิเคราะห์รายได้ </div>
-        <span style="font-size: 16px;" class="fas fa-clock"><strong>  Multi-turn Chat | Visualisation | RAG Engine | Knowledge Base</strong></span><br><br>
-        <span style="font-size: 16px;" class="fas fa-clock"><strong>  =============#📱Demo Typhoon AI App #=============</strong></span><br>
-        <div>
-        <a href="https://pitsanu2448.github.io/tsu-scidi-household-income-gradio.html#slide2" target="_blank">
-          <span class="bert-badge"><small>https://pitsanu2448.github.io/tsu-scidi-household-income-gradio.html</small></span><br>  
-        </a>
-        </div>
-        <span style="font-size: 16px;" class="fas fa-clock">  📱 Gradio Web UI | Session expires every 72 hours</span><br>
-        <span style="font-size: 16px;">  💬 สนทนา ถาม-ตอบ เคราะห์รายได้ครัวเรือนไทย 2566 พร้อม RAG</span><br>
-        <span style="font-size: 16px;">  📉 เลือกแสดง KPI, Dashboard ด้วยกราฟรูปแบบต่างๆ </span><br>
-      </div>
-      
+
       <div class="card">
         <div class="card-title">📌 บทสรุป & ข้อเสนอแนะ (Conclusion)</div>
         <div class="body-text"><strong>สรุปผลสำเร็จ:</strong> งานวิจัยเผยความเหลื่อมล้ำ 2 มิติหลัก (1) มิติกลุ่มอาชีพ Gap 3.1 เท่า และ (2) มิติพื้นที่ CV สูงสุด 0.801 โครงสร้างรายได้ของไทยพึ่งพารายได้ประจำเป็นหลัก และระบบ AI ที่พัฒนาขึ้นสามารถตอบคำถามนโยบายได้รวดเร็ว ถูกต้อง เป็นนวัตกรรมในการวิเคราะห์ข้อมูลสาธารณะ</div>
         <div class="highlight blue"><strong>ข้อเสนอแนะ:</strong><br>1) ยกระดับรายได้กลุ่มล่างผ่าน Upskilling &amp; ค่าแรงขั้นต่ำที่เหมาะสม<br>2) กระจายการลงทุนสู่จังหวัดรายได้ต่ำ (ภาคใต้ชายแดน ภาคเหนือตอนบน)<br>3) สร้างหลักประกันรายได้สำหรับเกษตรกรและแรงงานอิสระ<br>4) พัฒนาระบบติดตามข้อมูล Real-time ร่วมกับ AI Causal Inference</div>
         <hr class="div-line">
-        <div class="card-title" style="font-size:24px; margin-bottom:10px;">📚 บรรณานุกรม (References)</div>
-        <div class="ref">[1.] ปริสุทธิ์ จิตต์ภักดี, (2569). <em> Data Storytelling การใช้ประโยชน์จากข้อมูล Open Data.</em> สถาบันข้อมูลขนาดใหญ่ (องค์การมหาชน).<br>[2.] สำนักงานสถิติแห่งชาติ. (2566). <em>ข้อมูลรายได้เฉลี่ยต่อเดือนของครัวเรือนในประเทศไทย. https://data.go.th/dataset/os_08_00007</em><br>[3.] Becker, G. S. (1964). <em>Human capital. NBER.</em><br> [4.] Plotly Technologies Inc. (2015). <em>Collaborative data science.</em>  Plotly Technologies Inc. https://plot.ly<br>[5.] Typhoon AI. (2025). <em>typhoon2.5-qwen3-4b.</em> HuggingFace.<br>[6.] World Bank. (2023). <em>Thailand Economic Monitor: Equity and Inclusion. The World Bank Group.</em><br>[7.] Zhang, T. et al. (2019). <em>BERTScore: Evaluating text generation with BERT.</em> ICLR 2020.</div>
+        <div class="card-title" style="font-size:24px; margin-bottom:14px;">📚 บรรณานุกรม (References)</div>
+        <div class="ref">[1.] ปริสุทธิ์ จิตต์ภักดี, (2569). <em> Data Storytelling การใช้ประโยชน์จากข้อมูล Open Data.</em> สถาบันข้อมูลขนาดใหญ่ (องค์การมหาชน).<br>[2.] สำนักงานสถิติแห่งชาติ. (2566). <em>ข้อมูลรายได้เฉลี่ยต่อเดือนของครัวเรือนในประเทศไทย. https://data.go.th/dataset/os_08_00007</em><br>[3.] Becker, G. S. (1964). <em>Human capital. NBER.</em><br> [4.] Lewis, P., et al. (2020). <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. </em>  Advances in Neural Information Processing Systems, 33, 9459-9474.
+<br> [5.] Plotly Technologies Inc. (2015). <em>Collaborative data science.</em>  Plotly Technologies Inc. https://plot.ly<br>[6.] Typhoon AI. (2025). <em>typhoon2.5-qwen3-4b.</em> HuggingFace.<br>[7.] Zhang, T. et al. (2019). <em>BERTScore: Evaluating text generation with BERT.</em> ICLR 2020.</div>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER ปรับใหม่: โลโก้ layer top ซ้าย SCIDI.png และ TSU.png, ขวา BDI.png และ NSO.png ขนาด 100x100 px -->
+  <!-- FOOTER ปรับปรุงตามความต้องการ: รูปกึ่งกลางด้านบน ขนาด 495x114px ห่างขอบบน 20px, ขอบล่างห่างข้อความ 10px, และใส่ลิงก์ Gradio demo -->
   <footer class="poster-footer">
-    <div class="footer-inner">
-      <!-- โลโก้ฝั่งซ้าย: SCIDI.png , TSU.png -->
-      <div class="footer-logos-left">
-        <img src="img/tsucon2026/SCIDI.png" alt="SCIDI Logo" title="คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล">
-        <img src="img/tsucon2026/TSU.png" alt="TSU Logo" title="มหาวิทยาลัยทักษิณ">
+    <!-- รูปภาพตาม path: img/tsucon2026/demo-link.png ขนาด 495x114 px -->
+
+    <div class="footer-top-img">
+      <a href="https://pitsanu2448.github.io/redirect-demo-gradio-live-household-income.html" target="_blank" rel="noopener noreferrer">
+        <img src="img/tsucon2026/demo-link.png" alt="Gradio Demo Link" title="Live Demo: https://tsu-scidi-household-income.gradio.live">
+      </a>
+    </div>
+ 
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 10px 0;">
       </div>
-      <!-- โลโก้ฝั่งขวา: BDI.png , NSO.png -->
-      <div class="footer-logos-right">
-        <img src="img/tsucon2026/BDI.png" alt="BDI Logo" title="สถาบันข้อมูลขนาดใหญ่ (BDI)">
-        <img src="img/tsucon2026/NSO.png" alt="NSO Logo" title="สำนักงานสถิติแห่งชาติ">
+
+      <div class="footer-tags">
+        <span class="footer-tag">📧 <a href="mailto:pitsanu2448@gmail.com">pitsanu2448@gmail.com</a></span>
+        <span class="footer-tag">🌐 <a href="https://pitsanu2448.github.io/portfolio.html">Portfolio</a></span>
+        <span class="footer-tag">🔗 <a href="https://github.com/pitsanu2448">GitHub</a></span>
       </div>
-      
-      <div class="footer-center">
-        <div class="footer-tags">
-          <span class="footer-tag">📧 <a href="mailto:pitsanu2448@gmail.com">pitsanu2448@gmail.com</a></span>
-          <span class="footer-tag">🌐 <a href="https://pitsanu2448.github.io/portfolio.html">Portfolio</a></span>
-          <span class="footer-tag">🔗 <a href="https://github.com/pitsanu2448">GitHub</a></span>
-        </div>
-        <div style="display: flex; justify-content: center;">
-          <hr style="width: 40%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 10px auto;">
-        </div>
-        <div class="footer-copy">© 2026 มหาวิทยาลัยทักษิณ (TSU) | สำนักงานสถิติแห่งชาติ (NSO) | สถาบันข้อมูลขนาดใหญ่ (BDI)</div>
+
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 10px 0;">
       </div>
+
+      <div class="footer-copy">© 2026 มหาวิทยาลัยทักษิณ (TSU) | สำนักงานสถิติแห่งชาติ (NSO) | สถาบันข้อมูลขนาดใหญ่ (BDI)</div>
     </div>
   </footer>
 
