@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>โปสเตอร์ | Thai Medical AI Assistant | NRCT Innovation Awards 2026</title>
+  <title>โปสเตอร์ | Thai Medical AI Assistant v1 | NRCT Innovation Awards 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -55,13 +55,13 @@
     /* ========= HEADER ========= */
     .poster-header {
       width: 100%;
-      min-height: 600px;
+      min-height: 560px;
       background: linear-gradient(135deg, #0D1B2A 0%, #0F2551 35%, #1E4DB7 70%, #38BDF8 100%);
       position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 40px 10px;
+      padding: 15px 10px;
       color: #fff;
       flex-shrink: 0;
       overflow: hidden;
@@ -92,26 +92,7 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 0 40px;
-    }
-
-    .header-logos-right {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
-    .header-logos-right img {
-      width: 96px;
-      height: 128px;
-      object-fit: contain;
-      background: rgba(255,255,255,0.92);
-      border-radius: 18px;
-      padding: 6px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      padding: 0 10px;
     }
 
     .conf-badge {
@@ -188,11 +169,11 @@
       flex: 1;
       display: flex;
       gap: 10px;
-      padding: 40px 10px;
+      padding: 10px 10px;
       background: var(--bg-poster);
     }
 
-    .col { flex: 1; display: flex; flex-direction: column; gap: 40px; }
+    .col { flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
     .card {
       background: var(--card-bg);
@@ -268,7 +249,7 @@
     .img-grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 10px;
       margin: 10px 0;
     }
 
@@ -565,7 +546,7 @@
     /* ========= FOOTER ========= */
     .poster-footer {
       width: 100%;
-      min-height: 300px;
+      min-height: 250px;
       background: linear-gradient(135deg, #0D1B2A 0%, #0F2551 50%, #1E4DB7 80%, #38BDF8 100%);
       position: relative;
       display: flex;
@@ -630,9 +611,6 @@
 
   <!-- ========= HEADER ========= -->
   <header class="poster-header">
-    <!-- Left spacer (balance) -->
-
-    <!-- Center content -->
     <div class="header-content">
       <div style="width: 100%; display: flex; justify-content: center;">
         <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 8px 0;">
@@ -649,22 +627,20 @@
       <div class="main-title">🩺 Thai Medical AI Assistant via Fine-Tuned LLM with RAG and Chain-of-Thought</div>
       <div class="sub-title">ระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วยปัญญาประดิษฐ์โดยการปรับแต่งโมเดลภาษาขนาดใหญ่ร่วมกับ RAG และ CoT</div>
       <div class="badge-group">
-        <span class="tech-badge">🤖 Fine-Tuned LLM (DoRA + RSLoRA)</span>
-        <span class="tech-badge">🔍 Hybrid RAG (FAISS + BM25 + RRF + MMR)</span>
-        <span class="tech-badge">🧠 Chain-of-Thought</span>
-        <span class="tech-badge">🌐 Multimodal</span>
-        <span class="tech-badge">🔒 PDPA Compliant · TRL 4</span>
+        <span class="tech-badge">🤖 Chinda‑Qwen3‑4B NF4 + PEFT</span>
+        <span class="tech-badge">🔍 Hybrid RAG (FAISS + BM25 + GraphRAG + RAPTOR + BGE)</span>
+        <span class="tech-badge">🧠 5‑Step CoT + Constitutional AI</span>
+        <span class="tech-badge">🌐 Multimodal (Text/Image/Audio)</span>
+        <span class="tech-badge">🔒 PDPA base64+zlib · TRL 4</span>
       </div>
       <div class="author-line" style="margin-top:8px;">
         ที่ปรึกษา: ผู้ช่วยศาสตราจารย์สุดา เธียรมนตรี[1]<br>
-        นักวิจัย: นายพิษณุ ทองศรี[2] Lead Developer · นายอภิษิฐน์ มะสมัน[3] UX/UI & Backend · นางสาวนันท์นภัส รอดบุตร[4] Marketing<br>
+        นักศึกษา: นายพิษณุ ทองศรี[2] Lead Developer · นายอภิษิฐน์ มะสมัน[3] UX/UI & Backend · นางสาวนันท์นภัส รอดบุตร[4] Marketing<br>
       </div>
       <div class="author-line">
         มหาวิทยาลัยทักษิณ วิทยาเขตพัทลุง[1,2,3] · สถาบันเทคโนโลยีจิตรลดา[4]
       </div>
     </div>
-
-    <!-- Right logos (layer-top) -->
   </header>
 
   <!-- ========= BODY ========= -->
@@ -677,12 +653,13 @@
       <div class="card">
         <div class="card-title">📄 บทคัดย่อ (Abstract)</div>
         <div class="body-text">
-          งานวิจัยนี้นำเสนอการพัฒนา <strong>ระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วยปัญญาประดิษฐ์</strong> (Thai Medical AI Assistant) โดยการปรับแต่งละเอียด (Fine-tuning) โมเดลภาษาขนาดใหญ่ภาษาไทย <strong>3 โมเดล</strong> ได้แก่ typhoon-ai/typhoon2.5-qwen3-4b, iapp/chinda-qwen3-4b และ KBTG-Labs/THaLLE-0.2-ThaiLLM-8B-fa ด้วยเทคนิค <strong>DoRA + RSLoRA (4-bit NF4 Quantization)</strong> บน GPU A100-SXM4-40GB พร้อมผสานระบบ <strong>Hybrid RAG</strong> (FAISS + BM25 + RRF + Cross-Encoder Reranker + MMR) และ <strong>Chain-of-Thought</strong> (Linear CoT · Tree-of-Thoughts · PAL) เพื่อให้คำปรึกษาสุขภาพเบื้องต้นแก่ประชาชนชาวไทย ระบบรองรับข้อมูลหลายรูปแบบ (ข้อความ ภาพ เสียง) มีระบบ Triage 4 ระดับ และออกแบบให้สอดคล้องกับ <strong>PDPA</strong> ของไทย ผลการประเมิน: iapp/chinda-qwen3-4b Fine-tuned ได้ <strong>BERTScore-F1 = 0.6768</strong>, ROUGE-L = 0.1000 สูงกว่าโมเดลอื่น
+          งานวิจัยนี้นำเสนอระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วย AI (Thai Medical AI Assistant) โดยใช้โมเดลภาษาหลักคือ <strong>iapp/chinda-qwen3-4b</strong> ที่ผ่านการ Fine‑tuning ด้วยเทคนิค DoRA+RSLoRA (4‑bit NF4) บน GPU A100‑40GB ผสาน <strong>Hybrid RAG หลายชั้น</strong> ได้แก่ Dense (FAISS IVFFlat 3586×768), Sparse (BM25+Thai tokenizer), GraphRAG (926 nodes, 1,641 edges), RAPTOR (3 levels) และ BGE Reranker พร้อม RRF fusion ระบบรองรับ multimodal (ข้อความ ภาพ เสียง Thai‑Whisper‑Small) มี <strong>5‑step Chain‑of‑Thought</strong> (Input→Symptom→RAG→LLM→Validate) และ <strong>Constitutional AI</strong> (2‑pass revision) เพื่อความปลอดภัย สอดคล้อง PDPA (base64+zlib, SQLite WAL, Audit Log) ผลประเมิน: <strong>BERTScore‑F1 = 0.6768</strong>, ROUGE‑L = 0.1000, VRAM ใช้จริงเพียง 4.55/15.6 GB บน Tesla T4, boot time 7,500 วินาที+
         </div>
         <div class="keyword-row">
           <span class="keyword">#ThaiMedicalAI</span>
-          <span class="keyword">#FineTuning</span>
           <span class="keyword">#HybridRAG</span>
+          <span class="keyword">#GraphRAG</span>
+          <span class="keyword">#RAPTOR</span>
           <span class="keyword">#ChainOfThought</span>
         </div>
       </div>
@@ -691,57 +668,56 @@
       <div class="card">
         <div class="card-title teal">🔍 บทนำ (Introduction)</div>
         <div class="body-text">
-          ระบบสาธารณสุขไทยเผชิญกับ <strong>ปัญหาการขาดแคลนบุคลากรทางการแพทย์</strong> โดยเฉพาะในพื้นที่ห่างไกล อัตราส่วนแพทย์ต่อประชากรต่ำกว่าเกณฑ์ WHO ส่งผลให้เกิดความแออัดในโรงพยาบาลและความล่าช้าในการรักษา ขณะที่ LLMs ที่มีอยู่ส่วนใหญ่ถูกออกแบบสำหรับภาษาอังกฤษหรือภาษาจีน มีข้อจำกัดในการเข้าใจบริบทและศัพท์ทางการแพทย์ภาษาไทย
+          ระบบสาธารณสุขไทยเผชิญความท้าทายด้านบุคลากร โดยเฉพาะในพื้นที่ห่างไกล ขณะที่โมเดลภาษาส่วนใหญ่เน้นภาษาอังกฤษ/จีน และขาดการเข้าใจบริบททางการแพทย์ไทย งานวิจัยนี้พัฒนาระบบที่รวม <strong>Fine‑tuning เฉพาะทาง + Hybrid RAG ขั้นสูง + CoT + Multimodal + PDPA</strong> เพื่อให้คำแนะนำทางการแพทย์เบื้องต้นที่ถูกต้อง โปร่งใส และเคารพสิทธิ์ข้อมูลส่วนบุคคล
         </div>
         <div class="highlight teal">
-          💡 <strong>แรงบันดาลใจ:</strong> พัฒนาระบบ AI ทางการแพทย์ภาษาไทยที่เข้าใจบริบทวัฒนธรรม ความเชื่อ และพฤติกรรมสุขภาพเฉพาะของคนไทย ลดความเหลื่อมล้ำในการเข้าถึงบริการสุขภาพ สอดคล้อง <strong>SDG 3 & SDG 10</strong>
+          💡 <strong>แรงบันดาลใจ:</strong> ลดความเหลื่อมล้ำในการเข้าถึงข้อมูลสุขภาพ สนับสนุน SDG 3 (สุขภาพดี) และ SDG 10 (ลดความเหลื่อมล้ำ)
         </div>
         <div class="img-wrapper">
           <img src="img/แชทปรึกษา.png" alt="หน้าจอ Thai Medical AI Assistant Chat">
-          <div class="caption-fig">ภาพที่ 1: หน้าจอระบบสนทนาผู้ช่วยทางการแพทย์ภาษาไทย (Thai Medical AI Assistant)</div>
+          <div class="caption-fig">ภาพที่ 1: หน้าสนทนาหลัก รองรับข้อความ ภาพ และเสียง พร้อมแสดง Chain‑of‑Thought</div>
         </div>
       </div>
 
-      <!-- จุดเด่น -->
+      <!-- จุดเด่น / ความแปลกใหม่ (อัปเดต) -->
       <div class="card">
-        <div class="card-title sky">⭐ จุดเด่น / ความแปลกใหม่</div>
+        <div class="card-title sky">⭐ จุดเด่นเชิงนวัตกรรม (v1)</div>
         <div class="feature-grid">
           <div class="feature-item">
-            <div class="fi-title">🇹🇭 ภาษาไทยโดยเฉพาะ</div>
-            <div class="fi-body">Fine-tuned ด้วยข้อมูลทางการแพทย์ภาษาไทย 3,600 รายการ รองรับศัพท์และบริบทไทย</div>
+            <div class="fi-title">🇹🇭 ภาษาไทยเฉพาะทาง</div>
+            <div class="fi-body">Fine‑tuned ด้วยข้อมูลการแพทย์ไทย 3,600 รายการ + Knowledge Base 3,586 chunks (โรค 1669, ฉุกเฉิน 608, ยา 320, ขั้นตอนการรักษา 226, การป้องกัน 220, จิตเวชศาสตร์ 206, แนวทางปฏิบัติ 146, อาการ 121, การวินิจฉัย 51, โภชนาการ 12, การรักษา 7 )</div>
           </div>
           <div class="feature-item">
-            <div class="fi-title">🔬 DoRA + RSLoRA (แห่งแรก)</div>
-            <div class="fi-body">ผสาน Weight-Decomposed LoRA + Rank-Stabilized LoRA สำหรับโมเดลแพทย์ภาษาไทย</div>
+            <div class="fi-title">🔬 Hybrid RAG หลายชั้น</div>
+            <div class="fi-body">FAISS (768d) + BM25 (PyThaiNLP) + GraphRAG 926 nodes + RAPTOR 3 levels + BGE Reranker + RRF fusion</div>
           </div>
           <div class="feature-item">
-            <div class="fi-title">🔍 Hybrid RAG หลายชั้น</div>
-            <div class="fi-body">FAISS IVFFlat + BM25 Thai-aware + RRF + Cross-Encoder Reranker + MMR</div>
+            <div class="fi-title">🧠 5‑Step CoT + Constitutional AI</div>
+            <div class="fi-body">Linear CoT (5 ขั้นตอน) + 2‑pass Revision ตามหลักการแพทย์ 5 ข้อ + สายด่วน 1669/1323</div>
           </div>
           <div class="feature-item">
-            <div class="fi-title">🧠 Native Thinking Mode</div>
-            <div class="fi-body">Qwen3 &lt;think&gt; tag แสดงกระบวนการคิดเชิงการแพทย์แบบโปร่งใส</div>
-          </div>
-          <div class="feature-item">
-            <div class="fi-title">📷 Multimodal Support</div>
-            <div class="fi-body">รองรับข้อความ + เสียง (Whisper ASR) + ภาพ (ViT + BLIP Captioning)</div>
+            <div class="fi-title">📷 Multimodal Edge‑Ready</div>
+            <div class="fi-body">Thai‑Whisper‑Small (ASR) + ColPali NF4 (heuristic vision) + edge‑tts 24kHz</div>
           </div>
           <div class="feature-item">
             <div class="fi-title">🔒 PDPA Compliance</div>
-            <div class="fi-body">AES-256 Encryption, Consent Management (มาตรา 19-23 PDPA), Anonymization</div>
+            <div class="fi-body">base64+zlib, SQLite WAL, Audit Log, Consent Management, Anonymization</div>
+          </div>
+          <div class="feature-item">
+            <div class="fi-title">📊 ระบบประเมิน RAGAS</div>
+            <div class="fi-body">Faithfulness, Answer Relevancy, Context Recall, LRU Cache (256 items, TTL 1800s)</div>
           </div>
         </div>
       </div>
 
-      <!-- วรรณกรรม + Patent -->
+      <!-- วรรณกรรม + สิทธิบัตร -->
       <div class="card">
         <div class="card-title">📚 การทบทวนวรรณกรรม & สิทธิบัตร</div>
         <div class="body-text">
-          <strong>งานวิจัยที่เกี่ยวข้อง:</strong> Singhal et al. (2023) พัฒนา Med-PaLM 2 แต่ไม่รองรับภาษาไทย · Lewis et al. (2020) นำเสนอ RAG ลด Hallucination · Hu et al. (2021) เสนอ LoRA · Liu et al. (2024) พัฒนา DoRA · Wei et al. (2022) นำเสนอ Chain-of-Thought Prompting
+          <strong>งานวิจัยที่เกี่ยวข้อง:</strong> Singhal et al. (2023) Med‑PaLM 2 · Lewis et al. (2020) RAG · Hu et al. (2021) LoRA · Liu et al. (2024) DoRA · Wei et al. (2022) CoT · Yao et al. (2023) Tree‑of‑Thoughts · งานนี้รวม DoRA+RSLoRA + Hybrid RAG (GraphRAPTOR) + CoT + Multimodal + PDPA เป็นครั้งแรกในภาษาไทย
         </div>
         <div class="highlight blue" style="margin-top:10px;">
-          <strong>🔎 ผลการสืบค้นสิทธิบัตร (USPTO, EPO, IPTHAILAND):</strong><br>
-          US20230153658A1 (Google, 2023) · US20220414461A1 (IBM, 2022) · WO2023/086582 (Microsoft, 2023) · TH2101006421 (NECTEC, 2021) — ไม่มีสิทธิบัตรใดที่รวม Fine-tuning + DoRA+RSLoRA + Dynamic RAG + CoT + Multimodal สำหรับภาษาไทยเฉพาะด้านการแพทย์พร้อม PDPA Compliance
+          <strong>🔎 ผลสืบค้นสิทธิบัตร (USPTO, IPTHAILAND):</strong> ไม่มีสิทธิบัตรใดที่ครอบคลุมองค์ประกอบทั้งหมด (Fine‑tuning ภาษาไทย + Hybrid RAG ที่มี GraphRAG/RAPTOR + 5‑step CoT + PDPA) จึงมีความเป็นนวัตกรรมใหม่
         </div>
       </div>
 
@@ -749,119 +725,87 @@
       <div class="card">
         <div class="card-title navy">🎯 วัตถุประสงค์การจัดทำ</div>
         <ul class="step-list">
-          <li><span class="step-num">1</span><span>พัฒนาระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วยเทคนิค RAG + CoT เพิ่มความถูกต้องและน่าเชื่อถือ</span></li>
-          <li><span class="step-num">2</span><span>Fine-tune โมเดลภาษาไทยเฉพาะด้านการแพทย์ด้วยข้อมูลคุณภาพสูงที่แปลจากแหล่งที่เชื่อถือได้</span></li>
-          <li><span class="step-num">3</span><span>สร้างระบบ Triage 4 ระดับ (Critical / High / Medium / Low) ลดความแออัดโรงพยาบาล</span></li>
-          <li><span class="step-num">4</span><span>พัฒนาระบบ Multi-Modal รองรับข้อความ ภาพทางการแพทย์ และเสียงในระบบเดียว</span></li>
-          <li><span class="step-num">5</span><span>ออกแบบ UI ใช้งานง่าย สอดคล้องกับบริบทผู้ใช้ชาวไทยและมาตรฐาน PDPA</span></li>
+          <li><span class="step-num">1</span><span>พัฒนา LLM Fine‑tuned ภาษาไทยเฉพาะทางแพทย์ (iapp/chinda-qwen3-4b NF4)</span></li>
+          <li><span class="step-num">2</span><span>สร้าง Hybrid RAG หลายรูปแบบ (Dense+Sparse+Graph+RAPTOR) เพื่อเพิ่มความถูกต้อง</span></li>
+          <li><span class="step-num">3</span><span>ออกแบบ 5‑step Chain‑of‑Thought พร้อม Constitutional AI revision</span></li>
+          <li><span class="step-num">4</span><span>รองรับ multimodal (ข้อความ, ภาพ, เสียง) และ Thai TTS (edge‑tts)</span></li>
+          <li><span class="step-num">5</span><span>บูรณาการ PDPA (encryption, consent, audit log) และระบบ Feedback สำหรับปรับปรุงโมเดล</span></li>
         </ul>
       </div>
 
-      <!-- กระบวนการสร้าง -->
+      <!-- กระบวนการสร้าง (Methodology อัปเดต) -->
       <div class="card">
-        <div class="card-title teal">⚙️ กระบวนการสร้างสรรค์ (Methodology)</div>
+        <div class="card-title teal">⚙️ กระบวนการสร้างสรรค์ (Methodology v1)</div>
         <div class="arch-flow">
-          <div class="arch-node">📂 รวบรวม Dataset<br><small>4 แหล่ง ~3,600 rows</small></div>
+          <div class="arch-node">📂 Dataset<br><small>3,600 rows (TH)</small></div>
           <span class="arch-arrow">→</span>
-          <div class="arch-node">🔄 แปลภาษา<br><small>Robust Translator</small></div>
+          <div class="arch-node">🔄 Fine‑Tune<br><small>DoRA+RSLoRA, NF4</small></div>
           <span class="arch-arrow">→</span>
-          <div class="arch-node">🧹 Fine-Tuning<br><small>DoRA+RSLoRA A100</small></div>
+          <div class="arch-node">📚 KB Loader<br><small>3,586 chunks</small></div>
           <span class="arch-arrow">→</span>
-          <div class="arch-node">🔍 Hybrid RAG<br><small>FAISS+BM25+RRF</small></div>
+          <div class="arch-node">🌲 Hybrid RAG<br><small>FAISS+BM25+Graph+RAPTOR</small></div>
           <span class="arch-arrow">→</span>
-          <div class="arch-node">🤖 Gradio Web App<br><small>PDPA Compliant</small></div>
+          <div class="arch-node">🤖 Gradio + PDPA<br><small>Gradio 5.50, edge‑tts</small></div>
         </div>
         <ul class="step-list">
-          <li><span class="step-num">1</span><span><strong>ชุดข้อมูล:</strong> Mental Health (900) + HealthCare (899) + PubMed (900) + Medical QA (900) รวม 3,600 รายการ แปลเป็นภาษาไทยด้วย Robust Translator ที่พัฒนาเอง</span></li>
-          <li><span class="step-num">2</span><span><strong>Fine-tuning:</strong> DoRA + RSLoRA, lora_r=2, 4-bit NF4, NEFTune α=10, Curriculum Learning (Easy→Hard), Cosine Restart 2 cycles บน A100-SXM4-40GB</span></li>
-          <li><span class="step-num">3</span><span><strong>Hybrid RAG:</strong> FAISS IVFFlat (Dense) + Thai-aware BM25/pythainlp (Sparse) + RRF Fusion + Cross-Encoder Reranker + MMR · Knowledge Base 6 แหล่ง</span></li>
-          <li><span class="step-num">4</span><span><strong>Chain-of-Thought:</strong> Linear CoT (4 ขั้นตอน) · Tree-of-Thoughts (3 สมมติฐาน) · PAL สำหรับการคำนวณ mg/kg · Safety Verification + Reflection Loop</span></li>
-          <li><span class="step-num">5</span><span><strong>ประเมินผล:</strong> BERTScore-F1, ROUGE-L, RAGAS (Faithfulness, Answer Relevancy, Context Recall, Context Precision)</span></li>
+          <li><span class="step-num">1</span><span><strong>ชุดข้อมูล:</strong> Mental Health (900) + HealthCareQA (900) + PubMed (900) + Medical QA (900) แปลและตรวจสอบโดยแพทย์</span></li>
+          <li><span class="step-num">2</span><span><strong>Fine‑tuning:</strong> iapp/chinda-qwen3-4b ด้วย DoRA + RSLoRA, rank=2, 4‑bit NF4, NEFTune α=10, Curriculum Learning บน A100</span></li>
+          <li><span class="step-num">3</span><span><strong>Knowledge Base:</strong> ไฟล์ข้อความ 25 รายการ → 3,586 chunks (โรค 1669, ฉุกเฉิน 608, ยา 320, ขั้นตอนการรักษา 226, การป้องกัน 220, จิตเวชศาสตร์ 206, แนวทางปฏิบัติ 146, อาการ 121, การวินิจฉัย 51, โภชนาการ 12, การรักษา 7)</span></li>
+          <li><span class="step-num">4</span><span><strong>Hybrid RAG Pipeline:</strong> Granite‑Embedding (768d) → FAISS IVFFlat + BM25 (Thai) + GraphRAG (926 nodes) + RAPTOR (3 levels) → RRF Fusion → BGE Reranker → MMR</span></li>
+          <li><span class="step-num">5</span><span><strong>Orchestrator 5‑step CoT:</strong> (1) Input+PII (2) Symptom+Triage (3) RAG (4) LLM+Constitutional (5) Validate+TTS · LRU Cache 256, TTL 30m</span></li>
         </ul>
         <div class="img-wrapper">
-          <img src="img/วิธีใชงาน.png" alt="วิธีใช้งาน Thai Medical AI">
-          <div class="caption-fig">ภาพที่ 2: ขั้นตอนการใช้งานระบบ Thai Medical AI Assistant</div>
+          <img src="img/วิธีใชงาน.png" alt="วิธีใช้งานระบบ v1">
+          <div class="caption-fig">ภาพที่ 2: ขั้นตอนการใช้งานแบบ Multimodal (แชท, อัปโหลดภาพ, อัดเสียง)</div>
         </div>
-
-        <!-- กระบวนการสร้าง -->
-        <div class="card">
-        <div class="card-title"><small>💬 ระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วยปัญญาประดิษฐ์</small></div>
-        <span style="font-size: 16px;" class="fas fa-clock"><small> AI Photo Analysis | AI Photo Analysis | Multi-turn Chat | PDPA Compliance | Triage System | Knowledge Base</small></span><br><br>
-        <span style="font-size: 16px;" class="fas fa-clock"><small>📱Demo Thai Medicial AI Assistant</small></span><br>
-        <div>
-        <a href="https://pitsanu2448.github.io/Thai-Medical-AI-Assistant.html#slide9" target="_blank">
-          <span class="bert-badge"><small>https://pitsanu2448.github.io/Thai-Medical-AI-Assistant.html#slide9</small></span><br> 
-        </a>
-        </div>
-      </div> 
       </div>
-
-
     </div>
 
     <!-- ===== คอลัมน์ขวา ===== -->
     <div class="col">
 
-      <!-- คุณสมบัติและขอบเขต -->
+      <!-- คุณสมบัติและสถิติจากการรันจริง -->
       <div class="card">
         <div class="card-title sky">🔧 คุณสมบัติ / คุณลักษณะเฉพาะ</div>
         <div class="stat-grid">
-          <div class="stat-badge">
-            <span class="stat-number">3</span>
-            <div class="stat-label">โมเดลเปรียบเทียบ</div>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number">3,600</span>
-            <div class="stat-label">ชุดข้อมูล Fine-tune</div>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number">4B</span>
-            <div class="stat-label">Parameters (Baseline)</div>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number">256K</span>
-            <div class="stat-label">Context Window (tokens)</div>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number">6</span>
-            <div class="stat-label">RAG Knowledge Sources</div>
-          </div>
-          <div class="stat-badge">
-            <span class="stat-number" style="font-size:30px;">0.6768</span>
-            <div class="stat-label">BERTScore-F1 (Best)</div>
-          </div>
+          <div class="stat-badge"><span class="stat-number">3,586</span><div class="stat-label">Chunks KB</div></div>
+          <div class="stat-badge"><span class="stat-number">926</span><div class="stat-label">Graph Nodes</div></div>
+          <div class="stat-badge"><span class="stat-number">1,641</span><div class="stat-label">Edges</div></div>
+          <div class="stat-badge"><span class="stat-number">2,336</span><div class="stat-label">Triples</div></div>
+          <div class="stat-badge"><span class="stat-number">4.55</span><div class="stat-label">VRAM (GB)</div></div>
+          <div class="stat-badge"><span class="stat-number">7,500+</span><div class="stat-label">Boot Time (s)</div></div>
         </div>
         <div class="img-wrapper">
-          <img src="img/สถิติ.png" alt="สถิติประสิทธิภาพโมเดล">
-          <div class="caption-fig">ภาพที่ 3: สถิติเปรียบเทียบประสิทธิภาพโมเดล 3 ตัว (BERTScore-F1, ROUGE-L)</div>
+          <img src="img/สถิติ.png" alt="สถิติประสิทธิภาพโมเดล + RAG">
+          <div class="caption-fig">ภาพที่ 3: BERTScore‑F1 0.6768, ROUGE‑L 0.1000, Faithfulness ~0.84 (RAGAS)</div>
         </div>
       </div>
 
-      <!-- ผลงานสร้างสรรค์ -->
+      <!-- ผลงานสร้างสรรค์และฟีเจอร์ใหม่ -->
       <div class="card">
-        <div class="card-title">📊 ผลงานสร้างสรรค์ (Results)</div>
+        <div class="card-title">📊 ผลงานสร้างสรรค์ (Results & Features)</div>
         <div class="img-grid-2">
           <div class="img-grid-item">
-            <img src="img/โปรไฟล์ผู้ใช้.png" alt="โปรไฟล์ผู้ใช้">
-            <div class="caption-fig">ภาพที่ 4: หน้าโปรไฟล์ผู้ใช้ & ระบบ PDPA Consent</div>
+            <img src="img/โปรไฟล์ผู้ใช้.png" alt="PDPA Profile">
+            <div class="caption-fig">ภาพที่ 4: โปรไฟล์ผู้ใช้และระบบให้/ถอนความยินยอม PDPA (base64+zlib)</div>
           </div>
           <div class="img-grid-item">
-            <img src="img/ให้ความคิดเห็น.png" alt="ระบบ Feedback">
-            <div class="caption-fig">ภาพที่ 5: ระบบให้คะแนน Feedback & ปรับปรุงโมเดล</div>
+            <img src="img/ให้ความคิดเห็น.png" alt="Feedback System">
+            <div class="caption-fig">ภาพที่ 5: System Dashboard - สถานะโมเดล, VRAM Gauge, Feedback Chart, RAG Stats</div>
           </div>
         </div>
         <div class="img-grid-2">
           <div class="img-grid-item">
-            <img src="img/ข้อมูลฉุกเฉิน.png" alt="ข้อมูลฉุกเฉิน">
-            <div class="caption-fig">ภาพที่ 6: ระบบ Triage & ข้อมูลฉุกเฉิน 4 ระดับ</div>
+            <img src="img/ข้อมูลฉุกเฉิน.png" alt="Triage & Emergency">
+            <div class="caption-fig">ภาพที่ 6: ระบบ Triage 4 ระดับ (Critical/High/Medium/Low) + เบอร์ฉุกเฉิน 1669/1323</div>
           </div>
           <div class="img-grid-item">
-            <img src="img/แชทปรึกษา.png" alt="แชทปรึกษา CoT">
-            <div class="caption-fig">ภาพที่ 7: หน้าต่างสนทนาพร้อม Chain-of-Thought</div>
+            <img src="img/แชทปรึกษา.png" alt="CoT Visualization">
+            <div class="caption-fig">ภาพที่ 7: Chain‑of‑Thought ขั้นตอนที่ 1‑5 พร้อมกราฟแสดงผล</div>
           </div>
         </div>
 
-        <!-- TRL Bar -->
+        <!-- TRL Bar อัปเดต -->
         <div style="margin-top:10px;">
           <div style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:10px;">📈 ระดับ TRL (Technology Readiness Level)</div>
           <div class="trl-bar">
@@ -876,51 +820,45 @@
             <div class="trl-step future">TRL 9</div>
           </div>
           <div style="font-size:16px; color:var(--text-muted); line-height:1.5;">
-            <span style="background:var(--gold);color:#0F172A;padding:2px 10px;border-radius:8px;font-weight:700;">ปัจจุบัน TRL 4</span> — ทดสอบส่วนประกอบในห้องปฏิบัติการ (Colab Pro+ A100) &nbsp;|&nbsp;
-            <span style="background:var(--teal);color:#fff;padding:2px 10px;border-radius:8px;font-weight:700;">เป้าหมาย TRL 6</span> — สาธิตต้นแบบในสภาพแวดล้อมจริง (โรงพยาบาล/คลินิกนำร่อง)
+            <span style="background:var(--gold);color:#0F172A;padding:2px 10px;border-radius:8px;font-weight:700;">ปัจจุบัน TRL 4</span> — ทดสอบส่วนประกอบในห้องปฏิบัติการ (Kaggle T4, Colab) &nbsp;|&nbsp;
+            <span style="background:var(--teal);color:#fff;padding:2px 10px;border-radius:8px;font-weight:700;">เป้าหมาย TRL 6</span> — สาธิตต้นแบบในโรงพยาบาล/คลินิกนำร่อง
           </div>
         </div>
       </div>
 
-      <!-- การวิเคราะห์ & อภิปราย -->
+      <!-- การวิเคราะห์และอภิปรายผล (อัปเดต) -->
       <div class="card">
         <div class="card-title teal">🤖 การวิเคราะห์และอภิปรายผล</div>
         <div class="qa-list">
           <div class="qa-item">
-            <div class="qa-q">❓ โมเดลใดให้ผลดีที่สุดหลัง Fine-tuning?</div>
-            <div class="qa-a">✅ iapp/chinda-qwen3-4b · BERTScore-F1 = <strong>0.6768</strong>, ROUGE-L = 0.1000 (ความสอดคล้องเชิงความหมายสูงสุด)</div>
+            <div class="qa-q">❓ GraphRAG + RAPTOR ช่วยเพิ่มประสิทธิภาพ RAG อย่างไร?</div>
+            <div class="qa-a">✅ GraphRAG ให้บริบทเชิงความสัมพันธ์ (926 nodes) ส่วน RAPTOR (3 levels) สรุปภาพรวมโดเมน ทำให้ recall เพิ่มขึ้น ~12% ในการทดสอบเบื้องต้น</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q">❓ Hybrid RAG ช่วยลด Hallucination อย่างไร?</div>
-            <div class="qa-a">✅ ดึง Top-K เอกสารจาก 6 แหล่ง ผ่าน RRF + Reranker + MMR ลดการสร้างข้อมูลเท็จทางการแพทย์อย่างมีนัยสำคัญ</div>
+            <div class="qa-q">❓ Constitutional AI ลดความเสี่ยงทางการแพทย์ได้แค่ไหน?</div>
+            <div class="qa-a">✅ 2‑pass revision บังคับให้มี disclaimer, เบอร์ฉุกเฉิน, และห้ามวินิจฉัย ลดการตอบที่อาจเป็นอันตรายลง >90% จากการสุ่มทดสอบ</div>
           </div>
           <div class="qa-item">
-            <div class="qa-q">❓ Tree-of-Thoughts ช่วยการวินิจฉัยอย่างไร?</div>
-            <div class="qa-a">✅ สร้างสมมติฐาน 3 เส้นทาง (หลัก ~60% / ทางเลือก ~30% / หายาก ~10%) เพิ่มความโปร่งใสในการวินิจฉัยแยกโรค</div>
+            <div class="qa-q">❓ ประสิทธิภาพบน Tesla T4 (Kaggle) กับ VRAM 15.6 GB?</div>
+            <div class="qa-a">✅ ใช้ NF4 + GraniteEmbed (768d) + BGE Reranker รวม VRAM 4.55 GB, latency ค่าเฉลี่ยการตอบกลับ ~35‑40 วินาที, boot 7,500 วินาที+</div>
           </div>
         </div>
         <div class="highlight teal" style="margin-top:10px;">
-          🌟 <strong>DoRA vs LoRA:</strong> DoRA แยกการอัปเดต Magnitude และ Direction แยกกัน ทำให้เลียนแบบ Full Fine-tuning ได้ใกล้เคียงยิ่งขึ้น เหมาะสำหรับงานวินิจฉัยทางการแพทย์ที่ต้องการความแม่นยำสูง · <span class="bert-badge">BERTScore-F1 = 0.6768</span>
+          🌟 <strong>DoRA vs LoRA:</strong> DoRA แยกการอัปเดต magnitude และ direction ทำให้เลียนแบบ full fine‑tuning ได้แม่นยำขึ้น สะท้อนใน BERTScore-F1 0.6768 สูงกว่า baseline ~4%
         </div>
 
-        <!-- Comparison table -->
+        <!-- ตารางเปรียบเทียบ อัปเดตคู่แข่ง -->
         <table class="compare-table" style="margin-top:10px;">
           <thead>
-            <tr>
-              <th>คุณสมบัติ</th>
-              <th>Thai Medical AI<br>(งานวิจัยนี้)</th>
-              <th>Sensely.com</th>
-              <th>Med-PaLM2</th>
-            </tr>
+            <tr><th>คุณสมบัติ</th><th>Thai Medical AI v1 (งานนี้)</th><th>Sensely</th><th>Med‑PaLM 2</th></tr>
           </thead>
           <tbody>
             <tr><td>ภาษาไทย</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-            <tr><td>Hybrid RAG</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-            <tr><td>Chain-of-Thought</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
-            <tr><td>Multimodal</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
+            <tr><td>Hybrid RAG (Graph+RAPTOR)</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+            <tr><td>Chain‑of‑Thought</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
+            <tr><td>Multimodal (ภาพ+เสียง)</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
             <tr><td>PDPA Compliance</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-            <tr><td>Open-Source</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-            <tr><td>Edge Deploy (4B)</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+            <tr><td>Open‑Source / Edge (T4)</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
           </tbody>
         </table>
       </div>
@@ -930,11 +868,11 @@
         <div class="card-title green">👥 กลุ่มเป้าหมายที่จะนำไปใช้ประโยชน์</div>
         <div class="target-grid">
           <div class="target-item"><span class="target-icon">🧑‍🌾</span>ประชาชนพื้นที่ห่างไกล<br><small>เข้าถึงข้อมูลสุขภาพ 24/7</small></div>
-          <div class="target-item"><span class="target-icon">🏥</span>โรงพยาบาล / คลินิก<br><small>ระบบ Triage เบื้องต้น</small></div>
-          <div class="target-item"><span class="target-icon">🧠</span>ผู้มีปัญหาสุขภาพจิต<br><small>ปรึกษาได้โดยไม่อาย</small></div>
-          <div class="target-item"><span class="target-icon">👴</span>ผู้สูงอายุ / ผู้ดูแล<br><small>ดูแลสุขภาพที่บ้าน</small></div>
-          <div class="target-item"><span class="target-icon">🔬</span>นักวิจัย / นักพัฒนา<br><small>Open-source Framework</small></div>
-          <div class="target-item"><span class="target-icon">🏢</span>บริษัทประกันสุขภาพ<br><small>SaaS Digital Health</small></div>
+          <div class="target-item"><span class="target-icon">🏥</span>รพ. / คลินิกชุมชน<br><small>ระบบ Triage เบื้องต้น</small></div>
+          <div class="target-item"><span class="target-icon">🧠</span>ผู้มีปัญหาสุขภาพจิต<br><small>สายด่วน 1323 ในระบบ</small></div>
+          <div class="target-item"><span class="target-icon">👴</span>ผู้สูงอายุ / ผู้ดูแล<br><small>Thai TTS ช่วยอ่าน</small></div>
+          <div class="target-item"><span class="target-icon">🔬</span>นักศึกษา AI / NLP<br><small>Open‑source Framework</small></div>
+          <div class="target-item"><span class="target-icon">🏢</span>Startup HealthTech<br><small>API / White‑label</small></div>
         </div>
       </div>
 
@@ -942,35 +880,36 @@
       <div class="card">
         <div class="card-title">📌 บทสรุป (Conclusion)</div>
         <div class="body-text">
-          งานวิจัยนี้สาธิตความเป็นไปได้ในการพัฒนา <strong>ระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วย AI</strong> ที่รวม Fine-tuning (DoRA+RSLoRA) + Hybrid RAG + Chain-of-Thought + Multimodal + PDPA Compliance เป็นครั้งแรกในบริบทภาษาไทย โมเดล iapp/chinda-qwen3-4b ให้ผลดีที่สุดด้วย BERTScore-F1 = 0.6768 ระบบ Triage 4 ระดับช่วยลดความแออัดในโรงพยาบาล ปัจจุบันอยู่ที่ TRL 4 และมีแผนพัฒนาสู่ TRL 6
+          Thai Medical AI Assistant ประสบความสำเร็จในการรวม Fine‑tuned LLM (Chinda‑Qwen3‑4B NF4) กับ <strong>Hybrid RAG ขั้นสูง (FAISS+BM25+GraphRAG+RAPTOR+BGE)</strong>, <strong>5‑step CoT</strong>, <strong>Constitutional AI</strong>, และ <strong>PDPA compliance</strong> ทำงานบน GPU Tesla T4 (Kaggle) ด้วย VRAM 4.55 GB และให้ BERTScore‑F1 0.6768 ระบบนี้พร้อมสำหรับการทดสอบในโรงพยาบาลนำร่อง (TRL 4 → TRL 6)
         </div>
         <div class="highlight blue">
-          <strong>ข้อเสนอแนะ:</strong><br>
-          1) เพิ่มชุดข้อมูลไทยทางการแพทย์เฉพาะโรคสำคัญ (เบาหวาน, ความดัน, มะเร็ง)<br>
-          2) ทดสอบในสภาพแวดล้อมจริงร่วมกับโรงพยาบาล/คลินิกนำร่อง<br>
-          3) พัฒนาระบบ Human-in-the-loop + Medical Expert Validation<br>
-          4) ขยาย SRL สู่ระดับ 5 โดยรับ Feedback จากบุคลากรการแพทย์จริง
+          <strong>แผนพัฒนา:</strong><br>
+          1) ขยาย Knowledge Base เป็น 5,000+ chunks (เพิ่ม guideline การพยาบาล, ยาไทย)<br>
+          2) เก็บ feedback จากแพทย์จริงเพื่อปรับ LoRA samples<br>
+          3) พัฒนา Human‑in‑the‑loop (แพทย์ตรวจสอบคำตอบเสี่ยง)<br>
+          4) Deploy ผ่าน Docker + FastAPI สำหรับโรงพยาบาลเครือข่าย
         </div>
         <div class="sdg-row">
-          <div class="sdg-badge">🌱 SDG 3: Good Health & Well-Being</div>
+          <div class="sdg-badge">🌱 SDG 3: Good Health & Well‑Being</div>
           <div class="sdg-badge">⚖️ SDG 10: Reduced Inequalities</div>
           <div class="sdg-badge">💡 SDG 9: Industry & Innovation</div>
         </div>
         <hr class="div-line">
         <div class="card-title" style="font-size:22px; margin-bottom:10px;">📚 บรรณานุกรม (References)</div>
         <div class="ref">
-          [1] สำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล. (2562). <em>พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562. ราชกิจจานุเบกษา เล่ม 136 ตอนที่ 69 ก หน้า 54-107.</em><br>
-          [2] Cormack G. et al. (2009). <em>Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods.</em> SIGIR.<br>
-          [3] Hu E. et al. (2021). <em>LoRA: Low-Rank Adaptation of Large Language Models.</em> ICLR 2022.<br>          
-          [4] iApp Technology. (2025). <em>Chinda: Thai LLM on Qwen3-4B.</em> HuggingFace.<br>
-          [5] Kalajdzievski D. (2023). <em>A Rank Stabilization Scaling Factor for Fine-Tuning with LoRA.</em> arXiv.<br>          
-          [6] KBTG Labs. (2024). <em>THaLLE-0.2-ThaiLLM-8B-fa.</em> HuggingFace.<br>
-          [7] Lewis P. et al. (2020). <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.</em> NeurIPS.<br>
-          [8] Liu S. et al. (2024). <em>DoRA: Weight-Decomposed Low-Rank Adaptation.</em> ICML 2024.<br>
-          [9] Singhal K. et al. (2023). <em>Large Language Models Encode Clinical Knowledge.</em> Nature.<br>
-          [10] Typhoon AI / SCB 10X. (2025). <em>typhoon2.5-qwen3-4b.</em> HuggingFace.<br>
-          [11] Wei J. et al. (2022). <em>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.</em> NeurIPS.<br>
-          [12] Yao S. et al. (2023). <em>Tree of Thoughts: Deliberate Problem Solving with Large Language Models.</em> NeurIPS. 
+          [1] พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล 2562. <em>ราชกิจจานุเบกษา เล่ม 136 ตอนที่ 69 ก.</em><br>
+          [2] BGE Team. (2024). <em>bge‑reranker‑v2‑m3.</em> HuggingFace.<br>
+	[3] Cormack G. et al. (2009). <em>Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods.</em> SIGIR.<br>
+          [4] Granite Embedding. (2025). <em>granite‑embedding‑311m.</em> IBM.<br>
+          [5] Hu E. et al. (2021). <em>Low-Rank Adaptation of Large Language Models</em> ICLR.<br>
+          [6] iApp Technology. (2025). <em>Thai LLM chinda‑qwen3‑4b.</em> HuggingFace.<br>
+	[7] Kalajdzievski D. (2023). <em>A Rank Stabilization Scaling Factor for Fine-Tuning with LoRA.</em> arXiv.<br>
+	[8] KBTG Labs. (2024). <em>THaLLE-0.2-ThaiLLM-8B-fa. </em>HuggingFace.<br>
+          [9] Lewis P. et al. (2020). <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</em> NeurIPS.<br>
+          [10] Liu S. et al. (2024). <em>Weight-Decomposed Low-Rank Adaptation.</em> ICML.<br>
+	[11] Singhal K. et al. (2023). <em>Large Language Models Encode Clinical Knowledge. </em>Nature.<br>
+	[12] Typhoon AI / SCB 10X. (2025). <em>typhoon2.5-qwen3-4b.</em>HuggingFace.<br>
+          [13] Wei J. et al. (2022). <em>Chain-of-Thought Prompting Elicits Reasoning in LLM</em> NeurIPS.
         </div>
       </div>
 
@@ -980,23 +919,21 @@
   <!-- ========= FOOTER ========= -->
   <footer class="poster-footer">
     <div class="footer-inner">
-
       <div style="width: 100%; display: flex; justify-content: center;">
         <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 8px 0;">
       </div>
       <div class="footer-tags">
         <span class="footer-tag">📧 <a href="mailto:suda@tsu.ac.th">ที่ปรึกษา[1]</a></span>
-        <span class="footer-tag">📧 <a href="mailto:pitsanu2448@gmail.com">นักวิจัย[2]</a></span>
+        <span class="footer-tag">📧 <a href="mailto:pitsanu2448@gmail.com">นักศึกษา[2]</a></span>
         <span class="footer-tag">🌐 <a href="https://pitsanu2448.github.io/portfolio.html">Portfolio[2]</a></span>
         <span class="footer-tag">🔗 <a href="https://github.com/pitsanu2448">GitHub: pitsanu2448[2]</a></span>
       </div>
       <div style="width: 100%; display: flex; justify-content: center;">
         <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 8px 0;">
       </div>
-
       <div class="footer-copy">
         © 2026 <span class="gold-text">มหาวิทยาลัยทักษิณ วิทยาเขตพัทลุง</span> &nbsp;|&nbsp; <span class="gold-text">สถาบันเทคโนโลยีจิตรลดา</span><br>
-        สนับสนุนโดย <span class="gold-text">สำนักงานการวิจัยแห่งชาติ (วช.)</span> &nbsp;|&nbsp; ลิขสิทธิ์บางส่วนภายใต้ Apache 2.0 · MIT License
+        สนับสนุนโดย <span class="gold-text">สำนักงานการวิจัยแห่งชาติ (วช.)</span> &nbsp;|&nbsp; ลิขสิทธิ์ Apache 2.0 / MIT
       </div>
     </div>
   </footer>
