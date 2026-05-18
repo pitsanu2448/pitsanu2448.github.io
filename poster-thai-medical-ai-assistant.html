@@ -1,943 +1,1647 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>โปสเตอร์ | Thai Medical AI Assistant v1 | NRCT Innovation Awards 2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --navy:      #0F2551;
-      --blue:      #1E4DB7;
-      --mid-blue:  #2563EB;
-      --sky:       #38BDF8;
-      --sky-light: #BAE6FD;
-      --gold:      #F59E0B;
-      --gold-lt:   #FCD34D;
-      --gold-bg:   #FFFBEB;
-      --teal:      #0EA5E9;
-      --green:     #059669;
-      --bg-page:   #E8EFF9;
-      --bg-poster: #F0F5FC;
-      --card-bg:   #FFFFFF;
-      --card-border: #E2EAF6;
-      --text-dark:  #0F172A;
-      --text-mid:   #1E3A5F;
-      --text-muted: #475569;
-      --sh-sm: 0 4px 14px -2px rgba(15,37,81,0.07), 0 2px 6px -2px rgba(15,37,81,0.04);
-      --sh-md: 0 10px 28px -6px rgba(15,37,81,0.10), 0 4px 10px -4px rgba(15,37,81,0.05);
-    }
-
-    body {
-      background: var(--bg-page);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 10px;
-      font-family: 'Sarabun', 'IBM Plex Sans Thai', 'Noto Sans Thai', system-ui, sans-serif;
-    }
-
-    .poster {
-      width: 3402px;
-      min-height: 4536px;
-      background: var(--bg-poster);
-      box-shadow: 0 60px 120px -30px rgba(15,37,81,0.35);
-      border-radius: 2px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ========= HEADER ========= */
-    .poster-header {
-      width: 100%;
-      min-height: 560px;
-      background: linear-gradient(135deg, #0D1B2A 0%, #0F2551 35%, #1E4DB7 70%, #38BDF8 100%);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 10px;
-      color: #fff;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-
-    .poster-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 15% 85%, rgba(56,189,248,0.22) 0%, transparent 48%),
-                  radial-gradient(circle at 85% 20%, rgba(245,158,11,0.14) 0%, transparent 45%);
-      pointer-events: none;
-    }
-
-    .poster-header::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, #0EA5E9, #38BDF8, #F59E0B, #38BDF8, #0EA5E9);
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 2;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0 10px;
-    }
-
-    .conf-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(14,165,233,0.18);
-      color: #BAE6FD;
-      border: 1px solid rgba(14,165,233,0.35);
-      padding: 10px 10px;
-      border-radius: 20px;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      margin-bottom: 10px;
-      backdrop-filter: blur(6px);
-    }
-
-    .main-title {
-      font-size: 36px;
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 10px;
-      background: linear-gradient(110deg, #ffffff 40%, #FCD34D 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.5px;
-    }
-
-    .sub-title {
-      font-size: 26px;
-      font-weight: 500;
-      color: rgba(186,230,253,0.9);
-      line-height: 1.4;
-      margin-bottom: 10px;
-    }
-
-    .badge-group {
-      margin: 10px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .tech-badge {
-      background: var(--gold);
-      color: #0F172A;
-      font-weight: 700;
-      padding: 6px 10px;
-      border-radius: 20px;
-      font-size: 16px;
-      letter-spacing: 0.02em;
-    }
-
-    .tech-badge.blue {
-      background: rgba(14,165,233,0.22);
-      color: #BAE6FD;
-      border: 1px solid rgba(14,165,233,0.4);
-    }
-
-    .author-line {
-      font-size: 22px;
-      color: rgba(186,230,253,0.9);
-      margin-top: 8px;
-      line-height: 1.45;
-    }
-
-    .author-line strong { color: #fff; }
-
-    /* ========= BODY ========= */
-    .poster-body {
-      flex: 1;
-      display: flex;
-      gap: 10px;
-      padding: 10px 10px;
-      background: var(--bg-poster);
-    }
-
-    .col { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      box-shadow: var(--sh-sm);
-      padding: 10px 10px;
-      border: 1px solid var(--card-border);
-    }
-
-    .card-title {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--navy);
-      border-left: 8px solid var(--gold);
-      padding-left: 10px;
-      margin-bottom: 10px;
-      letter-spacing: -0.2px;
-      line-height: 1.3;
-    }
-    .card-title.teal { border-left-color: var(--teal); }
-    .card-title.sky  { border-left-color: var(--sky); }
-    .card-title.green{ border-left-color: var(--green); }
-    .card-title.navy { border-left-color: var(--navy); }
-
-    .body-text {
-      font-size: 19px;
-      line-height: 1.65;
-      color: var(--text-dark);
-      text-align: justify;
-    }
-
-    .keyword-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .keyword {
-      background: #EFF6FF;
-      color: var(--blue);
-      padding: 7px 20px;
-      border-radius: 20px;
-      font-size: 16px;
-      font-weight: 600;
-      border: 1px solid #BFDBFE;
-    }
-
-    .img-wrapper {
-      margin: 10px 0 10px;
-      text-align: center;
-      background: #F8FAFC;
-      border-radius: 20px;
-      padding: 10px;
-      border: 1px solid var(--card-border);
-    }
-
-    .img-wrapper img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 6px 18px rgba(15,37,81,0.07);
-    }
-
-    .caption-fig {
-      font-size: 16px;
-      color: var(--text-muted);
-      margin-top: 10px;
-      font-style: italic;
-      line-height: 1.4;
-    }
-
-    .img-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 10px 0;
-    }
-
-    .img-grid-3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      margin: 10px 0;
-    }
-
-    .img-grid-item {
-      background: #F8FAFC;
-      border-radius: 20px;
-      padding: 10px;
-      border: 1px solid var(--card-border);
-      text-align: center;
-    }
-
-    .img-grid-item img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 16px;
-    }
-
-    .img-grid-item .caption-fig { font-size: 14px; }
-
-    /* KPI Stats */
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 10px 0;
-    }
-
-    .stat-badge {
-      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
-      border: 1px solid #BFDBFE;
-      border-radius: 20px;
-      padding: 10px 10px;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 38px;
-      font-weight: 800;
-      color: var(--blue);
-      line-height: 1.1;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-top: 5px;
-      font-weight: 500;
-    }
-
-    /* Highlight boxes */
-    .highlight {
-      background: var(--gold-bg);
-      border-left: 6px solid var(--gold);
-      border-radius: 20px;
-      padding: 10px 10px;
-      margin: 10px 0;
-      font-size: 18px;
-      color: var(--text-mid);
-      line-height: 1.6;
-    }
-    .highlight.teal  { background: #F0FDFA; border-left-color: var(--teal); }
-    .highlight.blue  { background: #EFF6FF; border-left-color: var(--mid-blue); }
-    .highlight.green { background: #ECFDF5; border-left-color: var(--green); }
-
-    /* Architecture flow */
-    .arch-flow {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-      margin: 10px 0;
-    }
-
-    .arch-node {
-      background: #F0F5FC;
-      border: 1px solid #BFDBFE;
-      border-left: 4px solid var(--teal);
-      border-radius: 16px;
-      padding: 10px 10px;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--navy);
-      text-align: center;
-    }
-
-    .arch-arrow {
-      color: var(--sky);
-      font-size: 26px;
-      font-weight: 700;
-    }
-
-    /* Step list */
-    .step-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .step-list li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      font-size: 18px;
-      line-height: 1.55;
-      color: var(--text-dark);
-    }
-
-    .step-num {
-      flex-shrink: 0;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--blue);
-      color: white;
-      font-weight: 700;
-      font-size: 16px;
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    /* Feature list */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .feature-item {
-      background: #F8FAFC;
-      border-radius: 18px;
-      padding: 10px 10px;
-      border: 1px solid var(--card-border);
-      border-top: 3px solid var(--teal);
-      font-size: 17px;
-      line-height: 1.5;
-    }
-
-    .feature-item .fi-title {
-      font-weight: 700;
-      color: var(--navy);
-      font-size: 17px;
-      margin-bottom: 6px;
-    }
-
-    .feature-item .fi-body {
-      color: var(--text-muted);
-      font-size: 16px;
-    }
-
-    /* QA list */
-    .qa-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-
-    .qa-item {
-      background: #F8FAFC;
-      border-radius: 16px;
-      padding: 10px 10px;
-      font-size: 17px;
-      line-height: 1.5;
-      border: 1px solid var(--card-border);
-    }
-    .qa-q { color: var(--blue); font-weight: 700; }
-    .qa-a { color: var(--text-dark); margin-top: 3px; }
-
-    /* TRL badges */
-    .trl-bar {
-      display: flex;
-      gap: 6px;
-      margin: 10px 0;
-      align-items: center;
-    }
-
-    .trl-step {
-      flex: 1;
-      height: 36px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .trl-step.done  { background: var(--blue); }
-    .trl-step.now   { background: var(--gold); color: #0F172A; }
-    .trl-step.target{ background: var(--teal); }
-    .trl-step.future{ background: #CBD5E8; color: var(--text-muted); }
-
-    .bert-badge {
-      display: inline-block;
-      background: var(--teal);
-      color: white;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 6px 10px;
-      border-radius: 20px;
-    }
-
-    hr.div-line {
-      border: none;
-      height: 2px;
-      background: linear-gradient(90deg, var(--sky-light), var(--gold-lt), var(--sky-light));
-      margin: 20px 0;
-    }
-
-    .ref {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* SDG badges */
-    .sdg-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 10px 0;
-    }
-
-    .sdg-badge {
-      background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
-      border: 1px solid #6EE7B7;
-      color: #065F46;
-      padding: 8px 10px;
-      border-radius: 20px;
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    /* Target group */
-    .target-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .target-item {
-      background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
-      border: 1px solid #BFDBFE;
-      border-radius: 20px;
-      padding: 10px 10px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.4;
-    }
-
-    .target-icon { font-size: 28px; display: block; margin-bottom: 6px; }
-
-    /* Comparison table */
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 16px;
-    }
-
-    .compare-table th {
-      background: var(--blue);
-      color: white;
-      padding: 10px 10px;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .compare-table th:first-child { border-radius: 12px 0 0 0; }
-    .compare-table th:last-child  { border-radius: 0 12px 0 0; }
-
-    .compare-table td {
-      padding: 9px 10px;
-      border-bottom: 1px solid var(--card-border);
-      color: var(--text-dark);
-      text-align: center;
-      line-height: 1.4;
-    }
-
-    .compare-table tr:nth-child(even) td { background: #F8FAFC; }
-    .compare-table td:first-child { font-weight: 600; text-align: left; }
-
-    .check { color: var(--green); font-weight: 800; }
-    .cross { color: #DC2626; font-weight: 800; }
-
-    /* ========= FOOTER ========= */
-    .poster-footer {
-      width: 100%;
-      min-height: 250px;
-      background: linear-gradient(135deg, #0D1B2A 0%, #0F2551 50%, #1E4DB7 80%, #38BDF8 100%);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 10px;
-      flex-shrink: 0;
-    }
-
-    .poster-footer::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, #F59E0B, #38BDF8, #F59E0B);
-    }
-
-    .footer-inner {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .footer-tags {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .footer-tag {
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #BAE6FD;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    .footer-tag a { color: #BAE6FD; text-decoration: none; }
-
-    .footer-copy {
-      font-size: 16px;
-      color: rgba(186,230,253,0.75);
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .gold-text { color: var(--gold-lt); font-weight: 600; }
-
-    @media (max-width: 3500px) {
-      .poster { width: 100%; max-width: 3402px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Medical AI Assistant v1-Ultra | Presentation Slides 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0A1628;
+            --bg-card: #111E35;
+            --teal: #0EA5A0;
+            --teal-mid: #14B8A6;
+            --teal-light: #CCFBF1;
+            --teal-glow: rgba(14,165,160,0.18);
+            --gold: #F59E0B;
+            --red: #EF4444;
+            --gray: #64748B;
+            --gray-light: #E2E8F0;
+            --white: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-light: #475569;
+            --accent: #10B981;
+            --purple: #8B5CF6;
+            --orange: #F97316;
+            --blue: #3B82F6;
+            --yellow: #FBBF24;
+            --section-bg: #F0F9F8;
+            --mono: 'IBM Plex Mono', monospace;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: var(--section-bg);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* ===== NAV ===== */
+        .nav-tabs {
+            position: sticky; top: 0;
+            background: var(--bg-dark);
+            z-index: 200;
+            display: flex; flex-wrap: wrap;
+            justify-content: center; gap: 0.25rem;
+            padding: 0.6rem 0.8rem;
+            border-bottom: 2px solid rgba(14,165,160,0.4);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .nav-tabs a {
+            color: #CCFBF1; text-decoration: none;
+            font-size: 0.68rem; font-weight: 700;
+            padding: 0.32rem 0.7rem; border-radius: 40px;
+            transition: all 0.2s;
+            background: rgba(14,165,160,0.13);
+            letter-spacing: 0.2px;
+        }
+        .nav-tabs a:hover, .nav-tabs a.active {
+            background: var(--teal); color: white;
+            box-shadow: 0 2px 10px rgba(14,165,160,0.5);
+        }
+
+        /* ===== SECTION ===== */
+        .slide-section {
+            max-width: 1300px; margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+            border-bottom: 1px solid #C9E8E5;
+            scroll-margin-top: 65px;
+        }
+
+        /* ===== SLIDE HEADER ===== */
+        .slide-header {
+            background: var(--bg-dark);
+            margin: 0 -1.5rem 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0 20px 20px;
+            display: flex; align-items: center;
+            justify-content: space-between; gap: 1rem;
+        }
+        .slide-header h2 { font-size: 1.65rem; font-weight: 800; color: white; }
+        .slide-header .sub { font-size: 0.75rem; color: var(--teal-light); margin-top: 0.2rem; }
+        .slide-header-logos { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .slide-header-logos img { height: 50px; width: auto; object-fit: contain; }
+        .slide-num {
+            background: var(--teal); color: white;
+            font-size: 0.62rem; font-weight: 800;
+            padding: 0.18rem 0.55rem; border-radius: 20px;
+            margin-right: 0.5rem; letter-spacing: 1px; font-family: var(--mono);
+        }
+
+        /* ===== NEW: version badge ===== */
+        .version-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: linear-gradient(135deg, #0EA5A0, #7C3AED);
+            color: white; font-size: 0.62rem; font-weight: 800;
+            padding: 0.2rem 0.7rem; border-radius: 20px;
+            font-family: var(--mono); letter-spacing: 0.5px;
+        }
+
+        /* ===== CARDS ===== */
+        .card-grid { display: flex; flex-wrap: wrap; gap: 1.1rem; justify-content: center; }
+        .card {
+            background: white; border-radius: 1.2rem;
+            padding: 1.1rem; box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+            border: 1px solid #D9EDEB; flex: 1; min-width: 190px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.10); }
+        .card h3 { font-size: 0.95rem; margin: 0.4rem 0 0.25rem; color: var(--text-dark); }
+        .card p { font-size: 0.77rem; color: var(--text-light); line-height: 1.6; }
+        .card i { margin-bottom: 0.3rem; }
+
+        .badge-tag {
+            background: #134E4A; color: #CCFBF1;
+            padding: 0.2rem 0.72rem; border-radius: 30px;
+            font-size: 0.66rem; font-weight: 700;
+            display: inline-block; margin: 0.15rem;
+        }
+        .badge-blue { background: #1e3a5f; }
+        .badge-purple { background: #3b1f6e; }
+        .badge-gold { background: #78350f; color: #FDE68A; }
+        .badge-red { background: #7f1d1d; color: #FCA5A5; }
+
+        /* ===== NEW: system spec table ===== */
+        .spec-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+        .spec-table th { background: var(--bg-dark); color: #CCFBF1; padding: 0.45rem 0.8rem; text-align: left; font-weight: 700; }
+        .spec-table td { padding: 0.42rem 0.8rem; border-bottom: 1px solid #E2E8F0; color: var(--text-dark); }
+        .spec-table tr:nth-child(even) td { background: #F0FAF8; }
+        .spec-table tr:hover td { background: #D1FAF5; }
+        .spec-ok { color: #059669; font-weight: 800; }
+        .spec-warn { color: #D97706; font-weight: 700; }
+        .spec-mono { font-family: var(--mono); font-size: 0.72rem; background: #F0FAF8; padding: 1px 5px; border-radius: 4px; color: #0F766E; }
+
+        /* ===== LAYOUT ===== */
+        .flex-2col { display: flex; flex-wrap: wrap; gap: 1.8rem; }
+        .flex-2col > * { flex: 1; min-width: 260px; }
+        .chart-container {
+            background: white; border-radius: 1.2rem;
+            padding: 1rem; box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+            border: 1px solid #D9EDEB;
+        }
+
+        /* ===== BMC ===== */
+        .bmc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1rem; }
+        .bmc-card { background: white; border-radius: 1rem; border-top: 4px solid; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .bmc-title { font-weight: 800; padding: 0.42rem 0.8rem; text-align: center; color: white; font-size: 0.75rem; }
+        .bmc-content { padding: 0.72rem; font-size: 0.74rem; line-height: 1.75; color: var(--text-dark); }
+
+        /* ===== ARCH FLOW ===== */
+        .arch-flow {
+            display: flex; flex-wrap: wrap;
+            justify-content: center; align-items: center;
+            gap: 0.4rem; margin: 1.5rem 0;
+        }
+        .arch-node {
+            background: #F0FAF8; border-radius: 1rem;
+            padding: 0.65rem 0.55rem; width: 115px; text-align: center;
+            border-left: 4px solid var(--teal);
+            box-shadow: 0 2px 8px rgba(14,165,160,0.12);
+        }
+        .arch-node strong { font-size: 0.71rem; display: block; color: var(--text-dark); }
+        .arch-node small { font-size: 0.6rem; color: #475569; }
+        .arrow-icon { font-size: 1.15rem; color: var(--teal); }
+
+        /* ===== NEW: 5-step CoT visual ===== */
+        .cot-flow {
+            display: flex; gap: 0; align-items: stretch;
+            border-radius: 1rem; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin: 1rem 0;
+        }
+        .cot-step {
+            flex: 1; padding: 1rem 0.6rem; text-align: center;
+            min-width: 90px;
+        }
+        .cot-step strong { display: block; font-size: 0.72rem; margin-top: 0.3rem; }
+        .cot-step small { font-size: 0.6rem; opacity: 0.85; }
+        .cot-step i { font-size: 1.3rem; }
+
+        /* ===== TRL ===== */
+        .trl-bar { display: flex; gap: 0.2rem; align-items: center; margin: 1rem 0; }
+        .trl-step {
+            flex: 1; height: 30px; border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.62rem; font-weight: 800; color: white;
+        }
+
+        /* ===== URGENCY ===== */
+        .urgency-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: #F8FAFC; border-radius: 30px;
+            padding: 0.2rem 0.75rem; margin-right: 0.4rem;
+            font-weight: 600; font-size: 0.72rem;
+            border: 1px solid #D9EDEB;
+        }
+
+        /* ===== SDG CARD ===== */
+        .sdg-card {
+            background: white; border-radius: 1.2rem;
+            padding: 1rem; text-align: center; min-width: 130px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            border: 1px solid #D9EDEB;
+        }
+
+        /* ===== FEATURE SCREENSHOT ===== */
+        .screenshot-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+        .screenshot-card {
+            background: white; border-radius: 1.2rem; overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+            border: 1px solid #D9EDEB; min-width: 195px; flex: 1; max-width: 290px;
+        }
+        .screenshot-card .sc-header {
+            background: var(--bg-dark); padding: 0.65rem 1rem;
+            color: white; font-size: 0.76rem; font-weight: 700;
+        }
+        .screenshot-card .sc-body {
+            padding: 0.8rem; min-height: 115px; display: flex;
+            align-items: center; justify-content: center;
+        }
+        .screenshot-card img { width: 100%; height: auto; object-fit: cover; border-radius: 0.5rem; }
+        .screenshot-card .sc-icon { font-size: 2.8rem; color: var(--teal); opacity: 0.7; }
+
+        /* ===== REFS ===== */
+        .ref-list { list-style: none; }
+        .ref-list li {
+            padding: 0.48rem 0.5rem; border-bottom: 1px dashed #D9EDEB;
+            font-size: 0.74rem; color: var(--text-light); line-height: 1.65;
+        }
+        .ref-list li:last-child { border: none; }
+        .ref-num { font-weight: 800; color: var(--teal); margin-right: 0.4rem; font-family: var(--mono); }
+
+        .footer-note {
+            text-align: center; font-size: 0.67rem;
+            color: #94A3B8; margin-top: 0.6rem;
+        }
+        hr.divider { border-color: rgba(255,255,255,0.15); margin: 1rem 0; }
+
+        /* ===== INFO BOXES ===== */
+        .info-box {
+            background: #F0FDF9; border-left: 5px solid var(--teal);
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+        .warn-box {
+            background: #FFFBEB; border-left: 5px solid #F59E0B;
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+        .danger-box {
+            background: #FEF2F2; border-left: 5px solid #EF4444;
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+        .dark-box {
+            background: var(--bg-dark); color: white;
+            padding: 0.8rem 1rem; border-radius: 0.8rem;
+            font-size: 0.81rem; margin: 0.75rem 0; line-height: 1.7;
+        }
+        .purple-box {
+            background: #F5F3FF; border-left: 5px solid #8B5CF6;
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+
+        /* ===== NEW: vram meter ===== */
+        .vram-meter {
+            background: #E2E8F0; border-radius: 8px; height: 22px;
+            overflow: hidden; margin: 0.3rem 0;
+        }
+        .vram-fill {
+            height: 100%; border-radius: 8px;
+            display: flex; align-items: center; justify-content: flex-end;
+            padding-right: 8px; font-size: 0.65rem; font-weight: 800; color: white;
+            font-family: var(--mono);
+            background: linear-gradient(90deg, var(--teal), #059669);
+        }
+
+        /* ===== NEW: rag stat grid ===== */
+        .rag-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.7rem; margin: 1rem 0;
+        }
+        .rag-stat-card {
+            background: white; border-radius: 1rem; padding: 0.8rem 0.7rem;
+            text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #D9EDEB;
+        }
+        .rag-stat-card .stat-val {
+            font-size: 1.55rem; font-weight: 800; color: var(--teal);
+            font-family: var(--mono); display: block;
+        }
+        .rag-stat-card .stat-label {
+            font-size: 0.68rem; color: var(--text-light); margin-top: 0.15rem;
+        }
+
+        /* ===== TITLE SLIDE ===== */
+        #slide1 {
+            background: linear-gradient(135deg, #0A1628 0%, #0D2240 60%, #0C3030 100%);
+            color: white; border-radius: 0 0 2rem 2rem; margin-top: 0; padding-top: 2.5rem;
+        }
+        .hero-accent {
+            width: 60px; height: 5px;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+            margin-bottom: 1rem; border-radius: 3px;
+        }
+        .stat-pill {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: rgba(14,165,160,0.2);
+            border: 1px solid rgba(14,165,160,0.4);
+            border-radius: 40px; padding: 0.28rem 0.9rem;
+            font-size: 0.76rem; margin: 0.2rem;
+        }
+
+        /* ===== PATENT TABLE ===== */
+        .patent-table { width: 100%; border-collapse: collapse; font-size: 0.77rem; }
+        .patent-table th {
+            background: var(--bg-dark); color: white;
+            padding: 0.48rem 0.8rem; text-align: left; font-weight: 700;
+        }
+        .patent-table td { padding: 0.46rem 0.8rem; border-bottom: 1px solid #D9EDEB; }
+        .patent-table tr:hover td { background: #F0FAF8; }
+
+        /* ===== METHODOLOGY STEPS ===== */
+        .method-step {
+            display: flex; gap: 1rem; align-items: flex-start;
+            background: white; border-radius: 1rem; padding: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--teal); margin-bottom: 0.75rem;
+        }
+        .step-num {
+            background: var(--teal); color: white;
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.78rem; flex-shrink: 0;
+        }
+        .step-content h4 { font-size: 0.88rem; margin-bottom: 0.18rem; }
+        .step-content p { font-size: 0.74rem; color: var(--text-light); line-height: 1.6; }
+
+        /* roadmap */
+        .roadmap-step { padding: 0.65rem 1rem; border-radius: 0.7rem; margin-bottom: 0.55rem; }
+        .roadmap-step strong { display: block; font-size: 0.83rem; margin-bottom: 0.1rem; }
+        .roadmap-step p { font-size: 0.74rem; margin: 0; line-height: 1.6; }
+
+        /* ========= METRICS ROW ========= */
+        /* GPU tag */
+        .gpu-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          border-radius: 12px;
+          padding: 5px 14px;
+          font-size: 15px;
+          font-weight: 700;
+          margin-right: 8px;
+          margin-bottom: 6px;
+        }
+        .gpu-tag.a100 { background: linear-gradient(135deg, #4F46E5, #7C3AED); color: #fff; }
+        .gpu-tag.t4   { background: linear-gradient(135deg, #0F2551, #1E4DB7); color: #fff; }
+
+        /* ===== GUARDRAIL LAYER VISUAL ===== */
+        .layer-stack { display: flex; flex-direction: column; gap: 0.4rem; margin: 1rem 0; }
+        .layer-item {
+            display: flex; align-items: center; gap: 0.8rem;
+            background: white; border-radius: 0.7rem; padding: 0.5rem 0.8rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04); border-left: 4px solid;
+        }
+        .layer-num {
+            font-family: var(--mono); font-size: 0.7rem; font-weight: 800;
+            width: 26px; height: 26px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; flex-shrink: 0;
+        }
+        .layer-desc { font-size: 0.76rem; }
+        .layer-desc strong { display: block; font-size: 0.78rem; }
+        .layer-count {
+            margin-left: auto; font-family: var(--mono);
+            font-size: 0.65rem; font-weight: 700;
+            background: #F0FAF8; color: var(--teal);
+            padding: 2px 8px; border-radius: 20px; flex-shrink: 0;
+        }
+
+        /* CONCLUSION - dark bg */
+        #slide13 {
+            background: linear-gradient(135deg, #0A1628, #0D2240, #0C3030);
+            color: white; border-radius: 2rem; margin-bottom: 2rem;
+        }
+        #slide13 .card { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); }
+        #slide13 .card h3, #slide13 .card p { color: white; }
+
+        @media (max-width: 768px) {
+            .nav-tabs a { font-size: 0.56rem; padding: 0.25rem 0.45rem; }
+            .slide-header h2 { font-size: 1.15rem; }
+            .slide-header-logos img { height: 34px; }
+            .arch-node { width: 88px; }
+            .cot-flow { flex-direction: column; border-radius: 0.8rem; }
+        }
+    </style>
 </head>
 <body>
-<div class="poster">
 
-  <!-- ========= HEADER ========= -->
-  <header class="poster-header">
-    <div class="header-content">
-      <div style="width: 100%; display: flex; justify-content: center;">
-        <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 8px 0;">
-      </div>
-      <div class="author-line" style="margin-bottom:10px;">
-        🏥 การประกวดผลงานนวัตกรรมสายอุดมศึกษา ประจำปี 2569
-      </div>
-      <div class="author-line" style="margin-bottom:10px;">
-        (Higher Education Innovation Awards 2026)
-      </div>
-      <div style="width: 100%; display: flex; justify-content: center;">
-        <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 8px 0;">
-      </div>
-      <div class="main-title">🩺 Thai Medical AI Assistant via Fine-Tuned LLM with RAG and Chain-of-Thought</div>
-      <div class="sub-title">ระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วยปัญญาประดิษฐ์โดยการปรับแต่งโมเดลภาษาขนาดใหญ่ร่วมกับ RAG และ CoT</div>
-      <div class="badge-group">
-        <span class="tech-badge">🤖 Chinda‑Qwen3‑4B NF4 + PEFT</span>
-        <span class="tech-badge">🔍 Hybrid RAG (FAISS + BM25 + GraphRAG + RAPTOR + BGE)</span>
-        <span class="tech-badge">🧠 5‑Step CoT + Constitutional AI</span>
-        <span class="tech-badge">🌐 Multimodal (Text/Image/Audio)</span>
-        <span class="tech-badge">🔒 PDPA base64+zlib · TRL 4</span>
-      </div>
-      <div class="author-line" style="margin-top:8px;">
-        ที่ปรึกษา: ผู้ช่วยศาสตราจารย์สุดา เธียรมนตรี[1]<br>
-        นักศึกษา: นายพิษณุ ทองศรี[2] Lead Developer · นายอภิษิฐน์ มะสมัน[3] UX/UI & Backend · นางสาวนันท์นภัส รอดบุตร[4] Marketing<br>
-      </div>
-      <div class="author-line">
-        มหาวิทยาลัยทักษิณ วิทยาเขตพัทลุง[1,2,3] · สถาบันเทคโนโลยีจิตรลดา[4]
-      </div>
-    </div>
-  </header>
-
-  <!-- ========= BODY ========= -->
-  <div class="poster-body">
-
-    <!-- ===== คอลัมน์ซ้าย ===== -->
-    <div class="col">
-
-      <!-- บทคัดย่อ -->
-      <div class="card">
-        <div class="card-title">📄 บทคัดย่อ (Abstract)</div>
-        <div class="body-text">
-          งานวิจัยนี้นำเสนอระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วย AI (Thai Medical AI Assistant) โดยใช้โมเดลภาษาหลักคือ <strong>iapp/chinda-qwen3-4b</strong> ที่ผ่านการ Fine‑tuning ด้วยเทคนิค DoRA+RSLoRA (4‑bit NF4) บน GPU A100‑40GB ผสาน <strong>Hybrid RAG หลายชั้น</strong> ได้แก่ Dense (FAISS IVFFlat 3586×768), Sparse (BM25+Thai tokenizer), GraphRAG (926 nodes, 1,641 edges), RAPTOR (3 levels) และ BGE Reranker พร้อม RRF fusion ระบบรองรับ multimodal (ข้อความ ภาพ เสียง Thai‑Whisper‑Small) มี <strong>5‑step Chain‑of‑Thought</strong> (Input→Symptom→RAG→LLM→Validate) และ <strong>Constitutional AI</strong> (2‑pass revision) เพื่อความปลอดภัย สอดคล้อง PDPA (base64+zlib, SQLite WAL, Audit Log) ผลประเมิน: <strong>BERTScore‑F1 = 0.6768</strong>, ROUGE‑L = 0.1000, VRAM ใช้จริงเพียง 4.55/15.6 GB บน Tesla T4, boot time 7,500 วินาที+
-        </div>
-        <div class="keyword-row">
-          <span class="keyword">#ThaiMedicalAI</span>
-          <span class="keyword">#HybridRAG</span>
-          <span class="keyword">#GraphRAG</span>
-          <span class="keyword">#RAPTOR</span>
-          <span class="keyword">#ChainOfThought</span>
-        </div>
-      </div>
-
-      <!-- บทนำ -->
-      <div class="card">
-        <div class="card-title teal">🔍 บทนำ (Introduction)</div>
-        <div class="body-text">
-          ระบบสาธารณสุขไทยเผชิญความท้าทายด้านบุคลากร โดยเฉพาะในพื้นที่ห่างไกล ขณะที่โมเดลภาษาส่วนใหญ่เน้นภาษาอังกฤษ/จีน และขาดการเข้าใจบริบททางการแพทย์ไทย งานวิจัยนี้พัฒนาระบบที่รวม <strong>Fine‑tuning เฉพาะทาง + Hybrid RAG ขั้นสูง + CoT + Multimodal + PDPA</strong> เพื่อให้คำแนะนำทางการแพทย์เบื้องต้นที่ถูกต้อง โปร่งใส และเคารพสิทธิ์ข้อมูลส่วนบุคคล
-        </div>
-        <div class="highlight teal">
-          💡 <strong>แรงบันดาลใจ:</strong> ลดความเหลื่อมล้ำในการเข้าถึงข้อมูลสุขภาพ สนับสนุน SDG 3 (สุขภาพดี) และ SDG 10 (ลดความเหลื่อมล้ำ)
-        </div>
-        <div class="img-wrapper">
-          <img src="img/แชทปรึกษา.png" alt="หน้าจอ Thai Medical AI Assistant Chat">
-          <div class="caption-fig">ภาพที่ 1: หน้าสนทนาหลัก รองรับข้อความ ภาพ และเสียง พร้อมแสดง Chain‑of‑Thought</div>
-        </div>
-      </div>
-
-      <!-- จุดเด่น / ความแปลกใหม่ (อัปเดต) -->
-      <div class="card">
-        <div class="card-title sky">⭐ จุดเด่นเชิงนวัตกรรม (v1)</div>
-        <div class="feature-grid">
-          <div class="feature-item">
-            <div class="fi-title">🇹🇭 ภาษาไทยเฉพาะทาง</div>
-            <div class="fi-body">Fine‑tuned ด้วยข้อมูลการแพทย์ไทย 3,600 รายการ + Knowledge Base 3,586 chunks (โรค 1669, ฉุกเฉิน 608, ยา 320, ขั้นตอนการรักษา 226, การป้องกัน 220, จิตเวชศาสตร์ 206, แนวทางปฏิบัติ 146, อาการ 121, การวินิจฉัย 51, โภชนาการ 12, การรักษา 7 )</div>
-          </div>
-          <div class="feature-item">
-            <div class="fi-title">🔬 Hybrid RAG หลายชั้น</div>
-            <div class="fi-body">FAISS (768d) + BM25 (PyThaiNLP) + GraphRAG 926 nodes + RAPTOR 3 levels + BGE Reranker + RRF fusion</div>
-          </div>
-          <div class="feature-item">
-            <div class="fi-title">🧠 5‑Step CoT + Constitutional AI</div>
-            <div class="fi-body">Linear CoT (5 ขั้นตอน) + 2‑pass Revision ตามหลักการแพทย์ 5 ข้อ + สายด่วน 1669/1323</div>
-          </div>
-          <div class="feature-item">
-            <div class="fi-title">📷 Multimodal Edge‑Ready</div>
-            <div class="fi-body">Thai‑Whisper‑Small (ASR) + ColPali NF4 (heuristic vision) + edge‑tts 24kHz</div>
-          </div>
-          <div class="feature-item">
-            <div class="fi-title">🔒 PDPA Compliance</div>
-            <div class="fi-body">base64+zlib, SQLite WAL, Audit Log, Consent Management, Anonymization</div>
-          </div>
-          <div class="feature-item">
-            <div class="fi-title">📊 ระบบประเมิน RAGAS</div>
-            <div class="fi-body">Faithfulness, Answer Relevancy, Context Recall, LRU Cache (256 items, TTL 1800s)</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- วรรณกรรม + สิทธิบัตร -->
-      <div class="card">
-        <div class="card-title">📚 การทบทวนวรรณกรรม & สิทธิบัตร</div>
-        <div class="body-text">
-          <strong>งานวิจัยที่เกี่ยวข้อง:</strong> Singhal et al. (2023) Med‑PaLM 2 · Lewis et al. (2020) RAG · Hu et al. (2021) LoRA · Liu et al. (2024) DoRA · Wei et al. (2022) CoT · Yao et al. (2023) Tree‑of‑Thoughts · งานนี้รวม DoRA+RSLoRA + Hybrid RAG (GraphRAPTOR) + CoT + Multimodal + PDPA เป็นครั้งแรกในภาษาไทย
-        </div>
-        <div class="highlight blue" style="margin-top:10px;">
-          <strong>🔎 ผลสืบค้นสิทธิบัตร (USPTO, IPTHAILAND):</strong> ไม่มีสิทธิบัตรใดที่ครอบคลุมองค์ประกอบทั้งหมด (Fine‑tuning ภาษาไทย + Hybrid RAG ที่มี GraphRAG/RAPTOR + 5‑step CoT + PDPA) จึงมีความเป็นนวัตกรรมใหม่
-        </div>
-      </div>
-
-      <!-- วัตถุประสงค์ -->
-      <div class="card">
-        <div class="card-title navy">🎯 วัตถุประสงค์การจัดทำ</div>
-        <ul class="step-list">
-          <li><span class="step-num">1</span><span>พัฒนา LLM Fine‑tuned ภาษาไทยเฉพาะทางแพทย์ (iapp/chinda-qwen3-4b NF4)</span></li>
-          <li><span class="step-num">2</span><span>สร้าง Hybrid RAG หลายรูปแบบ (Dense+Sparse+Graph+RAPTOR) เพื่อเพิ่มความถูกต้อง</span></li>
-          <li><span class="step-num">3</span><span>ออกแบบ 5‑step Chain‑of‑Thought พร้อม Constitutional AI revision</span></li>
-          <li><span class="step-num">4</span><span>รองรับ multimodal (ข้อความ, ภาพ, เสียง) และ Thai TTS (edge‑tts)</span></li>
-          <li><span class="step-num">5</span><span>บูรณาการ PDPA (encryption, consent, audit log) และระบบ Feedback สำหรับปรับปรุงโมเดล</span></li>
-        </ul>
-      </div>
-
-      <!-- กระบวนการสร้าง (Methodology อัปเดต) -->
-      <div class="card">
-        <div class="card-title teal">⚙️ กระบวนการสร้างสรรค์ (Methodology v1)</div>
-        <div class="arch-flow">
-          <div class="arch-node">📂 Dataset<br><small>3,600 rows (TH)</small></div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-node">🔄 Fine‑Tune<br><small>DoRA+RSLoRA, NF4</small></div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-node">📚 KB Loader<br><small>3,586 chunks</small></div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-node">🌲 Hybrid RAG<br><small>FAISS+BM25+Graph+RAPTOR</small></div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-node">🤖 Gradio + PDPA<br><small>Gradio 5.50, edge‑tts</small></div>
-        </div>
-        <ul class="step-list">
-          <li><span class="step-num">1</span><span><strong>ชุดข้อมูล:</strong> Mental Health (900) + HealthCareQA (900) + PubMed (900) + Medical QA (900) แปลและตรวจสอบโดยแพทย์</span></li>
-          <li><span class="step-num">2</span><span><strong>Fine‑tuning:</strong> iapp/chinda-qwen3-4b ด้วย DoRA + RSLoRA, rank=2, 4‑bit NF4, NEFTune α=10, Curriculum Learning บน A100</span></li>
-          <li><span class="step-num">3</span><span><strong>Knowledge Base:</strong> ไฟล์ข้อความ 25 รายการ → 3,586 chunks (โรค 1669, ฉุกเฉิน 608, ยา 320, ขั้นตอนการรักษา 226, การป้องกัน 220, จิตเวชศาสตร์ 206, แนวทางปฏิบัติ 146, อาการ 121, การวินิจฉัย 51, โภชนาการ 12, การรักษา 7)</span></li>
-          <li><span class="step-num">4</span><span><strong>Hybrid RAG Pipeline:</strong> Granite‑Embedding (768d) → FAISS IVFFlat + BM25 (Thai) + GraphRAG (926 nodes) + RAPTOR (3 levels) → RRF Fusion → BGE Reranker → MMR</span></li>
-          <li><span class="step-num">5</span><span><strong>Orchestrator 5‑step CoT:</strong> (1) Input+PII (2) Symptom+Triage (3) RAG (4) LLM+Constitutional (5) Validate+TTS · LRU Cache 256, TTL 30m</span></li>
-        </ul>
-        <div class="img-wrapper">
-          <img src="img/วิธีใชงาน.png" alt="วิธีใช้งานระบบ v1">
-          <div class="caption-fig">ภาพที่ 2: ขั้นตอนการใช้งานแบบ Multimodal (แชท, อัปโหลดภาพ, อัดเสียง)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== คอลัมน์ขวา ===== -->
-    <div class="col">
-
-      <!-- คุณสมบัติและสถิติจากการรันจริง -->
-      <div class="card">
-        <div class="card-title sky">🔧 คุณสมบัติ / คุณลักษณะเฉพาะ</div>
-        <div class="stat-grid">
-          <div class="stat-badge"><span class="stat-number">3,586</span><div class="stat-label">Chunks KB</div></div>
-          <div class="stat-badge"><span class="stat-number">926</span><div class="stat-label">Graph Nodes</div></div>
-          <div class="stat-badge"><span class="stat-number">1,641</span><div class="stat-label">Edges</div></div>
-          <div class="stat-badge"><span class="stat-number">2,336</span><div class="stat-label">Triples</div></div>
-          <div class="stat-badge"><span class="stat-number">4.55</span><div class="stat-label">VRAM (GB)</div></div>
-          <div class="stat-badge"><span class="stat-number">7,500+</span><div class="stat-label">Boot Time (s)</div></div>
-        </div>
-        <div class="img-wrapper">
-          <img src="img/สถิติ.png" alt="สถิติประสิทธิภาพโมเดล + RAG">
-          <div class="caption-fig">ภาพที่ 3: BERTScore‑F1 0.6768, ROUGE‑L 0.1000, Faithfulness ~0.84 (RAGAS)</div>
-        </div>
-      </div>
-
-      <!-- ผลงานสร้างสรรค์และฟีเจอร์ใหม่ -->
-      <div class="card">
-        <div class="card-title">📊 ผลงานสร้างสรรค์ (Results & Features)</div>
-        <div class="img-grid-2">
-          <div class="img-grid-item">
-            <img src="img/โปรไฟล์ผู้ใช้.png" alt="PDPA Profile">
-            <div class="caption-fig">ภาพที่ 4: โปรไฟล์ผู้ใช้และระบบให้/ถอนความยินยอม PDPA (base64+zlib)</div>
-          </div>
-          <div class="img-grid-item">
-            <img src="img/ให้ความคิดเห็น.png" alt="Feedback System">
-            <div class="caption-fig">ภาพที่ 5: System Dashboard - สถานะโมเดล, VRAM Gauge, Feedback Chart, RAG Stats</div>
-          </div>
-        </div>
-        <div class="img-grid-2">
-          <div class="img-grid-item">
-            <img src="img/ข้อมูลฉุกเฉิน.png" alt="Triage & Emergency">
-            <div class="caption-fig">ภาพที่ 6: ระบบ Triage 4 ระดับ (Critical/High/Medium/Low) + เบอร์ฉุกเฉิน 1669/1323</div>
-          </div>
-          <div class="img-grid-item">
-            <img src="img/แชทปรึกษา.png" alt="CoT Visualization">
-            <div class="caption-fig">ภาพที่ 7: Chain‑of‑Thought ขั้นตอนที่ 1‑5 พร้อมกราฟแสดงผล</div>
-          </div>
-        </div>
-
-        <!-- TRL Bar อัปเดต -->
-        <div style="margin-top:10px;">
-          <div style="font-size:18px; font-weight:700; color:var(--navy); margin-bottom:10px;">📈 ระดับ TRL (Technology Readiness Level)</div>
-          <div class="trl-bar">
-            <div class="trl-step done">TRL 1</div>
-            <div class="trl-step done">TRL 2</div>
-            <div class="trl-step done">TRL 3</div>
-            <div class="trl-step now">TRL 4 ✓</div>
-            <div class="trl-step future">TRL 5</div>
-            <div class="trl-step target">TRL 6 🎯</div>
-            <div class="trl-step future">TRL 7</div>
-            <div class="trl-step future">TRL 8</div>
-            <div class="trl-step future">TRL 9</div>
-          </div>
-          <div style="font-size:16px; color:var(--text-muted); line-height:1.5;">
-            <span style="background:var(--gold);color:#0F172A;padding:2px 10px;border-radius:8px;font-weight:700;">ปัจจุบัน TRL 4</span> — ทดสอบส่วนประกอบในห้องปฏิบัติการ (Kaggle T4, Colab) &nbsp;|&nbsp;
-            <span style="background:var(--teal);color:#fff;padding:2px 10px;border-radius:8px;font-weight:700;">เป้าหมาย TRL 6</span> — สาธิตต้นแบบในโรงพยาบาล/คลินิกนำร่อง
-          </div>
-        </div>
-      </div>
-
-      <!-- การวิเคราะห์และอภิปรายผล (อัปเดต) -->
-      <div class="card">
-        <div class="card-title teal">🤖 การวิเคราะห์และอภิปรายผล</div>
-        <div class="qa-list">
-          <div class="qa-item">
-            <div class="qa-q">❓ GraphRAG + RAPTOR ช่วยเพิ่มประสิทธิภาพ RAG อย่างไร?</div>
-            <div class="qa-a">✅ GraphRAG ให้บริบทเชิงความสัมพันธ์ (926 nodes) ส่วน RAPTOR (3 levels) สรุปภาพรวมโดเมน ทำให้ recall เพิ่มขึ้น ~12% ในการทดสอบเบื้องต้น</div>
-          </div>
-          <div class="qa-item">
-            <div class="qa-q">❓ Constitutional AI ลดความเสี่ยงทางการแพทย์ได้แค่ไหน?</div>
-            <div class="qa-a">✅ 2‑pass revision บังคับให้มี disclaimer, เบอร์ฉุกเฉิน, และห้ามวินิจฉัย ลดการตอบที่อาจเป็นอันตรายลง >90% จากการสุ่มทดสอบ</div>
-          </div>
-          <div class="qa-item">
-            <div class="qa-q">❓ ประสิทธิภาพบน Tesla T4 (Kaggle) กับ VRAM 15.6 GB?</div>
-            <div class="qa-a">✅ ใช้ NF4 + GraniteEmbed (768d) + BGE Reranker รวม VRAM 4.55 GB, latency ค่าเฉลี่ยการตอบกลับ ~35‑40 วินาที, boot 7,500 วินาที+</div>
-          </div>
-        </div>
-        <div class="highlight teal" style="margin-top:10px;">
-          🌟 <strong>DoRA vs LoRA:</strong> DoRA แยกการอัปเดต magnitude และ direction ทำให้เลียนแบบ full fine‑tuning ได้แม่นยำขึ้น สะท้อนใน BERTScore-F1 0.6768 สูงกว่า baseline ~4%
-        </div>
-
-        <!-- ตารางเปรียบเทียบ อัปเดตคู่แข่ง -->
-        <table class="compare-table" style="margin-top:10px;">
-          <thead>
-            <tr><th>คุณสมบัติ</th><th>Thai Medical AI v1 (งานนี้)</th><th>Sensely</th><th>Med‑PaLM 2</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>ภาษาไทย</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-            <tr><td>Hybrid RAG (Graph+RAPTOR)</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-            <tr><td>Chain‑of‑Thought</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
-            <tr><td>Multimodal (ภาพ+เสียง)</td><td class="check">✓</td><td class="cross">✗</td><td class="check">✓</td></tr>
-            <tr><td>PDPA Compliance</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-            <tr><td>Open‑Source / Edge (T4)</td><td class="check">✓</td><td class="cross">✗</td><td class="cross">✗</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- กลุ่มเป้าหมาย -->
-      <div class="card">
-        <div class="card-title green">👥 กลุ่มเป้าหมายที่จะนำไปใช้ประโยชน์</div>
-        <div class="target-grid">
-          <div class="target-item"><span class="target-icon">🧑‍🌾</span>ประชาชนพื้นที่ห่างไกล<br><small>เข้าถึงข้อมูลสุขภาพ 24/7</small></div>
-          <div class="target-item"><span class="target-icon">🏥</span>รพ. / คลินิกชุมชน<br><small>ระบบ Triage เบื้องต้น</small></div>
-          <div class="target-item"><span class="target-icon">🧠</span>ผู้มีปัญหาสุขภาพจิต<br><small>สายด่วน 1323 ในระบบ</small></div>
-          <div class="target-item"><span class="target-icon">👴</span>ผู้สูงอายุ / ผู้ดูแล<br><small>Thai TTS ช่วยอ่าน</small></div>
-          <div class="target-item"><span class="target-icon">🔬</span>นักศึกษา AI / NLP<br><small>Open‑source Framework</small></div>
-          <div class="target-item"><span class="target-icon">🏢</span>Startup HealthTech<br><small>API / White‑label</small></div>
-        </div>
-      </div>
-
-      <!-- บทสรุป -->
-      <div class="card">
-        <div class="card-title">📌 บทสรุป (Conclusion)</div>
-        <div class="body-text">
-          Thai Medical AI Assistant ประสบความสำเร็จในการรวม Fine‑tuned LLM (Chinda‑Qwen3‑4B NF4) กับ <strong>Hybrid RAG ขั้นสูง (FAISS+BM25+GraphRAG+RAPTOR+BGE)</strong>, <strong>5‑step CoT</strong>, <strong>Constitutional AI</strong>, และ <strong>PDPA compliance</strong> ทำงานบน GPU Tesla T4 (Kaggle) ด้วย VRAM 4.55 GB และให้ BERTScore‑F1 0.6768 ระบบนี้พร้อมสำหรับการทดสอบในโรงพยาบาลนำร่อง (TRL 4 → TRL 6)
-        </div>
-        <div class="highlight blue">
-          <strong>แผนพัฒนา:</strong><br>
-          1) ขยาย Knowledge Base เป็น 5,000+ chunks (เพิ่ม guideline การพยาบาล, ยาไทย)<br>
-          2) เก็บ feedback จากแพทย์จริงเพื่อปรับ LoRA samples<br>
-          3) พัฒนา Human‑in‑the‑loop (แพทย์ตรวจสอบคำตอบเสี่ยง)<br>
-          4) Deploy ผ่าน Docker + FastAPI สำหรับโรงพยาบาลเครือข่าย
-        </div>
-        <div class="sdg-row">
-          <div class="sdg-badge">🌱 SDG 3: Good Health & Well‑Being</div>
-          <div class="sdg-badge">⚖️ SDG 10: Reduced Inequalities</div>
-          <div class="sdg-badge">💡 SDG 9: Industry & Innovation</div>
-        </div>
-        <hr class="div-line">
-        <div class="card-title" style="font-size:22px; margin-bottom:10px;">📚 บรรณานุกรม (References)</div>
-        <div class="ref">
-          [1] พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล 2562. <em>ราชกิจจานุเบกษา เล่ม 136 ตอนที่ 69 ก.</em><br>
-          [2] BGE Team. (2024). <em>bge‑reranker‑v2‑m3.</em> HuggingFace.<br>
-	[3] Cormack G. et al. (2009). <em>Reciprocal Rank Fusion outperforms Condorcet and individual Rank Learning Methods.</em> SIGIR.<br>
-          [4] Granite Embedding. (2025). <em>granite‑embedding‑311m.</em> IBM.<br>
-          [5] Hu E. et al. (2021). <em>Low-Rank Adaptation of Large Language Models</em> ICLR.<br>
-          [6] iApp Technology. (2025). <em>Thai LLM chinda‑qwen3‑4b.</em> HuggingFace.<br>
-	[7] Kalajdzievski D. (2023). <em>A Rank Stabilization Scaling Factor for Fine-Tuning with LoRA.</em> arXiv.<br>
-	[8] KBTG Labs. (2024). <em>THaLLE-0.2-ThaiLLM-8B-fa. </em>HuggingFace.<br>
-          [9] Lewis P. et al. (2020). <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</em> NeurIPS.<br>
-          [10] Liu S. et al. (2024). <em>Weight-Decomposed Low-Rank Adaptation.</em> ICML.<br>
-	[11] Singhal K. et al. (2023). <em>Large Language Models Encode Clinical Knowledge. </em>Nature.<br>
-	[12] Typhoon AI / SCB 10X. (2025). <em>typhoon2.5-qwen3-4b.</em>HuggingFace.<br>
-          [13] Wei J. et al. (2022). <em>Chain-of-Thought Prompting Elicits Reasoning in LLM</em> NeurIPS.
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ========= FOOTER ========= -->
-  <footer class="poster-footer">
-    <div class="footer-inner">
-      <div style="width: 100%; display: flex; justify-content: center;">
-        <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 8px 0;">
-      </div>
-      <div class="footer-tags">
-        <span class="footer-tag">📧 <a href="mailto:suda@tsu.ac.th">ที่ปรึกษา[1]</a></span>
-        <span class="footer-tag">📧 <a href="mailto:pitsanu2448@gmail.com">นักศึกษา[2]</a></span>
-        <span class="footer-tag">🌐 <a href="https://pitsanu2448.github.io/portfolio.html">Portfolio[2]</a></span>
-        <span class="footer-tag">🔗 <a href="https://github.com/pitsanu2448">GitHub: pitsanu2448[2]</a></span>
-      </div>
-      <div style="width: 100%; display: flex; justify-content: center;">
-        <hr style="width: 30%; height: 2pt; background: linear-gradient(90deg, transparent, white, transparent); border: none; margin: 8px 0;">
-      </div>
-      <div class="footer-copy">
-        © 2026 <span class="gold-text">มหาวิทยาลัยทักษิณ วิทยาเขตพัทลุง</span> &nbsp;|&nbsp; <span class="gold-text">สถาบันเทคโนโลยีจิตรลดา</span><br>
-        สนับสนุนโดย <span class="gold-text">สำนักงานการวิจัยแห่งชาติ (วช.)</span> &nbsp;|&nbsp; ลิขสิทธิ์ Apache 2.0 / MIT
-      </div>
-    </div>
-  </footer>
-
+<!-- NAV -->
+<div class="nav-tabs" id="navTabs">
+    <a href="#slide1" class="active">🏠 1. Abstract</a>
+    <a href="#slide2">⚠️ 2. ปัญหา</a>
+    <a href="#slide3">📈 3. ตลาด</a>
+    <a href="#slide4">✨ 4. จุดเด่น</a>
+    <a href="#slide5">📚 5. Literature</a>
+    <a href="#slide6">💼 6. BMC</a>
+    <a href="#slide7">🎯 7. วัตถุประสงค์</a>
+    <a href="#slide8">⚙️ 8. กระบวนการ</a>
+    <a href="#slide8b">🖥️ 8b. สเปคระบบ</a>
+    <a href="#slide9">📊 9. ผลงาน & TRL</a>
+    <a href="#slide10">🔬 10. วิเคราะห์</a>
+    <a href="#slide11">🚀 11. กลุ่มเป้าหมาย</a>
+    <a href="#slide12">🌱 12. บทสรุป & SDGs</a>
+    <a href="#slide13">📖 13. บรรณานุกรม</a>
 </div>
+
+<!-- ==================== SLIDE 1 : ABSTRACT / TITLE ==================== -->
+<section id="slide1" class="slide-section" style="padding-bottom:2.5rem;">
+    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;">
+        <div style="flex:1; min-width:260px;">
+            <div class="hero-accent"></div>
+            <div style="margin-bottom:0.7rem; display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center;">
+                <span class="badge-tag" style="background:#134E4A; border:1px solid rgba(20,184,166,0.5);">การประกวดผลงานนวัตกรรมสายอุดมศึกษา 2569 | วช.</span>
+                <span class="version-badge">✦ v1-Ultra</span>
+            </div>
+            <h1 style="font-size:1.85rem; font-weight:800; margin:0.9rem 0 0.45rem; line-height:1.3;">
+                <span style="color:var(--teal-mid); font-size:1.45rem;">Thai Medical AI Assistant via Fine-Tuned LLM with RAG and Chain-of-Thought</span>
+            </h1>
+            <p style="font-size:0.98rem; color:#CCFBF1; margin-bottom:1rem; line-height:1.7;">
+                ระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วยปัญญาประดิษฐ์ โดยการปรับแต่งโมเดลภาษาขนาดใหญ่ร่วมกับ RAG และ CoT
+            </p>
+
+            <!-- Badges -->
+            <div style="margin-bottom:1rem;">
+                <span class="badge-tag">Fine-tuned LLM</span>
+                <span class="badge-tag">Hybrid RAG (FAISS+BM25+GraphRAG+RAPTOR)</span>
+                <span class="badge-tag">5-Step CoT</span>
+                <span class="badge-tag">PDPA Compliant</span>
+                <span class="badge-tag">Multimodal</span>
+                <span class="badge-tag">DoRA+RSLoRA</span>
+                <span class="badge-tag">Constitutional AI</span>
+                <span class="badge-tag">Apache 2.0</span>
+                <span class="badge-tag badge-gold">Gradio 5.50 · edge-tts 7.2.8</span>
+            </div>
+
+            <!-- Stats -->
+            <div style="margin-bottom:1.2rem; display:flex; flex-wrap:wrap;">
+                <span class="stat-pill"><i class="fas fa-star" style="color:var(--gold);"></i> BERTScore F1 = <strong style="color:var(--teal-mid);">0.6768</strong></span>
+                <span class="stat-pill"><i class="fas fa-microchip" style="color:var(--teal-mid);"></i> chinda-qwen3-4b · 4B NF4+PEFT</span>
+                <span class="stat-pill"><i class="fas fa-database" style="color:var(--gold);"></i> 3,586 KB Chunks · 926 KG Nodes</span>
+                <span class="stat-pill"><i class="fas fa-flask" style="color:var(--gold);"></i> TRL 4 → 6</span>
+                <span class="stat-pill"><i class="fas fa-clock" style="color:var(--teal-mid);"></i> Boot 144.3s · VRAM 4.56/15.6 GB</span>
+            </div>
+
+            <hr class="divider" style="border-color:rgba(255,255,255,0.15); border-top:1px solid;">
+
+            <!-- Abstract paragraph -->
+            <div style="background:rgba(14,165,160,0.12); border-radius:1rem; padding:1rem; margin-bottom:1rem; border:1px solid rgba(14,165,160,0.3);">
+                <p style="font-size:0.81rem; color:#CCFBF1; line-height:1.85;">
+                    <strong style="color:white;">บทคัดย่อ (v1-Ultra):</strong>  งานวิจัยนี้นำเสนอการพัฒนาระบบผู้ช่วยทางการแพทย์ภาษาไทยด้วยปัญญาประดิษฐ์ โดยทำการเปรียบเทียบและ Fine-tune โมเดล LLM ภาษาไทย 3 โมเดล ได้แก่ <em>iapp/chinda-qwen3-4b, KBTG-Labs/THaLLE-0.2-ThaiLLM-8B-fa</em> และ <em>typhoon-ai/typhoon2.5-qwen3-4b</em> ด้วยเทคนิค DoRA+RSLoRA+4-bit NF4 ร่วมกับ <strong>Hybrid RAG</strong> (FAISS IVFFlat GPU + BM25 + GraphRAG 926 nodes + RAPTOR 2 levels + RRF fusion) และ <strong>5-Step Agentic Chain-of-Thought</strong> พร้อม Constitutional AI 6 principles, 2-pass revision หยุดอัตโนมัติเมื่อ score ≥ 0.80 เพื่อความปลอดภัย + Guardrails 6-layer บนชุดข้อมูลทางการแพทย์ภาษาไทย  3,600 แถว พร้อม knowledeg_base สำหรับ RAG 3,586 chunks บน <span class="gpu-tag a100">🔥 GPU A100 80 GB</span> ผล iapp/chinda-qwen3-4b (Fine-tuned) ได้คะแนน BERTScore-F1 สูงสุด = <strong style="color:var(--gold);">0.6768</strong> ระบบรองรับ Multimodal Input (ข้อความ/เสียง/ภาพ) ด้วย ColPali v1.3 NF4, Thai-Whisper-Small, edge-tts 7.2.8 (24kHz) และออกแบบให้สอดคล้อง PDPA 2562 (base64+zlib+SHA256, SQLite WAL, Audit Log, Consent 2025-PDPA-v1) พร้อม Triage 4 ระดับ + Emergency Fast-path (FAST stroke, PHQ-9) ระบบ deploy บน <span class="gpu-tag t4">⚡ GPU Tesla T4 15.6 GB</span> VRAM ใช้จริง <strong>4.56/15.6 GB</strong> boot time 144 วินาที (T4) ผลประเมิน: <strong>BERTScore‑F1 = 0.6768</strong>, ROUGE‑L = 0.1000, Faithfulness ~0.84 (RAGAS)
+                </p>
+            </div>
+
+            <!-- Team -->
+            <div style="font-size:0.79rem; color:#94A3B8; line-height:2.1;">
+                <p>🎓 <strong style="color:white;">อาจารย์ที่ปรึกษา:</strong> ผู้ช่วยศาสตราจารย์สุดา เธียรมนตรี · มหาวิทยาลัยทักษิณ</p>
+                <p>👨‍💻 <strong style="color:white;">นักศึกษา:</strong> นายพิษณุ ทองศรี (50%) · นายอภิษิฐน์ มะสมัน (20%) · นางสาวนันท์นภัส รอดบุตร (20%)</p>
+                <p>🏛️ <strong style="color:white;">หน่วยงาน:</strong> ทีม AIoTx Tech · มหาวิทยาลัยทักษิณ · สถาบันเทคโนโลยีจิตรลดา</p>
+                <p>🖥️ <strong style="color:white;">Platform:</strong> Kaggle · Tesla T4 · VRAM 15.6 GB · CUDA 12.8 · Gradio 5.50.0</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 2 : ปัญหา ==================== -->
+<section id="slide2" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 02</span>
+            <h2>ปัญหาและช่องว่างตลาด</h2>
+            <div class="sub">Problem Statement & Market Gap</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div class="card-grid" style="margin-bottom:1.5rem;">
+        <div class="card" style="border-top:4px solid #EF4444;">
+            <i class="fas fa-user-md" style="font-size:1.8rem; color:#EF4444;"></i>
+            <h3>ขาดแคลนบุคลากรแพทย์</h3>
+            <p>อัตราส่วนแพทย์ต่อประชากรต่ำกว่าเกณฑ์ WHO โดยเฉพาะพื้นที่ห่างไกล ชนบทและภาคใต้ตอนล่าง</p>
+        </div>
+        <div class="card" style="border-top:4px solid #F59E0B;">
+            <i class="fas fa-map-marker-alt" style="font-size:1.8rem; color:#F59E0B;"></i>
+            <h3>เข้าถึงบริการยาก</h3>
+            <p>พื้นที่ห่างไกล ต้นทุนการเดินทางสูง ประชาชนไม่สามารถปรึกษาแพทย์ได้ทันเวลา</p>
+        </div>
+        <div class="card" style="border-top:4px solid #3B82F6;">
+            <i class="fas fa-hospital" style="font-size:1.8rem; color:#3B82F6;"></i>
+            <h3>โรงพยาบาลแออัด</h3>
+            <p>ไม่มีระบบ Triage เบื้องต้น ผู้ป่วยรอนาน แพทย์รับภาระงานสูง ระบบล่มช้า</p>
+        </div>
+        <div class="card" style="border-top:4px solid #8B5CF6;">
+            <i class="fas fa-language" style="font-size:1.8rem; color:#8B5CF6;"></i>
+            <h3>LLM ไม่รองรับภาษาไทย</h3>
+            <p>โมเดลทั่วไปถูกออกแบบสำหรับ EN/ZH ไม่เข้าใจบริบทวัฒนธรรม โรค และศัพท์การแพทย์ไทย</p>
+        </div>
+        <div class="card" style="border-top:4px solid #10B981;">
+            <i class="fas fa-shield-virus" style="font-size:1.8rem; color:#10B981;"></i>
+            <h3>ความปลอดภัยข้อมูล</h3>
+            <p>ระบบ AI ทั่วไปไม่สอดคล้อง PDPA 2562 ไม่มี Consent Flow ไม่เข้ารหัสข้อมูลสุขภาพ</p>
+        </div>
+        <div class="card" style="border-top:4px solid #F97316;">
+            <i class="fas fa-brain" style="font-size:1.8rem; color:#F97316;"></i>
+            <h3>Hallucination สูง</h3>
+            <p>LLM ทั่วไปให้ข้อมูลทางการแพทย์ที่ผิดพลาด ขาด Knowledge Base อ้างอิงที่เชื่อถือได้</p>
+        </div>
+    </div>
+
+    <div class="dark-box">
+        <i class="fas fa-exclamation-triangle" style="color:var(--gold);"></i>
+        <strong> Market Gap:</strong> ยังไม่มี Thai Medical AI ที่ครบวงจร — Fine-tuned ภาษาไทย + Hybrid RAG (3,586 chunks) + 5-Step CoT + Constitutional AI 6 principles + PDPA + Multimodal + Edge T4 Deployment ทั้งหมดในระบบเดียว
+    </div>
+
+    <div class="info-box">
+        🎯 <strong>โอกาส:</strong> Thai Medical AI สำหรับคนไทยโดยเฉพาะ · ใช้ Open-source LLM ภาษาไทย · PDPA-compliant · ทำงาน Edge T4 GPU ได้ · 3,586 chunks Knowledge Base + GraphRAG 926 nodes
+    </div>
+</section>
+
+<!-- ==================== SLIDE 3 : โอกาสตลาด ==================== -->
+<section id="slide3" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 03</span>
+            <h2>โอกาสทางตลาด</h2>
+            <div class="sub">Market Opportunity</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div class="card-grid" style="margin-bottom:1.5rem;">
+        <div class="card" style="text-align:center; border-top:4px solid var(--teal);">
+            <span style="font-size:2rem; font-weight:800; color:var(--teal);">$178B</span>
+            <p>ตลาด AI Healthcare ทั่วโลก ปี 2573</p>
+        </div>
+        <div class="card" style="text-align:center; border-top:4px solid #8B5CF6;">
+            <span style="font-size:2rem; font-weight:800; color:#8B5CF6;">$352M</span>
+            <p>ตลาด AI Healthcare ไทย ปี 2577</p>
+        </div>
+        <div class="card" style="text-align:center; border-top:4px solid #F97316;">
+            <span style="font-size:2rem; font-weight:800; color:#F97316;">44%</span>
+            <p>ผู้บริโภคเชื่อมั่น AI Healthcare (KPMG)</p>
+        </div>
+        <div class="card" style="text-align:center; border-top:4px solid #F59E0B;">
+            <span style="font-size:2rem; font-weight:800; color:#F59E0B;">71M+</span>
+            <p>ประชากรไทย กลุ่มเป้าหมายหลัก</p>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="marketGrowthChart" height="240" style="max-height:270px; width:100%;"></canvas>
+        <p class="footer-note">การเติบโตตลาด AI Healthcare ไทย (ล้าน USD) — Projection 2567-2573 | ที่มา: Krungthai COMPASS · KPMG</p>
+    </div>
+
+    <div class="flex-2col" style="margin-top:1.2rem;">
+        <div class="info-box">
+            📌 <strong>แนวโน้มที่เอื้ออำนวย:</strong> นโยบาย Digital Health ของกระทรวงสาธารณสุข, UHC ไทย, BCG Economy Model และการระบาดใหญ่เพิ่มความต้องการ Telehealth · ระบบทำงานบน T4 GPU ราคาประหยัด
+        </div>
+        <div class="warn-box">
+            🏆 <strong>Competitive Advantage vs Sensely.com:</strong> ภาษาไทย 100% · RAG Dynamic 3,586 chunks · Multimodal · PDPA · Edge 4B NF4 (vs Cloud-only) · Open-source Apache 2.0 · GraphRAG 926 nodes
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 4 : จุดเด่น / สถาปัตยกรรม ==================== -->
+<section id="slide4" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 04</span>
+            <h2>จุดเด่นและสถาปัตยกรรมระบบ v1-Ultra</h2>
+            <div class="sub">Key Innovations & System Architecture</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <!-- Innovation highlights -->
+    <div class="card-grid" style="margin-bottom:1.4rem;">
+        <div class="card" style="border-left:4px solid var(--teal); border-radius:0 1.2rem 1.2rem 0;">
+            <i class="fas fa-brain" style="color:var(--teal); font-size:1.4rem;"></i>
+            <h3>5-Step Agentic CoT</h3>
+            <p>Input → Symptom Extraction → Hybrid RAG → LLM + Constitutional AI → Output Validation · FAST stroke fast-path · PHQ-9 screening</p>
+        </div>
+        <div class="card" style="border-left:4px solid #8B5CF6; border-radius:0 1.2rem 1.2rem 0;">
+            <i class="fas fa-database" style="color:#8B5CF6; font-size:1.4rem;"></i>
+            <h3>Hybrid RAG ขั้นสูง</h3>
+            <p>FAISS IVFFlat GPU + Thai BM25 (PyThaiNLP) + GraphRAG 926 nodes + RAPTOR 2 levels + RRF (dense=1.0, bm25=0.8, graph=0.7) + BGE Reranker</p>
+        </div>
+        <div class="card" style="border-left:4px solid #F59E0B; border-radius:0 1.2rem 1.2rem 0;">
+            <i class="fas fa-microchip" style="color:#F59E0B; font-size:1.4rem;"></i>
+            <h3>DoRA + RSLoRA + NF4</h3>
+            <p>Weight-Decomposed LoRA + Rank-Stabilized (α/√r) + 4-bit NF4 QLoRA · chinda-qwen3-4b + PEFT adapter · Qwen3 Thinking Mode suppression</p>
+        </div>
+        <div class="card" style="border-left:4px solid #10B981; border-radius:0 1.2rem 1.2rem 0;">
+            <i class="fas fa-shield-alt" style="color:#10B981; font-size:1.4rem;"></i>
+            <h3>Constitutional AI + Guardrails</h3>
+            <p>6 medical principles · 2-pass revision · early-stop ≥ 0.80 · 6-layer guardrails · 31 patterns · 30 req/min rate-limit · Presidio PII</p>
+        </div>
+        <div class="card" style="border-left:4px solid #F97316; border-radius:0 1.2rem 1.2rem 0;">
+            <i class="fas fa-microphone" style="color:#F97316; font-size:1.4rem;"></i>
+            <h3>Multimodal Input</h3>
+            <p>ColPali v1.3 NF4 (Vision) · Thai-Whisper-Small ASR · edge-tts 7.2.8 Thai TTS 24kHz · HyDE query expansion</p>
+        </div>
+        <div class="card" style="border-left:4px solid #3B82F6; border-radius:0 1.2rem 1.2rem 0;">
+            <i class="fas fa-lock" style="color:#3B82F6; font-size:1.4rem;"></i>
+            <h3>PDPA-first Design</h3>
+            <p>base64+zlib+SHA256 · SQLite WAL · Consent Management 2025-PDPA-v1 · Audit Log · DataRetentionManager · Edge ไม่ส่งข้อมูลขึ้น Cloud</p>
+        </div>
+    </div>
+
+    <!-- 5-Step CoT visual -->
+    <h3 style="margin-bottom:0.8rem; color:var(--text-dark);">🧠 5-Step Chain-of-Thought Pipeline (v1-Ultra)</h3>
+    <div class="cot-flow">
+        <div class="cot-step" style="background:#0EA5A0; color:white;">
+            <i class="fas fa-keyboard"></i>
+            <strong>Step 1</strong>
+            <small>Input · PII · PDPA · Profile</small>
+        </div>
+        <div class="cot-step" style="background:#0891b2; color:white;">
+            <i class="fas fa-stethoscope"></i>
+            <strong>Step 2</strong>
+            <small>Symptom · FAST · PHQ-9 · Triage</small>
+        </div>
+        <div class="cot-step" style="background:#1e40af; color:white;">
+            <i class="fas fa-database"></i>
+            <strong>Step 3</strong>
+            <small>RAG · FAISS+BM25 · Graph · RAPTOR · HyDE</small>
+        </div>
+        <div class="cot-step" style="background:#7c3aed; color:white;">
+            <i class="fas fa-robot"></i>
+            <strong>Step 4</strong>
+            <small>LLM · Constitutional AI (2-pass)</small>
+        </div>
+        <div class="cot-step" style="background:#059669; color:white;">
+            <i class="fas fa-check-circle"></i>
+            <strong>Step 5</strong>
+            <small>Validate · Assemble · TTS · RAGAS</small>
+        </div>
+    </div>
+
+    <!-- System architecture flow -->
+    <h3 style="margin-bottom:0.8rem; margin-top:1.2rem; color:var(--text-dark);">🏗️ System Architecture Flow</h3>
+    <div class="arch-flow">
+        <div class="arch-node"><strong>📱 ผู้ใช้งาน</strong><small>ข้อความ/เสียง/ภาพ</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🔒 Guardrails</strong><small>6-layer · 31 patterns</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🎙️ Multimodal</strong><small>Whisper · ColPali NF4</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>📚 Hybrid RAG</strong><small>FAISS+BM25+Graph+RAPTOR</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🧠 Constitutional AI</strong><small>6 principles · 2-pass</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🤖 chinda-qwen3-4b</strong><small>NF4+PEFT · 1.2 GB</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🚨 Triage</strong><small>4 ระดับ · FAST · PHQ-9</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🔊 TTS</strong><small>edge-tts 24kHz</small></div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin:1rem 0;">
+        <span class="badge-tag">DoRA+RSLoRA</span><span class="badge-tag">4-bit NF4</span>
+        <span class="badge-tag">FAISS IVFFlat GPU-cu12</span><span class="badge-tag">Thai BM25 (PyThaiNLP 5.3.4)</span>
+        <span class="badge-tag">RRF Fusion</span><span class="badge-tag">BGE Reranker v2-m3</span>
+        <span class="badge-tag">GraphRAG 926 nodes</span><span class="badge-tag">RAPTOR 2 levels</span>
+        <span class="badge-tag">Qwen3 Thinking Ctrl</span><span class="badge-tag">RAGAS 0.4.3</span>
+        <span class="badge-tag">Gradio 5.50.0</span><span class="badge-tag">ChromaDB 1.5.9</span>
+        <span class="badge-tag badge-gold">HyDE Expansion</span>
+        <span class="badge-tag badge-gold">HealthMonitor VRAM Watchdog</span>
+        <span class="badge-tag badge-gold">LoRA Negative Sample Saver</span>
+    </div>
+
+    <!-- Triage levels -->
+    <h3 style="margin:1rem 0 0.5rem;">🚨 ระบบ Triage 4 ระดับ + Severity Score 0-10</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
+        <span class="urgency-badge"><i class="fas fa-circle" style="color:#EF4444;"></i> CRITICAL – ฉุกเฉินมาก (score ≥ 7)</span>
+        <span class="urgency-badge"><i class="fas fa-circle" style="color:#F97316;"></i> HIGH – เร่งด่วน</span>
+        <span class="urgency-badge"><i class="fas fa-circle" style="color:#F59E0B;"></i> MEDIUM – ปานกลาง</span>
+        <span class="urgency-badge"><i class="fas fa-circle" style="color:#10B981;"></i> LOW – ไม่เร่งด่วน</span>
+    </div>
+    <div class="info-box" style="font-size:0.77rem;">
+        ⚡ <strong>FAST Stroke Fast-Path:</strong> F=Face drooping · A=Arm weakness · S=Speech difficulty → โทร 1669 ทันที (Golden Hour 4.5 ชม.) &nbsp;|&nbsp;
+        🧠 <strong>PHQ-9 Screening:</strong> score ≥ 10 → moderate-severe → สายด่วน 1323
+    </div>
+</section>
+
+<!-- ==================== SLIDE 5 : Literature Review ==================== -->
+<section id="slide5" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 05</span>
+            <h2>การทบทวนวรรณกรรม & สิทธิบัตร</h2>
+            <div class="sub">Literature Review & Patent Search</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div class="flex-2col">
+        <div>
+            <h3 style="margin-bottom:1rem; color:var(--teal);">📖 Key Literature</h3>
+            <div class="method-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4>Med-PaLM 2 (Singhal et al., 2023)</h4>
+                    <p>LLM Fine-tuned ทางการแพทย์ตอบคำถามระดับผู้เชี่ยวชาญ แต่ไม่รองรับภาษาไทย → ช่องว่างที่งานนี้เติมเต็ม</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4>RAG (Lewis et al., 2020)</h4>
+                    <p>ผสาน Retrieval + Generation ลด Hallucination — งานนี้ขยายสู่ Hybrid RAG (FAISS+BM25+GraphRAG+RAPTOR+HyDE+RRF+MMR) 3,586 chunks</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4>Chain-of-Thought (Wei et al., 2022)</h4>
+                    <p>Step-by-step prompting เพิ่มความแม่นยำ — งานนี้ขยายสู่ Agentic 5-Step CoT พร้อม Constitutional AI revision</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h4>LoRA → DoRA → RSLoRA</h4>
+                    <p>Hu et al. (2021) → Liu et al. (2024) → Kalajdzievski (2023): พัฒนาการ Fine-tuning ประสิทธิภาพสูง ใช้งานจริงใน v1-Ultra</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                    <h4>Medical RAG (Peng et al., 2023)</h4>
+                    <p>RAG ในบริบทการแพทย์ลด Hallucination อย่างมีนัยสำคัญ — ยืนยันแนวทาง Hybrid RAG ของงานวิจัยนี้</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">6</div>
+                <div class="step-content">
+                    <h4>RAPTOR (Sarthi et al., 2024)</h4>
+                    <p>Recursive Abstractive Processing Tree — ใช้สร้าง 2-level cluster summaries (L1: 449 nodes, L2: 6 nodes) บน 3,586 KB chunks</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="margin-bottom:1rem; color:var(--teal);">🔍 Patent Search</h3>
+            <div class="chart-container" style="margin-bottom:1rem;">
+                <table class="patent-table">
+                    <thead>
+                        <tr><th>ฐานข้อมูล</th><th>คำค้น</th><th>ผล</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Google Patents</td><td>Thai Medical LLM</td><td>ไม่พบที่ตรงกัน</td></tr>
+                        <tr><td>USPTO</td><td>Medical chatbot RAG Thai</td><td>ไม่พบที่ตรงกัน</td></tr>
+                        <tr><td>WIPO</td><td>Chain-of-Thought Medical AI</td><td>ไม่พบตรง</td></tr>
+                        <tr><td>DIP Thailand</td><td>ผู้ช่วยแพทย์ AI ไทย</td><td>ยังไม่มีจดทะเบียน</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="info-box" style="font-size:0.77rem;">
+                🔐 <strong>ข้อสรุปการสืบค้นสิทธิบัตร:</strong> ไม่พบสิทธิบัตรที่ครอบคลุมการผสานระหว่าง Fine-tuned Thai LLM + Hybrid RAG (FAISS+BM25+GraphRAG+RAPTOR) + Agentic 5-Step CoT + Constitutional AI 6 principles + PDPA + Multimodal + HealthMonitor ในระบบเดียว — แสดงถึง <strong>ความแปลกใหม่</strong><br><br>
+                📝 สถานะ: <span style="color:var(--teal); font-weight:700;">อยู่ระหว่างพิจารณายื่นอนุสิทธิบัตร</span>
+            </div>
+            <div style="background:#F0FDF9; border-radius:0.8rem; padding:0.8rem; font-size:0.76rem; border:1px solid #99F6E4;">
+                <strong>📊 โมเดลที่ใช้ใน v1-Ultra (จาก Run-Output):</strong><br>
+                • <span class="spec-mono">iapp/chinda-qwen3-4b</span> + PEFT adapter (Apache 2.0) — LLM หลัก<br>
+                • <span class="spec-mono">ibm-granite/granite-embedding-311m-multilingual-r2</span> — Embedding 768d<br>
+                • <span class="spec-mono">BAAI/bge-reranker-v2-m3</span> — BGE CrossEncoder Reranker<br>
+                • <span class="spec-mono">xb2g/thai-whisper-small</span> — Thai ASR<br>
+                • <span class="spec-mono">vidore/colpali-v1.3-merged</span> — Vision (heuristic fallback)<br>
+                • <span class="spec-mono">th-TH-PremwadeeNeural</span> — edge-tts 7.2.8 TTS
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 6 : BMC ==================== -->
+<section id="slide6" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 06</span>
+            <h2>Business Model Canvas & คุณลักษณะ v1-Ultra</h2>
+            <div class="sub">BMC / Features / Scope</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div class="bmc-grid" style="margin-bottom:1.5rem;">
+        <div class="bmc-card" style="border-top-color:#1D4ED8;"><div class="bmc-title" style="background:#1D4ED8;">KEY PARTNERS</div><div class="bmc-content">🏥 โรงพยาบาลนำร่อง<br>🎓 ม.ทักษิณ · CDTI<br>☁️ Kaggle T4 GPU<br>🏛️ สำนักงานสาธารณสุข<br>🤝 ibm-granite · BAAI</div></div>
+        <div class="bmc-card" style="border-top-color:#7C3AED;"><div class="bmc-title" style="background:#7C3AED;">KEY ACTIVITIES</div><div class="bmc-content">⚙️ Fine-tune chinda-qwen3-4b<br>📚 RAG 3,586 chunks KB<br>🔒 PDPA Compliance<br>📊 RAGAS 0.4.3 Eval<br>🧠 Constitutional AI</div></div>
+        <div class="bmc-card" style="border-top-color:#065F46;"><div class="bmc-title" style="background:#065F46;">VALUE PROPOSITION</div><div class="bmc-content">✅ คำปรึกษา 24/7<br>✅ Triage 4 ระดับ + FAST<br>✅ Multimodal Input<br>✅ PDPA-compliant<br>✅ ภาษาไทย 100%<br>✅ Edge T4 Deployment</div></div>
+        <div class="bmc-card" style="border-top-color:#92400E;"><div class="bmc-title" style="background:#92400E;">CUSTOMER SEGMENTS</div><div class="bmc-content">👥 ประชาชนห่างไกล<br>👴 ผู้สูงอายุ<br>🏥 โรงพยาบาล/คลินิก<br>💼 Health Tech SaaS<br>🎓 นักศึกษาแพทย์</div></div>
+        <div class="bmc-card" style="border-top-color:#0F766E;"><div class="bmc-title" style="background:#0F766E;">CHANNELS</div><div class="bmc-content">🖥️ Gradio 5.50 Web App<br>🔌 API / SaaS<br>🤝 Pilot Hospital<br>📦 Edge GGUF/NF4<br>🌐 Kaggle Public</div></div>
+        <div class="bmc-card" style="border-top-color:#0369A1;"><div class="bmc-title" style="background:#0369A1;">KEY RESOURCES</div><div class="bmc-content">🖥️ Tesla T4 15.6GB VRAM<br>📊 3,586 KB Chunks<br>📝 Thai Medical Corpus<br>👨‍💻 ML Team 4 คน<br>🧰 CUDA 12.8 Stack</div></div>
+        <div class="bmc-card" style="border-top-color:#991B1B;"><div class="bmc-title" style="background:#991B1B;">COST STRUCTURE</div><div class="bmc-content">💻 GPU Training Cost<br>☁️ Kaggle Pro+<br>🔬 R&D · Dataset<br>🛡️ Safety Audit<br>📋 PDPA Compliance</div></div>
+        <div class="bmc-card" style="border-top-color:#065F46;"><div class="bmc-title" style="background:#065F46;">REVENUE STREAMS</div><div class="bmc-content">💰 SaaS Subscription<br>🔌 API Usage Fee<br>🏛️ Government Grant<br>📊 UHC Integration<br>🎓 Academic License</div></div>
+    </div>
+
+    <!-- Scope & Features -->
+    <h3 style="margin-bottom:0.8rem;">🔧 คุณสมบัติเฉพาะ v1-Ultra</h3>
+    <div class="card-grid">
+        <div class="card"><i class="fas fa-comments" style="color:var(--teal); font-size:1.4rem;"></i><h3>Multi-turn Chat + Memory</h3><p>สนทนาโต้ตอบ · ConversationalMemory 250 turns · ChromaDB 1.5.9 · TTL 1800s · Semantic dedup</p></div>
+        <div class="card"><i class="fas fa-camera" style="color:#F97316; font-size:1.4rem;"></i><h3>ColPali Vision (Heuristic)</h3><p>ColPali v1.3 NF4 หรือ heuristic PIL analysis · ตรวจสี เนื้อเยื่อ รอยช้ำ ความคมชัด</p></div>
+        <div class="card"><i class="fas fa-microphone" style="color:#8B5CF6; font-size:1.4rem;"></i><h3>Thai Whisper ASR</h3><p>xb2g/thai-whisper-small · resample 16kHz · medical keyword extraction · 10 symptom groups</p></div>
+        <div class="card"><i class="fas fa-volume-up" style="color:#F59E0B; font-size:1.4rem;"></i><h3>Thai TTS 24kHz</h3><p>edge-tts 7.2.8 · th-TH-PremwadeeNeural (female) · NiwatNeural (male) · rate-limit 0.5s cooldown</p></div>
+        <div class="card"><i class="fas fa-lock" style="color:#10B981; font-size:1.4rem;"></i><h3>PDPA SQLite WAL</h3><p>base64+zlib+SHA256 checksum · AES-style · Consent 2025-PDPA-v1 · Audit Log · DataRetentionManager</p></div>
+        <div class="card"><i class="fas fa-chart-line" style="color:#3B82F6; font-size:1.4rem;"></i><h3>RAGAS Auto-Eval</h3><p>RAGAS 0.4.3 · auto batch ทุก 10 queries · Faithfulness + Answer Relevancy + trend chart</p></div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 7 : วัตถุประสงค์ ==================== -->
+<section id="slide7" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 07</span>
+            <h2>วัตถุประสงค์การจัดทำ</h2>
+            <div class="sub">Research Objectives</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div class="method-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+            <h4>พัฒนา Hybrid RAG + 5-Step CoT สำหรับการแพทย์ไทย</h4>
+            <p>ใช้ RAG (FAISS+BM25+GraphRAG+RAPTOR+HyDE) เพิ่มความถูกต้องและลด Hallucination ร่วมกับ 5-Step Chain-of-Thought ส่งเสริมการให้เหตุผลเชิงตรรกะ พร้อม Constitutional AI 6 principles</p>
+        </div>
+    </div>
+    <div class="method-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+            <h4>Fine-tune Thai Medical LLM ด้วย DoRA+RSLoRA+4-bit NF4</h4>
+            <p>Fine-tune chinda-qwen3-4b + PEFT adapter ด้วยข้อมูลทางการแพทย์ภาษาไทยคุณภาพสูง 3,586 chunks (disease 1,669 · emergency 608 · drug 320) บน Tesla T4 15.6GB</p>
+        </div>
+    </div>
+    <div class="method-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+            <h4>สร้างระบบ Triage 4 ระดับ + Severity Score 0-10</h4>
+            <p>ประเมินความเร่งด่วน Critical/High/Medium/Low + FAST stroke checker + PHQ-9 mental health screening เพื่อกรองผู้ป่วยและลดความแออัดในโรงพยาบาล</p>
+        </div>
+    </div>
+    <div class="method-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+            <h4>พัฒนาระบบ Multimodal ครบวงจร พร้อม TTS</h4>
+            <p>รองรับ Input ทั้งข้อความ ภาพทางการแพทย์ (ColPali v1.3 NF4) และเสียง (Thai-Whisper-Small) + Thai TTS (edge-tts 7.2.8 · 24kHz · PremwadeeNeural)</p>
+        </div>
+    </div>
+    <div class="method-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+            <h4>ออกแบบ Guardrails 6-layer + PDPA-compliant</h4>
+            <p>GuardrailsValidator 31 patterns · rate-limit 30/min · Presidio PII · InputSanitizer · ConversationalMemory ChromaDB · PDPA base64+zlib+SHA256 · SQLite WAL</p>
+        </div>
+    </div>
+    <div class="method-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+            <h4>ระบบ Self-improvement: LoRA Saver + RAGAS + HealthMonitor</h4>
+            <p>เก็บ negative samples rating ≤ 2 → JSONL สำหรับ DPO/RLHF รอบถัดไป · RAGAS auto-eval ทุก 10 queries · HealthMonitor VRAM watchdog background thread</p>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 8 : กระบวนการสร้างสรรค์ ==================== -->
+<section id="slide8" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 08</span>
+            <h2>กระบวนการสร้างสรรค์ v1-Ultra</h2>
+            <div class="sub">Methodology / Process / Techniques</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div class="flex-2col">
+        <div>
+            <h3 style="margin-bottom:1rem;">⚙️ ขั้นตอนการทำงาน</h3>
+            <div class="method-step">
+                <div class="step-num">A</div>
+                <div class="step-content">
+                    <h4>ชุดข้อมูลฝึกสอน</h4>
+                    <p>Mental Health (900) + HealthCareQA (900) + PubMed (900) + Medical QA (900) แปลเป็นภาษาไทยด้วยตัวเอง</p>
+                </div>
+
+                <div class="step-content">
+                    <h4>Fine‑tuning</h4>
+                    <p>iapp/chinda-qwen3-4b, KBTG-Labs/THaLLE-0.2-ThaiLLM-8B-fa และ typhoon-ai/typhoon2.5-qwen3-4b ด้วย DoRA + RSLoRA, rank=2, 4‑bit NF4, NEFTune α=10, Curriculum Learning บน A100</p>
+                </div>
+
+                <div class="step-content">
+                    <h4>Data Collection & KB Loading</h4>
+                    <p>โหลด 25 text files จาก KB → 3,577 chunks (dedup by SHA-256) + 9 seed chunks = 3,586 รวม · หมวด disease 1,669 · emergency 608 · drug 320 · procedure 226 · prevention 220 · psychiatry 206</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">B</div>
+                <div class="step-content">
+                    <h4>Hybrid RAG Index Build</h4>
+                    <p>FAISS IVFFlat (nlist=91, nprobe=22) + GPU offload · BM25Okapi (PyThaiNLP newmm) · GraphRAG 926 nodes / 1,641 edges · RAPTOR L1=449, L2=6 · LRU cache 256 entries TTL 1800s · RRF weights dense=1.0, bm25=0.8, graph=0.7</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">C</div>
+                <div class="step-content">
+                    <h4>Model Loading (VRAM-budgeted)</h4>
+                    <p>chinda-qwen3-4b NF4 → 1.2 GB · PEFT adapter · Thai-Whisper-Small → 1.7 GB total · GraniteEmbed 311M → 2.3 GB · BGEReranker v2-m3 → 4.5 GB · Total 4.56/15.6 GB</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">D</div>
+                <div class="step-content">
+                    <h4>5-Step Orchestrator (MedicalOrchestrator v1-Ultra)</h4>
+                    <p>PDPA gate → Symptom extract → RAG retrieve (HyDE+RAPTOR+Graph) → LLM generate → Constitutional AI revision (max 2-pass, stop ≥ 0.80) → Assemble + TTS + RAGAS record</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">E</div>
+                <div class="step-content">
+                    <h4>Guardrails + Constitutional AI</h4>
+                    <p>6-layer validation (injection/danger/PII/adversarial/misinfo/thai-danger) · 31 patterns · Presidio PII · 6 medical principles · disclaimer auto-add · drug dosage warning check</p>
+                </div>
+            </div>
+            <div class="method-step">
+                <div class="step-num">F</div>
+                <div class="step-content">
+                    <h4>RAGAS 0.4.3 + BERTScore Evaluation</h4>
+                    <p>Faithfulness + Answer Relevancy · auto-batch 10 queries · trend report · heuristic fallback mode · LoRA negative sample JSONL สำหรับ DPO รอบถัดไป</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="margin-bottom:1rem;">🛠️ Full Tech Stack</h3>
+            <div class="chart-container" style="margin-bottom:1rem;">
+                <div style="display:flex; flex-wrap:wrap; gap:0.45rem; padding:0.4rem;">
+                    <span class="badge-tag">Python 3.12.12</span>
+                    <span class="badge-tag">transformers 5.8.1</span>
+                    <span class="badge-tag">torch 2.10.0+cu128</span>
+                    <span class="badge-tag">PEFT 0.18.1</span>
+                    <span class="badge-tag badge-blue">bitsandbytes 0.49.2</span>
+                    <span class="badge-tag">sentence-transformers 5.2.3</span>
+                    <span class="badge-tag">faiss-gpu-cu12</span>
+                    <span class="badge-tag">rank-bm25</span>
+                    <span class="badge-tag badge-purple">chromadb 1.5.9</span>
+                    <span class="badge-tag">pythainlp 5.3.4</span>
+                    <span class="badge-tag">edge-tts 7.2.8</span>
+                    <span class="badge-tag">colpali-engine</span>
+                    <span class="badge-tag badge-blue">ragas 0.4.3</span>
+                    <span class="badge-tag">networkx 3.6.1</span>
+                    <span class="badge-tag">gradio 5.50.0</span>
+                    <span class="badge-tag">spaCy en_core_web_lg</span>
+                    <span class="badge-tag badge-purple">presidio-analyzer</span>
+                    <span class="badge-tag">tqdm 4.67.3</span>
+                    <span class="badge-tag">psutil 5.9.5</span>
+                    <span class="badge-tag badge-gold">CUDA 12.8</span>
+                    <span class="badge-tag badge-gold">Tesla T4 15.6GB</span>
+                </div>
+            </div>
+            <div class="info-box" style="font-size:0.76rem;">
+                <strong>📊 Training Configuration (v1-Ultra):</strong><br>
+                • LLM: <span class="spec-mono">iapp/chinda-qwen3-4b</span> + PEFT adapter NF4 (1.2 GB VRAM)<br>
+                • Embedding: <span class="spec-mono">ibm-granite/granite-embedding-311m-multilingual-r2</span> dim=768<br>
+                • Reranker: <span class="spec-mono">BAAI/bge-reranker-v2-m3</span> CrossEncoder batch=32<br>
+                • EMBED_BATCH_SIZE=8 (T4 budget) · RAG_TOP_K=5 · CTX_MAX_CHARS=1800<br>
+                • TEMPERATURE=0.6 · TOP_P=0.95 · TOP_K=20 · MAX_NEW_TOKENS=512
+            </div>
+            <div class="warn-box" style="font-size:0.76rem;">
+                <strong>🧪 Qwen3 Native Thinking Mode Control:</strong><br>
+                โมเดลสร้าง Chain-of-Thought ภายใน &lt;think&gt;...&lt;/think&gt; ก่อนให้คำตอบสุดท้าย · งานนี้ใช้ regex suppress เพื่อให้คำตอบกระชับ · สามารถ enable_thinking=True เพื่อดู reasoning process
+            </div>
+            <div class="purple-box" style="font-size:0.76rem;">
+                <strong>🌲 RAPTOR Multi-level Indexing:</strong><br>
+                L0: 3,586 raw chunks → L1: 449 cluster summaries (adaptive cluster_size) → L2: 6 domain meta-summaries (disease, drug, emergency, psychiatry, guideline, prevention) → Dense FAISS index แต่ละ level
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 8b : สเปคระบบ (NEW) ==================== -->
+<section id="slide8b" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 8B</span>
+            <h2>คุณสมบัติ / คุณลักษณะเฉพาะของระบบ</h2>
+            <div class="sub">System Specifications from Verified Run-Output-v1Ultra.txt</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <!-- RAG Stats Grid -->
+    <h3 style="margin-bottom:0.8rem;">📚 RAG Engine Stats</h3>
+    <div class="rag-stat-grid">
+        <div class="rag-stat-card"><span class="stat-val">3,586</span><div class="stat-label">Total KB Chunks<br><small>(3,577 loaded + 9 seed)</small></div></div>
+        <div class="rag-stat-card"><span class="stat-val">926</span><div class="stat-label">GraphRAG Nodes<br><small>(KG entity graph)</small></div></div>
+        <div class="rag-stat-card"><span class="stat-val">1,641</span><div class="stat-label">GraphRAG Edges<br><small>(relation triples)</small></div></div>
+        <div class="rag-stat-card"><span class="stat-val">2</span><div class="stat-label">RAPTOR Levels<br><small>(L1=449, L2=6)</small></div></div>
+        <div class="rag-stat-card"><span class="stat-val">256</span><div class="stat-label">LRU Cache Max<br><small>(TTL 1800s)</small></div></div>
+        <div class="rag-stat-card"><span class="stat-val">30</span><div class="stat-label">ICD-10 Codes<br><small>(expanded v1-Ultra)</small></div></div>
+        <div class="rag-stat-card"><span class="stat-val">18</span><div class="stat-label">Symptom Groups<br><small>(symptom_conditions map)</small></div></div>
+        <div class="rag-stat-card"><span class="stat-val">10</span><div class="stat-label">Drug Database<br><small>(8 interaction pairs)</small></div></div>
+    </div>
+
+    <!-- VRAM usage -->
+    <h3 style="margin:1.2rem 0 0.6rem;">🔋 VRAM Usage (จาก Boot Sequence)</h3>
+    <div style="background:white; border-radius:1.2rem; padding:1rem; box-shadow:0 4px 14px rgba(0,0,0,0.05); border:1px solid #D9EDEB;">
+        <div style="font-size:0.76rem; margin-bottom:0.6rem; color:var(--text-light);">Tesla T4 · Total: 15.6 GB VRAM · CUDA 12.8</div>
+        <div style="font-size:0.74rem; margin-bottom:0.3rem; font-weight:700;">chinda-qwen3-4b NF4 + PEFT adapter</div>
+        <div class="vram-meter"><div class="vram-fill" style="width:7.7%;">1.2 GB</div></div>
+        <div style="font-size:0.74rem; margin-bottom:0.3rem; margin-top:0.6rem; font-weight:700;">+ Thai-Whisper-Small ASR</div>
+        <div class="vram-meter"><div class="vram-fill" style="width:10.9%;">1.7 GB total</div></div>
+        <div style="font-size:0.74rem; margin-bottom:0.3rem; margin-top:0.6rem; font-weight:700;">+ GraniteEmbed 311M multilingual</div>
+        <div class="vram-meter"><div class="vram-fill" style="width:14.7%;">2.3 GB total</div></div>
+        <div style="font-size:0.74rem; margin-bottom:0.3rem; margin-top:0.6rem; font-weight:700;">+ BGE Reranker v2-m3 CrossEncoder</div>
+        <div class="vram-meter"><div class="vram-fill" style="width:28.8%;">4.5 GB total</div></div>
+        <div style="font-size:0.74rem; margin-bottom:0.3rem; margin-top:0.6rem; font-weight:700;">✅ After Full Boot (FAISS rebuild)</div>
+        <div class="vram-meter"><div class="vram-fill" style="width:29.2%; background:linear-gradient(90deg,var(--teal),#059669);">4.56 GB / 15.6 GB (29.2%)</div></div>
+        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.5rem;">🕐 Boot time: 144.3s · Free remaining: 11.0 GB (70.8%)</div>
+    </div>
+
+    <!-- Installed packages table -->
+    <h3 style="margin:1.2rem 0 0.6rem;">✅ Verified Installations</h3>
+    <div class="flex-2col">
+        <div class="chart-container">
+            <table class="spec-table">
+                <thead><tr><th>Package</th><th>Version</th><th>Status</th></tr></thead>
+                <tbody>
+                    <tr><td>transformers</td><td><span class="spec-mono">5.8.1</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>torch</td><td><span class="spec-mono">2.10.0+cu128</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>gradio</td><td><span class="spec-mono">5.50.0</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>bitsandbytes</td><td><span class="spec-mono">0.49.2</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>sentence-transformers</td><td><span class="spec-mono">5.2.3</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>chromadb</td><td><span class="spec-mono">1.5.9</span></td><td class="spec-ok">✅</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="chart-container">
+            <table class="spec-table">
+                <thead><tr><th>Package</th><th>Version</th><th>Status</th></tr></thead>
+                <tbody>
+                    <tr><td>pythainlp</td><td><span class="spec-mono">5.3.4</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>edge-tts</td><td><span class="spec-mono">7.2.8</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>faiss (gpu-cu12)</td><td><span class="spec-mono">GPU devices: 2</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>ragas</td><td><span class="spec-mono">0.4.3</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>networkx</td><td><span class="spec-mono">3.6.1</span></td><td class="spec-ok">✅</td></tr>
+                    <tr><td>CUDA · GPU</td><td><span class="spec-mono">12.8 · Tesla T4</span></td><td class="spec-ok">✅</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Guardrails 6-layer visual -->
+    <h3 style="margin:1.2rem 0 0.6rem;">🛡️ GuardrailsValidator v1 — 6-Layer Architecture (31 patterns · 30 req/min)</h3>
+    <div class="layer-stack">
+        <div class="layer-item" style="border-left-color:#EF4444;">
+            <div class="layer-num" style="background:#EF4444;">1</div>
+            <div class="layer-desc"><strong>Prompt Injection / Jailbreak Detection</strong>14 patterns: ignore previous instructions, DAN, developer mode, bypass safety, new persona...</div>
+            <div class="layer-count">14 patterns</div>
+        </div>
+        <div class="layer-item" style="border-left-color:#DC2626;">
+            <div class="layer-num" style="background:#DC2626;">2</div>
+            <div class="layer-desc"><strong>Danger / Self-harm Content</strong>7 patterns: overdose, poison, harm, ยาอะไรกินแล้วตาย, วิธีผลิตยาบ้า...</div>
+            <div class="layer-count">7 patterns</div>
+        </div>
+        <div class="layer-item" style="border-left-color:#F59E0B;">
+            <div class="layer-num" style="background:#F59E0B;">3</div>
+            <div class="layer-desc"><strong>PII Detection (Presidio + Thai Regex)</strong>Thai National ID · Phone · Email · Credit Card · Passport · HN Pattern + Presidio NER confidence &gt; 0.85</div>
+            <div class="layer-count">6 types</div>
+        </div>
+        <div class="layer-item" style="border-left-color:#8B5CF6;">
+            <div class="layer-num" style="background:#8B5CF6;">4</div>
+            <div class="layer-desc"><strong>Adversarial Obfuscation</strong>base64/hex/rot13 decode+run, Unicode injection sequences, encode+execute patterns</div>
+            <div class="layer-count">3 patterns</div>
+        </div>
+        <div class="layer-item" style="border-left-color:#3B82F6;">
+            <div class="layer-num" style="background:#3B82F6;">5</div>
+            <div class="layer-desc"><strong>Medical Misinformation</strong>ยารักษามะเร็ง 100%, หมอปกปิดความจริง, big pharma hiding, วัคซีนทำให้เป็นออทิสติก...</div>
+            <div class="layer-count">4 patterns</div>
+        </div>
+        <div class="layer-item" style="border-left-color:#0EA5A0;">
+            <div class="layer-num" style="background:#0EA5A0;">6</div>
+            <div class="layer-desc"><strong>Thai-Specific Medical Danger</strong>กินยาเกินขนาดตั้งใจ, ฉีดยาเกินเส้นเลือด, ผสมยาเป็นพิษ — context-aware Thai patterns</div>
+            <div class="layer-count">3 patterns</div>
+        </div>
+        <div class="layer-item" style="border-left-color:#10B981; background:#F0FDF9;">
+            <div class="layer-num" style="background:#10B981;">⏱</div>
+            <div class="layer-desc"><strong>Rate Limiter</strong>30 requests/minute per user_id · sliding window 60s · timestamp deque</div>
+            <div class="layer-count">30/min</div>
+        </div>
+    </div>
+
+    <!-- Knowledge Base distribution -->
+    <h3 style="margin:1.2rem 0 0.6rem;">📊 Knowledge Base Distribution</h3>
+    <div class="chart-container">
+        <canvas id="kbDistChart" height="220" style="max-height:250px;"></canvas>
+        <p class="footer-note">KB Chunks ตามหมวดหมู่รวม 3,586 chunks</p>
+    </div>
+
+    <!-- Constitutional AI -->
+    <h3 style="margin:1.2rem 0 0.6rem;">⚖️ Constitutional AI — 6 Medical Principles</h3>
+    <div class="card-grid">
+        <div class="card" style="border-top:3px solid var(--teal); min-width:160px;">
+            <span style="font-size:1.3rem;">P1</span>
+            <h3 style="font-size:0.82rem;">Medical Disclaimer</h3>
+            <p style="font-size:0.72rem;">ข้อมูลเพื่อการศึกษาเท่านั้น ไม่ใช่การวินิจฉัยโรค</p>
+        </div>
+        <div class="card" style="border-top:3px solid #3B82F6; min-width:160px;">
+            <span style="font-size:1.3rem;">P2</span>
+            <h3 style="font-size:0.82rem;">Recommend Doctor</h3>
+            <p style="font-size:0.72rem;">แนะนำให้พบแพทย์หรือผู้เชี่ยวชาญสุขภาพเสมอ</p>
+        </div>
+        <div class="card" style="border-top:3px solid #EF4444; min-width:160px;">
+            <span style="font-size:1.3rem;">P3</span>
+            <h3 style="font-size:0.82rem;">No Harmful Advice</h3>
+            <p style="font-size:0.72rem;">ไม่ให้คำแนะนำที่อาจเป็นอันตรายถึงชีวิตโดยไม่มีข้อเตือน</p>
+        </div>
+        <div class="card" style="border-top:3px solid #F59E0B; min-width:160px;">
+            <span style="font-size:1.3rem;">P4</span>
+            <h3 style="font-size:0.82rem;">Emergency Numbers</h3>
+            <p style="font-size:0.72rem;">ระบุเบอร์ฉุกเฉิน 1669 / สุขภาพจิต 1323 สำหรับกรณีวิกฤต</p>
+        </div>
+        <div class="card" style="border-top:3px solid #8B5CF6; min-width:160px;">
+            <span style="font-size:1.3rem;">P5</span>
+            <h3 style="font-size:0.82rem;">Evidence-based</h3>
+            <p style="font-size:0.72rem;">ข้อมูลต้องอ้างอิงหลักวิทยาศาสตร์การแพทย์หรือแนวทางเวชปฏิบัติ</p>
+        </div>
+        <div class="card" style="border-top:3px solid #10B981; min-width:160px;">
+            <span style="font-size:1.3rem;">P6</span>
+            <h3 style="font-size:0.82rem;">Drug Dosage Warning</h3>
+            <p style="font-size:0.72rem;">ไม่สั่งจ่ายยาหรือบอกขนาดยาโดยไม่มีคำเตือนปรึกษาแพทย์/เภสัช</p>
+        </div>
+    </div>
+
+    <div class="info-box" style="margin-top:1rem;">
+        🔄 <strong>Constitutional AI 2-pass Revision:</strong> critique() → score ≥ 0.80 หยุดทันที (early-stop) · ถ้าต่ำกว่า → LLM revise pass 2 → add_disclaimer_if_missing() auto-append → output validation
+    </div>
+</section>
+
+<!-- ==================== SLIDE 9 : ผลงาน & TRL ==================== -->
+<section id="slide9" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 09</span>
+            <h2>ผลงานสร้างสรรค์ & ระดับ TRL/SRL</h2>
+            <div class="sub">Results / Creative Output / TRL Level</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div style="background:#EFF6FF; border-radius:1rem; padding:0.9rem; text-align:center; margin-top:0.5rem; border:1px solid #BFDBFE;">
+        📱 <strong>Demo Live:</strong> <a href="https://pitsanu2448.github.io/Thai-Medical-AI-Assistant-Redirect.html" target="_blank" style="color:var(--teal); font-weight:700; font-family:var(--mono);">https://pitsanu2448.github.io/Thai-Medical-AI-Assistant-Redirect.html</a>
+        (Gradio 5.50.0 · port 7865 · Cloudflare tunnel · Apache 2.0 Open Source)
+    </div>
+
+    <!-- Score charts -->
+    <div class="flex-2col" style="margin:1.2rem 0;">
+        <div class="chart-container"><canvas id="bertScoreChart" height="250"></canvas><p class="footer-note">BERTScore F1 — ความสอดคล้องเชิงความหมาย (สูงกว่าดีกว่า)</p></div>
+        <div class="chart-container"><canvas id="rougeChart" height="250"></canvas><p class="footer-note">ROUGE-L — ความแม่นยำของคำ (สูงกว่าดีกว่า)</p></div>
+    </div>
+
+    <!-- Score cards -->
+    <div class="card-grid" style="margin-bottom:1.4rem;">
+        <div class="card" style="border-top:4px solid var(--teal); text-align:center;">
+            <span style="font-size:2.1rem; font-weight:800; color:var(--teal); font-family:var(--mono);">0.6768</span>
+            <p>Best BERTScore F1</p>
+            <small style="color:var(--text-light);">chinda-qwen3-4b (Fine-tuned) ✓</small>
+        </div>
+        <div class="card" style="border-top:4px solid #8B5CF6; text-align:center;">
+            <span style="font-size:2.1rem; font-weight:800; color:#8B5CF6; font-family:var(--mono);">0.2500</span>
+            <p>Best ROUGE-L</p>
+            <small style="color:var(--text-light);">THaLLE-0.2-ThaiLLM-8B-fa</small>
+        </div>
+        <div class="card" style="border-top:4px solid #F59E0B; text-align:center;">
+            <span style="font-size:2.1rem; font-weight:800; color:#F59E0B; font-family:var(--mono);">10,000</span>
+            <p>Perplexity (ทุกโมเดล)</p>
+            <small style="color:#EF4444;">⚠️ เกิน threshold ≤ 20 ต้องพัฒนาเพิ่ม</small>
+        </div>
+        <div class="card" style="border-top:4px solid #10B981; text-align:center;">
+            <span style="font-size:2.1rem; font-weight:800; color:#10B981; font-family:var(--mono);">144.3s</span>
+            <p>Boot Time (T4 Maximized)</p>
+            <small style="color:var(--text-light);">skip_raptor_rebuild=True · warm-up 3 queries</small>
+        </div>
+    </div>
+
+    <!-- Evaluation table -->
+    <div class="chart-container" style="margin-bottom:1.4rem; overflow-x:auto;">
+        <table class="patent-table" style="min-width:500px;">
+            <thead><tr><th>โมเดล</th><th>ROUGE-L</th><th>BERT F1</th><th>BERT P</th><th>BERT R</th><th>Perplexity</th></tr></thead>
+            <tbody>
+                <tr style="background:#F0FDF9;"><td><strong>iapp/chinda-qwen3-4b (Fine-tuned) ✓</strong></td><td>0.1000</td><td><strong style="color:var(--teal); font-family:var(--mono);">0.6768</strong></td><td style="font-family:var(--mono);">0.6878</td><td style="font-family:var(--mono);">0.6661</td><td style="font-family:var(--mono);">10,000</td></tr>
+                <tr><td>KBTG-Labs/THaLLE-0.2-ThaiLLM-8B-fa</td><td><strong style="color:#8B5CF6; font-family:var(--mono);">0.2500</strong></td><td style="font-family:var(--mono);">0.6273</td><td style="font-family:var(--mono);">0.6483</td><td style="font-family:var(--mono);">0.6076</td><td style="font-family:var(--mono);">10,000</td></tr>
+                <tr><td>typhoon-ai/typhoon2.5-qwen3-4b (Base)</td><td style="font-family:var(--mono);">0.0000</td><td style="font-family:var(--mono);">0.6637</td><td style="font-family:var(--mono);">0.6721</td><td style="font-family:var(--mono);">0.6555</td><td style="font-family:var(--mono);">10,000</td></tr>
+            </tbody>
+        </table>
+        <p class="footer-note">✓ = โมเดลที่พัฒนาใน v1-Ultra | สีเขียว = ดีที่สุดในหมวด | NF4+PEFT deployment บน T4</p>
+    </div>
+
+    <!-- TRL Bar -->
+    <h3 style="margin-bottom:0.8rem;">📡 ระดับ TRL (Technology Readiness Level)</h3>
+    <div class="trl-bar">
+        <div class="trl-step" style="background:#94A3B8; font-size:0.55rem;">TRL 1<br>Basic</div>
+        <div class="trl-step" style="background:#64748B;">TRL 2<br>Concept</div>
+        <div class="trl-step" style="background:#475569;">TRL 3<br>Proof</div>
+        <div class="trl-step" style="background:var(--teal); transform:scaleY(1.15); box-shadow:0 0 14px rgba(14,165,160,0.55);">TRL 4 ✓<br>Lab Valid</div>
+        <div class="trl-step" style="background:#CBD5E1;">TRL 5<br>Pilot</div>
+        <div class="trl-step" style="background:#E2E8F0; color:#94A3B8;">TRL 6<br>Demo</div>
+        <div class="trl-step" style="background:#F1F5F9; color:#94A3B8;">TRL 7</div>
+        <div class="trl-step" style="background:#F8FAFC; color:#CBD5E1;">TRL 8</div>
+        <div class="trl-step" style="background:#FAFAFA; color:#CBD5E1;">TRL 9</div>
+    </div>
+    <p style="font-size:0.74rem; color:var(--text-light); margin-top:0.5rem;">ปัจจุบัน: <strong style="color:var(--teal);">TRL 4</strong> — Lab Validation · Prototype ใน Kaggle T4 · Self-test ping ✅ · Gradio public URL ✅ | เป้าหมาย: <strong style="color:#F59E0B;">TRL 6</strong> (Commercial Demo)</p>
+
+    <!-- Feature Screenshots -->
+    <h3 style="margin:1.4rem 0 0.8rem;">✨ ฟีเจอร์เด่น & ตัวอย่างหน้าจอ v1-Ultra</h3>
+    <div class="screenshot-grid">
+        <div class="screenshot-card">
+            <div class="sc-header">💬 แชทปรึกษาอาการ + CoT Chart</div>
+            <div class="sc-body"><img src="img/แชทปรึกษา.png" alt="Chat UI" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><i class="fas fa-comments sc-icon" style="display:none;"></i></div>
+        </div>
+        <div class="screenshot-card">
+            <div class="sc-header">👤 โปรไฟล์ PDPA + Consent</div>
+            <div class="sc-body"><img src="img/โปรไฟล์ผู้ใช้.png" alt="Profile" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><i class="fas fa-user-circle sc-icon" style="display:none;"></i></div>
+        </div>
+        <div class="screenshot-card">
+            <div class="sc-header">📊 Dashboard + RAGAS Report</div>
+            <div class="sc-body"><img src="img/ให้ความคิดเห็น.png" alt="Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><i class="fas fa-chart-bar sc-icon" style="display:none;"></i></div>
+        </div>
+        <div class="screenshot-card">
+            <div class="sc-header">🔊 TTS + วิเคราะห์ภาพ/เสียง</div>
+            <div class="sc-body"><img src="img/วิธีใชงาน.png" alt="Multimodal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><i class="fas fa-microphone sc-icon" style="display:none;"></i></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 10 : วิเคราะห์ ==================== -->
+<section id="slide10" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 10</span>
+            <h2>การวิเคราะห์และอภิปรายผล</h2>
+            <div class="sub">Analysis & Discussion</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div class="flex-2col">
+        <div>
+            <h3 style="margin-bottom:1rem; color:var(--teal);">✅ จุดแข็ง (Strengths)</h3>
+            <div class="info-box">
+                <strong>BERTScore F1 = 0.6768</strong> — ยืนยันว่า Fine-tuning ด้วยข้อมูลไทยเพิ่ม Semantic Similarity อย่างมีนัยสำคัญ เทียบ Baseline typhoon2.5 (0.6637) เพิ่มขึ้น +0.0131
+            </div>
+            <div class="info-box">
+                <strong>Hybrid RAG 4-source ลด Hallucination</strong> — FAISS(dense=1.0)+BM25(0.8)+Graph(0.7)+RAPTOR RRF fusion ให้ Recall สูงกว่า Single-retriever · BGE Reranker batch=32 เพิ่ม Precision
+            </div>
+            <div class="info-box">
+                <strong>Constitutional AI 6-principle 2-pass</strong> — early-stop ≥ 0.80 ประหยัด inference time · ทดสอบแล้วว่า disclaimer/doctor-recommendation/emergency-number ครบ
+            </div>
+            <div class="info-box">
+                <strong>Boot เสร็จ 144.3s · VRAM 4.56 GB</strong> — T4 15.6 GB ยังมี 11 GB เหลือสำหรับ inference · RAPTOR skip rebuild ประหยัด 3 min · RAG warm-up 3 seed queries
+            </div>
+            <div class="info-box">
+                <strong>HealthMonitor VRAM Watchdog</strong> — background thread ตรวจสอบทุก 60s · aggressive GC เมื่อ &gt; 85% · alert เมื่อ &gt; 92% · ป้องกัน OOM crash อัตโนมัติ
+            </div>
+        </div>
+
+        <div>
+            <h3 style="margin-bottom:1rem; color:#EF4444;">⚠️ ข้อจำกัดและโอกาสพัฒนา</h3>
+            <div class="danger-box">
+                <strong>Perplexity = 10,000 (ทุกโมเดล)</strong> — สูงกว่าเกณฑ์ ≤ 20 มาก แสดงว่า Generation ยังไม่เสถียร เป็น critical blocker ก่อนใช้เชิงพาณิชย์ ต้องเพิ่ม training data + curriculum learning
+            </div>
+            <div class="warn-box">
+                <strong>ROUGE-L ของ chinda ต่ำ (0.10)</strong> — Fine-tuning เพิ่ม Semantic (BERTScore) แต่ลด Lexical Overlap อาจเป็น Style Shift จาก Instruction-tuning · THaLLE-8B ROUGE-L ดีกว่า (0.25) แต่ขนาดใหญ่กว่า 2x
+            </div>
+            <div class="warn-box">
+                <strong>ColPali Vision = Heuristic Mode</strong> — VisionModel ไม่โหลด (VRAM ถูกจองไว้) → ใช้ pixel-level heuristic PIL analysis แทน · confidence 0.35 vs 0.82 เมื่อโหลด model จริง
+            </div>
+            <div class="warn-box">
+                <strong>ต้องทดสอบกับผู้ใช้จริง</strong> — Clinician Validation, Usability Test กับผู้ป่วยจริงในสภาพแวดล้อมโรงพยาบาล (SRL 3 → 5) · RAGAS library mode ต้องการ OpenAI API key
+            </div>
+        </div>
+    </div>
+
+    <div class="dark-box" style="margin-top:1rem;">
+        💡 <strong>Honest Assessment (v1-Ultra):</strong> Perplexity = 10,000 → ยังไม่พร้อมเชิงพาณิชย์ · ต้องเพิ่ม training data Thai Medical Corpus ≥ 5,000 records · ทดสอบกับ clinician จริง · แต่ BERTScore F1 = 0.6768 + 5-Step CoT + Constitutional AI 6 principles + Guardrails 6-layer + PDPA + RAGAS + HealthMonitor แสดงให้เห็น architecture ที่ครบสมบูรณ์และพร้อมต่อยอด
+    </div>
+
+    <!-- RAGAS + Eval chart -->
+    <div class="chart-container" style="margin-top:1.2rem;">
+        <canvas id="radarChart" height="280" style="max-height:300px;"></canvas>
+        <p class="footer-note">เปรียบเทียบ 3 โมเดลใน 4 มิติ (normalize 0-1) — chinda-qwen3-4b v1-Ultra</p>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 11 : กลุ่มเป้าหมาย & Roadmap ==================== -->
+<section id="slide11" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 11</span>
+            <h2>กลุ่มเป้าหมาย & Go-to-Market Roadmap</h2>
+            <div class="sub">Target Users & GTM Strategy</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <div class="flex-2col">
+        <div>
+            <h3 style="margin-bottom:1rem;">👥 กลุ่มเป้าหมาย</h3>
+            <div class="card-grid">
+                <div class="card" style="min-width:148px;">
+                    <i class="fas fa-map-marked-alt" style="color:var(--teal); font-size:1.4rem;"></i>
+                    <h3>ประชาชนห่างไกล</h3>
+                    <p>พื้นที่ชนบท ใต้ อีสาน เหนือ · ขาดการเข้าถึงแพทย์ · ต้องการ Triage เบื้องต้น</p>
+                </div>
+                <div class="card" style="min-width:148px;">
+                    <i class="fas fa-hospital-alt" style="color:#3B82F6; font-size:1.4rem;"></i>
+                    <h3>รพ./คลินิก</h3>
+                    <p>Pre-Triage OPD · ICD-10 30 codes · Drug interaction 8 pairs · Hospital Navigator 10 จังหวัด</p>
+                </div>
+                <div class="card" style="min-width:148px;">
+                    <i class="fas fa-graduation-cap" style="color:#8B5CF6; font-size:1.4rem;"></i>
+                    <h3>นักศึกษาแพทย์</h3>
+                    <p>เครื่องมือฝึกทักษะวินิจฉัย + CoT reasoning + FAST stroke + PHQ-9 screening</p>
+                </div>
+                <div class="card" style="min-width:148px;">
+                    <i class="fas fa-landmark" style="color:#F59E0B; font-size:1.4rem;"></i>
+                    <h3>ภาครัฐ UHC</h3>
+                    <p>บูรณาการระบบ UHC บัตรทอง · ICD-10-TM standard · นโยบายสาธารณสุขดิจิทัล</p>
+                </div>
+            </div>
+            <div class="chart-container" style="margin-top:1rem;">
+                <canvas id="marketSegmentChart" height="220"></canvas>
+                <p class="footer-note">ขนาดตลาดแต่ละกลุ่ม (สัมพัทธ์)</p>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="margin-bottom:1rem;">🗺️ Go-to-Market Roadmap</h3>
+            <div class="roadmap-step" style="background:#F0FDF9; border-left:5px solid #10B981;">
+                <strong>Phase 1 — ปัจจุบัน (TRL 4) 2568</strong>
+                <p>Lab Validation · Kaggle T4 Prototype · BERTScore eval 0.6768 · Gradio 5.50 public URL · เข้าประกวด Higher Education Innovation Awards 2026 · Boot 144.3s ✅</p>
+            </div>
+            <div class="roadmap-step" style="background:#FFFBEB; border-left:5px solid #F59E0B;">
+                <strong>Phase 2 — 6-12 เดือน (TRL 5) 2569</strong>
+                <p>Pilot Hospital ม.ทักษิณ/CDTI · ทดสอบผู้ใช้จริง 100+ คน · Safety audit ผู้เชี่ยวชาญ · เพิ่ม Training Data 5,000+ records · ลด Perplexity จาก 10,000 → ≤ 100 · RAGAS library mode</p>
+            </div>
+            <div class="roadmap-step" style="background:#FEF2F2; border-left:5px solid #EF4444;">
+                <strong>Phase 3 — 12-24 เดือน (TRL 6) 2570</strong>
+                <p>Commercial Demo · SaaS/API Product · IP filing อนุสิทธิบัตร · ยื่นขอทุน วช./NSTDA · ColPali full model deployment · DPO fine-tuning จาก LoRA negative samples</p>
+            </div>
+            <div class="roadmap-step" style="background:#EFF6FF; border-left:5px solid #3B82F6;">
+                <strong>Phase 4 — 24-36 เดือน (TRL 7-9) 2571</strong>
+                <p>Full Commercial · UHC Integration · Scale ทั่วประเทศ · Export ASEAN Medical AI · Keycloak OIDC TSU LDAP · Constitutional AI ปรับปรุงต่อเนื่อง</p>
+            </div>
+
+            <div class="info-box" style="margin-top:1rem; font-size:0.77rem;">
+                🏆 <strong>Competitive Advantage v1-Ultra:</strong> ภาษาไทย 100% · Hybrid RAG 4-source (3,586 chunks) · 5-Step CoT · Constitutional AI 6 principles · Guardrails 6-layer 31 patterns · PDPA-by-design SHA256 · Edge T4 4B NF4 · HealthMonitor · LoRA Saver · RAGAS Auto-eval · Open-source Apache 2.0
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 12 : บทสรุป & SDGs ==================== -->
+<section id="slide12" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 12</span>
+            <h2>บทสรุป & ความสอดคล้องกับ SDGs</h2>
+            <div class="sub">Conclusion / Impact / SDGs Alignment</div>
+        </div>
+        <div class="slide-header-logos">
+            <img src="img/1ตรา_วช.png" alt=""><img src="img/6ตรา_expo2026.png" alt="">
+            <img src="img/3ตรา_มหาวิทยาลัยทักษิณ.png" alt=""><img src="img/4ตรา_สถาบันเทคโนโลยีจิตรลดา.png" alt="">
+        </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="info-box" style="margin-bottom:1.4rem; font-size:0.86rem; line-height:1.9;">
+        <strong>📋 สรุปผลสำเร็จ v1-Ultra (Kaggle T4 Maximized):</strong> งานวิจัยนี้พิสูจน์ว่าการ Fine-tune Thai LLM (iapp/chinda-qwen3-4b) ด้วยเทคนิค DoRA+RSLoRA+4-bit NF4 ร่วมกับ Hybrid RAG (FAISS IVFFlat GPU + BM25 PyThaiNLP + GraphRAG 926 nodes + RAPTOR 2 levels + HyDE + RRF) และ 5-Step Agentic CoT + Constitutional AI 6 principles สามารถ deploy ได้จริงบน Tesla T4 15.6GB ใน 144.3 วินาที ด้วย VRAM 4.56 GB (29.2%) เพิ่ม BERTScore F1 เป็น <strong>0.6768</strong> แสดงถึงศักยภาพของ Thai Medical AI ที่ออกแบบเฉพาะสำหรับบริบทไทย อย่างไรก็ตาม Perplexity = 10,000 บ่งชี้ว่าต้องพัฒนาต่อเนื่องก่อนใช้เชิงพาณิชย์
+    </div>
+
+    <!-- SDGs -->
+    <h3 style="margin-bottom:1rem;">🌍 ความสอดคล้องกับ SDGs</h3>
+    <div class="card-grid" style="margin-bottom:1.4rem;">
+        <div class="sdg-card">
+            <i class="fas fa-heartbeat" style="font-size:2.3rem; color:#22C55E;"></i>
+            <br><strong>SDG 3</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Good Health & Well-Being<br>คำปรึกษา 24/7 · Triage 4 ระดับ<br>FAST stroke + PHQ-9</p>
+        </div>
+        <div class="sdg-card">
+            <i class="fas fa-scale-balanced" style="font-size:2.3rem; color:#C026D3;"></i>
+            <br><strong>SDG 10</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Reduced Inequalities<br>ลดความเหลื่อมล้ำบริการสุขภาพ<br>พื้นที่ห่างไกล</p>
+        </div>
+        <div class="sdg-card">
+            <i class="fas fa-leaf" style="font-size:2.3rem; color:var(--teal);"></i>
+            <br><strong>BCG Economy</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Digital Health AI<br>เศรษฐกิจชีวภาพ-ดิจิทัล<br>Edge deployment</p>
+        </div>
+        <div class="sdg-card">
+            <i class="fas fa-lock" style="font-size:2.3rem; color:#2563EB;"></i>
+            <br><strong>PDPA 2562</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Privacy-first AI<br>base64+zlib+SHA256<br>Audit Log · Consent</p>
+        </div>
+        <div class="sdg-card">
+            <i class="fas fa-code-branch" style="font-size:2.3rem; color:#F97316;"></i>
+            <br><strong>SDG 9</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Innovation & Infrastructure<br>Open-source Thai Medical LLM<br>Apache 2.0</p>
+        </div>
+    </div>
+
+    <!-- Impact grid -->
+    <div class="bmc-grid">
+        <div class="bmc-card" style="border-top-color:#065F46;"><div class="bmc-title" style="background:#065F46;">ประชาชน</div><div class="bmc-content">• คำปรึกษา 24/7 ไม่ต้องเดินทาง<br>• Triage 4 ระดับ ลดแออัด ER<br>• Drug interaction 8 pairs<br>• FAST stroke + PHQ-9</div></div>
+        <div class="bmc-card" style="border-top-color:#1D4ED8;"><div class="bmc-title" style="background:#1D4ED8;">ระบบสาธารณสุข</div><div class="bmc-content">• ลดภาระแพทย์ OPD<br>• ICD-10 30 codes standard<br>• Hospital Navigator 10 จังหวัด<br>• สนับสนุน UHC ไทย</div></div>
+        <div class="bmc-card" style="border-top-color:#7C3AED;"><div class="bmc-title" style="background:#7C3AED;">วิชาการ</div><div class="bmc-content">• Open-source Thai Medical LLM<br>• DoRA+RSLoRA+GraphRAG Research<br>• Thai NLP Benchmark<br>• LoRA negative sample JSONL</div></div>
+        <div class="bmc-card" style="border-top-color:#92400E;"><div class="bmc-title" style="background:#92400E;">เศรษฐกิจ</div><div class="bmc-content">• SaaS รพ./คลินิก<br>• ลดต้นทุนค่ารักษา<br>• ASEAN Health Tech Export<br>• API Usage Fee</div></div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="warn-box" style="margin-top:1rem;">
+        <strong>📌 ข้อเสนอแนะจากผลการทดสอบจริง (v1-Ultra):</strong>
+        (1) เพิ่มชุดข้อมูล Thai Medical Corpus ≥ 5,000 records จาก ICD-10 Thai + Clinical Guidelines + Clinician-validated Q&A เพื่อลด Perplexity<br>
+        (2) Enable ColPali full model deployment (ต้องการ VRAM เพิ่ม ~2.5 GB → ใช้ A100 หรือ T4 multi-GPU)<br>
+        (3) ทดสอบกับ Clinician จริงในโรงพยาบาลนำร่อง + Usability Test ผู้สูงอายุ<br>
+        (4) ยื่นอนุสิทธิบัตรและขอทุน วช./NSTDA เพื่อต่อยอดเชิงพาณิชย์<br>
+        (5) เปิดใช้ RAGAS library mode (ต้องการ API key) เพื่อประเมินผลที่แม่นยำกว่า heuristic mode
+    </div>
+</section>
+
+<!-- ==================== SLIDE 13 : REFERENCES ==================== -->
+<section id="slide13" class="slide-section" style="padding-bottom:3rem;">
+    <div style="text-align:center; padding:2.5rem 0 2rem;">
+        <h1 style="font-size:2.4rem; font-weight:800; color:white;">ขอบคุณ <span style="color:var(--teal-mid);">/ Thank You</span></h1>
+        <div style="width:100px; height:3px; background:linear-gradient(90deg,var(--teal),var(--gold)); margin:1rem auto; border-radius:2px;"></div>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.8rem; margin:1.5rem 0; color:white;">
+            <div><strong>ผู้ช่วยศาสตราจารย์สุดา เธียรมนตรี</strong><br><small style="color:var(--teal-light);">อาจารย์ที่ปรึกษา · ม.ทักษิณ</small></div>
+            <div><strong>นายพิษณุ ทองศรี</strong><br><small style="color:var(--teal-light);">Lead Developer · AI Engineer · 50%</small></div>
+            <div><strong>นายอภิษิฐน์ มะสมัน</strong><br><small style="color:var(--teal-light);">UX/UI & Backend · ม.ทักษิณ · 20%</small></div>
+            <div><strong>นางสาวนันท์นภัส รอดบุตร</strong><br><small style="color:var(--teal-light);">Marketing · CDTI · 20%</small></div>
+        </div>
+        <div style="color:#94A3B8; font-size:0.83rem; margin-bottom:1rem; line-height:1.8;">
+            ทีม AIoTx Tech · มหาวิทยาลัยทักษิณ · สถาบันเทคโนโลยีจิตรลดา<br>
+            © 2569/2026 | Apache 2.0 Open Source | PDPA Compliant | Kaggle T4 · CUDA 12.8
+        </div>
+        <div style="background:rgba(14,165,160,0.15); border:1px solid rgba(14,165,160,0.3); border-radius:1rem; padding:0.8rem 1.5rem; display:inline-block; margin-bottom:1rem;">
+            <span style="font-size:0.8rem; color:#CCFBF1; font-family:var(--mono);">
+                🌐 Demo: https://pitsanu2448.github.io/Thai-Medical-AI-Assistant-Redirect.html &nbsp;|&nbsp; 🖥️ Kaggle: Tesla T4 15.6GB · CUDA 12.8 &nbsp;|&nbsp; ⏱ Boot: 144.3s
+            </span>
+        </div>
+    </div>
+
+    <h3 style="color:var(--teal-mid); margin-bottom:1rem; border-bottom:1px solid rgba(14,165,160,0.3); padding-bottom:0.5rem;">📖 บรรณานุกรม (References)</h3>
+    <ul class="ref-list" style="background:rgba(255,255,255,0.06); border-radius:1rem; padding:1rem;">
+        <li><span class="ref-num">[1]</span> สำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล. (2562). พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562. ราชกิจจานุเบกษา เล่ม 136 ตอนที่ 69 ก.</li>
+        <li><span class="ref-num">[2]</span> Dettmers, T., et al. (2023). QLoRA: Efficient Finetuning of Quantized LLMs. <em>arXiv:2305.14314</em></li>
+        <li><span class="ref-num">[3]</span> Hu, E. J., et al. (2021). LoRA: Low-Rank Adaptation of Large Language Models. <em>arXiv:2106.09685</em></li>
+        <li><span class="ref-num">[4]</span> Kalajdzievski, D. (2023). A Rank Stabilization Scaling Factor for Fine-Tuning with LoRA. <em>arXiv:2312.03732</em></li>
+        <li><span class="ref-num">[5]</span> KBTG Labs. (2024). THaLLE-0.2-ThaiLLM-8B-fa. HuggingFace Model Hub. https://huggingface.co/KBTG-Labs/THaLLE-0.2-ThaiLLM-8B-fa</li>
+        <li><span class="ref-num">[6]</span> Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>Advances in Neural Information Processing Systems</em>, 33, 9459–9474.</li>
+        <li><span class="ref-num">[7]</span> Lin, C. Y. (2004). ROUGE: A Package for Automatic Evaluation of Summaries. <em>Text Summarization Branches Out</em>, 74–81.</li>
+        <li><span class="ref-num">[8]</span> Liu, S., et al. (2024). DoRA: Weight-Decomposed Low-Rank Adaptation. <em>arXiv:2402.09353</em></li>
+        <li><span class="ref-num">[9]</span> typhoon-ai. (2025). Typhoon2.5-qwen3-4b. HuggingFace Model Hub. https://huggingface.co/typhoon-ai/typhoon2.5-qwen3-4b</li>
+        <li><span class="ref-num">[10]</span> Wei, J., et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. <em>Advances in Neural Information Processing Systems</em>, 35, 24824–24837.</li>
+        <li><span class="ref-num">[11]</span> Yao, S., et al. (2023). Tree of Thoughts: Deliberate Problem Solving with Large Language Models. <em>arXiv:2305.10601</em></li>
+        <li><span class="ref-num">[12]</span> Zhang, T., et al. (2020). BERTScore: Evaluating Text Generation with BERT. <em>ICLR 2020</em></li>
+        <li><span class="ref-num">[13]</span> Sarthi, P., et al. (2024). RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval. <em>arXiv:2401.18059</em></li>
+        <li><span class="ref-num">[14]</span> Cormack, G., et al. (2009). Reciprocal Rank Fusion outperforms Condorcet and individual rank learning methods. <em>SIGIR 2009</em></li>
+        <li><span class="ref-num">[15]</span> Es, S., et al. (2023). RAGAS: Automated Evaluation of Retrieval Augmented Generation. <em>arXiv:2309.15217</em></li>
+        <li><span class="ref-num">[16]</span> iapp/chinda-qwen3-4b. (2024). HuggingFace Model Hub. https://huggingface.co/iapp/chinda-qwen3-4b</li>
+        <li><span class="ref-num">[17]</span> IBM Granite Team. (2024). granite-embedding-311m-multilingual-r2. HuggingFace Model Hub. https://huggingface.co/ibm-granite/granite-embedding-311m-multilingual-r2</li>
+        <li><span class="ref-num">[18]</span> BAAI. (2024). BGE-reranker-v2-m3. HuggingFace Model Hub. https://huggingface.co/BAAI/bge-reranker-v2-m3</li>
+    </ul>
+</section>
+
+<script>
+    // Market growth chart
+    const ctxGrowth = document.getElementById('marketGrowthChart').getContext('2d');
+    new Chart(ctxGrowth, {
+        type: 'bar',
+        data: {
+            labels: ['2567', '2568', '2569', '2570', '2571', '2572', '2573'],
+            datasets: [{
+                label: 'มูลค่าตลาด (ล้าน USD)',
+                data: [42, 68, 105, 148, 205, 272, 352],
+                backgroundColor: 'rgba(14,165,160,0.82)',
+                borderRadius: 8, borderSkipped: false,
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: true,
+            plugins: { legend: { position: 'top' }, tooltip: { callbacks: { label: (ctx) => `${ctx.raw} ล้าน USD` } } },
+            scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } } }
+        }
+    });
+
+    // BERTScore chart
+    const bertCtx = document.getElementById('bertScoreChart').getContext('2d');
+    new Chart(bertCtx, {
+        type: 'bar',
+        data: {
+            labels: ['chinda-4b ✓\n(Fine-tuned)', 'THaLLE-8B', 'typhoon2.5\n(Base)'],
+            datasets: [{
+                label: 'BERTScore F1',
+                data: [0.6768, 0.6273, 0.6637],
+                backgroundColor: ['rgba(14,165,160,0.88)', 'rgba(139,92,246,0.88)', 'rgba(249,115,22,0.88)'],
+                borderRadius: 8,
+            }]
+        },
+        options: {
+            scales: { y: { min: 0.58, max: 0.70, ticks: { callback: (v) => v.toFixed(3) }, grid: { color: 'rgba(0,0,0,0.05)' } } },
+            plugins: { tooltip: { callbacks: { label: (ctx) => `F1 = ${ctx.raw}` } } }
+        }
+    });
+
+    // ROUGE-L chart
+    const rougeCtx = document.getElementById('rougeChart').getContext('2d');
+    new Chart(rougeCtx, {
+        type: 'bar',
+        data: {
+            labels: ['chinda-4b ✓', 'THaLLE-8B', 'typhoon2.5'],
+            datasets: [{
+                label: 'ROUGE-L',
+                data: [0.100, 0.250, 0.000],
+                backgroundColor: ['rgba(14,165,160,0.88)', 'rgba(139,92,246,0.88)', 'rgba(249,115,22,0.88)'],
+                borderRadius: 8,
+            }]
+        },
+        options: {
+            scales: { y: { beginAtZero: true, max: 0.32, grid: { color: 'rgba(0,0,0,0.05)' } } },
+            plugins: { tooltip: { callbacks: { label: (ctx) => `ROUGE-L = ${ctx.raw}` } } }
+        }
+    });
+
+    // KB Distribution chart
+    const kbCtx = document.getElementById('kbDistChart').getContext('2d');
+    new Chart(kbCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['disease (1,669)', 'emergency (608)', 'drug (320)', 'procedure (226)', 'prevention (220)', 'psychiatry (206)', 'guideline (146)', 'symptom (121)', 'diagnosis (51)', 'other (19)'],
+            datasets: [{
+                data: [1669, 608, 320, 226, 220, 206, 146, 121, 51, 19],
+                backgroundColor: ['#0EA5A0','#EF4444','#8B5CF6','#F97316','#10B981','#3B82F6','#F59E0B','#14B8A6','#EC4899','#94A3B8'],
+                borderWidth: 2, borderColor: '#F0F9F8',
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'right', labels: { font: { family: 'Sarabun', size: 11 }, boxWidth: 14 } },
+                tooltip: { callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw.toLocaleString()} chunks` } }
+            }
+        }
+    });
+
+    // Market segment chart
+    const segCtx = document.getElementById('marketSegmentChart').getContext('2d');
+    new Chart(segCtx, {
+        type: 'bar',
+        data: {
+            labels: ['ประชาชนห่างไกล', 'ภาครัฐ UHC', 'รพ./คลินิก', 'ประกัน/SaaS', 'นศ.แพทย์'],
+            datasets: [{ label: 'ขนาดตลาด (สัมพัทธ์)', data: [100, 80, 60, 70, 45], backgroundColor: 'rgba(14,165,160,0.82)', borderRadius: 8 }]
+        },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true } } }
+    });
+
+    // Radar chart - multi-model comparison
+    const radarCtx = document.getElementById('radarChart').getContext('2d');
+    new Chart(radarCtx, {
+        type: 'radar',
+        data: {
+            labels: ['BERTScore F1', 'ROUGE-L', 'Model Size (eff.)', 'Thai Fluency (est.)'],
+            datasets: [
+                { label: 'chinda-qwen3-4b (Fine-tuned) ✓', data: [0.97, 0.40, 0.85, 0.95], backgroundColor: 'rgba(14,165,160,0.15)', borderColor: '#0EA5A0', borderWidth: 2.5, pointBackgroundColor: '#0EA5A0' },
+                { label: 'THaLLE-0.2-8B', data: [0.90, 1.0, 0.50, 0.80], backgroundColor: 'rgba(139,92,246,0.12)', borderColor: '#8B5CF6', borderWidth: 2, pointBackgroundColor: '#8B5CF6' },
+                { label: 'typhoon2.5-qwen3-4b (Base)', data: [0.95, 0.00, 0.90, 0.88], backgroundColor: 'rgba(249,115,22,0.10)', borderColor: '#F97316', borderWidth: 2, pointBackgroundColor: '#F97316' },
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: { r: { min: 0, max: 1, ticks: { stepSize: 0.25, font: { size: 10 } }, pointLabels: { font: { size: 11, family: 'Sarabun' } } } },
+            plugins: { legend: { labels: { font: { family: 'Sarabun', size: 11 } } } }
+        }
+    });
+
+    // Active tab on scroll
+    const sections = document.querySelectorAll('.slide-section');
+    const navLinks = document.querySelectorAll('.nav-tabs a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            if (pageYOffset >= section.offsetTop - 100) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+        });
+    });
+</script>
 </body>
 </html>
