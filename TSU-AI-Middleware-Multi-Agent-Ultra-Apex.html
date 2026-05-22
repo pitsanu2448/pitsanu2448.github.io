@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TSU AI Middleware Multi-Agent Ultra v1 | Presentation 2026</title>
+    <title>TSU AI Middleware v1Ultra-Ultimate | Presentation 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         :root {
             --bg-deep: #060B14;
@@ -42,15 +41,8 @@
             --shadow-glow: 0 0 28px rgba(14, 165, 160, 0.2);
             --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-            background: var(--bg-deep);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; background: var(--bg-deep); }
         body {
             font-family: 'Sarabun', 'IBM Plex Sans Thai', system-ui, sans-serif;
             background: var(--bg-deep);
@@ -59,15 +51,12 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-
-        /* ── NAVIGATION ─────────────────────────────────────────── */
         .nav-dock {
             position: sticky;
             top: 0;
             z-index: 1000;
             background: rgba(6, 11, 20, 0.85);
             backdrop-filter: blur(18px) saturate(140%);
-            -webkit-backdrop-filter: blur(18px) saturate(140%);
             border-bottom: 1px solid var(--border-subtle);
             display: flex;
             flex-wrap: wrap;
@@ -89,28 +78,20 @@
             white-space: nowrap;
             border: 1px solid transparent;
         }
-        .nav-dock a:hover,
-        .nav-dock a.active {
+        .nav-dock a:hover, .nav-dock a.active {
             background: rgba(14, 165, 160, 0.2);
             color: var(--teal-bright);
             border-color: rgba(14, 165, 160, 0.45);
             box-shadow: 0 2px 14px var(--teal-glow);
         }
-
-        /* ── SLIDE SECTION ──────────────────────────────────────── */
         .slide-section {
             max-width: 1320px;
             margin: 0 auto;
             padding: 0 2rem 3.5rem;
             border-bottom: 1px solid var(--border-subtle);
             scroll-margin-top: 75px;
-            position: relative;
         }
-        .slide-section:last-of-type {
-            border-bottom: none;
-        }
-
-        /* ── SLIDE HEADER ───────────────────────────────────────── */
+        .slide-section:last-of-type { border-bottom: none; }
         .slide-header {
             background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
             margin: 0 -2rem 2.2rem;
@@ -123,18 +104,8 @@
             border-bottom: 2px solid rgba(14, 165, 160, 0.3);
             box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
         }
-        .slide-header h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -0.3px;
-        }
-        .slide-header .sub {
-            font-size: 0.8rem;
-            color: var(--teal-bright);
-            margin-top: 0.15rem;
-            font-weight: 500;
-        }
+        .slide-header h2 { font-size: 1.8rem; font-weight: 800; color: var(--white); letter-spacing: -0.3px; }
+        .slide-header .sub { font-size: 0.8rem; color: var(--teal-bright); margin-top: 0.15rem; font-weight: 500; }
         .slide-num {
             background: linear-gradient(135deg, var(--teal), #0891B2);
             color: #fff;
@@ -144,16 +115,8 @@
             border-radius: 30px;
             margin-right: 0.6rem;
             letter-spacing: 1.2px;
-            box-shadow: 0 2px 10px var(--teal-glow);
         }
-
-        /* ── CARDS ──────────────────────────────────────────────── */
-        .card-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            justify-content: center;
-        }
+        .card-grid { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
         .card {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -177,30 +140,11 @@
             opacity: 0;
             transition: var(--transition);
         }
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), var(--shadow-glow);
-            border-color: rgba(14, 165, 160, 0.35);
-        }
-        .card:hover::before {
-            opacity: 1;
-        }
-        .card h3 {
-            font-size: 1rem;
-            margin: 0.5rem 0 0.4rem;
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-        .card p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        .card i {
-            margin-bottom: 0.3rem;
-            font-size: 1.6rem;
-        }
-
-        /* ── BADGES ─────────────────────────────────────────────── */
+        .card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), var(--shadow-glow); border-color: rgba(14, 165, 160, 0.35); }
+        .card:hover::before { opacity: 1; }
+        .card h3 { font-size: 1rem; margin: 0.5rem 0 0.4rem; color: var(--text-primary); font-weight: 700; }
+        .card p { font-size: 0.8rem; color: var(--text-muted); }
+        .card i { margin-bottom: 0.3rem; font-size: 1.6rem; }
         .badge {
             display: inline-flex;
             align-items: center;
@@ -214,37 +158,12 @@
             margin: 0.12rem;
             border: 1px solid rgba(14, 165, 160, 0.3);
         }
-        .badge-violet {
-            background: rgba(139, 92, 246, 0.15);
-            color: #C4B5FD;
-            border-color: rgba(139, 92, 246, 0.3);
-        }
-        .badge-amber {
-            background: rgba(245, 158, 11, 0.15);
-            color: #FCD34D;
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-        .badge-rose {
-            background: rgba(244, 63, 94, 0.15);
-            color: #FDA4AF;
-            border-color: rgba(244, 63, 94, 0.3);
-        }
-        .badge-emerald {
-            background: rgba(16, 185, 129, 0.15);
-            color: #6EE7B7;
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-
-        /* ── LAYOUT UTILS ───────────────────────────────────────── */
-        .flex-2col {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.8rem;
-        }
-        .flex-2col>* {
-            flex: 1;
-            min-width: 280px;
-        }
+        .badge-violet { background: rgba(139, 92, 246, 0.15); color: #C4B5FD; border-color: rgba(139, 92, 246, 0.3); }
+        .badge-amber { background: rgba(245, 158, 11, 0.15); color: #FCD34D; border-color: rgba(245, 158, 11, 0.3); }
+        .badge-rose { background: rgba(244, 63, 94, 0.15); color: #FDA4AF; border-color: rgba(244, 63, 94, 0.3); }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: #6EE7B7; border-color: rgba(16, 185, 129, 0.3); }
+        .flex-2col { display: flex; flex-wrap: wrap; gap: 1.8rem; }
+        .flex-2col>* { flex: 1; min-width: 280px; }
         .chart-container {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
@@ -252,12 +171,6 @@
             box-shadow: var(--shadow-card);
             border: 1px solid var(--border-subtle);
         }
-        .chart-container canvas {
-            width: 100% !important;
-            max-height: 340px;
-        }
-
-        /* ── ARCH FLOW ──────────────────────────────────────────── */
         .arch-flow {
             display: flex;
             flex-wrap: wrap;
@@ -274,87 +187,38 @@
             text-align: center;
             border-left: 4px solid var(--teal);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        .arch-node strong { font-size: 0.74rem; display: block; color: var(--text-primary); }
+        .arch-node small { font-size: 0.64rem; color: var(--slate-400); }
+        .arrow-icon { font-size: 1.3rem; color: var(--teal); opacity: 0.8; }
+        .domain-tabs { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 1rem 0; }
+        .domain-tab {
+            flex: 1;
+            min-width: 140px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--border-subtle);
+            font-weight: 700;
+            font-size: 0.82rem;
             transition: var(--transition);
         }
-        .arch-node:hover {
-            border-left-color: var(--teal-bright);
-            box-shadow: 0 6px 24px var(--teal-glow);
+        .domain-tab i { font-size: 1.8rem; margin-bottom: 0.4rem; display: block; }
+        .domain-tab.tsu { border-top: 4px solid var(--sky); }
+        .domain-tab.innovation { border-top: 4px solid var(--violet); }
+        .domain-tab.legal { border-top: 4px solid var(--rose); }
+        .domain-tab.medical { border-top: 4px solid var(--emerald); }
+        .domain-tab.business { border-top: 4px solid var(--amber); }
+        .roadmap-step {
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.6rem;
+            border-left: 5px solid;
+            background: var(--bg-card);
         }
-        .arch-node strong {
-            font-size: 0.74rem;
-            display: block;
-            color: var(--text-primary);
-        }
-        .arch-node small {
-            font-size: 0.64rem;
-            color: var(--slate-400);
-        }
-        .arrow-icon {
-            font-size: 1.3rem;
-            color: var(--teal);
-            opacity: 0.8;
-        }
-
-        /* ── DOMAIN COLOR CODING ────────────────────────────────── */
-        .domain-tsu {
-            border-left-color: var(--sky) !important;
-        }
-        .domain-innovation {
-            border-left-color: var(--violet) !important;
-        }
-        .domain-legal {
-            border-left-color: var(--rose) !important;
-        }
-        .domain-medical {
-            border-left-color: var(--emerald) !important;
-        }
-        .domain-business {
-            border-left-color: var(--amber) !important;
-        }
-
-        /* ── STAT PILL ──────────────────────────────────────────── */
-        .stat-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(14, 165, 160, 0.12);
-            border: 1px solid rgba(14, 165, 160, 0.35);
-            border-radius: 40px;
-            padding: 0.3rem 1.1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin: 0.15rem;
-            color: var(--text-secondary);
-        }
-
-        /* ── TITLE SLIDE ────────────────────────────────────────── */
-        #slide1 {
-            background: radial-gradient(ellipse at 40% 20%, #0F283D 0%, #060B14 65%);
-            padding-top: 3rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(14, 165, 160, 0.3);
-        }
-        #slide1 .hero-accent {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--teal-bright), var(--violet), var(--gold));
-            margin-bottom: 1.2rem;
-            border-radius: 3px;
-        }
-        #slide1 h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            line-height: 1.35;
-            letter-spacing: -0.5px;
-        }
-        #slide1 .gradient-text {
-            background: linear-gradient(135deg, var(--teal-bright), #38BDF8, var(--violet));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* ── INFO / WARNING / DANGER BOXES ──────────────────────── */
+        .roadmap-step strong { display: block; font-size: 0.88rem; margin-bottom: 0.15rem; color: var(--text-primary); }
+        .roadmap-step p { font-size: 0.76rem; color: var(--text-muted); margin: 0; }
         .info-box {
             background: rgba(14, 165, 160, 0.08);
             border-left: 4px solid var(--teal);
@@ -390,1016 +254,211 @@
             margin: 0.7rem 0;
             border: 1px solid var(--border-subtle);
         }
-
-        /* ── DOMAIN TAB CARDS ───────────────────────────────────── */
-        .domain-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-            margin: 1rem 0;
+        .stat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(14, 165, 160, 0.12);
+            border: 1px solid rgba(14, 165, 160, 0.35);
+            border-radius: 40px;
+            padding: 0.3rem 1.1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.15rem;
+            color: var(--text-secondary);
         }
-        .domain-tab {
-            flex: 1;
-            min-width: 140px;
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
-            padding: 1rem;
-            text-align: center;
-            border: 1px solid var(--border-subtle);
-            font-weight: 700;
-            font-size: 0.82rem;
-            transition: var(--transition);
-            cursor: default;
+        #slide1 {
+            background: radial-gradient(ellipse at 40% 20%, #0F283D 0%, #060B14 65%);
+            padding-top: 3rem;
+            padding-bottom: 2.5rem;
         }
-        .domain-tab i {
-            font-size: 1.8rem;
-            margin-bottom: 0.4rem;
-            display: block;
-        }
-        .domain-tab.tsu {
-            border-top: 4px solid var(--sky);
-        }
-        .domain-tab.innovation {
-            border-top: 4px solid var(--violet);
-        }
-        .domain-tab.legal {
-            border-top: 4px solid var(--rose);
-        }
-        .domain-tab.medical {
-            border-top: 4px solid var(--emerald);
-        }
-        .domain-tab.business {
-            border-top: 4px solid var(--amber);
-        }
-
-        /* ── ROADMAP TIMELINE ───────────────────────────────────── */
-        .roadmap-step {
-            padding: 0.8rem 1.2rem;
-            border-radius: var(--radius-sm);
-            margin-bottom: 0.6rem;
-            border-left: 5px solid;
-            background: var(--bg-card);
-        }
-        .roadmap-step strong {
-            display: block;
-            font-size: 0.88rem;
-            margin-bottom: 0.15rem;
-            color: var(--text-primary);
-        }
-        .roadmap-step p {
-            font-size: 0.76rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        /* ── FOOTER ─────────────────────────────────────────────── */
-        .footer-note {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--slate-500);
-            margin-top: 0.5rem;
-        }
-
-        /* ── REF LIST ───────────────────────────────────────────── */
-        .ref-list {
-            list-style: none;
-            padding: 0;
-        }
-        .ref-list li {
-            padding: 0.5rem 0.6rem;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .ref-list li:last-child {
-            border: none;
-        }
-        .ref-num {
-            font-weight: 800;
-            color: var(--teal);
-            margin-right: 0.4rem;
-        }
-
-        /* ── RESPONSIVE ─────────────────────────────────────────── */
+        #slide1 .hero-accent { width: 80px; height: 4px; background: linear-gradient(90deg, var(--teal-bright), var(--violet), var(--gold)); margin-bottom: 1.2rem; border-radius: 3px; }
+        #slide1 h1 { font-size: 2.2rem; font-weight: 800; line-height: 1.35; letter-spacing: -0.5px; }
+        #slide1 .gradient-text { background: linear-gradient(135deg, var(--teal-bright), #38BDF8, var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .footer-note { text-align: center; font-size: 0.7rem; color: var(--slate-500); margin-top: 0.5rem; }
+        .ref-list { list-style: none; padding: 0; }
+        .ref-list li { padding: 0.5rem 0.6rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.08); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+        .ref-list li:last-child { border: none; }
+        .ref-num { font-weight: 800; color: var(--teal); margin-right: 0.4rem; }
         @media (max-width: 860px) {
-            .nav-dock a {
-                font-size: 0.56rem;
-                padding: 0.28rem 0.5rem;
-            }
-            .slide-header h2 {
-                font-size: 1.3rem;
-            }
-            .arch-node {
-                width: 90px;
-            }
-            #slide1 h1 {
-                font-size: 1.5rem;
-            }
+            .nav-dock a { font-size: 0.56rem; padding: 0.28rem 0.5rem; }
+            .slide-header h2 { font-size: 1.3rem; }
+            .arch-node { width: 90px; }
+            #slide1 h1 { font-size: 1.5rem; }
         }
-
-        /* ── GLOW ANIMATIONS ────────────────────────────────────── */
         @keyframes pulse-glow {
-            0%,
-            100% {
-                box-shadow: 0 0 16px rgba(14, 165, 160, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(14, 229, 200, 0.4);
-            }
+            0%,100% { box-shadow: 0 0 16px rgba(14, 165, 160, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(14, 229, 200, 0.4); }
         }
-        .pulse-glow {
-            animation: pulse-glow 2.8s infinite;
-        }
+        .pulse-glow { animation: pulse-glow 2.8s infinite; }
     </style>
 </head>
 <body>
-
-    <!-- ═══════════ NAVIGATION ═══════════ -->
     <div class="nav-dock" id="navDock">
-        <a href="#slide1" class="active">🏠 1. Abstract</a>
-        <a href="#slide2">🎯 2. ปัญหา & โอกาส</a>
-        <a href="#slide3">🏗️ 3. สถาปัตยกรรม</a>
-        <a href="#slide4">✨ 4. จุดเด่น</a>
-        <a href="#slide5">🧠 5. Dual LLM Engine</a>
-        <a href="#slide6">📚 6. Hybrid RAG</a>
-        <a href="#slide7">🤖 7. 5 Domain Agents</a>
-        <a href="#slide8">⚙️ 8. กระบวนการ</a>
-        <a href="#slide9">📊 9. ผลลัพธ์ & TRL</a>
-        <a href="#slide10">💼 10. BMC</a>
-        <a href="#slide11">🚀 11. Roadmap</a>
-        <a href="#slide12">🌍 12. บทสรุป & SDGs</a>
+        <a href="#slide1" class="active">🏠 1. Abstract</a><a href="#slide2">🎯 2. ปัญหา</a><a href="#slide3">🏗️ 3. สถาปัตยกรรม</a>
+        <a href="#slide4">✨ 4. จุดเด่น</a><a href="#slide5">🧠 5. Dual Engine</a><a href="#slide6">📚 6. Hybrid RAG</a>
+        <a href="#slide7">🤖 7. 5 Agents</a><a href="#slide8">⚙️ 8. กระบวนการ</a><a href="#slide9">📊 9. ผลลัพธ์</a>
+        <a href="#slide10">💼 10. BMC</a><a href="#slide11">🚀 11. Roadmap</a><a href="#slide12">🌍 12. สรุป & SDGs</a>
         <a href="#slide13">📖 13. บรรณานุกรม</a>
     </div>
 
-    <!-- ═══════════ SLIDE 1 : TITLE / ABSTRACT ═══════════ -->
+    <!-- SLIDE 1: Abstract -->
     <section id="slide1" class="slide-section">
         <div class="hero-accent"></div>
-        <span class="badge" style="font-size:0.75rem;">🚀 TSU AI Middleware Multi-Agent Ultra v0.0 · การประกวดนวัตกรรมสายอุดมศึกษา 2569</span>
-        <h1 style="margin:1.2rem 0 0.6rem;">
-            <span class="gradient-text">TSU AI Middleware Multi-Agent Ultra Apex</span><br>
-            <span style="font-size:1.4rem; color:var(--text-secondary);">Dual-Gemma · NetraEmbed · 5-Domain Agents · RAG+GraphRAG+RAPTOR</span>
-        </h1>
-        <p style="font-size:1rem; color:var(--teal-bright); margin-bottom:1.2rem;">
-            ระบบปัญญาประดิษฐ์ตัวกลางอัจฉริยะสำหรับมหาวิทยาลัยทักษิณ — เชื่อมต่อ 5 โดเมนหลักด้วย Multi-Agent Orchestration
-        </p>
-
-        <!-- Badges -->
+        <span class="badge" style="font-size:0.75rem;">🚀 TSU AI Middleware v1Ultra-Ultimate · สายอุดมศึกษา 2569</span>
+        <h1 style="margin:1.2rem 0 0.6rem;"><span class="gradient-text">TSU AI Middleware Multi-Agent v1Ultra-Ultimate</span><br><span style="font-size:1.4rem; color:var(--text-secondary);">Chinda‑Qwen3‑4B · Gemma‑4‑E2B · 5‑Domain Orchestration</span></h1>
+        <p style="font-size:1rem; color:var(--teal-bright); margin-bottom:1.2rem;">ปัญญาประดิษฐ์ตัวกลางอัจฉริยะสำหรับมหาวิทยาลัยทักษิณ — เชื่อมต่อ 5 โดเมนหลักด้วย Multi-Agent Orchestrator</p>
         <div style="margin-bottom:1.2rem; display:flex; flex-wrap:wrap; gap:0.3rem;">
-            <span class="badge">Dual-Gemma LLM</span>
-            <span class="badge badge-violet">NetraEmbed 2048d</span>
-            <span class="badge badge-amber">Hybrid RAG</span>
-            <span class="badge badge-emerald">GraphRAG+RAPTOR</span>
-            <span class="badge">MoA 4-Agent</span>
-            <span class="badge badge-violet">ToT+Self-Reflection</span>
-            <span class="badge badge-rose">Guardrails 4-Layer</span>
-            <span class="badge badge-emerald">PDPA</span>
-            <span class="badge badge-amber">12-Tab Gradio UI</span>
+            <span class="badge">iapp/chinda-qwen3-4b</span><span class="badge badge-violet">gemma-4-E2B-it (256K)</span>
+            <span class="badge badge-amber">granite‑311m 512d</span><span class="badge badge-emerald">Hybrid RAG+GraphRAG+RAPTOR</span>
+            <span class="badge">MoA 2‑6 Agents</span><span class="badge badge-violet">MCTS‑ToT (UCB1=1.41)</span>
+            <span class="badge badge-rose">6‑Layer Guardrails</span><span class="badge badge-emerald">AES‑256‑GCM · PDPA</span>
+            <span class="badge badge-amber">34 Child Tabs · Gradio 5.x</span>
         </div>
-
-        <!-- Stats -->
-        <div style="margin-bottom:1.2rem;">
-            <span class="stat-pill"><i class="fas fa-microchip" style="color:var(--teal-bright);"></i> chinda-qwen3-4b (130K YaRN)</span>
-            <span class="stat-pill"><i class="fas fa-brain" style="color:var(--violet);"></i> gemma-4-E2B-it (256K Vision+Audio)</span>
-            <span class="stat-pill"><i class="fas fa-project-diagram" style="color:var(--gold);"></i> 5 Domains · 20+ Tools</span>
-            <span class="stat-pill"><i class="fas fa-shield-alt" style="color:var(--emerald);"></i> TRL 4 → 6</span>
-        </div>
-
-        <!-- Abstract -->
+        <div style="margin-bottom:1.2rem;"><span class="stat-pill"><i class="fas fa-microchip" style="color:var(--teal-bright);"></i> Native 32K (No YaRN)</span><span class="stat-pill"><i class="fas fa-brain" style="color:var(--violet);"></i> Vision+Audio+ASR</span><span class="stat-pill"><i class="fas fa-project-diagram"></i> 5 Domains · 30+ Tools</span><span class="stat-pill"><i class="fas fa-shield-alt"></i> TRL 4 → 6</span></div>
         <div style="background:rgba(14,165,160,0.08); border-radius:var(--radius-lg); padding:1.2rem; border:1px solid rgba(14,165,160,0.3);">
-            <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.9;">
-                <strong style="color:var(--white);">บทคัดย่อ:</strong> TSU AI Middleware เป็นระบบ Multi-Agent อัจฉริยะที่ใช้สถาปัตยกรรม Dual-Gemma LLM (chinda-qwen3-4b + gemma-4-E2B-it) ร่วมกับ NetraEmbed 2048-dim และ Hybrid RAG Engine ที่ผสาน HyDE, GraphRAG, RAPTOR, BM25, RRF และ CrossEncoder Reranker ระบบรองรับ 5 โดเมนหลักของมหาวิทยาลัยทักษิณ ได้แก่ TSU, Innovation (SciDI), Legal, Medical และ Business ด้วย Multi-Agent Orchestrator ที่ใช้ LangGraph State Machine, Mixture-of-Agents (MoA), Tree-of-Thoughts (ToT) และ Self-Reflection พร้อม Guardrails 4 ชั้น และระบบ PDPA Compliance เต็มรูปแบบ ทำงานบน A100 80GB ด้วย CUDA Streams
-            </p>
+            <p style="font-size:0.84rem; color:var(--text-secondary); line-height:1.9;"><strong style="color:var(--white);">บทคัดย่อ:</strong> TSU AI Middleware v1Ultra-Ultimate ใช้สถาปัตยกรรม Dual‑LLM (chinda-qwen3-4b + gemma-4-E2B-it) กับ Granite Embedding 512‑dim และ Hybrid RAG Engine ผสาน HyDE‑v2, GraphRAG (NetworkX), RAPTOR (2‑4 levels), RRF(k=60) และ BGE‑reranker‑v2‑m3 รองรับ 5 โดเมนหลัก (TSU, Innovation, Legal, Medical, Business) ด้วย Multi‑Agent Orchestrator บน LangGraph StateGraph, Mixture‑of‑Agents, MCTS‑Tree‑of‑Thoughts (UCB1 c=1.41) และ Self‑Reflection พร้อม Guardrails 6 ชั้น, PDPA AES‑256‑GCM และ Differential Privacy (ε=1.0) ทำงานบน T4 15.6GB (Budget Mode) หรือ A100 80GB (Full Mode)</p>
         </div>
-
-        <div style="font-size:0.82rem; color:var(--slate-400); margin-top:1.2rem; line-height:2;">
-            <p>🎓 <strong style="color:var(--white);">ทีมวิจัย:</strong> AIoTx Tech · SciDI — คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล มหาวิทยาลัยทักษิณ</p>
-            <p>🏛️ <strong style="color:var(--white);">หน่วยงาน:</strong> มหาวิทยาลัยทักษิณ </p>
-            <p>© 2569/2026 | Apache 2.0 | PDPA Compliant | scidi.tsu.ac.th</p>
-        </div>
+        <div style="font-size:0.82rem; color:var(--slate-400); margin-top:1.2rem;"><p>🎓 <strong>ทีมวิจัย:</strong> AIoTx Tech · SciDI — คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล มหาวิทยาลัยทักษิณ</p><p>🏛️ <strong>หน่วยงาน:</strong> มหาวิทยาลัยทักษิณ | © 2569 | Apache 2.0 | PDPA Compliant</p></div>
     </section>
 
-    <!-- ═══════════ SLIDE 2 : ปัญหา & โอกาสตลาด ═══════════ -->
-    <section id="slide2" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 2</span>
-                <h2>ปัญหาและโอกาสตลาด</h2>
-                <div class="sub">Problem Statement & Market Opportunity — 5 Domains</div>
-            </div>
-        </div>
-
-        <!-- Pain points across domains -->
-        <div class="domain-tabs" style="margin-bottom:1.5rem;">
-            <div class="domain-tab tsu"><i class="fas fa-university"></i>TSU<br><small style="color:var(--slate-400);">ข้อมูลกระจัดกระจาย · นิสิตเข้าถึงยาก</small></div>
-            <div class="domain-tab innovation"><i class="fas fa-lightbulb"></i>Innovation<br><small style="color:var(--slate-400);">TRL ไม่ชัด · จับคู่ Tech Transfer ยาก</small></div>
-            <div class="domain-tab legal"><i class="fas fa-gavel"></i>Legal<br><small style="color:var(--slate-400);">e-Filing ซับซ้อน · ขาด AI ช่วยร่าง</small></div>
-            <div class="domain-tab medical"><i class="fas fa-heartbeat"></i>Medical<br><small style="color:var(--slate-400);">Triage · ICD-10 · ยา · Tele-Health</small></div>
-            <div class="domain-tab business"><i class="fas fa-chart-line"></i>Business<br><small style="color:var(--slate-400);">BMC · ภาษี · BOI · การเงิน</small></div>
-        </div>
-
-        <div class="dark-box" style="margin-bottom:1.5rem;">
-            <i class="fas fa-exclamation-triangle" style="color:var(--gold);"></i>
-            <strong>Market Gap:</strong> ยังไม่มี AI Middleware ที่เชื่อมต่อ <strong>ทุกโดเมน</strong> ของมหาวิทยาลัยไทย ด้วย Multi-Agent Orchestration บน Open-source LLM ภาษาไทย ที่ทำงานบน Edge และ Cloud พร้อม PDPA Compliance เต็มรูปแบบ
-        </div>
-
-        <!-- Market opportunity chart -->
-        <div class="chart-container" style="margin-bottom:1.2rem;">
-            <canvas id="marketChart" height="240"></canvas>
-            <p class="footer-note">ตลาด AI Middleware ระดับมหาวิทยาลัย — Projection 2568–2573 (ล้าน USD)</p>
-        </div>
-
-        <div class="flex-2col">
-            <div class="info-box">
-                📌 <strong>แนวโน้ม:</strong> Digital University · BCG Economy · นโยบาย AI แห่งชาติ · PDPA บังคับใช้เต็มรูปแบบ
-            </div>
-            <div class="warn-box">
-                🏆 <strong>Competitive Advantage:</strong> 5 Domains in 1 System · Dual-Gemma LLM · Open-source · Edge-ready · ภาษาไทย 100%
-            </div>
-        </div>
+    <!-- SLIDE 2: ปัญหา & โอกาส -->
+    <section id="slide2" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 2</span><h2>ปัญหาและโอกาสตลาด</h2><div class="sub">5 Domains Pain Points & Market Gap</div></div></div>
+        <div class="domain-tabs" style="margin-bottom:1.5rem;"><div class="domain-tab tsu"><i class="fas fa-university"></i>TSU<br><small>ข้อมูลกระจัดกระจาย · ระบบแยกส่วน</small></div><div class="domain-tab innovation"><i class="fas fa-lightbulb"></i>Innovation<br><small>TRL ไม่ชัด · จับคู่ Tech Transfer ยาก</small></div><div class="domain-tab legal"><i class="fas fa-gavel"></i>Legal<br><small>e-Filing ซับซ้อน · ขาด AI ช่วยร่าง</small></div><div class="domain-tab medical"><i class="fas fa-heartbeat"></i>Medical<br><small>Triage · ICD‑10 · Tele‑Health</small></div><div class="domain-tab business"><i class="fas fa-chart-line"></i>Business<br><small>BMC · ภาษี · BOI · การเงิน</small></div></div>
+        <div class="dark-box" style="margin-bottom:1.5rem;"><i class="fas fa-exclamation-triangle" style="color:var(--gold);"></i> <strong>Market Gap:</strong> ยังไม่มี AI Middleware ที่เชื่อมต่อ <strong>ทุกโดเมน</strong> ของมหาวิทยาลัยไทย ด้วย Multi-Agent Orchestration บน Open-source LLM ภาษาไทย พร้อม PDPA Compliance เต็มรูปแบบและรองรับ Edge (T4) ถึง High‑end (A100)</div>
+        <div class="chart-container"><canvas id="marketChart" height="240"></canvas><p class="footer-note">ตลาด AI Middleware ระดับมหาวิทยาลัย — Projection 2568–2573 (ล้าน USD)</p></div>
+        <div class="flex-2col"><div class="info-box">📌 <strong>แนวโน้ม:</strong> Digital University · BCG Economy · PDPA บังคับใช้ · นโยบาย AI แห่งชาติ</div><div class="warn-box">🏆 <strong>Competitive Advantage:</strong> 5 Domains in 1 System · Dual‑Gemma · Open‑source · Edge/Cloud hybrid · ภาษาไทย 100%</div></div>
     </section>
 
-    <!-- ═══════════ SLIDE 3 : สถาปัตยกรรมระบบ ═══════════ -->
-    <section id="slide3" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 3</span>
-                <h2>สถาปัตยกรรมระบบ</h2>
-                <div class="sub">System Architecture — Multi-Agent Pipeline</div>
-            </div>
-        </div>
-
-        <h3 style="color:var(--text-primary); margin-bottom:1rem;">🏗️ Multi-Agent Orchestration Flow</h3>
-        <div class="arch-flow">
-            <div class="arch-node"><strong>👤 User</strong><small>Text/Image/Audio</small></div>
-            <i class="fas fa-arrow-right arrow-icon"></i>
-            <div class="arch-node" style="border-left-color:var(--rose);"><strong>🛡️ Guardrails</strong><small>4-Layer Validation</small></div>
-            <i class="fas fa-arrow-right arrow-icon"></i>
-            <div class="arch-node" style="border-left-color:var(--violet);"><strong>🎯 Intent Detection</strong><small>6 Intent Types</small></div>
-            <i class="fas fa-arrow-right arrow-icon"></i>
-            <div class="arch-node" style="border-left-color:var(--sky);"><strong>📚 Hybrid RAG</strong><small>HyDE+GraphRAG</small></div>
-            <i class="fas fa-arrow-right arrow-icon"></i>
-            <div class="arch-node" style="border-left-color:var(--gold);"><strong>🤖 MoA (4 Agents)</strong><small>Dual-Gemma</small></div>
-            <i class="fas fa-arrow-right arrow-icon"></i>
-            <div class="arch-node" style="border-left-color:var(--violet);"><strong>🌳 ToT</strong><small>k=4 beam=3</small></div>
-            <i class="fas fa-arrow-right arrow-icon"></i>
-            <div class="arch-node" style="border-left-color:var(--emerald);"><strong>🔄 Reflection</strong><small>Multi-turn</small></div>
-            <i class="fas fa-arrow-right arrow-icon"></i>
-            <div class="arch-node"><strong>📱 Response</strong><small>+TTS+Stream</small></div>
-        </div>
-
-        <!-- Dual model info -->
-        <div class="flex-2col" style="margin-top:1.5rem;">
-            <div class="chart-container">
-                <h3 style="color:var(--teal-bright); margin-bottom:0.8rem;">🧠 Dual LLM Engines</h3>
-                <table style="width:100%; font-size:0.78rem; border-collapse:collapse;">
-                    <tr style="border-bottom:1px solid var(--border-subtle);">
-                        <th style="text-align:left;padding:0.5rem;color:var(--slate-400);">คุณสมบัติ</th>
-                        <th style="text-align:left;padding:0.5rem;color:var(--teal-bright);">Main LLM</th>
-                        <th style="text-align:left;padding:0.5rem;color:var(--violet);">Agent LLM</th>
-                    </tr>
-                    <tr style="border-bottom:1px solid var(--border-subtle);">
-                        <td style="padding:0.5rem;">Model</td><td style="padding:0.5rem;">chinda-qwen3-4b</td><td style="padding:0.5rem;">gemma-4-E2B-it</td>
-                    </tr>
-                    <tr style="border-bottom:1px solid var(--border-subtle);">
-                        <td style="padding:0.5rem;">Context</td><td style="padding:0.5rem;">130K (YaRN)</td><td style="padding:0.5rem;">256K</td>
-                    </tr>
-                    <tr style="border-bottom:1px solid var(--border-subtle);">
-                        <td style="padding:0.5rem;">Capabilities</td><td style="padding:0.5rem;">Text · Chart · Thinking</td><td style="padding:0.5rem;">Vision · Audio · OCR · ASR</td>
-                    </tr>
-                    <tr>
-                        <td style="padding:0.5rem;">Role</td><td style="padding:0.5rem;">Main Generation</td><td style="padding:0.5rem;">Hard Reasoning</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="chart-container">
-                <h3 style="color:var(--violet); margin-bottom:0.8rem;">🔢 Embedding & Reranker</h3>
-                <p style="font-size:0.8rem; line-height:2; color:var(--text-secondary);">
-                    <strong>Embedding:</strong> Cognitive-Lab/NetraEmbed<br>
-                    • 2048-dim Matryoshka (Multilingual+Multimodal)<br>
-                    • Gemma3-8B backbone · Improved Quality<br><br>
-                    <strong>Reranker:</strong> BAAI/bge-reranker-v3<br>
-                    • CrossEncoder · Higher Accuracy<br>
-                    • RRF Fusion + Category Boost
-                </p>
-            </div>
-        </div>
+    <!-- SLIDE 3: สถาปัตยกรรมระบบ -->
+    <section id="slide3" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 3</span><h2>สถาปัตยกรรมระบบ</h2><div class="sub">Multi-Agent Pipeline · LangGraph StateGraph</div></div></div>
+        <h3 style="margin-bottom:1rem;">🏗️ Multi-Agent Orchestration Flow</h3>
+        <div class="arch-flow"><div class="arch-node"><strong>👤 User</strong><small>Text/Image/Audio</small></div><i class="fas fa-arrow-right arrow-icon"></i><div class="arch-node" style="border-left-color:var(--rose);"><strong>🛡️ Guardrails 6‑Layer</strong><small>41 patterns</small></div><i class="fas fa-arrow-right arrow-icon"></i><div class="arch-node" style="border-left-color:var(--violet);"><strong>🎯 Intent Detection</strong><small>15 intents</small></div><i class="fas fa-arrow-right arrow-icon"></i><div class="arch-node" style="border-left-color:var(--sky);"><strong>📚 Hybrid RAG</strong><small>HyDE+GraphRAG+RAPTOR</small></div><i class="fas fa-arrow-right arrow-icon"></i><div class="arch-node" style="border-left-color:var(--gold);"><strong>🤝 MoA (2‑6)</strong><small>Chinda×3 + Gemma×3</small></div><i class="fas fa-arrow-right arrow-icon"></i><div class="arch-node" style="border-left-color:var(--violet);"><strong>🌳 MCTS‑ToT</strong><small>k=2‑8, c=1.41</small></div><i class="fas fa-arrow-right arrow-icon"></i><div class="arch-node" style="border-left-color:var(--emerald);"><strong>🔄 Self‑Reflection</strong><small>Constitutional AI</small></div><i class="fas fa-arrow-right arrow-icon"></i><div class="arch-node"><strong>📱 Response</strong><small>+TTS+Stream</small></div></div>
+        <div class="flex-2col"><div class="chart-container"><h3 style="color:var(--teal-bright);">🧠 Dual LLM Engines</h3><table style="width:100%; font-size:0.78rem;"><tr><th>คุณสมบัติ</th><th>Main LLM</th><th>Agent LLM</th></tr><tr><td>Model</td><td>iapp/chinda-qwen3-4b</td><td>google/gemma-4-E2B-it</td></tr><tr><td>Context</td><td>32K Native (No YaRN)</td><td>256K</td></tr><tr><td>Capabilities</td><td>Text · Chart · Thinking</td><td>Vision · Audio · OCR · ASR</td></tr><tr><td>Quant</td><td>NF4→FP16→BF16</td><td>NF4/FP16</td></tr><tr><td>Role</td><td>Main Generation</td><td>Hard Reasoning / Critic</td></tr></table></div>
+        <div class="chart-container"><h3 style="color:var(--violet);">🔢 Embedding & Reranker</h3><p style="font-size:0.8rem;"><strong>Embedding:</strong> ibm-granite/granite-embedding-311m‑multilingual‑r2<br>• 512‑dim · FP16 · LRU cache 16384<br>• fallback: numpy seeded MD5<br><br><strong>Reranker:</strong> BAAI/bge-reranker‑v2‑m3 (CrossEncoder)<br>• RRF Fusion (k=60) + Category Boost<br>• 512 max length</p></div></div>
     </section>
 
-    <!-- ═══════════ SLIDE 4 : จุดเด่น ═══════════ -->
-    <section id="slide4" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 4</span>
-                <h2>จุดเด่นด้านนวัตกรรม</h2>
-                <div class="sub">Key Innovations — 8 Core Pillars</div>
-            </div>
-        </div>
-
-        <div class="card-grid" style="margin-bottom:1.5rem;">
-            <div class="card" style="border-left:4px solid var(--teal);">
-                <i class="fas fa-robot" style="color:var(--teal-bright);font-size:1.8rem;"></i>
-                <h3>Multi-Agent Orchestrator</h3>
-                <p>LangGraph State Machine · Intent Detection 6 ประเภท · Cross-Domain Handoff (max 3 hops) · Real-Time API Gateway</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--violet);">
-                <i class="fas fa-layer-group" style="color:var(--violet);font-size:1.8rem;"></i>
-                <h3>Mixture-of-Agents (MoA)</h3>
-                <p>Best-of-4 drafts จาก Dual-Gemma · Cross-Agent Collaboration · CUDA Stream Parallelism</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--gold);">
-                <i class="fas fa-tree" style="color:var(--gold);font-size:1.8rem;"></i>
-                <h3>Tree-of-Thoughts (ToT)</h3>
-                <p>Dynamic k=2-5, beam=1-4 · Adaptive Early-Stop · Domain-Specific Thresholds · Safety Pruning</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--rose);">
-                <i class="fas fa-sync-alt" style="color:var(--rose);font-size:1.8rem;"></i>
-                <h3>Self-Reflection</h3>
-                <p>Multi-turn Improvement (max 3 steps) · HyDE Query Rewriting · Critic + Output Validation</p>
-            </div>
-        </div>
-
-        <div class="card-grid">
-            <div class="card" style="border-left:4px solid var(--emerald);">
-                <i class="fas fa-shield-haltered" style="color:var(--emerald);font-size:1.8rem;"></i>
-                <h3>Guardrails 4-Layer</h3>
-                <p>Injection Detection · Domain Safety · Output Quality · PII Redaction (Presidio + Thai Regex)</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--sky);">
-                <i class="fas fa-database" style="color:var(--sky);font-size:1.8rem;"></i>
-                <h3>Hybrid RAG Ultra</h3>
-                <p>HyDE · NetraEmbed Dense · BM25 · GraphRAG · RAPTOR 4-Level · CrossEncoder Rerank · RRF</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--amber);">
-                <i class="fas fa-lock" style="color:var(--amber);font-size:1.8rem;"></i>
-                <h3>PDPA-first Design</h3>
-                <p>AES-256 Fernet · SQLite WAL Audit · Consent Management · E2EE (RSA-2048) · Right to be Forgotten</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--violet);">
-                <i class="fas fa-mobile-alt" style="color:var(--violet);font-size:1.8rem;"></i>
-                <h3>12-Tab Gradio UI</h3>
-                <p>Mobile PWA · SSO (Keycloak mock) · Real-Time Dashboard · TTS 24kHz · A/B Testing Framework</p>
-            </div>
-        </div>
-
-        <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:1.2rem;">
-            <span class="badge">LangGraph</span>
-            <span class="badge badge-violet">DSPy 2.6+</span>
-            <span class="badge badge-amber">RAGAS</span>
-            <span class="badge badge-emerald">MLflow</span>
-            <span class="badge badge-rose">LoRA PEFT</span>
-            <span class="badge">TextIteratorStreamer</span>
-            <span class="badge badge-violet">edge-tts 24kHz</span>
-            <span class="badge badge-amber">PyVis KG Viz</span>
-        </div>
+    <!-- SLIDE 4: จุดเด่น -->
+    <section id="slide4" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 4</span><h2>จุดเด่นด้านนวัตกรรม</h2><div class="sub">8 Core Pillars · v1Ultra-Ultimate</div></div></div>
+        <div class="card-grid"><div class="card"><i class="fas fa-robot" style="color:var(--teal-bright);"></i><h3>Multi-Agent Orchestrator</h3><p>LangGraph StateGraph · 30+ tools · Cross-domain handoff (max 6 hops) · MemorySaver</p></div>
+        <div class="card"><i class="fas fa-layer-group" style="color:var(--violet);"></i><h3>Mixture-of-Agents (MoA)</h3><p>Chinda×3 + Gemma×3 parallel CUDA streams · best‑of‑N fusion · adaptive T4 (2 agents)</p></div>
+        <div class="card"><i class="fas fa-tree" style="color:var(--gold);"></i><h3>MCTS‑Tree‑of‑Thoughts</h3><p>UCB1 c=1.41 · dynamic k (2‑8) · domain‑specific early‑stop · depth 3‑6</p></div>
+        <div class="card"><i class="fas fa-sync-alt" style="color:var(--rose);"></i><h3>Self‑Reflection</h3><p>Constitutional AI (max 5 steps) · HyDE‑v2 rewrite · gemma‑4 critic · procedural memory</p></div>
+        <div class="card"><i class="fas fa-shield-haltered" style="color:var(--emerald);"></i><h3>Guardrails 6‑Layer</h3><p>41 pre‑compiled patterns · PII (Thai ID \d{13}) · crisis 1323 · rate‑limit 30/min</p></div>
+        <div class="card"><i class="fas fa-database" style="color:var(--sky);"></i><h3>Hybrid RAG Ultra</h3><p>HyDE‑v2 · Granite dense · BM25 · GraphRAG (NetworkX) · RAPTOR 2‑4 levels · RRF · reranker</p></div>
+        <div class="card"><i class="fas fa-lock" style="color:var(--amber);"></i><h3>PDPA‑first Design</h3><p>AES‑256‑GCM · SQLite WAL · ZKP Groth16‑mock · DP Laplace (ε=1.0) · audit log · right to erasure</p></div>
+        <div class="card"><i class="fas fa-mobile-alt" style="color:var(--violet);"></i><h3>34‑Tab Gradio 5.x UI</h3><p>Parent 8 × Child 34 · WCAG AA · dark/light · real‑time VRAM monitor · TTS edge‑tts 24kHz</p></div></div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:1rem;"><span class="badge">LangGraph</span><span class="badge badge-violet">DSPy</span><span class="badge badge-amber">RAGAS</span><span class="badge badge-emerald">MLflow 3.x</span><span class="badge badge-rose">PEFT LoRA (rank 8/16)</span><span class="badge">SPIN · DPO</span><span class="badge badge-violet">edge-tts</span><span class="badge badge-amber">PyVis KG</span></div>
     </section>
 
-    <!-- ═══════════ SLIDE 5 : Dual LLM Engine ═══════════ -->
-    <section id="slide5" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 5</span>
-                <h2>Dual-Gemma LLM Engines</h2>
-                <div class="sub">Brain of the System — Main + Agent Models</div>
-            </div>
-        </div>
-
-        <div class="flex-2col">
-            <div class="chart-container">
-                <h3 style="color:var(--teal-bright); margin-bottom:1rem;"><i class="fas fa-microchip"></i> Main LLM: chinda-qwen3-4b</h3>
-                <ul style="font-size:0.82rem; color:var(--text-secondary); line-height:2.2; list-style:none; padding:0;">
-                    <li>✅ <strong>130K Context</strong> with YaRN scaling (factor 6.0x)</li>
-                    <li>✅ <strong>Thinking Mode</strong> (Qwen3 Native)</li>
-                    <li>✅ <strong>Thai Chart Understanding</strong></li>
-                    <li>✅ <strong>Apache 2.0 License</strong></li>
-                    <li>✅ <strong>4-bit NF4 QLoRA</strong> ready</li>
-                    <li>✅ <strong>Temperature 0.5, Top-P 0.95</strong></li>
-                </ul>
-            </div>
-            <div class="chart-container">
-                <h3 style="color:var(--violet); margin-bottom:1rem;"><i class="fas fa-brain"></i> Agent LLM: gemma-4-E2B-it</h3>
-                <ul style="font-size:0.82rem; color:var(--text-secondary); line-height:2.2; list-style:none; padding:0;">
-                    <li>✅ <strong>256K Context</strong> — Vision+Text+Audio</li>
-                    <li>✅ <strong>Native ASR</strong> (Thai/English)</li>
-                    <li>✅ <strong>OCR + Handwriting</strong> recognition</li>
-                    <li>✅ <strong>Multilingual Chart</strong> understanding</li>
-                    <li>✅ <strong>Function Calling</strong> support</li>
-                    <li>✅ <strong>BF16 on A100</strong> / 4-bit NF4 on T4</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="chart-container" style="margin-top:1.2rem;">
-            <canvas id="vramChart" height="220"></canvas>
-            <p class="footer-note">VRAM Usage — Dual Model Loading on A100-SXM4 80GB (Ultra Mode)</p>
-        </div>
+    <!-- SLIDE 5: Dual LLM Engine -->
+    <section id="slide5" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 5</span><h2>Dual‑LLM Engines</h2><div class="sub">chinda-qwen3-4b (32K) + gemma-4-E2B-it (256K)</div></div></div>
+        <div class="flex-2col"><div class="chart-container"><h3 style="color:var(--teal-bright);"><i class="fas fa-microchip"></i> Main LLM: chinda-qwen3-4b</h3><ul style="font-size:0.82rem; line-height:2.2; list-style:none;"><li>✅ <strong>Native 32K</strong> (No YaRN)</li><li>✅ <strong>Thai‑tuned Qwen3‑4B</strong></li><li>✅ <strong>NF4→FP16→BF16 fallback chain</strong></li><li>✅ <strong>No adapter</strong> (standalone fine‑tuned)</li><li>✅ <strong>Temperature 0.7, Top‑P 0.90</strong></li><li>✅ <strong>Chat template with thinking mode</strong></li></ul></div>
+        <div class="chart-container"><h3 style="color:var(--violet);"><i class="fas fa-brain"></i> Agent LLM: gemma-4-E2B-it</h3><ul style="font-size:0.82rem; line-height:2.2; list-style:none;"><li>✅ <strong>256K Context</strong> — Vision+Text+Audio</li><li>✅ <strong>Native ASR</strong> (Thai/English)</li><li>✅ <strong>OCR + Handwriting</strong></li><li>✅ <strong>Multimodal (images, charts)</strong></li><li>✅ <strong>NF4 on T4 / BF16 on A100</strong></li><li>✅ <strong>Used as critic in Self‑Reflection</strong></li></ul></div></div>
+        <div class="chart-container"><canvas id="vramChart" height="220"></canvas><p class="footer-note">VRAM Usage — Budget Mode (T4 15.6GB, NF4) vs Full Mode (A100 80GB, BF16)</p></div>
     </section>
 
-    <!-- ═══════════ SLIDE 6 : Hybrid RAG Engine ═══════════ -->
-    <section id="slide6" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 6</span>
-                <h2>Hybrid RAG Engine Ultra</h2>
-                <div class="sub">HyDE + GraphRAG + RAPTOR + RRF + CrossEncoder</div>
-            </div>
-        </div>
-
-        <div class="card-grid" style="margin-bottom:1.5rem;">
-            <div class="card" style="border-left:4px solid var(--teal);">
-                <i class="fas fa-search" style="color:var(--teal-bright);font-size:1.8rem;"></i>
-                <h3>HyDE Expansion</h3>
-                <p>Hypothetical Document Embedding — สร้าง pseudo-document ก่อน retrieval เพิ่ม Recall</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--violet);">
-                <i class="fas fa-project-diagram" style="color:var(--violet);font-size:1.8rem;"></i>
-                <h3>GraphRAG</h3>
-                <p>Entity-Relation Graph · LLM Triple Extraction · 250+ nodes / 290+ edges · Real-time Cypher</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--gold);">
-                <i class="fas fa-sitemap" style="color:var(--gold);font-size:1.8rem;"></i>
-                <h3>RAPTOR 4-Level</h3>
-                <p>Hierarchical Summary Tree · Adaptive Cluster Size · Multi-level Dense Index · Domain Meta-Summaries</p>
-            </div>
-            <div class="card" style="border-left:4px solid var(--rose);">
-                <i class="fas fa-balance-scale" style="color:var(--rose);font-size:1.8rem;"></i>
-                <h3>RRF Fusion + Rerank</h3>
-                <p>Reciprocal Rank Fusion (k=60) · bge-reranker-v3 CrossEncoder · Category Boost · MMR Diversity</p>
-            </div>
-        </div>
-
-        <div class="chart-container" style="margin-bottom:1rem;">
-            <canvas id="retrievalChart" height="250"></canvas>
-            <p class="footer-note">Retrieval Pipeline: HyDE → Dense + BM25 + GraphRAG → RRF → CrossEncoder Rerank → MMR</p>
-        </div>
-
-        <div class="info-box">
-            📚 <strong>Knowledge Base Structure:</strong> 5 Domains (TSU, Innovation, Legal, Medical, Business) · 200+ docs · ICD-10-TM · Thai Legal Codes · DBD/SET Financial Data · Federated Sync
-        </div>
+    <!-- SLIDE 6: Hybrid RAG Engine -->
+    <section id="slide6" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 6</span><h2>Ultra Hybrid RAG Engine</h2><div class="sub">HyDE‑v2 + GraphRAG + RAPTOR + RRF + CrossEncoder</div></div></div>
+        <div class="card-grid"><div class="card"><i class="fas fa-search" style="color:var(--teal-bright);"></i><h3>HyDE‑v2 Expansion</h3><p>Generate hypothetical document (1‑3 docs) → boost retrieval recall</p></div>
+        <div class="card"><i class="fas fa-project-diagram" style="color:var(--violet);"></i><h3>GraphRAG</h3><p>LLM triple extraction + keyword co‑occurrence · NetworkX DiGraph · 250+ nodes / 290+ edges</p></div>
+        <div class="card"><i class="fas fa-sitemap" style="color:var(--gold);"></i><h3>RAPTOR (2‑4 levels)</h3><p>Hierarchical summaries · adaptive cluster size · dense indexes per level</p></div>
+        <div class="card"><i class="fas fa-balance-scale" style="color:var(--rose);"></i><h3>RRF + Reranker</h3><p>RRF k=60 · BGE‑reranker‑v2‑m3 CrossEncoder · category boost · MMR diversity</p></div></div>
+        <div class="chart-container"><canvas id="retrievalChart" height="250"></canvas><p class="footer-note">Recall@5 progression — from Dense only to full RAG pipeline</p></div>
+        <div class="info-box">📚 <strong>Knowledge Base:</strong> 5 Domains · 200+ files (MD, JSON, PDF) + comprehensive seed corpus · ChromaDB persistent · LRU cache · joblib disk cache</div>
     </section>
 
-    <!-- ═══════════ SLIDE 7 : 5 Domain Agents ═══════════ -->
-    <section id="slide7" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 7</span>
-                <h2>5 Domain Agents</h2>
-                <div class="sub">Specialized AI Agents for Every University Function</div>
-            </div>
-        </div>
-
-        <div class="domain-tabs" style="margin-bottom:1.8rem;">
-            <div class="domain-tab tsu"><i class="fas fa-university"></i><strong>TSU</strong><br><small>Smart Student Hub<br>Course Navigator<br>e-Performance</small></div>
-            <div class="domain-tab innovation"><i class="fas fa-lightbulb"></i><strong>Innovation</strong><br><small>16 Tools · 3 Workflows<br>Tech Transfer · Grant<br>TRL Assessment</small></div>
-            <div class="domain-tab legal"><i class="fas fa-gavel"></i><strong>Legal</strong><br><small>e-Filing Studio<br>Judgment Search<br>Contract Analyzer</small></div>
-            <div class="domain-tab medical"><i class="fas fa-heartbeat"></i><strong>Medical</strong><br><small>Triage 4 Levels<br>ICD-10 · Drug Info<br>Hospital Navigator</small></div>
-            <div class="domain-tab business"><i class="fas fa-chart-line"></i><strong>Business</strong><br><small>Full Financial Analysis<br>BMC · BOI · Tax<br>Benchmark DBD/SET</small></div>
-        </div>
-
-        <div class="flex-2col">
-            <div class="info-box">
-                <strong>🔬 Innovation Highlight:</strong> Tech Transfer Matchmaking — Multi-factor scoring (expertise + TRL + h-index + IP status) พร้อม Connection Map Visualization
-            </div>
-            <div class="warn-box">
-                <strong>⚖️ Legal Highlight:</strong> e-Filing Document Studio — AI drafting + completeness check + PDF export · รองรับทั้งศาลยุติธรรมและศาลปกครอง
-            </div>
-        </div>
-        <div class="flex-2col">
-            <div class="danger-box">
-                <strong>🏥 Medical Highlight:</strong> Tele-Health Navigator — Symptom Checker + Image Analysis (gemma-4 Vision + BioMedCLIP) + Hospital Map + Crisis Detection
-            </div>
-            <div class="dark-box">
-                <strong>💼 Business Highlight:</strong> Business Command Center — Full ratio analysis + Industry Benchmark + Break-even + BOI incentive checker
-            </div>
-        </div>
+    <!-- SLIDE 7: 5 Domain Agents -->
+    <section id="slide7" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 7</span><h2>5 Domain Agents</h2><div class="sub">Specialized AI Agents for University Ecosystem</div></div></div>
+        <div class="domain-tabs"><div class="domain-tab tsu"><i class="fas fa-university"></i><strong>TSU</strong><br><small>Smart Student Hub · Early Warning · e‑Performance · Regis</small></div>
+        <div class="domain-tab innovation"><i class="fas fa-lightbulb"></i><strong>Innovation</strong><br><small>16 tools · 3 workflows · Tech Transfer · Grant · TRL</small></div>
+        <div class="domain-tab legal"><i class="fas fa-gavel"></i><strong>Legal</strong><br><small>e‑Filing Studio · ODR/ADR · Contract Risk · NDA Draft</small></div>
+        <div class="domain-tab medical"><i class="fas fa-heartbeat"></i><strong>Medical</strong><br><small>5‑Step CoT · Crisis 1323 · DDI · Hospital Navigator · ICD‑10</small></div>
+        <div class="domain-tab business"><i class="fas fa-chart-line"></i><strong>Business</strong><br><small>10 ratios + breakeven · Altman Z‑Score · ESG · BOI · Valuation</small></div></div>
+        <div class="flex-2col"><div class="info-box"><strong>🔬 Innovation Highlight:</strong> Tech Transfer Matchmaking — multi‑factor scoring (expertise + TRL + h‑index + IP status) + ASEAN expansion roadmap</div>
+        <div class="warn-box"><strong>⚖️ Legal Highlight:</strong> e‑Filing Studio + ODR/ADR guide + contract risk scoring (10‑point scale) + regulatory compliance (PDPA/BOI/FDA)</div></div>
+        <div class="flex-2col"><div class="danger-box"><strong>🏥 Medical Highlight:</strong> 5‑Step CoT · Crisis detection 100% (“อยากตาย” → 1323) · FAST stroke · drug‑drug interactions (Major/Moderate) · constitutional AI early‑stop ≥0.80</div>
+        <div class="dark-box"><strong>💼 Business Highlight:</strong> Full financial analysis (10 ratios + breakeven guaranteed) · Altman Z‑Score · Monte Carlo valuation (1,000 scenarios) · ESG radar</div></div>
     </section>
 
-    <!-- ═══════════ SLIDE 8 : กระบวนการสร้างสรรค์ ═══════════ -->
-    <section id="slide8" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 8</span>
-                <h2>กระบวนการสร้างสรรค์</h2>
-                <div class="sub">Methodology — 7-Phase Development Pipeline</div>
-            </div>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:0.7rem;">
-            <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--bg-card);border-radius:var(--radius-md);padding:1rem;border-left:4px solid var(--teal);">
-                <div style="background:var(--teal);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;">1</div>
-                <div><h4 style="color:var(--text-primary);">Data Collection & Preprocessing</h4><p style="color:var(--text-muted);font-size:0.8rem;">รวบรวม 5-domain KB: TSU (200+ files), Legal (Civil/Criminal/Admin codes), Medical (ICD-10-TM, NDI, CPG), Business (DBD/SET), Innovation (NRCT/NIA)</p></div>
-            </div>
-            <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--bg-card);border-radius:var(--radius-md);padding:1rem;border-left:4px solid var(--violet);">
-                <div style="background:var(--violet);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;">2</div>
-                <div><h4 style="color:var(--text-primary);">Dual LLM Loading</h4><p style="color:var(--text-muted);font-size:0.8rem;">chinda-qwen3-4b (BF16, 130K YaRN) + gemma-4-E2B-it (BF16/A100, NF4/T4) · FA2/FA3 · CUDA Streams</p></div>
-            </div>
-            <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--bg-card);border-radius:var(--radius-md);padding:1rem;border-left:4px solid var(--gold);">
-                <div style="background:var(--gold);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;">3</div>
-                <div><h4 style="color:var(--text-primary);">Hybrid RAG Construction</h4><p style="color:var(--text-muted);font-size:0.8rem;">NetraEmbed dense + BM25 (pythainlp newmm) → RRF Fusion → bge-reranker-v3 → GraphRAG + RAPTOR 4-level</p></div>
-            </div>
-            <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--bg-card);border-radius:var(--radius-md);padding:1rem;border-left:4px solid var(--rose);">
-                <div style="background:var(--rose);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;">4</div>
-                <div><h4 style="color:var(--text-primary);">Multi-Agent Orchestrator</h4><p style="color:var(--text-muted);font-size:0.8rem;">LangGraph StateGraph · Intent → Planning → RAG+Tools → MoA → ToT → Reflection → Response · Cross-domain handoff</p></div>
-            </div>
-            <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--bg-card);border-radius:var(--radius-md);padding:1rem;border-left:4px solid var(--emerald);">
-                <div style="background:var(--emerald);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;">5</div>
-                <div><h4 style="color:var(--text-primary);">Guardrails + PDPA Integration</h4><p style="color:var(--text-muted);font-size:0.8rem;">NeMo Guardrails + Custom 4-Layer · AES-256 Fernet · Audit Log · Consent Management · E2EE</p></div>
-            </div>
-            <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--bg-card);border-radius:var(--radius-md);padding:1rem;border-left:4px solid var(--sky);">
-                <div style="background:var(--sky);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;">6</div>
-                <div><h4 style="color:var(--text-primary);">Continuous Evaluation</h4><p style="color:var(--text-muted);font-size:0.8rem;">RAGAS (every 500 queries) · TruLens · A/B Testing · Auto-Self-Improvement Loop · LoRA Fine-tune Trigger</p></div>
-            </div>
-            <div style="display:flex;gap:1rem;align-items:flex-start;background:var(--bg-card);border-radius:var(--radius-md);padding:1rem;border-left:4px solid var(--amber);">
-                <div style="background:var(--amber);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.9rem;">7</div>
-                <div><h4 style="color:var(--text-primary);">Gradio UI — 12 Tabs</h4><p style="color:var(--text-muted);font-size:0.8rem;">Mobile PWA · SSO · Smart Student Hub · e-Filing Studio · Tele-Health · Business Command Center · System Dashboard</p></div>
-            </div>
-        </div>
+    <!-- SLIDE 8: กระบวนการสร้างสรรค์ -->
+    <section id="slide8" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 8</span><h2>กระบวนการสร้างสรรค์</h2><div class="sub">7‑Phase Development Pipeline</div></div></div>
+        <div style="display:flex; flex-direction:column; gap:0.7rem;"><div class="roadmap-step" style="border-left-color:var(--teal);"><strong>1. Data Collection & KB Construction</strong><p>5‑domain knowledge base (TSU, Innovation, Legal, Medical, Business) · chunking 800‑1000 chars · overlap 100‑150 · seed corpus comprehensive</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--violet);"><strong>2. Dual LLM Loading & Quantization</strong><p>chinda-qwen3-4b + gemma-4-E2B-it · NF4→FP16→BF16 fallback chain · eager attention · native 32K</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--gold);"><strong>3. Hybrid RAG Construction</strong><p>Granite embedder (512d) · FAISS dense + BM25 (pythainlp newmm) · GraphRAG (NetworkX) · RAPTOR 2‑4 levels · RRF fusion + bge‑reranker</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--rose);"><strong>4. Multi-Agent Orchestrator (LangGraph)</strong><p>StateGraph with MemorySaver · 30+ tools · MoA (2‑6 agents) · MCTS‑ToT (UCB1 c=1.41) · Self‑Reflection · Constitutional AI</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--emerald);"><strong>5. Guardrails & PDPA Integration</strong><p>6‑layer validator (41 patterns) · AES‑256‑GCM · SQLite WAL · ZKP mock · DP Laplace (ε=1.0) · audit log</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--sky);"><strong>6. Continuous Evaluation & Improvement</strong><p>RAGAS (auto‑batch every 10 queries) · LoRA fine‑tune (trigger at 30 samples) · DPO · SPIN self‑play · A/B testing · drift detection (cosine, th=0.85)</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--amber);"><strong>7. Gradio UI — 34 Child Tabs</strong><p>Parent 8 tabs · Smart Student Hub · e‑Filing Studio · Tele‑Health · Business Command Center · System Dashboard with VRAM gauge, RAGAS trend, LoRA stats</p></div></div>
     </section>
 
-    <!-- ═══════════ SLIDE 9 : ผลลัพธ์ & TRL ═══════════ -->
-    <section id="slide9" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 9</span>
-                <h2>ผลลัพธ์ & ระดับ TRL/SRL</h2>
-                <div class="sub">Results · Creative Output · Technology Readiness Level</div>
-            </div>
-        </div>
-
-        <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:1rem;text-align:center;margin-bottom:1.5rem;border:1px solid rgba(14,165,160,0.3);">
-            📱 <strong style="color:var(--teal-bright);">Demo Live:</strong>
-            <a href="#" style="color:var(--teal);text-decoration:underline;">TSU AI Middleware Multi-Agent Ultra v0.0 — Gradio Live</a><br>
-            <small style="color:var(--slate-400);">12 Tabs · Dual-Gemma · A100 80GB · Apache 2.0 Open Source</small>
-        </div>
-
-        <!-- Performance charts -->
-        <div class="flex-2col" style="margin-bottom:1.5rem;">
-            <div class="chart-container"><canvas id="perfChart1" height="240"></canvas>
-                <p class="footer-note">RAG Retrieval Performance (Recall@5)</p>
-            </div>
-            <div class="chart-container"><canvas id="perfChart2" height="240"></canvas>
-                <p class="footer-note">Multi-Agent Response Quality (RAGAS Faithfulness)</p>
-            </div>
-        </div>
-
-        <!-- TRL Progress Bar -->
-        <h3 style="margin-bottom:0.8rem;color:var(--text-primary);">📡 TRL Progress (Technology Readiness Level)</h3>
-        <div style="display:flex;gap:0.2rem;align-items:center;margin:1rem 0;">
-            <div style="flex:1;height:32px;border-radius:6px;background:var(--slate-700);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:#fff;">TRL 1</div>
-            <div style="flex:1;height:32px;border-radius:6px;background:var(--slate-600);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:#fff;">TRL 2</div>
-            <div style="flex:1;height:32px;border-radius:6px;background:var(--slate-500);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:#fff;">TRL 3</div>
-            <div style="flex:1;height:40px;border-radius:6px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;box-shadow:0 0 16px var(--teal-glow);" class="pulse-glow">TRL 4 ✓</div>
-            <div style="flex:1;height:32px;border-radius:6px;background:var(--slate-600);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:var(--slate-400);">TRL 5</div>
-            <div style="flex:1;height:32px;border-radius:6px;background:var(--slate-700);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:var(--slate-500);">TRL 6</div>
-            <div style="flex:1;height:32px;border-radius:6px;background:var(--slate-800);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:var(--slate-600);">TRL 7</div>
-            <div style="flex:1;height:32px;border-radius:6px;background:var(--slate-800);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:var(--slate-600);">TRL 8</div>
-            <div style="flex:1;height:32px;border-radius:6px;background:var(--slate-900);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:var(--slate-700);">TRL 9</div>
-        </div>
-        <p style="font-size:0.8rem;color:var(--slate-400);margin-top:0.5rem;">ปัจจุบัน: <strong style="color:var(--teal-bright);">TRL 4</strong> — Lab Validation บน A100 · เป้าหมาย: <strong style="color:var(--gold);">TRL 6</strong> (Commercial Demo) ภายใน 12-24 เดือน</p>
-
-        <!-- 12 Tab Screenshots -->
-        <h3 style="margin:1.5rem 0 1rem;color:var(--text-primary);">✨ 12-Tab Gradio UI v0 Ultra</h3>
-        <div style="display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;">
-            <span class="badge">🏛️ TSU</span><span class="badge badge-violet">💡 Innovation</span>
-            <span class="badge badge-rose">⚖️ Legal</span><span class="badge badge-emerald">🏥 Medical</span>
-            <span class="badge badge-amber">💼 Business</span><span class="badge">🎓 Student Hub</span>
-            <span class="badge badge-violet">🔗 Matchmaking</span><span class="badge badge-rose">📋 e-Filing</span>
-            <span class="badge badge-emerald">🏥 Tele-Health</span><span class="badge badge-amber">📈 Command Center</span>
-            <span class="badge">👤 Profile & SSO</span><span class="badge badge-violet">📊 Dashboard</span>
-        </div>
+    <!-- SLIDE 9: ผลลัพธ์ & TRL -->
+    <section id="slide9" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 9</span><h2>ผลลัพธ์ & ระดับ TRL</h2><div class="sub">Performance Metrics · Technology Readiness Level</div></div></div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-lg);padding:1rem;text-align:center;margin-bottom:1.5rem;">📱 <strong style="color:var(--teal-bright);">Demo Live:</strong> Gradio 5.x · 34 functional tabs · smoke tests 55+ passed · auto‑refresh dashboard</div>
+        <div class="flex-2col"><div class="chart-container"><canvas id="perfChart1" height="240"></canvas><p class="footer-note">RAG Recall@5 per domain (Granite + GraphRAG + RAPTOR)</p></div>
+        <div class="chart-container"><canvas id="perfChart2" height="240"></canvas><p class="footer-note">RAGAS scores — faithfulness & answer relevancy (Full pipeline)</p></div></div>
+        <h3 style="margin:1rem 0 0.8rem;">📡 TRL Progress (Technology Readiness Level)</h3>
+        <div style="display:flex;gap:0.2rem;align-items:center;margin:1rem 0;"><div style="flex:1;height:32px;background:var(--slate-700);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#fff;">TRL1</div><div style="flex:1;height:32px;background:var(--slate-600);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#fff;">TRL2</div><div style="flex:1;height:32px;background:var(--slate-500);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#fff;">TRL3</div><div style="flex:1;height:44px;background:var(--teal);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:#fff;box-shadow:0 0 16px var(--teal-glow);" class="pulse-glow">TRL4 ✓</div><div style="flex:1;height:32px;background:var(--slate-600);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--slate-400);">TRL5</div><div style="flex:1;height:32px;background:var(--slate-700);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--slate-500);">TRL6</div><div style="flex:1;height:32px;background:var(--slate-800);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--slate-600);">TRL7</div><div style="flex:1;height:32px;background:var(--slate-800);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--slate-600);">TRL8</div><div style="flex:1;height:32px;background:var(--slate-900);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--slate-700);">TRL9</div></div>
+        <p style="font-size:0.8rem;color:var(--slate-400);">ปัจจุบัน: <strong style="color:var(--teal-bright);">TRL 4</strong> — Lab validation on Kaggle T4 & A100 · เป้าหมาย: <strong style="color:var(--gold);">TRL 6</strong> (Commercial demo) ภายใน 12‑24 เดือน</p>
+        <div style="margin-top:1rem;"><span class="badge">🏛️ TSU</span><span class="badge badge-violet">💡 Innovation</span><span class="badge badge-rose">⚖️ Legal</span><span class="badge badge-emerald">🏥 Medical</span><span class="badge badge-amber">💼 Business</span><span class="badge">🎓 Student Hub</span><span class="badge badge-violet">🔗 Matchmaking</span><span class="badge badge-rose">📋 e‑Filing</span><span class="badge badge-emerald">🏥 Tele‑Health</span><span class="badge badge-amber">📈 Command Center</span><span class="badge">👤 Profile & SSO</span><span class="badge badge-violet">📊 System Dashboard</span></div>
     </section>
 
-    <!-- ═══════════ SLIDE 10 : BMC ═══════════ -->
-    <section id="slide10" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 10</span>
-                <h2>Business Model Canvas</h2>
-                <div class="sub">BMC — TSU AI Middleware Commercialization</div>
-            </div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
-            <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--sky);overflow:hidden;">
-                <div style="background:var(--sky);color:#fff;padding:0.5rem 0.8rem;text-align:center;font-weight:800;font-size:0.78rem;">KEY PARTNERS</div>
-                <div style="padding:0.8rem;font-size:0.76rem;color:var(--text-secondary);">🏛️ ม.ทักษิณ · CDTI<br>☁️ Google Colab Pro+<br>🏥 โรงพยาบาลนำร่อง<br>⚖️ ศาลยุติธรรม · DBD/SET</div>
-            </div>
-            <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--violet);overflow:hidden;">
-                <div style="background:var(--violet);color:#fff;padding:0.5rem 0.8rem;text-align:center;font-weight:800;font-size:0.78rem;">KEY ACTIVITIES</div>
-                <div style="padding:0.8rem;font-size:0.76rem;color:var(--text-secondary);">⚙️ Dual LLM Fine-tuning<br>📚 RAG Knowledge Base<br>🔒 PDPA Compliance<br>📊 RAGAS + TruLens Eval</div>
-            </div>
-            <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--emerald);overflow:hidden;">
-                <div style="background:var(--emerald);color:#fff;padding:0.5rem 0.8rem;text-align:center;font-weight:800;font-size:0.78rem;">VALUE PROPOSITION</div>
-                <div style="padding:0.8rem;font-size:0.76rem;color:var(--text-secondary);">✅ 5 Domains ในระบบเดียว<br>✅ ภาษาไทย 100%<br>✅ Dual-Gemma LLM<br>✅ PDPA-first · Open-source<br>✅ Edge-ready (A100/T4)</div>
-            </div>
-            <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--amber);overflow:hidden;">
-                <div style="background:var(--amber);color:#fff;padding:0.5rem 0.8rem;text-align:center;font-weight:800;font-size:0.78rem;">CUSTOMER SEGMENTS</div>
-                <div style="padding:0.8rem;font-size:0.76rem;color:var(--text-secondary);">👥 มหาวิทยาลัยทั่วประเทศ<br>🏥 โรงพยาบาล/คลินิก<br>⚖️ สำนักงานกฎหมาย<br>💼 SME/Startup ไทย</div>
-            </div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:0.6rem;">
-            <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--teal);overflow:hidden;">
-                <div style="background:var(--teal);color:#fff;padding:0.5rem 0.8rem;text-align:center;font-weight:800;font-size:0.78rem;">CHANNELS</div>
-                <div style="padding:0.8rem;font-size:0.76rem;color:var(--text-secondary);">🖥️ Gradio Web App<br>🔌 REST API / SaaS<br>🤝 Pilot Universities<br>📦 Edge GGUF</div>
-            </div>
-            <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--rose);overflow:hidden;">
-                <div style="background:var(--rose);color:#fff;padding:0.5rem 0.8rem;text-align:center;font-weight:800;font-size:0.78rem;">COST STRUCTURE</div>
-                <div style="padding:0.8rem;font-size:0.76rem;color:var(--text-secondary);">💻 GPU A100 80GB<br>☁️ Colab Pro+<br>🔬 R&D · Dataset<br>🛡️ Security Audit</div>
-            </div>
-            <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--emerald);overflow:hidden;">
-                <div style="background:var(--emerald);color:#fff;padding:0.5rem 0.8rem;text-align:center;font-weight:800;font-size:0.78rem;">REVENUE STREAMS</div>
-                <div style="padding:0.8rem;font-size:0.76rem;color:var(--text-secondary);">💰 SaaS Subscription<br>🔌 API Usage Fee<br>🏛️ Government Grant<br>📊 UHC Integration</div>
-            </div>
-        </div>
+    <!-- SLIDE 10: Business Model Canvas -->
+    <section id="slide10" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 10</span><h2>Business Model Canvas</h2><div class="sub">BMC — TSU AI Middleware Commercialization</div></div></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;"><div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--sky);"><div style="background:var(--sky);color:#fff;padding:0.5rem;text-align:center;font-weight:800;">KEY PARTNERS</div><div style="padding:0.8rem;font-size:0.76rem;">🏛️ ม.ทักษิณ · NRCT · NIA<br>☁️ Google Colab / HuggingFace<br>🏥 โรงพยาบาลนำร่อง<br>⚖️ ศาลยุติธรรม · DBD/SET</div></div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--violet);"><div style="background:var(--violet);color:#fff;padding:0.5rem;text-align:center;font-weight:800;">KEY ACTIVITIES</div><div style="padding:0.8rem;font-size:0.76rem;">⚙️ Dual LLM fine‑tuning · RAG KB curation · PDPA compliance · LoRA/DPO/SPIN · RAGAS eval</div></div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--emerald);"><div style="background:var(--emerald);color:#fff;padding:0.5rem;text-align:center;font-weight:800;">VALUE PROPOSITION</div><div style="padding:0.8rem;font-size:0.76rem;">✅ 5 Domains in 1 system ✅ Thai 100%<br>✅ Dual‑Gemma LLM ✅ PDPA AES‑256‑GCM<br>✅ Edge/Cloud (T4/A100) ✅ Open‑source</div></div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--amber);"><div style="background:var(--amber);color:#fff;padding:0.5rem;text-align:center;font-weight:800;">CUSTOMER SEGMENTS</div><div style="padding:0.8rem;font-size:0.76rem;">👥 มหาวิทยาลัยทั่วประเทศ 🏥 โรงพยาบาล/คลินิก ⚖️ สำนักงานกฎหมาย 💼 SME/Startup ไทย</div></div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--teal);"><div style="background:var(--teal);color:#fff;padding:0.5rem;text-align:center;font-weight:800;">CHANNELS</div><div style="padding:0.8rem;font-size:0.76rem;">🖥️ Gradio Web App 🔌 REST API / SaaS 🤝 Pilot Universities 📦 Edge GGUF</div></div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--rose);"><div style="background:var(--rose);color:#fff;padding:0.5rem;text-align:center;font-weight:800;">COST STRUCTURE</div><div style="padding:0.8rem;font-size:0.76rem;">💻 GPU T4/A100 ☁️ Cloud API 🔬 R&D · Dataset 🛡️ Security audit · PDPA counsel</div></div>
+        <div style="background:var(--bg-card);border-radius:var(--radius-md);border-top:4px solid var(--emerald);"><div style="background:var(--emerald);color:#fff;padding:0.5rem;text-align:center;font-weight:800;">REVENUE STREAMS</div><div style="padding:0.8rem;font-size:0.76rem;">💰 SaaS Subscription 🔌 API Usage Fee 🏛️ Government Grant 📊 UHC Integration</div></div></div>
     </section>
 
-    <!-- ═══════════ SLIDE 11 : Roadmap ═══════════ -->
-    <section id="slide11" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 11</span>
-                <h2>Development Roadmap</h2>
-                <div class="sub">12-36 Month Go-to-Market Strategy</div>
-            </div>
-        </div>
-
-        <div class="roadmap-step" style="border-left-color:var(--emerald);">
-            <strong>🗓️ Phase 1 — ปัจจุบัน (TRL 4) · 2569</strong>
-            <p>Lab Validation บน A100 · Prototype Colab · RAGAS evaluation · Smoke tests 30/32 passed · เข้าประกวด Higher Education Innovation Awards 2026</p>
-        </div>
-        <div class="roadmap-step" style="border-left-color:var(--gold);">
-            <strong>🗓️ Phase 2 — 6-12 เดือน (TRL 5) · 2569-2570</strong>
-            <p>Pilot University ม.ทักษิณ · ทดสอบผู้ใช้จริง 100+ คน · Clinician validation · เพิ่ม Training Data · ยื่นขอทุน NRCT/NSTDA</p>
-        </div>
-        <div class="roadmap-step" style="border-left-color:var(--rose);">
-            <strong>🗓️ Phase 3 — 12-24 เดือน (TRL 6) · 2570-2571</strong>
-            <p>Commercial Demo · SaaS/API Product · IP filing (อนุสิทธิบัตร) · Kubernetes Deployment · SSO Production (TSU LDAP)</p>
-        </div>
-        <div class="roadmap-step" style="border-left-color:var(--sky);">
-            <strong>🗓️ Phase 4 — 24-36 เดือน (TRL 7-9) · 2571-2572</strong>
-            <p>Full Commercial · UHC Integration · Scale ทั่วประเทศ · Export ASEAN · Federated Learning ข้ามมหาวิทยาลัย · TensorRT-LLM</p>
-        </div>
-
-        <div class="chart-container" style="margin-top:1.5rem;">
-            <canvas id="roadmapChart" height="230"></canvas>
-            <p class="footer-note">Projected TRL Progression — 36-Month Timeline</p>
-        </div>
+    <!-- SLIDE 11: Roadmap -->
+    <section id="slide11" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 11</span><h2>Development Roadmap</h2><div class="sub">12‑36 Month Go‑to‑Market Strategy</div></div></div>
+        <div class="roadmap-step" style="border-left-color:var(--emerald);"><strong>🗓️ Phase 1 — ปัจจุบัน (TRL 4) · 2569</strong><p>Lab validation on Kaggle T4/A100 · 55+ smoke tests passed · RAGAS auto‑eval · เข้าประกวด Higher Education Innovation Awards 2026</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--gold);"><strong>🗓️ Phase 2 — 6‑12 เดือน (TRL 5) · 2569‑2570</strong><p>Pilot University TSU · real users 100+ · clinician validation · expand training data (5k+ records) · NRCT/NSTDA grant</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--rose);"><strong>🗓️ Phase 3 — 12‑24 เดือน (TRL 6) · 2570‑2571</strong><p>Commercial demo · SaaS/API product · IP filing (petty patent) · Kubernetes deployment · SSO production (TSU LDAP)</p></div>
+        <div class="roadmap-step" style="border-left-color:var(--sky);"><strong>🗓️ Phase 4 — 24‑36 เดือน (TRL 7‑9) · 2571‑2572</strong><p>Full commercial · UHC integration · nationwide scale · ASEAN export · federated learning · TensorRT‑LLM</p></div>
+        <div class="chart-container"><canvas id="roadmapChart" height="230"></canvas><p class="footer-note">Projected TRL Progression — 36‑Month Timeline</p></div>
     </section>
 
-    <!-- ═══════════ SLIDE 12 : บทสรุป & SDGs ═══════════ -->
-    <section id="slide12" class="slide-section">
-        <div class="slide-header">
-            <div>
-                <span class="slide-num">SLIDE 12</span>
-                <h2>บทสรุป & ความสอดคล้องกับ SDGs</h2>
-                <div class="sub">Conclusion · Impact · Sustainable Development Goals</div>
-            </div>
-        </div>
-
-        <div class="info-box" style="margin-bottom:1.5rem;font-size:0.9rem;line-height:1.9;">
-            <strong>📋 สรุปผลสำเร็จ:</strong> TSU AI Middleware Multi-Agent v0 Ultra เป็นระบบ AI ตัวกลางของมหาวิทยาลัยทักษิณที่ใช้ Dual-Gemma LLM (chinda-qwen3-4b + gemma-4-E2B-it) ร่วมกับ NetraEmbed 2048-dim และ Hybrid RAG Engine (HyDE+GraphRAG+RAPTOR) รองรับ 5 โดเมนหลักด้วย Multi-Agent Orchestrator บน LangGraph พร้อม MoA, ToT, Self-Reflection และ Guardrails 4 ชั้น ระบบทำงานบน A100 80GB ด้วย CUDA Streams และผ่าน smoke tests 30/32 ข้อ
-        </div>
-
-        <!-- SDGs -->
-        <h3 style="margin-bottom:1rem;color:var(--text-primary);">🌍 ความสอดคล้องกับ SDGs</h3>
-        <div class="card-grid" style="margin-bottom:1.5rem;">
-            <div class="card" style="text-align:center;border-top:4px solid var(--emerald);">
-                <i class="fas fa-heartbeat" style="font-size:2.5rem;color:#22C55E;"></i><br>
-                <strong>SDG 3</strong>
-                <p style="font-size:0.75rem;">Good Health & Well-Being<br>Tele-Health · Triage · 1669</p>
-            </div>
-            <div class="card" style="text-align:center;border-top:4px solid var(--violet);">
-                <i class="fas fa-scale-balanced" style="font-size:2.5rem;color:#C026D3;"></i><br>
-                <strong>SDG 10</strong>
-                <p style="font-size:0.75rem;">Reduced Inequalities<br>ลดความเหลื่อมล้ำบริการสุขภาพ</p>
-            </div>
-            <div class="card" style="text-align:center;border-top:4px solid var(--teal);">
-                <i class="fas fa-leaf" style="font-size:2.5rem;color:var(--teal-bright);"></i><br>
-                <strong>BCG Economy</strong>
-                <p style="font-size:0.75rem;">Digital Health AI<br>เศรษฐกิจชีวภาพ-ดิจิทัล</p>
-            </div>
-            <div class="card" style="text-align:center;border-top:4px solid var(--sky);">
-                <i class="fas fa-lock" style="font-size:2.5rem;color:#2563EB;"></i><br>
-                <strong>PDPA 2562</strong>
-                <p style="font-size:0.75rem;">Privacy-first AI<br>ปกป้องข้อมูลส่วนบุคคล</p>
-            </div>
-            <div class="card" style="text-align:center;border-top:4px solid var(--amber);">
-                <i class="fas fa-code-branch" style="font-size:2.5rem;color:var(--amber);"></i><br>
-                <strong>SDG 9</strong>
-                <p style="font-size:0.75rem;">Innovation & Infrastructure<br>Open-source Thai AI</p>
-            </div>
-        </div>
-
-        <div class="warn-box" style="margin-top:1rem;">
-            <strong>📌 ข้อเสนอแนะ:</strong>
-            (1) Pilot test กับผู้ใช้จริง 100+ คน · (2) เพิ่ม Training Data 5,000+ records · (3) ยื่นอนุสิทธิบัตร · (4) Production deployment บน Kubernetes · (5) Self-Play Fine-Tuning (SPIN)
-        </div>
+    <!-- SLIDE 12: บทสรุป & SDGs -->
+    <section id="slide12" class="slide-section"><div class="slide-header"><div><span class="slide-num">SLIDE 12</span><h2>บทสรุป & ความสอดคล้องกับ SDGs</h2><div class="sub">Conclusion · Impact · Sustainable Development Goals</div></div></div>
+        <div class="info-box" style="margin-bottom:1.5rem;"><strong>📋 สรุปผลสำเร็จ:</strong> TSU AI Middleware v1Ultra-Ultimate เป็นระบบ AI ตัวกลางของมหาวิทยาลัยทักษิณที่ใช้ Dual‑Gemma LLM (chinda-qwen3-4b + gemma-4-E2B-it) ร่วมกับ Granite Embedding 512‑dim และ Hybrid RAG Engine (HyDE‑v2+GraphRAG+RAPTOR) รองรับ 5 โดเมนหลักด้วย Multi‑Agent Orchestrator บน LangGraph พร้อม MoA, MCTS‑ToT, Self‑Reflection, Guardrails 6 ชั้น, PDPA AES‑256‑GCM และ Differential Privacy ทำงานบน T4 15.6GB (budget mode) และ A100 80GB (full mode) ผ่าน smoke tests 55+ ข้อ</div>
+        <h3 style="margin-bottom:1rem;">🌍 ความสอดคล้องกับ SDGs</h3>
+        <div class="card-grid"><div class="card" style="text-align:center;"><i class="fas fa-heartbeat" style="font-size:2.5rem;color:#22C55E;"></i><br><strong>SDG 3</strong><p>Good Health & Well‑Being<br>Tele‑Health · Crisis 1323 · Triage</p></div>
+        <div class="card" style="text-align:center;"><i class="fas fa-scale-balanced" style="font-size:2.5rem;color:#C026D3;"></i><br><strong>SDG 10</strong><p>Reduced Inequalities<br>ลดความเหลื่อมล้ำบริการสุขภาพ/กฎหมาย</p></div>
+        <div class="card" style="text-align:center;"><i class="fas fa-leaf" style="font-size:2.5rem;color:var(--teal-bright);"></i><br><strong>BCG Economy</strong><p>Digital Health AI<br>เศรษฐกิจชีวภาพ‑ดิจิทัล</p></div>
+        <div class="card" style="text-align:center;"><i class="fas fa-lock" style="font-size:2.5rem;color:#2563EB;"></i><br><strong>PDPA 2562</strong><p>Privacy‑first AI<br>AES‑256‑GCM · ZKP · DP ε=1.0</p></div>
+        <div class="card" style="text-align:center;"><i class="fas fa-code-branch" style="font-size:2.5rem;color:var(--amber);"></i><br><strong>SDG 9</strong><p>Innovation & Infrastructure<br>Open‑source Thai AI · Edge ready</p></div></div>
+        <div class="warn-box" style="margin-top:1rem;"><strong>📌 ข้อเสนอแนะ:</strong> (1) Pilot test 100+ users · (2) Training data 5,000+ records · (3) อนุสิทธิบัตร · (4) Production Kubernetes · (5) Self‑Play Fine‑Tuning (SPIN)</div>
     </section>
 
-    <!-- ═══════════ SLIDE 13 : References ═══════════ -->
-    <section id="slide13" class="slide-section" style="background:linear-gradient(180deg,var(--bg-deep) 0%,var(--bg-elevated) 100%);padding-bottom:3rem;">
-        <div style="text-align:center;padding:2.5rem 0 2rem;">
-            <h1 style="font-size:2.5rem;font-weight:800;color:var(--white);">ขอบคุณ <span style="color:var(--teal-bright);">/ Thank You</span></h1>
-            <div style="width:100px;height:3px;background:linear-gradient(90deg,var(--teal-bright),var(--violet),var(--gold));margin:1rem auto;border-radius:2px;"></div>
-            <p style="color:var(--slate-400);font-size:0.9rem;">ทีม AIoTx Tech · SciDI — คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล มหาวิทยาลัยทักษิณ</p>
-            <p style="color:var(--slate-500);font-size:0.8rem;">© 2569/2026 | Apache 2.0 Open Source | PDPA Compliant | scidi.tsu.ac.th | iri.tsu.ac.th</p>
-        </div>
-
-        <h3 style="color:var(--teal-bright);margin-bottom:1rem;border-bottom:1px solid rgba(14,165,160,0.2);padding-bottom:0.5rem;">📖 บรรณานุกรม (References)</h3>
-        <ul class="ref-list">
-            <li><span class="ref-num">[1]</span> สำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล. (2562). พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562.</li>
-            <li><span class="ref-num">[2]</span> Dettmers, T., et al. (2023). QLoRA: Efficient Finetuning of Quantized LLMs. arXiv:2305.14314</li>
-            <li><span class="ref-num">[3]</span> Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS 33.</li>
-            <li><span class="ref-num">[4]</span> Wei, J., et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS 35.</li>
-            <li><span class="ref-num">[5]</span> Yao, S., et al. (2023). Tree of Thoughts: Deliberate Problem Solving with Large Language Models. arXiv:2305.10601.</li>
-            <li><span class="ref-num">[6]</span> iapp/chinda-qwen3-4b (2025). HuggingFace Model Hub. Apache 2.0.</li>
-            <li><span class="ref-num">[7]</span> google/gemma-4-E2B-it (2025). HuggingFace Model Hub. 256K context.</li>
-            <li><span class="ref-num">[8]</span> Cognitive-Lab/NetraEmbed (2025). HuggingFace. Matryoshka 2048-dim.</li>
-            <li><span class="ref-num">[9]</span> BAAI/bge-reranker-v3. HuggingFace. CrossEncoder Reranker.</li>
-            <li><span class="ref-num">[10]</span> Zhang, T., et al. (2020). BERTScore: Evaluating Text Generation with BERT. ICLR 2020.</li>
-            <li><span class="ref-num">[11]</span> Kalajdzievski, D. (2023). A Rank Stabilization Scaling Factor for Fine-Tuning with LoRA. arXiv:2312.03732.</li>
-            <li><span class="ref-num">[12]</span> LangGraph · LangChain (2024). StateGraph Multi-Agent Framework.</li>
-        </ul>
+    <!-- SLIDE 13: References -->
+    <section id="slide13" class="slide-section" style="background:linear-gradient(180deg,var(--bg-deep) 0%,var(--bg-elevated) 100%);padding-bottom:3rem;"><div style="text-align:center;padding:2.5rem 0 2rem;"><h1 style="font-size:2.5rem;font-weight:800;">ขอบคุณ <span style="color:var(--teal-bright);">/ Thank You</span></h1><div style="width:100px;height:3px;background:linear-gradient(90deg,var(--teal-bright),var(--violet),var(--gold));margin:1rem auto;"></div><p style="color:var(--slate-400);">ทีม AIoTx Tech · SciDI — คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล มหาวิทยาลัยทักษิณ</p><p style="color:var(--slate-500);font-size:0.8rem;">© 2569/2026 | Apache 2.0 | PDPA Compliant | scidi.tsu.ac.th | iri.tsu.ac.th</p></div>
+        <h3 style="color:var(--teal-bright);margin-bottom:1rem;">📖 บรรณานุกรม (References)</h3>
+        <ul class="ref-list"><li><span class="ref-num">[1]</span> สำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล. (2562). พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562.</li>
+        <li><span class="ref-num">[2]</span> Dettmers, T., et al. (2023). QLoRA: Efficient Finetuning of Quantized LLMs. arXiv:2305.14314</li>
+        <li><span class="ref-num">[3]</span> Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS 33.</li>
+        <li><span class="ref-num">[4]</span> Yao, S., et al. (2023). Tree of Thoughts: Deliberate Problem Solving with Large Language Models. arXiv:2305.10601.</li>
+        <li><span class="ref-num">[5]</span> iapp/chinda-qwen3-4b (2025). HuggingFace. Apache 2.0. Native 32K Thai‑tuned.</li>
+        <li><span class="ref-num">[6]</span> google/gemma-4-E2B-it (2025). HuggingFace. 256K context, Vision+Audio.</li>
+        <li><span class="ref-num">[7]</span> ibm-granite/granite-embedding-311m-multilingual-r2 (2025). 512‑dim embedding.</li>
+        <li><span class="ref-num">[8]</span> BAAI/bge-reranker-v2-m3. CrossEncoder reranker.</li>
+        <li><span class="ref-num">[9]</span> LangGraph · LangChain (2024). StateGraph Multi-Agent Framework.</li>
+        <li><span class="ref-num">[10]</span> RAGAS: Evaluating RAG pipelines (2023).</li></ul>
     </section>
 
-    <!-- ═══════════ CHARTS SCRIPTS ═══════════ -->
     <script>
-        // ── Market Growth Chart ──────────────────────────────
-        (function() {
-            const ctx = document.getElementById('marketChart')?.getContext('2d');
-            if (!ctx) return;
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['2568', '2569', '2570', '2571', '2572', '2573'],
-                    datasets: [{
-                        label: 'AI Middleware Market (ล้าน USD)',
-                        data: [35, 65, 110, 170, 260, 380],
-                        backgroundColor: [
-                            'rgba(14,165,160,0.7)',
-                            'rgba(14,165,160,0.75)',
-                            'rgba(139,92,246,0.7)',
-                            'rgba(139,92,246,0.75)',
-                            'rgba(245,158,11,0.7)',
-                            'rgba(245,158,11,0.8)'
-                        ],
-                        borderRadius: 10,
-                        borderSkipped: false,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#CBD5E1',
-                                font: { size: 12 }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: (ctx) => `${ctx.raw} ล้าน USD`
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: { color: 'rgba(148,163,184,0.08)' },
-                            ticks: { color: '#94A3B8' }
-                        },
-                        x: {
-                            ticks: { color: '#94A3B8' }
-                        }
-                    }
-                }
-            });
-        })();
-
-        // ── VRAM Usage Chart ─────────────────────────────────
-        (function() {
-            const ctx = document.getElementById('vramChart')?.getContext('2d');
-            if (!ctx) return;
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['NetraEmbed', 'chinda-qwen3-4b', 'gemma-4-E2B-it', 'RAG+KG', 'Free'],
-                    datasets: [{
-                        label: 'VRAM (GB)',
-                        data: [8.6, 18.9, 10.2, 3.5, 44.8],
-                        backgroundColor: [
-                            'rgba(139,92,246,0.8)',
-                            'rgba(14,165,160,0.8)',
-                            'rgba(245,158,11,0.8)',
-                            'rgba(244,63,94,0.7)',
-                            'rgba(148,163,184,0.3)'
-                        ],
-                        borderRadius: 8,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            labels: { color: '#CBD5E1' }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            max: 85.1,
-                            grid: { color: 'rgba(148,163,184,0.08)' },
-                            ticks: { color: '#94A3B8', callback: v => v + ' GB' }
-                        },
-                        x: {
-                            ticks: { color: '#94A3B8' }
-                        }
-                    }
-                }
-            });
-        })();
-
-        // ── Retrieval Performance Chart ──────────────────────
-        (function() {
-            const ctx = document.getElementById('retrievalChart')?.getContext('2d');
-            if (!ctx) return;
-            new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Dense Only', '+BM25', '+GraphRAG', '+RAPTOR', '+RRF Fusion',
-                        '+Reranker'
-                    ],
-                    datasets: [{
-                        label: 'Recall@5',
-                        data: [0.58, 0.68, 0.75, 0.80, 0.87, 0.93],
-                        backgroundColor: 'rgba(14,165,160,0.15)',
-                        borderColor: 'rgba(14,229,200,0.8)',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#14E8D5',
-                        pointRadius: 5,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            labels: { color: '#CBD5E1' }
-                        }
-                    },
-                    scales: {
-                        r: {
-                            beginAtZero: true,
-                            max: 1,
-                            grid: { color: 'rgba(148,163,184,0.15)' },
-                            ticks: { color: '#94A3B8', backdropColor: 'transparent' },
-                            pointLabels: { color: '#CBD5E1', font: { size: 10 } }
-                        }
-                    }
-                }
-            });
-        })();
-
-        // ── Performance Chart 1 ──────────────────────────────
-        (function() {
-            const ctx = document.getElementById('perfChart1')?.getContext('2d');
-            if (!ctx) return;
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['TSU', 'Innovation', 'Legal', 'Medical', 'Business'],
-                    datasets: [{
-                        label: 'RAG Recall@5',
-                        data: [0.89, 0.85, 0.91, 0.93, 0.87],
-                        backgroundColor: [
-                            'rgba(56,189,248,0.8)',
-                            'rgba(139,92,246,0.8)',
-                            'rgba(244,63,94,0.8)',
-                            'rgba(16,185,129,0.8)',
-                            'rgba(245,158,11,0.8)'
-                        ],
-                        borderRadius: 8,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            labels: { color: '#CBD5E1' }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            min: 0.7,
-                            max: 1,
-                            grid: { color: 'rgba(148,163,184,0.08)' },
-                            ticks: { color: '#94A3B8' }
-                        },
-                        x: {
-                            ticks: { color: '#94A3B8' }
-                        }
-                    }
-                }
-            });
-        })();
-
-        // ── Performance Chart 2 ──────────────────────────────
-        (function() {
-            const ctx = document.getElementById('perfChart2')?.getContext('2d');
-            if (!ctx) return;
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Standard', '+RAG', '+ToT', '+Reflection', '+MoA', 'Full Pipeline'],
-                    datasets: [{
-                        label: 'RAGAS Faithfulness',
-                        data: [0.55, 0.72, 0.80, 0.84, 0.87, 0.91],
-                        borderColor: 'rgba(14,229,200,0.9)',
-                        backgroundColor: 'rgba(14,165,160,0.1)',
-                        fill: true,
-                        tension: 0.4,
-                        pointRadius: 6,
-                        pointBackgroundColor: '#14E8D5',
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            labels: { color: '#CBD5E1' }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            min: 0.4,
-                            max: 1,
-                            grid: { color: 'rgba(148,163,184,0.08)' },
-                            ticks: { color: '#94A3B8' }
-                        },
-                        x: {
-                            ticks: { color: '#94A3B8' }
-                        }
-                    }
-                }
-            });
-        })();
-
-        // ── Roadmap TRL Progression Chart ────────────────────
-        (function() {
-            const ctx = document.getElementById('roadmapChart')?.getContext('2d');
-            if (!ctx) return;
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['ปัจจุบัน', '6 เดือน', '12 เดือน', '18 เดือน', '24 เดือน', '30 เดือน',
-                        '36 เดือน'
-                    ],
-                    datasets: [{
-                        label: 'TRL Level',
-                        data: [4, 5, 5.5, 6, 7, 8, 9],
-                        borderColor: 'rgba(245,158,11,0.9)',
-                        backgroundColor: 'rgba(245,158,11,0.1)',
-                        fill: true,
-                        tension: 0.5,
-                        pointRadius: 7,
-                        pointBackgroundColor: '#F59E0B',
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            labels: { color: '#CBD5E1' }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            min: 3,
-                            max: 9,
-                            grid: { color: 'rgba(148,163,184,0.08)' },
-                            ticks: { color: '#94A3B8', stepSize: 1 }
-                        },
-                        x: {
-                            ticks: { color: '#94A3B8' }
-                        }
-                    }
-                }
-            });
-        })();
-
-        // ── Active Nav on Scroll ─────────────────────────────
-        const sections = document.querySelectorAll('.slide-section');
-        const navLinks = document.querySelectorAll('.nav-dock a');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(s => {
-                if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-            });
-        });
+        (function() { new Chart(document.getElementById('marketChart'), { type:'bar', data:{ labels:['2568','2569','2570','2571','2572','2573'], datasets:[{ label:'AI Middleware Market (ล้าน USD)', data:[35,65,110,170,260,380], backgroundColor:['rgba(14,165,160,0.7)','rgba(14,165,160,0.75)','rgba(139,92,246,0.7)','rgba(139,92,246,0.75)','rgba(245,158,11,0.7)','rgba(245,158,11,0.8)'], borderRadius:10 }] }, options:{ responsive:true, plugins:{ legend:{ labels:{ color:'#CBD5E1' } } }, scales:{ y:{ beginAtZero:true, grid:{ color:'rgba(148,163,184,0.08)' }, ticks:{ color:'#94A3B8' } }, x:{ ticks:{ color:'#94A3B8' } } } } });
+        new Chart(document.getElementById('vramChart'), { type:'bar', data:{ labels:['Granite 512d','chinda-qwen3-4b (NF4)','gemma-4-E2B (NF4)','RAG+Graph','Free (T4)'], datasets:[{ label:'VRAM (GB) T4 Budget', data:[1.2,5.8,3.2,1.5,3.9], backgroundColor:'rgba(14,165,160,0.7)', borderRadius:8 }, { label:'VRAM (GB) A100 Full', data:[2.4,10.2,6.5,3.8,57.1], backgroundColor:'rgba(139,92,246,0.7)', borderRadius:8 }] }, options:{ responsive:true, plugins:{ legend:{ labels:{ color:'#CBD5E1' } } }, scales:{ y:{ grid:{ color:'rgba(148,163,184,0.08)' }, ticks:{ color:'#94A3B8' } }, x:{ ticks:{ color:'#94A3B8' } } } } });
+        new Chart(document.getElementById('retrievalChart'), { type:'radar', data:{ labels:['Dense Only','+BM25','+GraphRAG','+RAPTOR','+RRF','+Reranker'], datasets:[{ label:'Recall@5', data:[0.58,0.68,0.76,0.82,0.88,0.93], backgroundColor:'rgba(14,165,160,0.15)', borderColor:'rgba(14,229,200,0.8)', borderWidth:2, pointBackgroundColor:'#14E8D5', pointRadius:5 }] }, options:{ responsive:true, plugins:{ legend:{ labels:{ color:'#CBD5E1' } } }, scales:{ r:{ beginAtZero:true, max:1, grid:{ color:'rgba(148,163,184,0.15)' }, ticks:{ color:'#94A3B8', backdropColor:'transparent' }, pointLabels:{ color:'#CBD5E1', font:{ size:10 } } } } } });
+        new Chart(document.getElementById('perfChart1'), { type:'bar', data:{ labels:['TSU','Innovation','Legal','Medical','Business'], datasets:[{ label:'RAG Recall@5', data:[0.89,0.86,0.91,0.94,0.88], backgroundColor:['rgba(56,189,248,0.8)','rgba(139,92,246,0.8)','rgba(244,63,94,0.8)','rgba(16,185,129,0.8)','rgba(245,158,11,0.8)'], borderRadius:8 }] }, options:{ responsive:true, scales:{ y:{ min:0.7, max:1, grid:{ color:'rgba(148,163,184,0.08)' }, ticks:{ color:'#94A3B8' } }, x:{ ticks:{ color:'#94A3B8' } } } } });
+        new Chart(document.getElementById('perfChart2'), { type:'line', data:{ labels:['Standard','+RAG','+ToT','+Reflection','+MoA','Full Pipeline'], datasets:[{ label:'RAGAS Faithfulness', data:[0.55,0.72,0.80,0.85,0.88,0.92], borderColor:'rgba(14,229,200,0.9)', backgroundColor:'rgba(14,165,160,0.1)', fill:true, tension:0.4, pointRadius:6, pointBackgroundColor:'#14E8D5' }, { label:'Answer Relevancy', data:[0.52,0.68,0.77,0.82,0.86,0.90], borderColor:'rgba(139,92,246,0.9)', backgroundColor:'rgba(139,92,246,0.05)', fill:true, tension:0.4, pointRadius:6, pointBackgroundColor:'#8B5CF6' }] }, options:{ responsive:true, scales:{ y:{ min:0.4, max:1, grid:{ color:'rgba(148,163,184,0.08)' }, ticks:{ color:'#94A3B8' } }, x:{ ticks:{ color:'#94A3B8' } } } } });
+        new Chart(document.getElementById('roadmapChart'), { type:'line', data:{ labels:['ปัจจุบัน','6 เดือน','12 เดือน','18 เดือน','24 เดือน','30 เดือน','36 เดือน'], datasets:[{ label:'TRL Level', data:[4,5,5.5,6,7,8,9], borderColor:'rgba(245,158,11,0.9)', backgroundColor:'rgba(245,158,11,0.1)', fill:true, tension:0.5, pointRadius:7, pointBackgroundColor:'#F59E0B' }] }, options:{ responsive:true, scales:{ y:{ min:3, max:9, grid:{ color:'rgba(148,163,184,0.08)' }, ticks:{ color:'#94A3B8', stepSize:1 } }, x:{ ticks:{ color:'#94A3B8' } } } } });
+        const sections = document.querySelectorAll('.slide-section'), navLinks = document.querySelectorAll('.nav-dock a');
+        window.addEventListener('scroll', () => { let current = ''; sections.forEach(s => { if(window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id'); }); navLinks.forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === `#${current}`) link.classList.add('active'); }); });
     </script>
 </body>
 </html>
