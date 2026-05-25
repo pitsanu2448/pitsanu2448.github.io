@@ -4,380 +4,1673 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>รายได้ครัวเรือนไทย 2566 | Data Storytelling</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ══════════════════════════════════════════════
+           DESIGN TOKENS — full light/dark support
+        ══════════════════════════════════════════════ */
+        :root {
+            color-scheme: light dark;
+
+            /* Semantic surface tokens */
+            --bg-base:       #eef2f7;
+            --bg-card:       #ffffff;
+            --bg-card2:      #f7f9fc;
+            --bg-subtle:     #edf2f7;
+            --border:        rgba(0,0,0,0.07);
+            --border-strong: rgba(0,0,0,0.13);
+
+            /* Typography */
+            --text-primary:   #0d1b2a;
+            --text-secondary: #374a5e;
+            --text-muted:     #5c7a96;
+            --text-faint:     #8dabbe;
+
+            /* Brand palette */
+            --teal-950: #051e22;
+            --teal-900: #0b3b3f;
+            --teal-700: #1b6e72;
+            --teal-500: #2fa8ae;
+            --teal-300: #7dd3d7;
+            --teal-100: #d8f4f5;
+
+            --gold-600: #c47d10;
+            --gold-400: #e8a838;
+            --gold-200: #fdd98a;
+            --gold-100: #fff4d6;
+
+            --red-700:  #b91c1c;
+            --red-500:  #ef4444;
+            --red-100:  #fee2e2;
+
+            --green-700: #15803d;
+            --green-500: #22c55e;
+            --green-100: #dcfce7;
+
+            --amber-600: #d97706;
+            --amber-100: #fef3c7;
+
+            --blue-700:  #1d4ed8;
+            --blue-100:  #dbeafe;
+
+            /* Component */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 28px rgba(0,0,0,0.08);
+            --shadow-lg: 0 24px 56px rgba(0,0,0,0.12);
+            --radius-sm: 0.75rem;
+            --radius-md: 1.25rem;
+            --radius-lg: 1.8rem;
+            --radius-xl: 2.4rem;
         }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-base:       #0a1118;
+                --bg-card:       #111c27;
+                --bg-card2:      #152030;
+                --bg-subtle:     #1a2d40;
+                --border:        rgba(255,255,255,0.07);
+                --border-strong: rgba(255,255,255,0.14);
+
+                --text-primary:   #e8f0f8;
+                --text-secondary: #b0c8df;
+                --text-muted:     #6e94b2;
+                --text-faint:     #3d617e;
+
+                --teal-100: #0a2e32;
+                --gold-100: #251a05;
+                --red-100:  #2a0a0a;
+                --green-100:#0a2010;
+                --amber-100:#251500;
+                --blue-100: #071230;
+
+                --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+                --shadow-md: 0 8px 28px rgba(0,0,0,0.4);
+                --shadow-lg: 0 24px 56px rgba(0,0,0,0.55);
+            }
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Sarabun', 'Inter', sans-serif;
-            background: #f4f7fc;
-            color: #1a2c3e;
-            line-height: 1.5;
-            scroll-behavior: smooth;
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            background: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* container */
-        .container {
-            max-width: 1280px;
+        /* Subtle grid pattern */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none; z-index: 0;
+            opacity: 0.4;
+        }
+
+        .page {
+            max-width: 1320px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
+            position: relative; z-index: 1;
         }
 
-        /* header section */
+        /* ══════════════════════════════════════════════
+           HERO
+        ══════════════════════════════════════════════ */
         .hero {
-            background: linear-gradient(135deg, #0b3b3f 0%, #1b5e5f 100%);
-            color: white;
-            border-radius: 2rem;
-            padding: 2.5rem 2rem;
+            background:
+                radial-gradient(ellipse 80% 60% at 110% -10%, rgba(47,168,174,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at -10% 110%, rgba(232,168,56,0.18) 0%, transparent 60%),
+                linear-gradient(145deg, #051e22 0%, #0b3b3f 50%, #0d4a50 100%);
+            border-radius: var(--radius-xl);
+            padding: 3.5rem 3rem 3rem;
             margin-bottom: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.08);
+            border: 1px solid rgba(47,168,174,0.2);
+        }
+
+        /* Decorative orbs */
+        .hero::before {
+            content: '';
+            position: absolute; top: -120px; right: -100px;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(47,168,174,0.15) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: -80px; left: 25%;
+            width: 320px; height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(232,168,56,0.12) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        /* Thin horizontal shimmer line */
+        .hero-shimmer {
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(47,168,174,0.6) 30%, rgba(232,168,56,0.6) 60%, transparent 100%);
+        }
+
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--teal-300);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            background: rgba(47,168,174,0.12);
+            border: 1px solid rgba(47,168,174,0.25);
+            padding: 0.3rem 0.9rem;
+            border-radius: 100px;
         }
 
         .hero h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            margin-bottom: 0.75rem;
-        }
-
-        .hero .sub {
-            font-size: 1.1rem;
-            opacity: 0.85;
-            border-left: 4px solid #ffcd7e;
-            padding-left: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .kpi-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0 1rem;
-        }
-
-        .kpi-card {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(2px);
-            border-radius: 1.5rem;
-            padding: 1rem 1.8rem;
-            flex: 1 1 180px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .kpi-card .label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-            opacity: 0.8;
-        }
-
-        .kpi-card .value {
-            font-size: 2rem;
+            font-family: 'Noto Serif Thai', serif;
+            font-size: clamp(1.55rem, 3vw, 2.4rem);
             font-weight: 800;
-            margin-top: 0.5rem;
-            line-height: 1.2;
+            color: #ffffff;
+            line-height: 1.35;
+            margin-bottom: 1rem;
+            max-width: 860px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
 
-        /* section styling */
-        .section {
-            background: white;
-            border-radius: 1.8rem;
-            padding: 1.8rem 2rem;
+        .hero .tagline {
+            font-size: 0.93rem;
+            color: rgba(255,255,255,0.7);
+            border-left: 3px solid var(--gold-400);
+            padding-left: 1rem;
             margin-bottom: 2.5rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.05);
-            transition: all 0.2s;
+            max-width: 720px;
+            line-height: 1.75;
+        }
+        .hero .tagline span { opacity: 0.55; }
+
+        /* ── KPI strip ── */
+        .kpi-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2rem;
         }
 
-        .section-title {
-            font-size: 1.7rem;
+        .kpi {
+            background: rgba(255,255,255,0.055);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            backdrop-filter: blur(12px);
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            cursor: default;
+        }
+        .kpi:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(47,168,174,0.4);
+            transform: translateY(-2px);
+        }
+
+        .kpi-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+        }
+
+        .kpi-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
-            color: #0f4c5c;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .kpi-val.accent   { color: var(--gold-200); }
+        .kpi-val.red-val  { color: #fca5a5; }
+        .kpi-val.green-val{ color: #86efac; }
+
+        .hero-source {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.35);
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            letter-spacing: 0.2px;
+        }
+
+        /* ══════════════════════════════════════════════
+           SECTION CARDS
+        ══════════════════════════════════════════════ */
+        .section {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2.2rem 2.4rem;
+            margin-bottom: 1.75rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top accent line per section */
+        .section::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal-500), var(--teal-300), transparent);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+        .section.accent-gold::before {
+            background: linear-gradient(90deg, var(--gold-400), var(--gold-200), transparent);
+        }
+        .section.accent-purple::before {
+            background: linear-gradient(90deg, #8b5cf6, #c4b5fd, transparent);
+        }
+        .section.accent-green::before {
+            background: linear-gradient(90deg, var(--green-500), #86efac, transparent);
+        }
+
+        /* ── Section header ── */
+        .sec-head {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.6rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        .section-sub {
-            font-size: 0.9rem;
-            color: #4a627a;
-            margin-bottom: 1.5rem;
-            border-left: 3px solid #ffb74d;
-            padding-left: 0.8rem;
+        .sec-icon {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .icon-teal   { background: linear-gradient(135deg, var(--teal-100), var(--teal-100)); border: 1px solid rgba(47,168,174,0.25); }
+        .icon-gold   { background: linear-gradient(135deg, var(--gold-100), var(--gold-100)); border: 1px solid rgba(232,168,56,0.25); }
+        .icon-purple { background: linear-gradient(135deg, #f3e8ff, #ede9fe); border: 1px solid rgba(139,92,246,0.2); }
+        .icon-green  { background: linear-gradient(135deg, var(--green-100), var(--green-100)); border: 1px solid rgba(34,197,94,0.2); }
+
+        @media (prefers-color-scheme: dark) {
+            .icon-teal   { background: rgba(47,168,174,0.12); }
+            .icon-gold   { background: rgba(232,168,56,0.12); }
+            .icon-purple { background: rgba(139,92,246,0.12); }
+            .icon-green  { background: rgba(34,197,94,0.12); }
         }
 
-        .insight-box {
-            background: #eef2fa;
-            padding: 1.2rem 1.5rem;
-            border-radius: 1.2rem;
-            margin: 1.5rem 0 1rem;
-            border-left: 6px solid #2c7a47;
+        .sec-title-group { flex: 1; }
+
+        .sec-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--teal-700);
+            background: var(--teal-100);
+            border: 1px solid rgba(47,168,174,0.2);
+            padding: 0.15rem 0.7rem;
+            border-radius: 100px;
+            margin-bottom: 0.4rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            .sec-badge { color: var(--teal-300); background: rgba(47,168,174,0.12); }
+        }
+        .sec-badge.gold { color: var(--gold-600); background: var(--gold-100); border-color: rgba(232,168,56,0.2); }
+        @media (prefers-color-scheme: dark) {
+            .sec-badge.gold { color: var(--gold-200); background: rgba(232,168,56,0.12); }
+        }
+        .sec-badge.purple { color: #7c3aed; background: #f3e8ff; border-color: rgba(139,92,246,0.2); }
+        @media (prefers-color-scheme: dark) {
+            .sec-badge.purple { color: #c4b5fd; background: rgba(139,92,246,0.12); }
+        }
+
+        .sec-title-group h2 {
+            font-family: 'Noto Serif Thai', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+
+        .sec-sub {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ══════════════════════════════════════════════
+           DATA TABLE
+        ══════════════════════════════════════════════ */
+        .data-table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        table.dt {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        table.dt thead tr {
+            background: linear-gradient(90deg, var(--teal-900), var(--teal-700));
+        }
+        @media (prefers-color-scheme: dark) {
+            table.dt thead tr {
+                background: linear-gradient(90deg, #061518, #0e3b3f);
+            }
+        }
+
+        table.dt thead th {
+            padding: 0.8rem 1.1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.8px;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        table.dt tbody tr {
+            transition: background 0.15s;
+        }
+        table.dt tbody tr:nth-child(even) {
+            background: var(--bg-card2);
+        }
+        table.dt tbody tr:hover {
+            background: var(--teal-100);
+        }
+        @media (prefers-color-scheme: dark) {
+            table.dt tbody tr:hover { background: rgba(47,168,174,0.08); }
+        }
+
+        table.dt td {
+            padding: 0.75rem 1.1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-primary);
+            vertical-align: middle;
+        }
+        table.dt tbody tr:last-child td { border-bottom: none; }
+
+        /* Rank badges */
+        .rank-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+        .rb-gold   { background: #fef3c7; color: #92400e; }
+        .rb-silver { background: #e2e8f0; color: #374151; }
+        .rb-bronze { background: #fce7d4; color: #7c2d12; }
+        .rb-plain  { background: var(--bg-subtle); color: var(--text-muted); }
+        .rb-last   { background: var(--red-100); color: var(--red-700); }
+        @media (prefers-color-scheme: dark) {
+            .rb-gold   { background: rgba(251,191,36,0.2); color: #fbbf24; }
+            .rb-silver { background: rgba(148,163,184,0.2); color: #94a3b8; }
+            .rb-bronze { background: rgba(251,146,60,0.15); color: #fb923c; }
+            .rb-plain  { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+            .rb-last   { background: rgba(239,68,68,0.15); color: #fca5a5; }
+        }
+
+        /* ── Bar indicator ── */
+        .bar-wrap {
+            display: flex; align-items: center; gap: 0.65rem;
+        }
+        .bar-bg {
+            flex: 1; height: 6px; border-radius: 3px;
+            background: var(--bg-subtle);
+            overflow: hidden; min-width: 60px;
+        }
+        .bar-fill {
+            height: 100%; border-radius: 3px;
+            transition: width 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .bar-teal { background: linear-gradient(90deg, var(--teal-700), var(--teal-500)); }
+        .bar-red  { background: linear-gradient(90deg, var(--red-700), var(--red-500)); }
+        .bar-gold { background: linear-gradient(90deg, var(--gold-600), var(--gold-400)); }
+
+        .bar-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            min-width: 70px;
+            font-weight: 600;
+        }
+
+        /* chip */
+        .chip {
+            display: inline-block;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-strong);
+            border-radius: 100px;
+            padding: 0.12rem 0.65rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        /* ══════════════════════════════════════════════
+           INSIGHT BOXES
+        ══════════════════════════════════════════════ */
+        .insight {
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.7rem;
+            margin: 1.8rem 0 0.5rem;
+            border: 1px solid transparent;
+        }
+
+        .insight.green {
+            background: var(--green-100);
+            border-color: rgba(34,197,94,0.25);
+        }
+        .insight.warn {
+            background: var(--amber-100);
+            border-color: rgba(217,119,6,0.25);
+        }
+        .insight.blue {
+            background: var(--blue-100);
+            border-color: rgba(29,78,216,0.2);
+        }
+        .insight.teal {
+            background: var(--teal-100);
+            border-color: rgba(47,168,174,0.25);
         }
 
         .insight-title {
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #1e5631;
+            font-size: 1rem;
+            margin-bottom: 0.9rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .insight.green .insight-title { color: var(--green-700); }
+        .insight.warn  .insight-title { color: var(--amber-600); }
+        .insight.blue  .insight-title { color: var(--blue-700); }
+        .insight.teal  .insight-title { color: var(--teal-700); }
+
+        @media (prefers-color-scheme: dark) {
+            .insight.green .insight-title { color: #86efac; }
+            .insight.warn  .insight-title { color: #fcd34d; }
+            .insight.blue  .insight-title { color: #93c5fd; }
+            .insight.teal  .insight-title { color: var(--teal-300); }
         }
 
-        .grid-2col {
-            display: flex;
-            gap: 1.8rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
+        .insight p,
+        .insight li {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
         }
-        .grid-2col > div {
-            flex: 1;
-            min-width: 240px;
+        @media (prefers-color-scheme: dark) {
+            .insight p, .insight li { color: var(--text-secondary); }
         }
 
-        .img-wrapper {
+        .insight ul { padding-left: 1.2rem; }
+        .insight li { margin-bottom: 0.5rem; }
+
+        /* ══════════════════════════════════════════════
+           STAT GRID
+        ══════════════════════════════════════════════ */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+            gap: 1rem;
             margin: 1.5rem 0;
-            text-align: center;
-            background: #fafcfd;
-            border-radius: 1.2rem;
-            padding: 0.5rem;
         }
 
-        .img-wrapper img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 1rem;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        .stat-pill {
+            background: var(--bg-card2);
+            border-radius: var(--radius-sm);
+            padding: 1.1rem 1.3rem;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .stat-pill:hover {
+            border-color: rgba(47,168,174,0.35);
+            transform: translateY(-2px);
         }
 
-        .caption {
-            font-size: 0.8rem;
-            color: #5e7c97;
-            margin-top: 0.5rem;
-            text-align: center;
-        }
-
-        hr {
-            margin: 1.5rem 0;
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, #cbdde9, transparent);
-        }
-
-        .badge {
-            background: #e9ecef;
-            border-radius: 30px;
-            padding: 0.2rem 0.8rem;
+        .stat-pill .sp-label {
             font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
             font-weight: 600;
-            color: #2c5a6e;
         }
+
+        .stat-pill .sp-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--teal-700);
+            line-height: 1.2;
+        }
+        @media (prefers-color-scheme: dark) {
+            .stat-pill .sp-val { color: var(--teal-300); }
+        }
+
+        .sp-note {
+            font-size: 0.72rem;
+            color: var(--text-faint);
+            margin-top: 0.2rem;
+        }
+
+        /* ══════════════════════════════════════════════
+           PERCENTILE BAR
+        ══════════════════════════════════════════════ */
+        .pct-bar-section { margin: 1.5rem 0; }
+
+        .pct-bar-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pct-row {
+            display: flex; align-items: center; gap: 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+        .pct-label {
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            width: 38px;
+            text-align: right;
+        }
+        .pct-track {
+            flex: 1; height: 8px;
+            background: var(--bg-subtle);
+            border-radius: 4px; overflow: hidden;
+        }
+        .pct-fill {
+            height: 100%; border-radius: 4px;
+            background: linear-gradient(90deg, var(--teal-900), var(--teal-500));
+        }
+        .pct-amt {
+            font-size: 0.78rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            min-width: 130px;
+            font-weight: 600;
+        }
+
+        /* ══════════════════════════════════════════════
+           CLEANING LOG
+        ══════════════════════════════════════════════ */
+        .clean-log {
+            background: var(--bg-card2);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            margin: 1.2rem 0;
+        }
+
+        .clean-step {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+        .clean-step:last-child { border-bottom: none; }
+        .clean-step:hover { background: var(--bg-subtle); }
+
+        .cs-num {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal-900), var(--teal-700));
+            color: #fff;
+            font-size: 0.72rem; font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(27,110,114,0.3);
+        }
+
+        .cs-text {
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            padding-top: 0.1rem;
+            line-height: 1.6;
+        }
+
+        .cs-badge {
+            display: inline-block; margin-left: 0.5rem;
+            font-size: 0.68rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.05rem 0.45rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .cs-badge.danger {
+            background: var(--red-100);
+            border-color: rgba(239,68,68,0.2);
+            color: var(--red-700);
+        }
+        @media (prefers-color-scheme: dark) {
+            .cs-badge.danger { color: #fca5a5; }
+        }
+
+        /* ══════════════════════════════════════════════
+           PROVINCE CARDS
+        ══════════════════════════════════════════════ */
+        .prov-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.9rem;
+            margin: 1.2rem 0;
+        }
+
+        .prov-card {
+            background: var(--bg-card2);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--border);
+            display: flex; align-items: center; gap: 0.9rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .prov-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-2px);
+        }
+
+        .prov-flag {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
+        }
+        .pf-red   { background: var(--red-100); border: 1px solid rgba(239,68,68,0.2); }
+        .pf-green { background: var(--green-100); border: 1px solid rgba(34,197,94,0.2); }
+        .pf-amber { background: var(--amber-100); border: 1px solid rgba(217,119,6,0.2); }
+
+        .prov-info .pv-name { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); }
+        .prov-info .pv-val  { font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-top: 0.1rem; font-weight: 600; }
+
+        .pv-tag {
+            font-size: 0.68rem;
+            padding: 0.12rem 0.55rem;
+            border-radius: 100px;
+            display: inline-block;
+            margin-top: 0.3rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+        .tag-red   { background: var(--red-100);   color: var(--red-700); border: 1px solid rgba(239,68,68,0.2); }
+        .tag-green { background: var(--green-100);  color: var(--green-700); border: 1px solid rgba(34,197,94,0.2); }
+        .tag-amber { background: var(--amber-100);  color: var(--amber-600); border: 1px solid rgba(217,119,6,0.2); }
+        @media (prefers-color-scheme: dark) {
+            .tag-red   { color: #fca5a5; }
+            .tag-green { color: #86efac; }
+            .tag-amber { color: #fcd34d; }
+        }
+
+        /* ══════════════════════════════════════════════
+           INCOME STRUCTURE TABLE — RISK BADGES
+        ══════════════════════════════════════════════ */
+        .risk-badge {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            font-size: 0.72rem; font-weight: 700;
+            padding: 0.18rem 0.65rem;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+        .risk-high   { background: var(--red-100);   color: var(--red-700); border: 1px solid rgba(239,68,68,0.2); }
+        .risk-mid    { background: var(--amber-100);  color: var(--amber-600); border: 1px solid rgba(217,119,6,0.2); }
+        .risk-low    { background: var(--green-100);  color: var(--green-700); border: 1px solid rgba(34,197,94,0.2); }
+        @media (prefers-color-scheme: dark) {
+            .risk-high { color: #fca5a5; }
+            .risk-mid  { color: #fcd34d; }
+            .risk-low  { color: #86efac; }
+        }
+
+        /* ══════════════════════════════════════════════
+           SUMMARY / DARK SECTION
+        ══════════════════════════════════════════════ */
+        .summary-section {
+            background:
+                radial-gradient(ellipse 60% 50% at 100% 0%, rgba(47,168,174,0.18) 0%, transparent 60%),
+                linear-gradient(145deg, #071c21 0%, #0b3b3f 55%, #0e4d52 100%);
+            border-radius: var(--radius-xl);
+            padding: 2.8rem 3rem;
+            color: #ffffff;
+            margin-bottom: 1.75rem;
+            border: 1px solid rgba(47,168,174,0.2);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        .summary-section::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal-500), var(--gold-400), transparent);
+        }
+
+        .summary-section h2 {
+            font-family: 'Noto Serif Thai', serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+
+        .sum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .sum-card {
+            background: rgba(255,255,255,0.07);
+            border-radius: var(--radius-md);
+            padding: 1.4rem 1.6rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.2s;
+        }
+        .sum-card:hover { background: rgba(255,255,255,0.11); }
+
+        .sum-card .sc-badge {
+            font-size: 0.66rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 100px;
+            padding: 0.18rem 0.7rem;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 600;
+        }
+
+        .sum-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            color: var(--gold-200);
+            line-height: 1.35;
+        }
+        .sum-card ul { padding-left: 1.1rem; }
+        .sum-card li {
+            font-size: 0.82rem;
+            margin-bottom: 0.4rem;
+            opacity: 0.85;
+            color: rgba(255,255,255,0.88);
+        }
+
+        .sum-final {
+            background: rgba(232,168,56,0.13);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.8rem;
+            border: 1px solid rgba(232,168,56,0.3);
+            font-size: 0.88rem;
+            line-height: 1.9;
+        }
+        .sum-final p + p { margin-top: 0.5rem; }
+
+        /* ══════════════════════════════════════════════
+           META / FOOTER
+        ══════════════════════════════════════════════ */
+        .meta-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.4rem 1.8rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .meta-box strong { color: var(--text-secondary); }
+        .meta-box a { color: var(--teal-500); text-decoration: none; transition: color 0.2s; }
+        .meta-box a:hover { color: var(--teal-300); text-decoration: underline; }
+        .meta-box p + p { margin-top: 0.4rem; }
 
         footer {
             text-align: center;
-            font-size: 0.8rem;
-            color: #6c8dae;
-            margin-top: 3rem;
-            padding-top: 1rem;
-            border-top: 1px solid #dce5ec;
+            font-size: 0.76rem;
+            color: var(--text-faint);
+            padding: 1.5rem 0 1rem;
+            border-top: 1px solid var(--border);
         }
 
-        @media (max-width: 700px) {
-            .container { padding: 1rem; }
-            .hero h1 { font-size: 1.7rem; }
-            .kpi-card .value { font-size: 1.4rem; }
-            .section { padding: 1.2rem; }
+        /* ══════════════════════════════════════════════
+           IMAGE WRAPS
+        ══════════════════════════════════════════════ */
+        .img-wrap {
+            margin: 1.5rem 0;
+            background: var(--bg-card2);
+            border-radius: var(--radius-md);
+            padding: 0.6rem;
+            border: 1px solid var(--border);
         }
+        .img-wrap img {
+            max-width: 100%; height: auto;
+            border-radius: calc(var(--radius-md) - 4px);
+            display: block;
+        }
+        .img-caption {
+            font-size: 0.76rem;
+            color: var(--text-faint);
+            margin-top: 0.55rem;
+            font-style: italic;
+            text-align: center;
+            padding: 0 0.5rem 0.2rem;
+        }
+
+        /* ══════════════════════════════════════════════
+           DIVIDER
+        ══════════════════════════════════════════════ */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, var(--teal-500) 0%, transparent 80%);
+            border: none;
+            margin: 1.8rem 0;
+            opacity: 0.35;
+        }
+
+        /* ══════════════════════════════════════════════
+           HIGHLIGHT TEXT
+        ══════════════════════════════════════════════ */
+        .hl { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+        .hl-teal  { color: var(--teal-700); }
+        .hl-red   { color: var(--red-700); }
+        .hl-gold  { color: var(--gold-600); }
+        .hl-green { color: var(--green-700); }
+        @media (prefers-color-scheme: dark) {
+            .hl-teal  { color: var(--teal-300); }
+            .hl-red   { color: #fca5a5; }
+            .hl-gold  { color: var(--gold-200); }
+            .hl-green { color: #86efac; }
+        }
+
+        /* ══════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════ */
+        @media (max-width: 720px) {
+            .page { padding: 1rem; }
+            .hero { padding: 2rem 1.5rem 1.8rem; }
+            .hero h1 { font-size: 1.4rem; }
+            .kpi-val { font-size: 1.25rem; }
+            .section { padding: 1.5rem 1.2rem; }
+            .summary-section { padding: 2rem 1.5rem; }
+            .sum-grid { gap: 0.8rem; }
+        }
+
+        /* ══════════════════════════════════════════════
+           ANIMATIONS
+        ══════════════════════════════════════════════ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero             { animation: fadeUp 0.55s ease both; }
+        .section:nth-child(2)  { animation: fadeUp 0.55s 0.07s ease both; }
+        .section:nth-child(3)  { animation: fadeUp 0.55s 0.13s ease both; }
+        .section:nth-child(4)  { animation: fadeUp 0.55s 0.19s ease both; }
+        .section:nth-child(5)  { animation: fadeUp 0.55s 0.25s ease both; }
+        .summary-section       { animation: fadeUp 0.55s 0.31s ease both; }
+        .meta-box              { animation: fadeUp 0.55s 0.37s ease both; }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- Hero -->
+<div class="page">
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
     <div class="hero">
-        <h4>TSUCON 2026 : Scaling Social Innovation for Global Sustainable Futures <span style="font-weight:50;"></span></h4>
-        <h3>💰 การวิเคราะห์โครงสร้างรายได้ของครัวเรือนไทยใน ปี 2566 โดยใช้เทคนิคการเล่าเรื่องด้วยข้อมูล<span style="font-weight:100;"></span></h3>
-        <div class="sub">Data Storytelling · สำรวจโครงสร้างรายได้ 77 จังหวัด ช่องว่างระหว่างอาชีพ และความเปราะบางทางการเงิน</div>
-        <div class="kpi-grid">
-            <div class="kpi-card"><div class="label">รายได้เฉลี่ย / เดือน</div><div class="value">26,279 ฿</div></div>
-            <div class="kpi-card"><div class="label">สูงสุด – ต่ำสุด</div><div class="value">181,322 / 4,452 ฿</div></div>
-            <div class="kpi-card"><div class="label">Gap สูงสุด/ต่ำสุด</div><div class="value">40.7 เท่า</div></div>
-            <div class="kpi-card"><div class="label">จังหวัดทั้งหมด</div><div class="value">77 จังหวัด</div></div>
-            <div class="kpi-card"><div class="label">P50 (มัธยฐาน)</div><div class="value">3,860 ฿</div></div>
+        <div class="hero-shimmer"></div>
+
+        <div class="hero-eyebrow">
+            ✦ TSUCON 2026 · Scaling Social Innovation for Global Sustainable Futures
         </div>
-        <div class="sub" style="margin-top: 0.2rem;">📍 ที่มา: NSO ข้อมูลปี 2566 · ฉายภาพเศรษฐกิจไทย</div>
+
+        <h1><small><small>💰 การวิเคราะห์โครงสร้างรายได้ของครัวเรือนไทยในปี 2566 โดยใช้เทคนิค Data Storytelling ร่วมกับการประยุกต์ใช้ LLM</small></small></h1>
+
+        <p class="tagline">
+            สำรวจโครงสร้างรายได้ 77 จังหวัด · ช่องว่างระหว่างอาชีพ · ความเปราะบางทางการเงิน<br>
+            <span>ข้อมูล: สำนักงานสถิติแห่งชาติ (NSO) ปี 2566 · วิเคราะห์หลัง Data Cleaning จาก 7,700 → 6,829 แถว</span>
+        </p>
+
+        <div class="kpi-strip">
+            <div class="kpi">
+                <div class="kpi-label">รายได้เฉลี่ย / เดือน</div>
+                <div class="kpi-val accent">26,279 ฿</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">มัธยฐาน (P50)</div>
+                <div class="kpi-val">25,395 ฿</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">สูงสุด (จังหวัด)</div>
+                <div class="kpi-val green-val">50,893 ฿</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">ต่ำสุด (จังหวัด)</div>
+                <div class="kpi-val red-val">17,456 ฿</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Gap Max/Min จังหวัด</div>
+                <div class="kpi-val accent">2.9 เท่า</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Gap อาชีพสูง/ต่ำ</div>
+                <div class="kpi-val red-val">3.1 เท่า</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">จังหวัดทั้งหมด</div>
+                <div class="kpi-val">77</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">ข้อมูลที่ใช้วิเคราะห์</div>
+                <div class="kpi-val">6,829 แถว</div>
+            </div>
+        </div>
+
+        <div class="hero-source">
+            📍 ที่มา: NSO data.go.th/dataset/os_08_00007 · ปี 2566 · 11 คอลัมน์ · 4 กลุ่มสถานะเศรษฐกิจสังคม · 3 หมวดรายได้
+        </div>
     </div>
 
-    <!-- ================= 1. Q1 กลุ่มอาชีพ ================= -->
+    <!-- ═══════════════════ DATA PROFILE ═══════════════════ -->
     <div class="section">
-        <div class="section-title">👥 Q1 · ใครได้รับค่าตอบแทนแค่ไหน?</div>
-        <div class="section-sub">กลุ่มอาชีพใดมีรายได้สูง/ต่ำที่สุด ? ช่องว่างระหว่างกลุ่มเป็นอย่างไร ?</div>
-        
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/1.png" alt="รายได้เฉลี่ยกลุ่มอาชีพ ดอทพล็อต">
-            <div class="caption">ภาพที่ 1: Distribution Analysis & KPI รายได้ครัวเรือนไทย</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/2.png" alt="Boxplot จำแนกกลุ่มหลักและกลุ่มย่อย">
-            <div class="caption">ภาพที่ 2: รายได้เฉลี่ยต่อเดือนของครัวเรือน จำแนกตามกลุ่มอาชีพ (เรียงจากต่ำไปสูง)</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/3.png" alt="Grouped bar gap ระหว่างอาชีพ">
-            <div class="caption">ภาพที่ 3: Q1: Distribution รายได้ครัวเรือนตามกลุ่มอาชีพ</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/4.png" alt="Lollipop deviation">
-            <div class="caption">ภาพที่ 4: ช่องว่างรายได้ระหว่างกลุ่มอาชีพ จำแนกตามประเภทผู้ประกอบการ</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/5.png" alt="Diverging bar จังหวัด deviation">
-            <div class="caption">ภาพที่ 5: Q1 %รายได้เทียบค่าเฉลี่ยประเทศ ตามกลุ่มอาชีพ</div>
+        <div class="sec-head">
+            <div class="sec-icon icon-teal">🗂️</div>
+            <div class="sec-title-group">
+                <div class="sec-badge">Data Profile</div>
+                <h2>โปรไฟล์ข้อมูล · Data Profile & Cleaning Log</h2>
+                <div class="sec-sub">ขนาดชุดข้อมูล, กระบวนการทำความสะอาด และการแจกแจง Percentile</div>
+            </div>
         </div>
 
-        <div class="insight-box">
-            <div class="insight-title">📌 ค้นพบสำคัญ (Key Insight)</div>
-            <ul style="margin-left: 1.2rem;">
-                <li><strong>🟢 5 กลุ่มรายได้สูงสุด:</strong> ผู้จัดการนักวิชาการฯ (48,293 บาท/เดือน, +84%), ผู้ประกอบธุรกิจตนเอง (33,299 บาท, +27%), เกษตรกรผู้เช่าที่ดิน (29,402 บาท), เจ้าของที่ดินเกษตร (27,623 บาท), เสมียนพนักงานขาย (25,684 บาท)</li>
-                <li><strong>🔴 5 กลุ่มรายได้ต่ำสุด:</strong> คนงานเกษตรป่าไม้ฯ (15,804 บาท, -40%), ขนส่งและงานพื้นฐาน (18,547 บาท), ผู้ไม่ปฏิบัติงานเชิงเศรษฐกิจ (19,515 บาท), ประมง/ป่าไม้ (21,635 บาท), กระบวนการผลิต (21,971 บาท)</li>
-                <li><strong>📊 Gap รายได้สูงสุด/ต่ำสุด: 3.1 เท่า</strong> (ระหว่างกลุ่มอาชีพ) — สะท้อนความแตกต่างของทุนมนุษย์และประเภทการจ้างงาน</li>
-                <li><strong>🧠 เหตุผล:</strong> กลุ่มผู้ประกอบการ/วิชาชีพมีทั้งค่าตอบแทนแรงงานและกำไรธุรกิจ ขณะที่แรงงานเกษตร/อิสระพึ่งพาฤดูกาล ขาดหลักประกันรายได้</li>
-                <li><strong>🎯 ข้อเสนอเชิงนโยบาย:</strong> ยกระดับค่าแรงขั้นต่ำและ social safety net สำหรับกลุ่มแรงนอกระบบ, ส่งเสริมอาชีพเสริมและ upskill ในภาคเกษตร</li>
+        <div class="stat-grid">
+            <div class="stat-pill">
+                <div class="sp-label">แถวดิบ (Raw)</div>
+                <div class="sp-val">7,700</div>
+                <div class="sp-note">ปี 2566 · NSO</div>
+            </div>
+            <div class="stat-pill">
+                <div class="sp-label">หลัง Cleaning</div>
+                <div class="sp-val">6,829</div>
+                <div class="sp-note">ลบออก 871 แถว (≤0)</div>
+            </div>
+            <div class="stat-pill">
+                <div class="sp-label">คอลัมน์</div>
+                <div class="sp-val">11 + 3</div>
+                <div class="sp-note">เพิ่ม region, income_regularity, value_K</div>
+            </div>
+            <div class="stat-pill">
+                <div class="sp-label">จำนวนจังหวัด</div>
+                <div class="sp-val">77</div>
+                <div class="sp-note">ครบทุกจังหวัด</div>
+            </div>
+            <div class="stat-pill">
+                <div class="sp-label">soc_eco_class1</div>
+                <div class="sp-val">4 กลุ่ม</div>
+                <div class="sp-note">ลูกจ้าง · เกษตร · ธุรกิจ · ไม่ปฏิบัติงาน</div>
+            </div>
+            <div class="stat-pill">
+                <div class="sp-label">source_income1</div>
+                <div class="sp-val">3 หมวด</div>
+                <div class="sp-note">ทั้งสิ้น · ประจำ · ไม่ประจำ</div>
+            </div>
+        </div>
+
+        <!-- Cleaning log -->
+        <div class="pct-bar-title" style="margin-top:1.6rem;">📋 Cleaning Log</div>
+        <div class="clean-log">
+            <div class="clean-step">
+                <div class="cs-num">1</div>
+                <div class="cs-text">ลบ Duplicate rows<span class="cs-badge">0 แถว</span> — ไม่พบแถวซ้ำ</div>
+            </div>
+            <div class="clean-step">
+                <div class="cs-num">2</div>
+                <div class="cs-text">ลบ Null ในคอลัมน์สำคัญ (province, source_income1, soc_eco_class1, value)<span class="cs-badge">0 แถว</span></div>
+            </div>
+            <div class="clean-step">
+                <div class="cs-num">3</div>
+                <div class="cs-text">แปลง dtype + ลบค่า NaN จาก coerce<span class="cs-badge">0 แถว</span></div>
+            </div>
+            <div class="clean-step">
+                <div class="cs-num">4</div>
+                <div class="cs-text">ลบแถว value ≤ 0 (ค่าไม่สมเหตุสมผล)<span class="cs-badge danger">−871 แถว</span> → คงเหลือ 6,829 แถว</div>
+            </div>
+            <div class="clean-step">
+                <div class="cs-num">5</div>
+                <div class="cs-text">กรอง attribute — ไม่พบ filter เพิ่มเติม<span class="cs-badge">0 แถว</span> — ใช้ข้อมูลทั้งหมด</div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Percentile distribution -->
+        <div class="pct-bar-section">
+            <div class="pct-bar-title">📈 Percentile Distribution ของ value (บาท/เดือน) — ชุดข้อมูล 6,829 แถว</div>
+            <div class="pct-row"><span class="pct-label">P1</span><div class="pct-track"><div class="pct-fill" style="width:34%"></div></div><span class="pct-amt">17,501 บาท</span></div>
+            <div class="pct-row"><span class="pct-label">P5</span><div class="pct-track"><div class="pct-fill" style="width:37%"></div></div><span class="pct-amt">18,934 บาท</span></div>
+            <div class="pct-row"><span class="pct-label">P10</span><div class="pct-track"><div class="pct-fill" style="width:42%"></div></div><span class="pct-amt">21,335 บาท</span></div>
+            <div class="pct-row"><span class="pct-label">P25</span><div class="pct-track"><div class="pct-fill" style="width:45%"></div></div><span class="pct-amt">22,823 บาท</span></div>
+            <div class="pct-row" style="position:relative;">
+                <span class="pct-label">P50</span>
+                <div class="pct-track"><div class="pct-fill" style="width:50%; background: linear-gradient(90deg, var(--teal-700), var(--gold-400));"></div></div>
+                <span class="pct-amt" style="color:var(--teal-700);font-weight:800;">25,395 บาท ← มัธยฐาน</span>
+            </div>
+            <div class="pct-row"><span class="pct-label">P75</span><div class="pct-track"><div class="pct-fill" style="width:57%"></div></div><span class="pct-amt">28,779 บาท</span></div>
+            <div class="pct-row"><span class="pct-label">P90</span><div class="pct-track"><div class="pct-fill" style="width:65%"></div></div><span class="pct-amt">33,187 บาท</span></div>
+            <div class="pct-row"><span class="pct-label">P95</span><div class="pct-track"><div class="pct-fill" style="width:69%"></div></div><span class="pct-amt">35,393 บาท</span></div>
+            <div class="pct-row"><span class="pct-label">P99</span><div class="pct-track"><div class="pct-fill" style="width:81%"></div></div><span class="pct-amt">41,423 บาท</span></div>
+            <div class="pct-row">
+                <span class="pct-label">MAX</span>
+                <div class="pct-track"><div class="pct-fill" style="width:100%; background: linear-gradient(90deg, var(--red-700), var(--red-500));"></div></div>
+                <span class="pct-amt" style="color:var(--red-700);font-weight:800;">181,322 บาท (ค่าดิบ)</span>
+            </div>
+        </div>
+
+        <div class="insight teal">
+            <div class="insight-title">🔍 สังเกต: ค่าเฉลี่ย vs มัธยฐาน</div>
+            <p>ค่าเฉลี่ย (26,279 ฿) สูงกว่ามัธยฐาน (25,395 ฿) เล็กน้อย บ่งชี้การแจกแจงที่ <strong>เบ้ขวาเล็กน้อย</strong> — ครัวเรือนรายได้สูงดึงค่าเฉลี่ยขึ้น ขณะที่ครึ่งหนึ่งของประชากรมีรายได้ต่ำกว่า 25,395 บาท/เดือน</p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ Q1 · อาชีพ ═══════════════════ -->
+    <div class="section accent-teal">
+        <div class="sec-head">
+            <div class="sec-icon icon-teal">👥</div>
+            <div class="sec-title-group">
+                <div class="sec-badge">Q1 · อาชีพ</div>
+                <h2>ใครได้รับค่าตอบแทนแค่ไหน?</h2>
+                <div class="sec-sub">กลุ่มอาชีพใดมีรายได้สูง/ต่ำที่สุด? ช่องว่างระหว่างกลุ่มเป็นอย่างไร? · ใช้ข้อมูล 744 แถว (source: รายได้ทั้งสิ้นต่อเดือน)</div>
+            </div>
+        </div>
+
+        <div class="img-wrap"><img src="img/tsucon2026/1.png" alt="Distribution Analysis & KPI รายได้ครัวเรือนไทย"><div class="img-caption">ภาพที่ 1: Distribution Analysis & KPI รายได้ครัวเรือนไทย</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/2.png" alt="รายได้เฉลี่ยต่อเดือนของครัวเรือน จำแนกตามกลุ่มอาชีพ"><div class="img-caption">ภาพที่ 2: รายได้เฉลี่ยต่อเดือนของครัวเรือน จำแนกตามกลุ่มอาชีพ (เรียงจากต่ำไปสูง)</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/3.png" alt="Distribution รายได้ครัวเรือนตามกลุ่มอาชีพ"><div class="img-caption">ภาพที่ 3: Distribution รายได้ครัวเรือนตามกลุ่มอาชีพ</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/4.png" alt="ช่องว่างรายได้ระหว่างกลุ่มอาชีพ"><div class="img-caption">ภาพที่ 4: ช่องว่างรายได้ระหว่างกลุ่มอาชีพ จำแนกตามประเภทผู้ประกอบการ</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/5.png" alt="%รายได้เทียบค่าเฉลี่ยประเทศ ตามกลุ่มอาชีพ"><div class="img-caption">ภาพที่ 5: %รายได้เทียบค่าเฉลี่ยประเทศ ตามกลุ่มอาชีพ</div></div>
+
+        <div class="data-table-wrap">
+            <table class="dt">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>กลุ่มหลัก</th>
+                        <th>กลุ่มย่อย</th>
+                        <th>เฉลี่ย (฿/เดือน)</th>
+                        <th>มัธยฐาน (฿)</th>
+                        <th>%เทียบค่าเฉลี่ยประเทศ</th>
+                        <th>n</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge rb-gold">1</span></td>
+                        <td><span class="chip">ลูกจ้าง</span></td>
+                        <td>ผู้จัดการ นักวิชาการ และผู้ปฏิบัติงานวิชาชีพ</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl hl-green">48,293</span>
+                                <div class="bar-bg"><div class="bar-fill bar-teal" style="width:100%"></div></div>
+                            </div>
+                        </td>
+                        <td>48,095</td>
+                        <td><strong style="color:var(--green-700);">+84%</strong></td>
+                        <td>77</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-silver">2</span></td>
+                        <td><span class="chip">ธุรกิจตนเอง</span></td>
+                        <td>ผู้ประกอบธุรกิจของตนเองที่ไม่ใช่การเกษตร</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl hl-green">33,299</span>
+                                <div class="bar-bg"><div class="bar-fill bar-teal" style="width:69%"></div></div>
+                            </div>
+                        </td>
+                        <td>31,430</td>
+                        <td><strong style="color:var(--green-700);">+27%</strong></td>
+                        <td>77</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-bronze">3</span></td>
+                        <td><span class="chip">เกษตร</span></td>
+                        <td>ปลูกพืช/เลี้ยงสัตว์ — ส่วนใหญ่เช่าที่ดิน</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl">29,402</span>
+                                <div class="bar-bg"><div class="bar-fill bar-teal" style="width:61%"></div></div>
+                            </div>
+                        </td>
+                        <td>26,471</td>
+                        <td><strong style="color:var(--green-700);">+12%</strong></td>
+                        <td>63</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">4</span></td>
+                        <td><span class="chip">เกษตร</span></td>
+                        <td>ปลูกพืช/เลี้ยงสัตว์ — ส่วนใหญ่เป็นเจ้าของที่ดิน</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl">27,623</span>
+                                <div class="bar-bg"><div class="bar-fill bar-teal" style="width:57%"></div></div>
+                            </div>
+                        </td>
+                        <td>24,546</td>
+                        <td><strong style="color:var(--green-500);">+5%</strong></td>
+                        <td>76</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">5</span></td>
+                        <td><span class="chip">ลูกจ้าง</span></td>
+                        <td>เสมียน พนักงานขาย และให้บริการ</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl">25,684</span>
+                                <div class="bar-bg"><div class="bar-fill bar-teal" style="width:53%"></div></div>
+                            </div>
+                        </td>
+                        <td>25,470</td>
+                        <td><span style="color:var(--text-muted);">−2%</span></td>
+                        <td>77</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">6</span></td>
+                        <td><span class="chip">ลูกจ้าง</span></td>
+                        <td>ผู้ปฏิบัติงานในกระบวนการผลิต ก่อสร้าง เหมืองแร่</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl">21,971</span>
+                                <div class="bar-bg"><div class="bar-fill bar-gold" style="width:45%"></div></div>
+                            </div>
+                        </td>
+                        <td>21,115</td>
+                        <td><span style="color:var(--amber-600);">−16%</span></td>
+                        <td>77</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">7</span></td>
+                        <td><span class="chip">เกษตร</span></td>
+                        <td>ประมง ป่าไม้ ล่าสัตว์ หาของป่า บริการทางการเกษตร</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl">21,635</span>
+                                <div class="bar-bg"><div class="bar-fill bar-gold" style="width:45%"></div></div>
+                            </div>
+                        </td>
+                        <td>16,287</td>
+                        <td><span style="color:var(--amber-600);">−18%</span></td>
+                        <td>70</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">8</span></td>
+                        <td><span class="chip">ไม่ปฏิบัติงาน</span></td>
+                        <td>ผู้ไม่ได้ปฏิบัติงานเชิงเศรษฐกิจ</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl">19,515</span>
+                                <div class="bar-bg"><div class="bar-fill bar-red" style="width:40%"></div></div>
+                            </div>
+                        </td>
+                        <td>18,938</td>
+                        <td><span style="color:var(--red-700);">−26%</span></td>
+                        <td>77</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">9</span></td>
+                        <td><span class="chip">ลูกจ้าง</span></td>
+                        <td>คนงานด้านการขนส่งและงานพื้นฐาน</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl">18,547</span>
+                                <div class="bar-bg"><div class="bar-fill bar-red" style="width:38%"></div></div>
+                            </div>
+                        </td>
+                        <td>18,306</td>
+                        <td><span style="color:var(--red-700);">−29%</span></td>
+                        <td>77</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-last">10</span></td>
+                        <td><span class="chip">ลูกจ้าง</span></td>
+                        <td>คนงานเกษตร ป่าไม้ และประมง</td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val hl hl-red">15,804</span>
+                                <div class="bar-bg"><div class="bar-fill bar-red" style="width:33%"></div></div>
+                            </div>
+                        </td>
+                        <td>14,989</td>
+                        <td><strong style="color:var(--red-700);">−40%</strong></td>
+                        <td>73</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.5rem;">📊 ค่าเฉลี่ยประเทศ: <span class="hl hl-teal">26,279 ฿/เดือน</span> | มัธยฐาน: <span class="hl">25,395 ฿</span> | Gap อาชีพสูงสุด/ต่ำสุด: <span class="hl hl-red">3.1 เท่า</span> (48,293 vs 15,804 ฿)</p>
+
+        <div class="insight green">
+            <div class="insight-title">📌 Key Insight Q1 · ช่องว่างค่าตอบแทน</div>
+            <ul>
+                <li><strong>🟢 Top 5 สูงสุด:</strong> ผู้จัดการ/นักวิชาการ <span class="hl hl-green">48,293 ฿</span> (+84%), ผู้ประกอบธุรกิจตนเอง <span class="hl">33,299 ฿</span> (+27%), เกษตรกรเช่าที่ดิน 29,402 ฿ (+12%), เกษตรกรเจ้าของที่ดิน 27,623 ฿ (+5%), เสมียน/พนักงานขาย 25,684 ฿ (−2%)</li>
+                <li><strong>🔴 Bottom 5 ต่ำสุด:</strong> คนงานเกษตรป่าไม้/ประมง <span class="hl hl-red">15,804 ฿</span> (−40%), ขนส่ง/งานพื้นฐาน 18,547 ฿ (−29%), ผู้ไม่ปฏิบัติงานเชิงเศรษฐกิจ 19,515 ฿ (−26%), ประมง/ป่าไม้ 21,635 ฿ (−18%), กระบวนการผลิต 21,971 ฿ (−16%)</li>
+                <li><strong>📊 Gap 3.1 เท่า</strong> ระหว่างกลุ่มอาชีพ — สะท้อนความแตกต่างด้านทุนมนุษย์ (Human Capital) และโครงสร้างการจ้างงาน</li>
+                <li><strong>🧠 เหตุผล:</strong> กลุ่มผู้ประกอบการ/วิชาชีพมีทั้งค่าตอบแทนแรงงาน + กำไรธุรกิจ; แรงงานเกษตร/อิสระพึ่งพาฤดูกาล ขาดหลักประกันรายได้</li>
+                <li><strong>🎯 นโยบาย:</strong> ปรับค่าแรงขั้นต่ำ + Social Safety Net สำหรับแรงงานนอกระบบ + Upskill ภาคเกษตร</li>
             </ul>
         </div>
     </div>
 
-    <!-- ================= 2. Q2 ความเหลื่อมล้ำรายได้จังหวัด ================= -->
-    <div class="section">
-        <div class="section-title">📍 Q2 · ความเหลื่อมล้ำอยู่ที่ไหน?</div>
-        <div class="section-sub">จังหวัดใดมีความเหลื่อมล้ำภายในสูงสุด ? พื้นที่ใดควรยกระดับรายได้โดยรวม ?</div>
+    <!-- ═══════════════════ Q2 · ความเหลื่อมล้ำจังหวัด ═══════════════════ -->
+    <div class="section accent-gold">
+        <div class="sec-head">
+            <div class="sec-icon icon-gold">📍</div>
+            <div class="sec-title-group">
+                <div class="sec-badge gold">Q2 · พื้นที่</div>
+                <h2>ความเหลื่อมล้ำอยู่ที่ไหน?</h2>
+                <div class="sec-sub">จังหวัดใดมีความเหลื่อมล้ำภายในสูงสุด? พื้นที่ใดควรยกระดับรายได้โดยรวม?</div>
+            </div>
+        </div>
 
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/6.png" alt="Inequality Matrix Mean vs CV">
-            <div class="caption">ภาพที่ 6: Deviation รายได้เฉลี่ยต่อเดือนของครัวเรือน จำแนกตามจังหวัด (เทียบกับค่าเฉลี่ยประเทศ 26.3K บาท/เดือน)</div>
+        <div class="img-wrap"><img src="img/tsucon2026/6.png" alt="Deviation รายได้จังหวัด"><div class="img-caption">ภาพที่ 6: Deviation รายได้เฉลี่ยต่อเดือนของครัวเรือน จำแนกตามจังหวัด (เทียบกับค่าเฉลี่ยประเทศ 26,279 บาท/เดือน)</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/7.png" alt="Inequality Matrix CV"><div class="img-caption">ภาพที่ 7: Inequality Matrix — รายได้เฉลี่ย vs สัมประสิทธิ์ความแปรผัน (CV) ระดับจังหวัด</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/8.png" alt="การกระจายรายได้ตามภูมิภาค"><div class="img-caption">ภาพที่ 8: การกระจายรายได้ครัวเรือนแยกตามภูมิภาค</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/9.png" alt="Treemap ประเทศ-ภาค-จังหวัด"><div class="img-caption">ภาพที่ 9: Treemap แสดงลำดับชั้น ประเทศ → ภาค → จังหวัด (ขนาด = จำนวนข้อมูล, สี = รายได้เฉลี่ย)</div></div>
+
+        <div class="pct-bar-title" style="margin-top:1.5rem;">⚠️ Top 10 จังหวัดที่มีความเหลื่อมล้ำสูงสุด (CV สูง = ความแตกต่างภายในจังหวัดสูง)</div>
+        <div class="data-table-wrap">
+            <table class="dt">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>จังหวัด</th>
+                        <th>ภาค</th>
+                        <th>เฉลี่ย (฿)</th>
+                        <th>มัธยฐาน (฿)</th>
+                        <th>CV (%)</th>
+                        <th>Max/Min</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge rb-gold">1</span></td>
+                        <td><strong>จันทบุรี</strong></td>
+                        <td>ภาคกลาง</td>
+                        <td><span class="hl hl-green">50,893</span></td>
+                        <td>36,675</td>
+                        <td><strong style="color:var(--red-700);">95.7%</strong></td>
+                        <td>10.0×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-silver">2</span></td>
+                        <td>หนองบัวลำภู</td>
+                        <td>ภาคเหนือ</td>
+                        <td>28,815</td>
+                        <td>20,531</td>
+                        <td><strong style="color:var(--red-700);">79.8%</strong></td>
+                        <td>7.0×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-bronze">3</span></td>
+                        <td>ศรีสะเกษ</td>
+                        <td>ภาคกลาง</td>
+                        <td>28,973</td>
+                        <td>20,485</td>
+                        <td><strong style="color:var(--red-700);">79.7%</strong></td>
+                        <td>6.7×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">4</span></td>
+                        <td>ยโสธร</td>
+                        <td>ภาคกลาง</td>
+                        <td>26,460</td>
+                        <td>18,483</td>
+                        <td><strong style="color:var(--amber-600);">76.0%</strong></td>
+                        <td>5.2×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">5</span></td>
+                        <td>นราธิวาส</td>
+                        <td>ภาคกลาง</td>
+                        <td><span class="hl hl-red">17,456</span></td>
+                        <td>14,830</td>
+                        <td><strong style="color:var(--amber-600);">73.6%</strong></td>
+                        <td>6.9×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">6</span></td>
+                        <td>แม่ฮ่องสอน</td>
+                        <td>ภาคเหนือ</td>
+                        <td>18,950</td>
+                        <td>14,425</td>
+                        <td>68.2%</td>
+                        <td>6.9×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">7</span></td>
+                        <td>ราชบุรี</td>
+                        <td>ภาคตะวันตก</td>
+                        <td>36,594</td>
+                        <td>29,181</td>
+                        <td>62.3%</td>
+                        <td>6.2×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">8</span></td>
+                        <td>ยะลา</td>
+                        <td>ภาคใต้</td>
+                        <td>23,906</td>
+                        <td>19,434</td>
+                        <td>61.5%</td>
+                        <td>6.0×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">9</span></td>
+                        <td>ลำปาง</td>
+                        <td>ภาคเหนือ</td>
+                        <td>22,109</td>
+                        <td>17,290</td>
+                        <td>60.2%</td>
+                        <td>5.0×</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rb-plain">10</span></td>
+                        <td>แพร่</td>
+                        <td>ภาคเหนือ</td>
+                        <td>21,997</td>
+                        <td>16,526</td>
+                        <td>60.2%</td>
+                        <td>5.3×</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/7.png" alt="Box plot รายได้แยกตามภาค">
-            <div class="caption">ภาพที่ 7: Inequality Matrix — รายได้เฉลี่ย vs สัมประสิทธิ์ความแปรผัน (CV) ระดับจังหวัด (ขนาดจุด = จำนวนข้อมูล)</div>
+
+        <div class="pct-bar-title" style="margin-top:1.6rem;">🔻 จังหวัดรายได้เฉลี่ยต่ำสุด (ต้องยกระดับโดยรวม)</div>
+        <div class="prov-grid">
+            <div class="prov-card">
+                <div class="prov-flag pf-red">📉</div>
+                <div class="prov-info">
+                    <div class="pv-name">นราธิวาส</div>
+                    <div class="pv-val">17,456 ฿/เดือน</div>
+                    <div class="pv-tag tag-red">ต่ำกว่าเฉลี่ย 33.6%</div>
+                </div>
+            </div>
+            <div class="prov-card">
+                <div class="prov-flag pf-red">📉</div>
+                <div class="prov-info">
+                    <div class="pv-name">เชียงราย*</div>
+                    <div class="pv-val">~17,500 ฿/เดือน</div>
+                    <div class="pv-tag tag-red">รายได้ต่ำสุดกลุ่ม</div>
+                </div>
+            </div>
+            <div class="prov-card">
+                <div class="prov-flag pf-red">📉</div>
+                <div class="prov-info">
+                    <div class="pv-name">พะเยา*</div>
+                    <div class="pv-val">~18,600 ฿/เดือน</div>
+                    <div class="pv-tag tag-red">ภาคเหนือตอนบน</div>
+                </div>
+            </div>
+            <div class="prov-card">
+                <div class="prov-flag pf-amber">⚠️</div>
+                <div class="prov-info">
+                    <div class="pv-name">แม่ฮ่องสอน</div>
+                    <div class="pv-val">18,950 ฿/เดือน</div>
+                    <div class="pv-tag tag-amber">CV สูง 68.2%</div>
+                </div>
+            </div>
+            <div class="prov-card">
+                <div class="prov-flag pf-green">🏆</div>
+                <div class="prov-info">
+                    <div class="pv-name">จันทบุรี</div>
+                    <div class="pv-val">50,893 ฿/เดือน</div>
+                    <div class="pv-tag tag-green">สูงสุด แต่ CV 95.7%</div>
+                </div>
+            </div>
         </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/8.png" alt="Treemap hierarchical">
-            <div class="caption">ภาพที่ 8: การกระจายรายได้ครัวเรือนแยกตามภูมิภาค — ช่องว่างระหว่างภาคชัดเจน</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/9.png" alt="Stacked bar 100% โครงสร้างรายได้">
-            <div class="caption">ภาพที่ 9: Treemap แสดงลำดับชั้น ประเทศ → ภาค → จังหวัด ขนาด = จำนวนข้อมูล, สี = รายได้เฉลี่ย</div>
-        </div>
-        
-        <div class="insight-box">
-            <div class="insight-title">📍 ความเหลื่อมล้ำซ่อนเร้นในจังหวัดและภูมิภาค</div>
-            <ul style="margin-left: 1.2rem;">
-                <li><strong>⚠️ จังหวัดที่มี CV (ค่าความเหลื่อมล้ำ) สูงสุด:</strong> จันทบุรี (CV=95.7%, range 10.0x), หนองบัวลำภู (79.8%), ศรีสะเกษ (79.7%), ยโสธร (76.0%), นราธิวาส (73.6%) → มีทั้งครัวเรือนรวยและจนอยู่ร่วมกันสูง</li>
-                <li><strong>🔻 จังหวัดรายได้เฉลี่ยต่ำสุด (ควรยกระดับโดยรวม):</strong> นราธิวาส (17.5K บาท), เชียงราย (17.5K), พะเยา (18.6K), ขอนแก่น (18.9K), แม่ฮ่องสอน (18.9K) — ต่ำกว่าค่าเฉลี่ยประเทศ 7,000–8,800 บาท</li>
-                <li><strong>🏙️ รายได้สูงสุดกระจุกตัว:</strong> กรุงเทพมหานครและปริมณฑล, ภาคตะวันออก (ระยอง, ชลบุรี) สะท้อนโครงสร้างอุตสาหกรรมและการจ้างงาน</li>
-                <li><strong>📌 เหตุผลเชิงโครงสร้าง:</strong> จังหวัดเมือง/นิคมอุตสาหกรรมมีทั้งแรงงานทักษะสูงและแรงงานรับจ้างทั่วไปทำให้ CV สูง จังหวัดรายได้ต่ำพึ่งพาเกษตรเป็นหลัก ขาดโครงสร้างพื้นฐานทางเศรษฐกิจ</li>
-                <li><strong>⚙️ ข้อเสนอ:</strong> จังหวัด CV สูง → นโยบายลดช่องว่าง (ค่าแรงขั้นต่ำที่สูงขึ้น, การเข้าถึงสวัสดิการ) จังหวัดรายได้ต่ำ → ดึงดูดอุตสาหกรรม, พัฒนาโครงสร้างพื้นฐาน, สนับสนุน Special Economic Zone</li>
+        <p style="font-size:0.73rem;color:var(--text-faint);margin-top:0.3rem;">*ค่าโดยประมาณจากข้อมูล insight summary</p>
+
+        <div class="insight warn">
+            <div class="insight-title">📍 Key Insight Q2 · ความเหลื่อมล้ำซ่อนเร้น</div>
+            <ul>
+                <li><strong>⚠️ CV สูงสุด: จันทบุรี (95.7%)</strong> — มีทั้งครัวเรือนรายได้สูงและต่ำอยู่ร่วมกัน สะท้อนโครงสร้างเมืองอุตสาหกรรม+เกษตร; ช่วงรายได้กว้างถึง 10 เท่า</li>
+                <li><strong>🔻 รายได้ต่ำสุด: นราธิวาส (17,456 ฿)</strong> ต่ำกว่าค่าเฉลี่ยประเทศถึง 8,823 บาท — ควรเป็นเป้าหมายนโยบายยกระดับรายได้โดยตรง</li>
+                <li><strong>🏙️ กระจุกตัว:</strong> รายได้สูงสุดอยู่ที่ กทม./ปริมณฑล และภาคตะวันออก (จันทบุรี, ระยอง, ชลบุรี) สอดคล้องกับโครงสร้างอุตสาหกรรม EEC</li>
+                <li><strong>📌 เหตุผลเชิงโครงสร้าง:</strong> จังหวัดนิคมอุตสาหกรรมมีแรงงานทักษะสูงปะปนกับแรงงานรับจ้าง ทำให้ CV พุ่งสูง; จังหวัดรายได้ต่ำพึ่งพาเกษตรเป็นหลัก</li>
+                <li><strong>⚙️ แนะนำ:</strong> จังหวัด CV สูง → นโยบายลดช่องว่าง (ค่าแรงขั้นต่ำ, เข้าถึงสวัสดิการ); จังหวัดรายได้ต่ำ → ดึงดูดอุตสาหกรรม, Special Economic Zone</li>
             </ul>
         </div>
     </div>
 
-    <!-- ================= 3. Q3 โครงสร้างรายได้และความเปราะบาง ================= -->
-    <div class="section">
-        <div class="section-title">📊 Q3 · รายได้มาจากไหน? ใครพึ่งพาอะไร?</div>
-        <div class="section-sub">แต่ละกลุ่มอาชีพพึ่งพารายได้ประเภทใดเป็นหลัก ? โครงสร้างรายได้เสี่ยงอย่างไร ?</div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/10.png" alt="Heatmap โครงสร้างรายได้">
-            <div class="caption">ภาพที่ 10: สัดส่วนรายได้ 100% ตามแหล่งรายได้ (source_income1) สำหรับแต่ละกลุ่มอาชีพ</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/11.png" alt="Vulnerability regular vs irregular">
-            <div class="caption">ภาพที่ 11: Heatmap แสดงความเข้มข้นของรายได้จากแหล่งต่างๆ ตามกลุ่มอาชีพ</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/12.png" alt="Sankey diagram">
-            <div class="caption">ภาพที่ 12: Vulnerability Plot — สัดส่วนรายได้ประจำ vs ไม่ประจำ กลุ่มอาชีพ (ขนาดจุด = รายได้รวม)</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/13.png" alt="รายได้ประจำ vs ไม่ประจำเพิ่มเติม">
-            <div class="caption">ภาพที่ 13: Sankey Diagram แสดงกระแสรายได้จากกลุ่มอาชีพสู่แหล่งรายได้หลัก</div>
-        </div>
-        <div class="img-wrapper">
-            <img src="img/tsucon2026/14.png" alt="สรุป dashboard">
-            <div class="caption">ภาพที่ 14: สรุป Dashboard รายได้ครัวเรือน — กลุ่มเสี่ยงและโครงสร้างรายได้</div>
+    <!-- ═══════════════════ Q3 · โครงสร้างรายได้ ═══════════════════ -->
+    <div class="section accent-purple">
+        <div class="sec-head">
+            <div class="sec-icon icon-purple">📊</div>
+            <div class="sec-title-group">
+                <div class="sec-badge purple">Q3 · โครงสร้าง</div>
+                <h2>รายได้มาจากไหน? ใครพึ่งพาอะไร?</h2>
+                <div class="sec-sub">แต่ละกลุ่มอาชีพพึ่งพารายได้ประเภทใดเป็นหลัก? โครงสร้างรายได้มีความเสี่ยงอย่างไร?</div>
+            </div>
         </div>
 
-        <div class="insight-box">
-            <div class="insight-title">⚠️ ความเปราะบางทางเศรษฐกิจ: กลุ่มรายได้ไม่ประจำสูง</div>
-            <ul style="margin-left: 1.2rem;">
-                <li><strong>🎯 กลุ่มที่พึ่งพารายได้ไม่ประจำมากที่สุด (เสี่ยง):</strong> เกษตรกรผู้เช่าที่ดิน, เกษตรกรเจ้าของที่ดิน, ประมง/ป่าไม้, คนงานเกษตรป่าไม้และประมง — มีสัดส่วนรายได้ไม่ประจำสูงถึง 20-35% ของรายได้รวม</li>
-                <li><strong>🏦 กลุ่มมั่นคง:</strong> ลูกจ้างผู้จัดการ/นักวิชาการ, เสมียนพนักงานขาย, ผู้ปฏิบัติงานในกระบวนการผลิต — มีรายได้ประจำ >70% สร้างความมั่นคงทางการเงิน</li>
-                <li><strong>📉 กลุ่มกระจุกตัวแหล่งเดียว:</strong> ครัวเรือนบางกลุ่มพึ่งพารายได้จากแรงงานหลักเพียงแหล่งเดียว → เสี่ยงสูงหากตกงานหรือวิกฤตเศรษฐกิจ</li>
-                <li><strong>🌾 สาเหตุ:</strong> ภาคเกษตร/ประมง/อาชีพอิสระไม่มีสัญญาจ้างหรือระบบสวัสดิการ รายได้แปรผันตามฤดูกาลและตลาด</li>
-                <li><strong>🛡️ นโยบายที่แนะนำ:</strong> 
-                    <ul style="margin-top: 6px;">
-                        <li>• Unemployment Insurance / Safety net สำหรับกลุ่ม off-season</li>
-                        <li>• ส่งเสริมการกระจายรายได้ (อาชีพเสริม, การแปรรูปสินค้าเกษตร)</li>
-                        <li>• Universal Basic Income หรือเงินอุดหนุนแบบมีเงื่อนไขสำหรับครัวเรือนที่มีรายได้ไม่ประจำสูง</li>
-                        <li>• การเข้าถึงสินเชื่อเพื่อการเกษตรและประกันรายได้เกษตรกร</li>
+        <div class="img-wrap"><img src="img/tsucon2026/10.png" alt="สัดส่วนรายได้ตามแหล่งรายได้"><div class="img-caption">ภาพที่ 10: สัดส่วนรายได้ 100% ตามแหล่งรายได้ (source_income1) สำหรับแต่ละกลุ่มอาชีพ</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/11.png" alt="Heatmap ความเข้มข้นรายได้"><div class="img-caption">ภาพที่ 11: Heatmap แสดงความเข้มข้นของรายได้จากแหล่งต่างๆ ตามกลุ่มอาชีพ</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/12.png" alt="Vulnerability Plot รายได้ประจำ vs ไม่ประจำ"><div class="img-caption">ภาพที่ 12: Vulnerability Plot — สัดส่วนรายได้ประจำ vs ไม่ประจำ ตามกลุ่มอาชีพ</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/13.png" alt="Sankey กระแสรายได้"><div class="img-caption">ภาพที่ 13: Sankey Diagram แสดงกระแสรายได้จากกลุ่มอาชีพสู่แหล่งรายได้หลัก</div></div>
+        <div class="img-wrap"><img src="img/tsucon2026/14.png" alt="Summary Dashboard"><div class="img-caption">ภาพที่ 14: สรุป Dashboard รายได้ครัวเรือน — กลุ่มเสี่ยงและโครงสร้างรายได้</div></div>
+
+        <div class="pct-bar-title" style="margin-top:1.5rem;">📋 โครงสร้างรายได้รวมทั้งประเทศ (source_income1)</div>
+        <div class="data-table-wrap">
+            <table class="dt">
+                <thead>
+                    <tr>
+                        <th>หมวดรายได้ (source_income1)</th>
+                        <th>เฉลี่ย (฿)</th>
+                        <th>สัดส่วน (%)</th>
+                        <th>จำนวนแถว</th>
+                        <th>หมายเหตุ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>รายได้ทั้งสิ้นต่อเดือน</strong></td>
+                        <td><span class="hl hl-teal">26,213 ฿</span></td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val">~71.7%</span>
+                                <div class="bar-bg"><div class="bar-fill bar-teal" style="width:72%"></div></div>
+                            </div>
+                        </td>
+                        <td>744</td>
+                        <td>ผลรวมทุกประเภท</td>
+                    </tr>
+                    <tr>
+                        <td><strong>รายได้ประจำ</strong></td>
+                        <td><span class="hl">10,035 ฿</span></td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val">~27.4%</span>
+                                <div class="bar-bg"><div class="bar-fill bar-teal" style="width:27%"></div></div>
+                            </div>
+                        </td>
+                        <td>5,480</td>
+                        <td>เงินเดือน + ค่าจ้าง + กำไร</td>
+                    </tr>
+                    <tr>
+                        <td><strong>รายได้ไม่ประจำ (ที่เป็นตัวเงิน)</strong></td>
+                        <td><span class="hl hl-red">310 ฿</span></td>
+                        <td>
+                            <div class="bar-wrap">
+                                <span class="bar-val">~0.8%</span>
+                                <div class="bar-bg"><div class="bar-fill bar-red" style="width:3%"></div></div>
+                            </div>
+                        </td>
+                        <td>605</td>
+                        <td>รายได้ตามฤดูกาล/โบนัส</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pct-bar-title" style="margin-top:1.6rem;">📊 โครงสร้างรายได้จำแนกตามกลุ่มอาชีพ (% สัดส่วนแต่ละ source_income1)</div>
+        <div class="data-table-wrap">
+            <table class="dt">
+                <thead>
+                    <tr>
+                        <th>กลุ่มหลัก (soc_eco_class1)</th>
+                        <th>รายได้ทั้งสิ้น (%)</th>
+                        <th>รายได้ประจำ (%)</th>
+                        <th>รายได้ไม่ประจำ (%)</th>
+                        <th>ระดับความเสี่ยง</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ผู้ถือครองทำการเกษตร/เพาะเลี้ยง</td>
+                        <td>70.8%</td>
+                        <td>28.5%</td>
+                        <td><strong style="color:var(--red-700);">0.7%</strong></td>
+                        <td><span class="risk-badge risk-high">⚠️ สูง</span></td>
+                    </tr>
+                    <tr>
+                        <td>ผู้ประกอบธุรกิจของตนเองที่ไม่ใช่การเกษตร</td>
+                        <td>73.0%</td>
+                        <td>26.3%</td>
+                        <td>0.7%</td>
+                        <td><span class="risk-badge risk-mid">📊 ปานกลาง</span></td>
+                    </tr>
+                    <tr>
+                        <td>ผู้ไม่ได้ปฏิบัติงานเชิงเศรษฐกิจ</td>
+                        <td>72.6%</td>
+                        <td>24.3%</td>
+                        <td><strong style="color:var(--red-700);">3.1%</strong></td>
+                        <td><span class="risk-badge risk-high">⚠️ สูง</span></td>
+                    </tr>
+                    <tr>
+                        <td>ลูกจ้าง</td>
+                        <td>71.7%</td>
+                        <td>27.7%</td>
+                        <td>0.6%</td>
+                        <td><span class="risk-badge risk-low">✅ ต่ำ</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="insight warn">
+            <div class="insight-title">⚠️ Key Insight Q3 · ความเปราะบางทางเศรษฐกิจ</div>
+            <ul>
+                <li><strong>🎯 กลุ่มเสี่ยงสูง:</strong> เกษตรกรผู้เช่าที่ดิน, เกษตรกรเจ้าของที่ดิน, ประมง/ป่าไม้, คนงานเกษตร — พึ่งรายได้ไม่ประจำ 20–35% ของรายได้รวม ผันแปรตามฤดูกาล</li>
+                <li><strong>🏦 กลุ่มมั่นคง:</strong> ลูกจ้าง (ผู้จัดการ/นักวิชาการ, เสมียน/พนักงานขาย) มีรายได้ประจำ >70% สร้างความมั่นคงทางการเงินระยะยาว</li>
+                <li><strong>📉 ความเสี่ยงกระจุกแหล่งเดียว:</strong> ครัวเรือนบางกลุ่มพึ่งรายได้จากแหล่งเดียว → เสี่ยงสูงหากตกงาน/วิกฤต</li>
+                <li><strong>🌾 สาเหตุ:</strong> ภาคเกษตร/ประมง/อาชีพอิสระไม่มีสัญญาจ้างหรือระบบสวัสดิการ รายได้แปรผันตามราคาตลาดและสภาพอากาศ</li>
+                <li><strong>🛡️ นโยบายแนะนำ:</strong>
+                    <ul style="margin-top:0.5rem;">
+                        <li>• Unemployment Insurance / Safety Net สำหรับกลุ่ม off-season</li>
+                        <li>• ส่งเสริมกระจายรายได้ (อาชีพเสริม, แปรรูปสินค้าเกษตร)</li>
+                        <li>• Universal Basic Income หรือเงินอุดหนุนแบบมีเงื่อนไขสำหรับครัวเรือนรายได้ไม่ประจำสูง</li>
+                        <li>• ขยายการเข้าถึงสินเชื่อเพื่อการเกษตรและประกันรายได้เกษตรกร</li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 
-    <!-- ================= สรุป Key Insights ทั้งหมด ================= -->
-    <div class="section" style="background: #f0f5f0;">
-        <div class="section-title">🎯 สรุป KEY INSIGHTS · รายได้ครัวเรือนไทย 2566</div>
-        <div class="grid-2col">
-            <div>
-                <div class="badge">💰 Q1 · อาชีพ</div>
-                <ul style="margin-top: 10px;">
-                    <li>ช่องว่างระหว่างกลุ่มอาชีพ 3.1 เท่า</li>
-                    <li>ผู้จัดการ/วิชาชีพสูงสุด, แรงงานเกษตรต่ำสุด</li>
-                    <li>ความแตกต่างด้านการศึกษาและตลาดแรงงาน</li>
-                    <li><strong>Action:</strong> ค่าแรงขั้นต่ำ, Upskilling ภาคเกษตร</li>
+    <!-- ═══════════════════ SUMMARY ═══════════════════ -->
+    <div class="summary-section">
+        <h2>🎯 สรุป Key Insights · รายได้ครัวเรือนไทย 2566</h2>
+
+        <div class="sum-grid">
+            <div class="sum-card">
+                <span class="sc-badge">💰 Q1 · อาชีพ</span>
+                <h3>ช่องว่างค่าตอบแทน 3.1 เท่า</h3>
+                <ul>
+                    <li>ผู้จัดการ/วิชาชีพ: 48,293 ฿ (+84%)</li>
+                    <li>คนงานเกษตร: 15,804 ฿ (−40%)</li>
+                    <li>ความแตกต่างด้านทุนมนุษย์และตลาดแรงงาน</li>
+                    <li><strong style="color:var(--gold-200);">→ ค่าแรงขั้นต่ำ + Upskilling ภาคเกษตร</strong></li>
                 </ul>
             </div>
-            <div>
-                <div class="badge">📍 Q2 · พื้นที่</div>
-                <ul style="margin-top: 10px;">
-                    <li>จังหวัดจันทบุรี หนองบัวลำภู มี CV สูงที่สุด</li>
-                    <li>นราธิวาส เชียงราย รายได้ต่ำสุด ต้องยกระดับ</li>
-                    <li>ความเหลื่อมล้ำสูงในเมืองอุตสาหกรรม</li>
-                    <li><strong>Action:</strong> ลงทุนโครงสร้างพื้นฐานในพื้นที่รายได้ต่ำ, พัฒนาเขตเศรษฐกิจพิเศษ</li>
+            <div class="sum-card">
+                <span class="sc-badge">📍 Q2 · พื้นที่</span>
+                <h3>ความเหลื่อมล้ำซ่อนเร้น</h3>
+                <ul>
+                    <li>จันทบุรี CV 95.7% (Max/Min 10×)</li>
+                    <li>นราธิวาส รายได้ต่ำสุด 17,456 ฿</li>
+                    <li>กรุงเทพฯ-ปริมณฑล-EEC สูงสุด</li>
+                    <li><strong style="color:var(--gold-200);">→ SEZ + โครงสร้างพื้นฐานพื้นที่รายได้ต่ำ</strong></li>
                 </ul>
             </div>
-            <div>
-                <div class="badge">📊 Q3 · โครงสร้างรายได้</div>
-                <ul style="margin-top: 10px;">
+            <div class="sum-card">
+                <span class="sc-badge">📊 Q3 · โครงสร้าง</span>
+                <h3>ความเปราะบางรายได้ไม่ประจำ</h3>
+                <ul>
                     <li>เกษตรกรพึ่งรายได้ไม่ประจำ >20% → เปราะบาง</li>
-                    <li>ลูกจ้างประจำมั่นคง มีสัดส่วนเงินเดือนสูง</li>
-                    <li>ระบบ social protection ไม่ครอบคลุมแรงงานนอกระบบ</li>
-                    <li><strong>Action:</strong> ประกันรายได้เกษตรกร, income support, ส่งเสริมอาชีพเสริม</li>
+                    <li>ผู้ไม่ปฏิบัติงานฯ มีรายได้ไม่ประจำ 3.1%</li>
+                    <li>Social protection ยังไม่ครอบคลุมแรงงานนอกระบบ</li>
+                    <li><strong style="color:var(--gold-200);">→ ประกันรายได้ + Income Support</strong></li>
                 </ul>
             </div>
         </div>
-        <hr>
-        <div style="background: #e2e9f0; border-radius: 1rem; padding: 1rem; margin-top: 0.5rem;">
-            <p style="font-weight: 700;">🏆 ภาพรวมความเหลื่อมล้ำ 2 มิติหลัก</p>
-            <p>✔️ <strong>ระหว่างกลุ่มอาชีพ:</strong> ผู้ประกอบการ/วิชาชีพ กับ เกษตรกร/แรงงานอิสระ <br>
-            ✔️ <strong>ระหว่างพื้นที่:</strong> กรุงเทพฯ-ภาคกลาง  vs  ภาคอีสาน-เหนือ-ชายแดนใต้<br>
-            ⚠️ <strong>ความเสี่ยงซ่อนเร้น:</strong> กลุ่มที่มีรายได้ไม่ประจำสูงเปราะบางต่อวิกฤต ภัยแล้ง และโรคระบาด มากกว่ากลุ่มอื่นอย่างมีนัยสำคัญ<br>
-            🔎 นโยบายระยะยาว: เพิ่มความมั่นคงทางรายได้ทุกกลุ่มอาชีพ ลดความเหลื่อมล้ำเชิงพื้นที่ พร้อมขยายหลักประกันทางสังคมสู่ภาคการเกษตรและแรงงานอิสระ</p>
+
+        <div class="sum-final">
+            <p><strong style="color:var(--gold-200);">🏆 ภาพรวมความเหลื่อมล้ำ 2 มิติหลัก</strong></p>
+            <p style="color:rgba(255,255,255,0.88);">
+                ✔️ <strong style="color:#fff;">ระหว่างกลุ่มอาชีพ:</strong> ผู้ประกอบการ/วิชาชีพ (48,293 ฿) กับ เกษตรกร/แรงงานอิสระ (15,804–21,635 ฿) — ช่วงห่าง 3.1 เท่า
+            </p>
+            <p style="color:rgba(255,255,255,0.88);">
+                ✔️ <strong style="color:#fff;">ระหว่างพื้นที่:</strong> กรุงเทพฯ–ภาคกลาง–EEC vs ภาคเหนือ–อีสาน–ชายแดนใต้ — ช่วงห่างจังหวัด 2.9 เท่า (50,893 vs 17,456 ฿)
+            </p>
+            <p style="color:rgba(255,255,255,0.88);">
+                ⚠️ <strong style="color:#fff;">ความเสี่ยงซ่อนเร้น:</strong> กลุ่มรายได้ไม่ประจำสูงเปราะบางต่อวิกฤต ภัยแล้ง และโรคระบาด อย่างมีนัยสำคัญ
+            </p>
+            <p style="color:rgba(255,255,255,0.88);">
+                🔎 <strong style="color:#fff;">นโยบายระยะยาว:</strong> เพิ่มความมั่นคงทางรายได้ทุกกลุ่มอาชีพ + ลดความเหลื่อมล้ำเชิงพื้นที่ + ขยายหลักประกันสังคมสู่ภาคเกษตรและแรงงานอิสระ
+            </p>
         </div>
     </div>
 
-    <!-- หมายเหตุเพิ่มเติมข้อมูล -->
-    <div style="background: #ffffffdd; border-radius: 1.2rem; padding: 1rem 1.5rem; margin-top: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-        <p style="font-size: 0.8rem; color: #2c5a6e;">📌 <strong>ที่มาและการประมวลผล:</strong> สำนักงานสถิติแห่งชาติ (NSO), ข้อมูลรายได้เฉลี่ยต่อเดือนของครัวเรือน ปี 2566. วิเคราะห์โดย Data Storytelling · ใช้เทคนิค EDA ประกอบด้วย Cleaning, Distribution Analysis, การคำนวณ Coefficient of Variation (CV) และการจำแนกโครงสร้างรายได้ตาม soc_eco_class และ source_income1.</p>
-        <p style="font-size: 0.8rem; color: #2c5a6e; margin-top: 5px;">🔗 แหล่งข้อมูลดั้งเดิม: data.go.th/dataset/os_08_00007 · ตัวเลขอ้างอิงตาม real data 77 จังหวัด, รายได้เฉลี่ย 26,279 บาท/เดือน, P1=4 บาท ถึง P99=55,238 บาท</p>
-        <p style="font-size: 0.8rem; color: #2c5a6e;">🔬 <strong>ผู้พัฒนา:</strong> นายพิษณุ ทองศรี · 👤 <strong>ที่ปรึกษา:</strong> ผศ.สุดา เธียรมนตรี</p>
-        <p style="font-size: 0.8rem; color: #2c5a6e;">📧 <strong>ติดต่อผู้พัฒนา:</strong> <a href="mailto:pitsanu2448@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> pitsanu2448@gmail.com</a> · <a href="https://pitsanu2448.github.io/portfolio.html" target="_blank" style="color:#0D9488;">https://pitsanu2448.github.io/portfolio.html</p>    
+    <!-- ═══════════════════ META ═══════════════════ -->
+    <div class="meta-box">
+        <p>📌 <strong>ที่มาและการประมวลผล:</strong> สำนักงานสถิติแห่งชาติ (NSO), รายได้เฉลี่ยต่อเดือนของครัวเรือน ปี 2566. วิเคราะห์โดยใช้เทคนิค EDA: Cleaning, Distribution Analysis, Coefficient of Variation (CV), การจำแนกโครงสร้างรายได้ตาม soc_eco_class และ source_income1.</p>
+        <p>🔗 <strong>แหล่งข้อมูล:</strong> <a href="https://data.go.th/dataset/os_08_00007" target="_blank">data.go.th/dataset/os_08_00007</a> · ข้อมูล 7,700 แถว → หลัง Cleaning 6,829 แถว · 11 คอลัมน์ · 77 จังหวัด · 4 กลุ่มสถานะเศรษฐกิจสังคม · 10 กลุ่มย่อย · 3 หมวดรายได้</p>
+        <p>🔬 <strong>นักศึกษา:</strong> นายพิษณุ ทองศรี &nbsp;|&nbsp; 👤 <strong>ที่ปรึกษา:</strong> ผศ.สุดา เธียรมนตรี</p>
+        <p>📧 <strong>ติดต่อ:</strong> <a href="mailto:pitsanu2448@gmail.com">pitsanu2448@gmail.com</a> &nbsp;|&nbsp; 🌐 <a href="https://pitsanu2448.github.io/portfolio.html" target="_blank">pitsanu2448.github.io/portfolio.html</a></p>
     </div>
 
     <footer>
-        © 2026 สำนักงานสถิติแห่งชาติ (NSO) · คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล มหาวิทยาลัยทักษิณ · สร้างสรรค์เพื่อความเข้าใจเศรษฐกิจที่เท่าเทียม
+        © 2566 สำนักงานสถิติแห่งชาติ (NSO) · คณะวิทยาศาสตร์และนวัตกรรมดิจิทัล มหาวิทยาลัยทักษิณ · สร้างสรรค์เพื่อความเข้าใจเศรษฐกิจที่เท่าเทียม<br>
+        TSUCON 2026 · Scaling Social Innovation for Global Sustainable Futures
     </footer>
 </div>
 </body>
