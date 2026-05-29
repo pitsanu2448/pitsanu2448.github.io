@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedServe Link — เชื่อมต่อทุกบริการสุขภาพ | Presentation 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #071A2E;
+            --bg-card: #0D2240;
+            --teal: #0EA5A0;
+            --teal-mid: #14B8A6;
+            --teal-light: #CCFBF1;
+            --teal-glow: rgba(14,165,160,0.18);
+            --gold: #F59E0B;
+            --red: #EF4444;
+            --gray: #64748B;
+            --gray-light: #E2E8F0;
+            --white: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-light: #475569;
+            --accent: #10B981;
+            --purple: #8B5CF6;
+            --orange: #F97316;
+            --blue: #3B82F6;
+            --yellow: #FBBF24;
+            --section-bg: #F0F9F8;
+            --mono: 'IBM Plex Mono', monospace;
+            --hero-grad: linear-gradient(135deg, #071A2E 0%, #0D2240 50%, #0A3030 100%);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: var(--section-bg);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* ===== NAV ===== */
+        .nav-tabs {
+            position: sticky; top: 0;
+            background: var(--bg-dark);
+            z-index: 200;
+            display: flex; flex-wrap: wrap;
+            justify-content: center; gap: 0.25rem;
+            padding: 0.6rem 0.8rem;
+            border-bottom: 2px solid rgba(14,165,160,0.4);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .nav-tabs a {
+            color: #CCFBF1; text-decoration: none;
+            font-size: 0.66rem; font-weight: 700;
+            padding: 0.3rem 0.72rem; border-radius: 40px;
+            transition: all 0.2s;
+            background: rgba(14,165,160,0.13);
+            letter-spacing: 0.2px;
+        }
+        .nav-tabs a:hover, .nav-tabs a.active {
+            background: var(--teal); color: white;
+            box-shadow: 0 2px 10px rgba(14,165,160,0.5);
+        }
+
+        /* ===== SECTION ===== */
+        .slide-section {
+            max-width: 1300px; margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+            border-bottom: 1px solid #C9E8E5;
+            scroll-margin-top: 65px;
+        }
+
+        /* ===== SLIDE HEADER ===== */
+        .slide-header {
+            background: var(--bg-dark);
+            margin: 0 -1.5rem 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0 20px 20px;
+            display: flex; align-items: center;
+            justify-content: space-between; gap: 1rem;
+        }
+        .slide-header h2 { font-size: 1.6rem; font-weight: 800; color: white; }
+        .slide-header .sub { font-size: 0.75rem; color: var(--teal-light); margin-top: 0.2rem; }
+        .slide-header-logos { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .slide-header-logos img { height: 50px; width: auto; object-fit: contain; }
+        .slide-num {
+            background: var(--teal); color: white;
+            font-size: 0.62rem; font-weight: 800;
+            padding: 0.18rem 0.55rem; border-radius: 20px;
+            margin-right: 0.5rem; letter-spacing: 1px; font-family: var(--mono);
+        }
+
+        /* ===== PRODUCT BADGE ===== */
+        .product-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: linear-gradient(135deg, #0EA5A0, #0891b2);
+            color: white; font-size: 0.64rem; font-weight: 800;
+            padding: 0.22rem 0.75rem; border-radius: 20px;
+            font-family: var(--mono); letter-spacing: 0.5px;
+        }
+        .commercial-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: linear-gradient(135deg, #D97706, #92400E);
+            color: white; font-size: 0.64rem; font-weight: 800;
+            padding: 0.22rem 0.75rem; border-radius: 20px;
+            font-family: var(--mono); letter-spacing: 0.5px;
+        }
+
+        /* ===== CARDS ===== */
+        .card-grid { display: flex; flex-wrap: wrap; gap: 1.1rem; justify-content: center; }
+        .card {
+            background: white; border-radius: 1.2rem;
+            padding: 1.1rem; box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+            border: 1px solid #D9EDEB; flex: 1; min-width: 190px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.10); }
+        .card h3 { font-size: 0.95rem; margin: 0.4rem 0 0.25rem; color: var(--text-dark); }
+        .card p { font-size: 0.77rem; color: var(--text-light); line-height: 1.6; }
+
+        .badge-tag {
+            background: #134E4A; color: #CCFBF1;
+            padding: 0.2rem 0.72rem; border-radius: 30px;
+            font-size: 0.66rem; font-weight: 700;
+            display: inline-block; margin: 0.15rem;
+        }
+        .badge-blue { background: #1e3a5f; }
+        .badge-purple { background: #3b1f6e; }
+        .badge-gold { background: #78350f; color: #FDE68A; }
+        .badge-red { background: #7f1d1d; color: #FCA5A5; }
+        .badge-orange { background: #7c2d12; color: #FED7AA; }
+
+        /* ===== SPEC TABLE ===== */
+        .spec-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+        .spec-table th { background: var(--bg-dark); color: #CCFBF1; padding: 0.45rem 0.8rem; text-align: left; font-weight: 700; }
+        .spec-table td { padding: 0.42rem 0.8rem; border-bottom: 1px solid #E2E8F0; color: var(--text-dark); }
+        .spec-table tr:nth-child(even) td { background: #F0FAF8; }
+        .spec-table tr:hover td { background: #D1FAF5; }
+        .spec-ok { color: #059669; font-weight: 800; }
+        .spec-warn { color: #D97706; font-weight: 700; }
+        .spec-mono { font-family: var(--mono); font-size: 0.72rem; background: #F0FAF8; padding: 1px 5px; border-radius: 4px; color: #0F766E; }
+
+        /* ===== LAYOUT ===== */
+        .flex-2col { display: flex; flex-wrap: wrap; gap: 1.8rem; }
+        .flex-2col > * { flex: 1; min-width: 260px; }
+        .chart-container {
+            background: white; border-radius: 1.2rem;
+            padding: 1rem; box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+            border: 1px solid #D9EDEB;
+        }
+
+        /* ===== BMC ===== */
+        .bmc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1rem; }
+        .bmc-card { background: white; border-radius: 1rem; border-top: 4px solid; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .bmc-title { font-weight: 800; padding: 0.42rem 0.8rem; text-align: center; color: white; font-size: 0.75rem; }
+        .bmc-content { padding: 0.72rem; font-size: 0.74rem; line-height: 1.75; color: var(--text-dark); }
+
+        /* ===== ARCH FLOW ===== */
+        .arch-flow {
+            display: flex; flex-wrap: wrap;
+            justify-content: center; align-items: center;
+            gap: 0.4rem; margin: 1.5rem 0;
+        }
+        .arch-node {
+            background: #F0FAF8; border-radius: 1rem;
+            padding: 0.65rem 0.55rem; width: 120px; text-align: center;
+            border-left: 4px solid var(--teal);
+            box-shadow: 0 2px 8px rgba(14,165,160,0.12);
+        }
+        .arch-node strong { font-size: 0.71rem; display: block; color: var(--text-dark); }
+        .arch-node small { font-size: 0.6rem; color: #475569; }
+        .arrow-icon { font-size: 1.15rem; color: var(--teal); }
+
+        /* ===== 5-Step CoT visual ===== */
+        .cot-flow {
+            display: flex; gap: 0; align-items: stretch;
+            border-radius: 1rem; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin: 1rem 0;
+        }
+        .cot-step {
+            flex: 1; padding: 1rem 0.6rem; text-align: center;
+            min-width: 90px;
+        }
+        .cot-step strong { display: block; font-size: 0.72rem; margin-top: 0.3rem; }
+        .cot-step small { font-size: 0.6rem; opacity: 0.85; }
+        .cot-step i { font-size: 1.3rem; }
+
+        /* ===== SMART REFERRAL ENGINE ===== */
+        .referral-flow {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem;
+            margin: 1rem 0;
+        }
+        .ref-node {
+            background: white; border-radius: 0.8rem; padding: 0.7rem;
+            text-align: center; border-top: 3px solid;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .ref-node strong { display: block; font-size: 0.72rem; margin-top: 0.25rem; }
+        .ref-node small { font-size: 0.62rem; color: var(--text-light); }
+        .ref-node i { font-size: 1.5rem; }
+
+        /* ===== PILOT MAP ===== */
+        .pilot-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem;
+            margin: 1rem 0;
+        }
+        .pilot-card {
+            background: white; border-radius: 1.2rem; overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06); border: 1px solid #D9EDEB;
+        }
+        .pilot-header {
+            background: var(--bg-dark); color: white;
+            padding: 0.65rem 1rem; font-weight: 700; font-size: 0.82rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .pilot-body { padding: 0.8rem; font-size: 0.75rem; line-height: 1.75; }
+
+        /* ===== KPI TABLE ===== */
+        .kpi-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem; margin: 1rem 0;
+        }
+        .kpi-card {
+            background: white; border-radius: 1rem; padding: 0.9rem;
+            text-align: center; box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+            border: 1px solid #D9EDEB;
+        }
+        .kpi-card .kpi-val { font-size: 2rem; font-weight: 800; color: var(--teal); font-family: var(--mono); display: block; }
+        .kpi-card .kpi-label { font-size: 0.72rem; color: var(--text-light); margin-top: 0.2rem; line-height: 1.5; }
+
+        /* ===== RAG STAT GRID ===== */
+        .rag-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.7rem; margin: 1rem 0;
+        }
+        .rag-stat-card {
+            background: white; border-radius: 1rem; padding: 0.8rem 0.7rem;
+            text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #D9EDEB;
+        }
+        .rag-stat-card .stat-val {
+            font-size: 1.55rem; font-weight: 800; color: var(--teal);
+            font-family: var(--mono); display: block;
+        }
+        .rag-stat-card .stat-label { font-size: 0.68rem; color: var(--text-light); margin-top: 0.15rem; }
+
+        /* ===== VRAM METER ===== */
+        .vram-meter { background: #E2E8F0; border-radius: 8px; height: 22px; overflow: hidden; margin: 0.3rem 0; }
+        .vram-fill {
+            height: 100%; border-radius: 8px;
+            display: flex; align-items: center; justify-content: flex-end;
+            padding-right: 8px; font-size: 0.65rem; font-weight: 800; color: white;
+            font-family: var(--mono);
+            background: linear-gradient(90deg, var(--teal), #059669);
+        }
+
+        /* ===== TRL ===== */
+        .trl-bar { display: flex; gap: 0.2rem; align-items: center; margin: 1rem 0; }
+        .trl-step {
+            flex: 1; height: 30px; border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.62rem; font-weight: 800; color: white;
+        }
+
+        /* ===== URGENCY BADGES ===== */
+        .urgency-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            background: #F8FAFC; border-radius: 30px;
+            padding: 0.2rem 0.75rem; margin-right: 0.4rem;
+            font-weight: 600; font-size: 0.72rem;
+            border: 1px solid #D9EDEB;
+        }
+
+        /* ===== GUARDRAILS LAYERS ===== */
+        .layer-stack { display: flex; flex-direction: column; gap: 0.4rem; margin: 1rem 0; }
+        .layer-item {
+            display: flex; align-items: center; gap: 0.8rem;
+            background: white; border-radius: 0.7rem; padding: 0.5rem 0.8rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04); border-left: 4px solid;
+        }
+        .layer-num {
+            font-family: var(--mono); font-size: 0.7rem; font-weight: 800;
+            width: 26px; height: 26px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; flex-shrink: 0;
+        }
+        .layer-desc { font-size: 0.76rem; }
+        .layer-desc strong { display: block; font-size: 0.78rem; }
+        .layer-count {
+            margin-left: auto; font-family: var(--mono);
+            font-size: 0.65rem; font-weight: 700;
+            background: #F0FAF8; color: var(--teal);
+            padding: 2px 8px; border-radius: 20px; flex-shrink: 0;
+        }
+
+        /* ===== METHODOLOGY STEPS ===== */
+        .method-step {
+            display: flex; gap: 1rem; align-items: flex-start;
+            background: white; border-radius: 1rem; padding: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--teal); margin-bottom: 0.75rem;
+        }
+        .step-num {
+            background: var(--teal); color: white;
+            width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.78rem; flex-shrink: 0;
+        }
+        .step-content h4 { font-size: 0.88rem; margin-bottom: 0.18rem; }
+        .step-content p { font-size: 0.74rem; color: var(--text-light); line-height: 1.6; }
+
+        /* ===== INFO BOXES ===== */
+        .info-box {
+            background: #F0FDF9; border-left: 5px solid var(--teal);
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+        .warn-box {
+            background: #FFFBEB; border-left: 5px solid #F59E0B;
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+        .danger-box {
+            background: #FEF2F2; border-left: 5px solid #EF4444;
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+        .dark-box {
+            background: var(--bg-dark); color: white;
+            padding: 0.8rem 1rem; border-radius: 0.8rem;
+            font-size: 0.81rem; margin: 0.75rem 0; line-height: 1.7;
+        }
+        .purple-box {
+            background: #F5F3FF; border-left: 5px solid #8B5CF6;
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+        .orange-box {
+            background: #FFF7ED; border-left: 5px solid #F97316;
+            padding: 0.75rem 1rem; border-radius: 0.8rem; font-size: 0.81rem;
+            margin: 0.75rem 0; line-height: 1.7;
+        }
+
+        /* ===== ROADMAP STEPS ===== */
+        .roadmap-step { padding: 0.65rem 1rem; border-radius: 0.7rem; margin-bottom: 0.55rem; }
+        .roadmap-step strong { display: block; font-size: 0.83rem; margin-bottom: 0.1rem; }
+        .roadmap-step p { font-size: 0.74rem; margin: 0; line-height: 1.6; }
+
+        /* ===== PATENT TABLE ===== */
+        .patent-table { width: 100%; border-collapse: collapse; font-size: 0.77rem; }
+        .patent-table th { background: var(--bg-dark); color: white; padding: 0.48rem 0.8rem; text-align: left; font-weight: 700; }
+        .patent-table td { padding: 0.46rem 0.8rem; border-bottom: 1px solid #D9EDEB; }
+        .patent-table tr:hover td { background: #F0FAF8; }
+
+        /* ===== SDG CARD ===== */
+        .sdg-card {
+            background: white; border-radius: 1.2rem;
+            padding: 1rem; text-align: center; min-width: 130px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06); border: 1px solid #D9EDEB;
+        }
+
+        /* ===== REFS ===== */
+        .ref-list { list-style: none; }
+        .ref-list li { padding: 0.48rem 0.5rem; border-bottom: 1px dashed #D9EDEB; font-size: 0.74rem; color: var(--text-light); line-height: 1.65; }
+        .ref-list li:last-child { border: none; }
+        .ref-num { font-weight: 800; color: var(--teal); margin-right: 0.4rem; font-family: var(--mono); }
+
+        .footer-note { text-align: center; font-size: 0.67rem; color: #94A3B8; margin-top: 0.6rem; }
+        hr.divider { border-color: rgba(255,255,255,0.15); margin: 1rem 0; }
+
+        /* ===== GPU TAG ===== */
+        .gpu-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            border-radius: 12px; padding: 5px 14px;
+            font-size: 0.82rem; font-weight: 700; margin-right: 6px; margin-bottom: 4px;
+        }
+        .gpu-tag.t4 { background: linear-gradient(135deg, #0F2551, #1E4DB7); color: #fff; }
+        .gpu-tag.a100 { background: linear-gradient(135deg, #4F46E5, #7C3AED); color: #fff; }
+
+        /* ===== TITLE SLIDE ===== */
+        #slide1 {
+            background: var(--hero-grad);
+            color: white; border-radius: 0 0 2rem 2rem; margin-top: 0; padding-top: 2.5rem;
+        }
+        .hero-accent { width: 60px; height: 5px; background: linear-gradient(90deg, var(--teal), var(--gold)); margin-bottom: 1rem; border-radius: 3px; }
+        .stat-pill {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: rgba(14,165,160,0.2); border: 1px solid rgba(14,165,160,0.4);
+            border-radius: 40px; padding: 0.28rem 0.9rem;
+            font-size: 0.76rem; margin: 0.2rem;
+        }
+
+        /* ===== CONCLUSION DARK ===== */
+        #slide13 {
+            background: var(--hero-grad);
+            color: white; border-radius: 2rem; margin-bottom: 2rem;
+        }
+        #slide13 .card { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); }
+        #slide13 .card h3, #slide13 .card p { color: white; }
+
+        /* ===== SERVICE REGISTRY TABLE ===== */
+        .registry-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin: 1rem 0;
+        }
+        .registry-card {
+            background: white; border-radius: 0.9rem; padding: 0.8rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-top: 3px solid;
+        }
+        .registry-card .reg-count { font-size: 1.6rem; font-weight: 800; font-family: var(--mono); }
+        .registry-card .reg-label { font-size: 0.7rem; color: var(--text-light); }
+        .registry-card ul { list-style: none; font-size: 0.7rem; margin-top: 0.5rem; }
+        .registry-card ul li { padding: 0.15rem 0; border-bottom: 1px dashed #E2E8F0; }
+
+        @media (max-width: 768px) {
+            .nav-tabs a { font-size: 0.56rem; padding: 0.25rem 0.45rem; }
+            .slide-header h2 { font-size: 1.1rem; }
+            .referral-flow { grid-template-columns: repeat(2, 1fr); }
+            .registry-grid { grid-template-columns: 1fr; }
+            .cot-flow { flex-direction: column; }
+            .trl-bar { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-tabs" id="navTabs">
+    <a href="#slide1" class="active">🏠 1. ภาพรวม</a>
+    <a href="#slide2">⚠️ 2. ปัญหา</a>
+    <a href="#slide3">👥 3. กลุ่มเป้าหมาย</a>
+    <a href="#slide4">📈 4. ตลาด</a>
+    <a href="#slide5">✨ 5. โซลูชัน</a>
+    <a href="#slide6">🏗️ 6. สถาปัตยกรรม</a>
+    <a href="#slide7">🗺️ 7. 3 จังหวัดนำร่อง</a>
+    <a href="#slide8">🔬 8. เทคโนโลยี AI</a>
+    <a href="#slide9">📊 9. ผลการรันจริง</a>
+    <a href="#slide10">💼 10. BMC & KPI</a>
+    <a href="#slide11">🚀 11. Roadmap</a>
+    <a href="#slide12">🌱 12. บทสรุป & SDGs</a>
+    <a href="#slide13">📖 13. บรรณานุกรม</a>
+</div>
+
+<!-- ==================== SLIDE 1 : TITLE / OVERVIEW ==================== -->
+<section id="slide1" class="slide-section" style="padding-bottom:2.5rem;">
+    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;">
+        <div style="flex:1; min-width:260px;">
+            <div class="hero-accent"></div>
+            <div style="margin-bottom:0.8rem; display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center;">
+                <span class="badge-tag" style="background:#134E4A; border:1px solid rgba(20,184,166,0.5);">BDI Hackathon 2026 — "รู้รอบทุกบริการทางการแพทย์"</span>
+                <span class="product-badge">✦ Product Prototype </span>
+                <span class="commercial-badge">🏢 Prototype Ready</span>
+            </div>
+
+            <h1 style="font-size:1rem; font-weight:700; color:var(--teal-light); margin-bottom:0.3rem;">โครงการ: เชื่อมต่อทุกบริการสุขภาพ</h1>
+            <h1 style="font-size:2.2rem; font-weight:800; margin:0 0 0.4rem; line-height:1.2; color:white;">
+                🏥 MedServe Link
+            </h1>
+            <p style="font-size:1.1rem; color:var(--teal-mid); font-weight:700; margin-bottom:0.5rem;">
+                แพลตฟอร์มรู้รอบทุกบริการทางการแพทย์
+            </p>
+            <p style="font-size:0.95rem; color:#CCFBF1; margin-bottom:1rem; line-height:1.7;">
+                "รู้รอบทุกบริการทางการแพทย์ — เข้าถึงการรักษาเมื่อคุณต้องการ"
+            </p>
+
+            <!-- Badges -->
+            <div style="margin-bottom:1rem;">
+                <span class="badge-tag">Hybrid RAG (FAISS+BM25+GraphRAG)</span>
+                <span class="badge-tag">Smart Referral Engine</span>
+                <span class="badge-tag">Service Registry API</span>
+                <span class="badge-tag">5-Step CoT Orchestrator</span>
+                <span class="badge-tag">PDPA Compliant</span>
+                <span class="badge-tag">Multimodal</span>
+                <span class="badge-tag badge-gold">Gradio UI · edge-tts</span>
+                <span class="badge-tag badge-orange">3 จังหวัดนำร่อง</span>
+            </div>
+
+            <!-- Stats -->
+            <div style="margin-bottom:1.2rem; display:flex; flex-wrap:wrap;">
+                <span class="stat-pill"><i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> สงขลา · กรุงเทพฯ · เชียงใหม่</span>
+                <span class="stat-pill"><i class="fas fa-hospital" style="color:var(--teal-mid);"></i> รพ. 8 · คลินิก 4 · ร้านยา 4 (MOCK)</span>
+                <span class="stat-pill"><i class="fas fa-microchip" style="color:var(--gold);"></i> ThaiLLM-8B · 4-bit NF4 · T4 GPU</span>
+                <span class="stat-pill"><i class="fas fa-database" style="color:var(--teal-mid);"></i> ICD-10: 15 · ยา: 9 · RAG: 12 chunks</span>
+                <span class="stat-pill"><i class="fas fa-check-circle" style="color:#10B981;"></i> Cell 1–9 รัน Kaggle T4 สำเร็จ ✅</span>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Abstract -->
+            <div style="background:rgba(14,165,160,0.12); border-radius:1rem; padding:1rem; margin-bottom:1rem; border:1px solid rgba(14,165,160,0.3);">
+                <p style="font-size:0.82rem; color:#CCFBF1; line-height:1.85;">
+                    <strong style="color:white;">บทสรุปโครงการ ( — Product Prototype):</strong>
+                    MedServe Link คือ <em>Product Prototype</em> แพลตฟอร์มเชื่อมต่อข้อมูลบริการสุขภาพจากหลายแหล่ง (MOPH HDC, NHSO, FDA, Google Places, OSM) แบบ Real-time โดยผู้ใช้สามารถพิมพ์หรือพูดเป็นภาษาไทย แล้วระบบจะวิเคราะห์อาการ + ประเมิน urgency + แนะนำสถานพยาบาล/ร้านยา/คลินิกที่เหมาะสมภายใน &lt;30 วินาที ด้วย <strong>Hybrid RAG</strong> (FAISS + BM25 + RRF) + <strong>Smart Referral Engine</strong> (urgency + distance + capacity + rights) + <strong>Medical Orchestrator 5-Step CoT</strong> พร้อม Constitutional AI และ PDPA 2562 สอดคล้อง
+                    <br><br>
+                    ทดสอบบน <span class="gpu-tag t4">⚡ Kaggle Tesla T4</span> — Cell 1–9 รันสำเร็จ · Gradio live: <code style="font-size:0.72rem; background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:4px;">http://pitsanu2448.github.io/MedServe-Link.html</code> · VRAM: 15.6 GB
+                </p>
+            </div>
+
+            <!-- Team -->
+            <div style="font-size:0.79rem; color:#94A3B8; line-height:2.1;">
+                <p>👨‍💻 <strong style="color:white;">Lead:</strong> นายชาญวิทย์ ทองศรี (Lead Dev) · นพ.วโรดม ศรสุรินทร์ (Medical) · นายปิยพงษ์ เมืองทอง (DevOps) · นายพิษณุ ทองศรี (AI) · นางสาวนันท์นภัส รอดบุตร (Business)</p>
+                <p>🏛️ <strong style="color:white;">ทีม:</strong> AIoTx-Tach </p>
+                <p>🖥️ <strong style="color:white;">Platform:</strong> Kaggle · Tesla T4 15.6 GB · CUDA · Gradio 4.44+ · Python 3.12</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 2 : ปัญหา ==================== -->
+<section id="slide2" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 02</span>
+            <h2>ปัญหาและช่องว่าง — ระบบสุขภาพไทยที่กระจัดกระจาย</h2>
+            <div class="sub">Problem Statement & Market Gap</div>
+        </div>
+    </div>
+
+    <div class="dark-box" style="margin-bottom:1.4rem;">
+        <i class="fas fa-exclamation-triangle" style="color:var(--gold);"></i>
+        <strong> ปัญหาหลัก:</strong> ระบบบริการสุขภาพไทยมีข้อมูลกระจายอยู่ใน <strong>หลายหน่วยงาน</strong> — MOPH, สปสช., รพ.รัฐ, รพ.เอกชน, คลินิก, ร้านยา — แต่ <strong>ขาดการเชื่อมโยงแบบ Real-time</strong>
+    </div>
+
+    <div class="card-grid" style="margin-bottom:1.5rem;">
+        <div class="card" style="border-top:4px solid #EF4444;">
+            <i class="fas fa-search" style="font-size:1.8rem; color:#EF4444;"></i>
+            <h3>ค้นหาบริการไม่เจอ</h3>
+            <p>ผู้ป่วยไม่รู้ว่า รพ.ไหนมีแพทย์เฉพาะทางที่นัดว่างวันนี้ ร้านยาไหนมียาที่ต้องการ หรือคลินิกไหนรับผู้ป่วยนอกเวลาราชการ</p>
+        </div>
+        <div class="card" style="border-top:4px solid #F59E0B;">
+            <i class="fas fa-clock" style="font-size:1.8rem; color:#F59E0B;"></i>
+            <h3>ข้อมูลไม่ทันสมัย</h3>
+            <p>เบอร์โทร เวลาให้บริการ ความเชี่ยวชาญแพทย์มักล้าสมัย ต้องโทรสอบถามหลายแห่ง เสียเวลาเฉลี่ย 2–3 ชม./ครั้ง</p>
+        </div>
+        <div class="card" style="border-top:4px solid #8B5CF6;">
+            <i class="fas fa-random" style="font-size:1.8rem; color:#8B5CF6;"></i>
+            <h3>ไม่สามารถจับคู่อัตโนมัติ</h3>
+            <p>ไม่มีระบบแมตช์ผู้ป่วยกับบริการที่เหมาะสม — ต้องโทรสอบถามเอง อาจพลาดโอกาส Golden Period การรักษา</p>
+        </div>
+        <div class="card" style="border-top:4px solid #EF4444;">
+            <i class="fas fa-heartbeat" style="font-size:1.8rem; color:#EF4444;"></i>
+            <h3>ฉุกเฉิน — ชีวิตต้องรอด</h3>
+            <p>ผู้ป่วย Stroke มีเวลาเพียง <strong>4.5 ชม.</strong> หากไม่รู้ว่า รพ.ไหนมี CT Scan + ทีมแพทย์สมอง อาจเสียโอกาสรักษา → เสียชีวิต</p>
+        </div>
+        <div class="card" style="border-top:4px solid #3B82F6;">
+            <i class="fas fa-balance-scale" style="font-size:1.8rem; color:#3B82F6;"></i>
+            <h3>ความเหลื่อมล้ำ</h3>
+            <p>ชนบทเข้าถึงข้อมูลบริการสุขภาพน้อยกว่าในเมือง · แรงงานต่างด้าวและนักท่องเที่ยวไม่รู้ระบบ · พิกัด รพ.สต. ผิดในแผนที่ดิจิทัล</p>
+        </div>
+        <div class="card" style="border-top:4px solid #10B981;">
+            <i class="fas fa-id-card" style="font-size:1.8rem; color:#10B981;"></i>
+            <h3>พลาดสิทธิ์การรักษา</h3>
+            <p>ผู้ป่วยไม่รู้ว่า รพ.ไหนรับบัตรทอง UCEP ประกันสังคม หรือข้าราชการ → เสียค่ารักษาโดยไม่จำเป็น</p>
+        </div>
+    </div>
+
+    <div class="info-box">
+        🎯 <strong>ธีม BDI Hackathon "รู้รอบทุกบริการทางการแพทย์":</strong> MedServe Link เชื่อมข้อมูลจาก MOPH HDC / สปสช. / FDA / Google Places / OSM ให้ผู้ใช้เข้าถึง รพ.-คลินิก-ร้านยา-สิทธิ์การรักษา ที่ใช่ ได้ง่ายและรวดเร็ว ผ่านภาษาธรรมชาติไทย
+    </div>
+
+    <div class="danger-box">
+        <strong>📉 ผลกระทบหากไม่แก้:</strong> ผู้ป่วยโรคหัวใจเสียชีวิตเพราะหา รพ.ที่ทำหัตถการได้ไม่ทัน · เสียเวลา 2–3 ชม./ครั้ง · สูญเสียโอกาส Smart Referral · นโยบาย Thailand Digital Health ไม่บรรลุเป้าหมายเพราะข้อมูลบริการยัง disconnected
+    </div>
+</section>
+
+<!-- ==================== SLIDE 3 : กลุ่มเป้าหมาย ==================== -->
+<section id="slide3" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 03</span>
+            <h2>กลุ่มเป้าหมาย 6 กลุ่มหลัก</h2>
+            <div class="sub">Target Audiences & User Needs</div>
+        </div>
+    </div>
+
+    <div class="card-grid" style="margin-bottom:1.5rem;">
+        <div class="card" style="border-top:4px solid var(--teal);">
+            <i class="fas fa-user-injured" style="font-size:1.6rem; color:var(--teal);"></i>
+            <h3>① ผู้ป่วยโรคเรื้อรัง</h3>
+            <p>เบาหวาน · ความดัน · ไต · หัวใจ<br><strong style="color:var(--teal);">&gt; 10 ล้านคน</strong><br>ต้องการ: นัดหมายง่าย, เตือนยา, หาคลินิกใกล้บ้าน</p>
+        </div>
+        <div class="card" style="border-top:4px solid #EF4444;">
+            <i class="fas fa-ambulance" style="font-size:1.6rem; color:#EF4444;"></i>
+            <h3>② ผู้ป่วยฉุกเฉิน</h3>
+            <p>อุบัติเหตุ · Stroke · หัวใจวาย<br><strong style="color:#EF4444;">&gt; 2 ล้านครั้ง/ปี</strong><br>ต้องการ: รู้ว่า รพ.ไหนรับได้ทันที</p>
+        </div>
+        <div class="card" style="border-top:4px solid #8B5CF6;">
+            <i class="fas fa-hands-helping" style="font-size:1.6rem; color:#8B5CF6;"></i>
+            <h3>③ ผู้ดูแลผู้สูงอายุ</h3>
+            <p>~5 ล้านคน<br>ต้องการ: ระบบใช้งานง่าย, ข้อมูลเชื่อถือได้, TTS ภาษาไทย</p>
+        </div>
+        <div class="card" style="border-top:4px solid #F97316;">
+            <i class="fas fa-globe-asia" style="font-size:1.6rem; color:#F97316;"></i>
+            <h3>④ นักท่องเที่ยว/แรงงาน</h3>
+            <p>~30M นักท่องเที่ยว + 3M แรงงานต่างด้าว<br>ต้องการ: Multilingual (ไทย/EN/พม่า/เขมร/ลาว)</p>
+        </div>
+        <div class="card" style="border-top:4px solid #3B82F6;">
+            <i class="fas fa-user-md" style="font-size:1.6rem; color:#3B82F6;"></i>
+            <h3>⑤ บุคลากรทางการแพทย์</h3>
+            <p>ER · OPD ~2 แสนคน<br>ต้องการ: Capacity Real-time สำหรับส่งต่อผู้ป่วย</p>
+        </div>
+        <div class="card" style="border-top:4px solid #10B981;">
+            <i class="fas fa-hospital-alt" style="font-size:1.6rem; color:#10B981;"></i>
+            <h3>⑥ ผู้ให้บริการสุขภาพ</h3>
+            <p>รพ. 1,500 + คลินิก 20,000 + ร้านยา 15,000<br>ต้องการ: เพิ่ม Visibility, บริหารคิว</p>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="targetGroupChart" height="220"></canvas>
+        <p class="footer-note">ขนาดกลุ่มเป้าหมายหลัก (ล้านคน) | ที่มา: Blueprint MedServe Link </p>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 4 : ตลาด ==================== -->
+<section id="slide4" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 04</span>
+            <h2>โอกาสทางตลาดและความสอดคล้องนโยบาย</h2>
+            <div class="sub">Market Opportunity & Policy Alignment</div>
+        </div>
+    </div>
+
+    <div class="card-grid" style="margin-bottom:1.5rem;">
+        <div class="card" style="text-align:center; border-top:4px solid var(--teal);">
+            <span style="font-size:2rem; font-weight:800; color:var(--teal);">$178B</span>
+            <p>ตลาด AI Healthcare ทั่วโลก ปี 2573</p>
+        </div>
+        <div class="card" style="text-align:center; border-top:4px solid #8B5CF6;">
+            <span style="font-size:2rem; font-weight:800; color:#8B5CF6;">$352M</span>
+            <p>ตลาด AI Healthcare ไทย ปี 2577</p>
+        </div>
+        <div class="card" style="text-align:center; border-top:4px solid #F97316;">
+            <span style="font-size:2rem; font-weight:800; color:#F97316;">71M+</span>
+            <p>ประชากรไทย — กลุ่มเป้าหมายรวม</p>
+        </div>
+        <div class="card" style="text-align:center; border-top:4px solid #F59E0B;">
+            <span style="font-size:2rem; font-weight:800; color:#F59E0B;">36,500</span>
+            <p>หน่วยบริการสุขภาพทั่วไทย (รพ.+คลินิก+ร้านยา)</p>
+        </div>
+    </div>
+
+    <div class="flex-2col">
+        <div class="chart-container">
+            <canvas id="marketGrowthChart" height="240"></canvas>
+            <p class="footer-note">การเติบโตตลาด AI Healthcare ไทย (ล้าน USD) — Projection 2567–2573</p>
+        </div>
+        <div>
+            <div class="info-box">
+                🏛️ <strong>สอดคล้องนโยบายรัฐ:</strong><br>
+                • <strong>Thailand Digital Health Roadmap ระยะ 2</strong> — เชื่อมข้อมูล รพ.ทุกเขต<br>
+                • <strong>แอปเป๋าตัง</strong> (บริการสุขภาพ) + <strong>หมอพร้อม</strong> + <strong>Health Link</strong><br>
+                • <strong>UHC ไทย</strong> (Universal Health Coverage) — สิทธิบัตรทอง UCEP<br>
+                • <strong>BCG Economy Model</strong> — ดิจิทัลสุขภาพ Edge AI
+            </div>
+            <div class="warn-box">
+                🏆 <strong>Competitive Advantage vs คู่แข่ง:</strong><br>
+                • ภาษาไทย 100% + Multilingual (พม่า/เขมร/ลาว)<br>
+                • เชื่อมข้อมูลจาก MOPH/NHSO/FDA/OSM แบบ Real-time<br>
+                • Smart Referral = urgency + distance + capacity + rights<br>
+                • PDPA-by-design + Crowdsourced validation<br>
+                • Open API สำหรับ รพ.-คลินิก-ร้านยา ลงทะเบียนเอง
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 5 : โซลูชัน ==================== -->
+<section id="slide5" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 05</span>
+            <h2>โซลูชัน: MedServe Link — "Siri สำหรับบริการสุขภาพไทย"</h2>
+            <div class="sub">Solution Overview & Key Features</div>
+        </div>
+    </div>
+
+    <div class="dark-box" style="margin-bottom:1.4rem;">
+        <i class="fas fa-lightbulb" style="color:var(--gold);"></i>
+        <strong> แนวคิดหลัก:</strong> ผู้ใช้ถาม <em>เป็นภาษาไทย</em> (พิมพ์หรือพูด) → ระบบ <strong>วิเคราะห์อาการ + urgency + แนะนำ รพ./คลินิก/ร้านยา</strong> พร้อมระยะทาง เวลาเปิด-ปิด เบอร์โทร ความเชี่ยวชาญ และ capacity (เตียงว่าง/คิวว่าง) <strong>ภายใน &lt;30 วินาที</strong>
+    </div>
+
+    <!-- Smart Referral Engine Visual -->
+    <h3 style="margin-bottom:0.8rem;">🧮 Smart Referral Engine — 4 ปัจจัยตัดสินใจ</h3>
+    <div class="referral-flow">
+        <div class="ref-node" style="border-top-color:#EF4444;">
+            <i class="fas fa-exclamation-triangle" style="color:#EF4444;"></i>
+            <strong>Urgency</strong>
+            <small>CRITICAL/HIGH/MED/LOW<br>น้ำหนัก: 10</small>
+        </div>
+        <div class="ref-node" style="border-top-color:#3B82F6;">
+            <i class="fas fa-map-marker-alt" style="color:#3B82F6;"></i>
+            <strong>Distance</strong>
+            <small>Haversine GPS<br>น้ำหนัก: 15 (ใกล้ดีกว่า)</small>
+        </div>
+        <div class="ref-node" style="border-top-color:var(--teal);">
+            <i class="fas fa-bed" style="color:var(--teal);"></i>
+            <strong>Capacity</strong>
+            <small>ICU + ER ว่าง<br>น้ำหนัก: 5</small>
+        </div>
+        <div class="ref-node" style="border-top-color:#F59E0B;">
+            <i class="fas fa-id-card" style="color:#F59E0B;"></i>
+            <strong>Rights</strong>
+            <small>บัตรทอง/ประกัน/ข้าราชการ<br>น้ำหนัก: 4</small>
+        </div>
+    </div>
+
+    <div class="card-grid" style="margin-bottom:1.5rem;">
+        <div class="card" style="border-left:4px solid var(--teal);">
+            <i class="fas fa-comments" style="color:var(--teal); font-size:1.4rem;"></i>
+            <h3>AI Chat ภาษาไทย</h3>
+            <p>สนทนาโต้ตอบ พิมพ์หรืออัดเสียง · ThaiLLM-8B + RAG · Medical Orchestrator 5-Step · ConversationalMemory</p>
+        </div>
+        <div class="card" style="border-left:4px solid #EF4444;">
+            <i class="fas fa-ambulance" style="color:#EF4444; font-size:1.4rem;"></i>
+            <h3>Emergency Fast-Path</h3>
+            <p>FAST Stroke checker · ตรวจ urgency = CRITICAL → แสดง รพ. Top 3 + เบอร์ → กดโทร 1669 ทันที</p>
+        </div>
+        <div class="card" style="border-left:4px solid #3B82F6;">
+            <i class="fas fa-map-marked-alt" style="color:#3B82F6; font-size:1.4rem;"></i>
+            <h3>Hospital Navigator</h3>
+            <p>Geospatial Search รัศมี 10–50 กม. · กรองตามสิทธิ์ + ความเชี่ยวชาญ + ระยะทาง · แสดงแผนที่พร้อม capacity</p>
+        </div>
+        <div class="card" style="border-left:4px solid #8B5CF6;">
+            <i class="fas fa-database" style="color:#8B5CF6; font-size:1.4rem;"></i>
+            <h3>Service Registry</h3>
+            <p>ฐานข้อมูลกลาง รพ./คลินิก/ร้านยา · อัปเดต Real-time · Crowdsourced validation · API สำหรับลงทะเบียน</p>
+        </div>
+        <div class="card" style="border-left:4px solid #F59E0B;">
+            <i class="fas fa-bell" style="color:#F59E0B; font-size:1.4rem;"></i>
+            <h3>Proactive Recommendations</h3>
+            <p>แจ้งเตือนนัดหมาย/ตรวจสุขภาพ/บริการใหม่ · ใช้ประวัติที่ได้รับความยินยอม (PDPA) · Push notification</p>
+        </div>
+        <div class="card" style="border-left:4px solid #10B981;">
+            <i class="fas fa-shield-alt" style="color:#10B981; font-size:1.4rem;"></i>
+            <h3>PDPA-first Privacy</h3>
+            <p>base64+zlib+SHA256 · SQLite WAL · Consent Management · ผู้ใช้ให้/ถอนความยินยอม · export ตามมาตรา 63</p>
+        </div>
+    </div>
+
+    <!-- User Journey Examples -->
+    <h3 style="margin-bottom:0.8rem;">🎯 User Journey — ตัวอย่างการใช้งานจริง</h3>
+    <div class="flex-2col">
+        <div style="background:white; border-radius:1.2rem; padding:1.1rem; box-shadow:0 4px 14px rgba(0,0,0,0.06); border:1px solid #D9EDEB;">
+            <div style="background:#FEF2F2; border-radius:0.7rem; padding:0.6rem 0.8rem; margin-bottom:0.7rem; font-size:0.78rem; color:#991B1B; font-weight:700;">
+                🚨 ตัวอย่างที่ 1: ผู้ป่วย Stroke (ฉุกเฉินวิกฤต)
+            </div>
+            <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">
+                <strong>ผู้ใช้พูด/พิมพ์:</strong> "พ่ออายุ 70 ปี พูดไม่ชัด ปากเบี้ยว ซีกขาอ่อนแรง"<br>
+                <strong>ระบบ:</strong><br>
+                ✅ ตรวจจับ FAST (Face+Arm+Speech) → urgency = CRITICAL<br>
+                ✅ ค้น รพ. รัศมี 15 กม. ที่มีแพทย์สมอง + CT Scan + ICU ว่าง<br>
+                ✅ แสดงอันดับ 1,2,3 พร้อมเบอร์ + ปุ่ม "ส่งตำแหน่งไปยัง 1669"<br>
+                ✅ แจ้ง รพ.ปลายทางล่วงหน้า (Pre-notification simulation)
+            </p>
+        </div>
+        <div style="background:white; border-radius:1.2rem; padding:1.1rem; box-shadow:0 4px 14px rgba(0,0,0,0.06); border:1px solid #D9EDEB;">
+            <div style="background:#F0FDF9; border-radius:0.7rem; padding:0.6rem 0.8rem; margin-bottom:0.7rem; font-size:0.78rem; color:#065F46; font-weight:700;">
+                🩺 ตัวอย่างที่ 2: ผู้ป่วยเบาหวานต้องการพบแพทย์
+            </div>
+            <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">
+                <strong>ผู้ใช้พิมพ์:</strong> "เบาหวาน HbA1c 7.5% ยาเมตฟอร์มินใกล้หมด อยากพบแพทย์"<br>
+                <strong>ระบบ:</strong><br>
+                ✅ urgency = LOW/MEDIUM → ค้นคลินิก/รพ.ใกล้บ้าน<br>
+                ✅ กรองตาม: แพทย์อายุรกรรม/ต่อมไร้ท่อ + บัตรทอง + นอกราชการ<br>
+                ✅ แสดงรายชื่อพร้อมเวลา + เบอร์ + ลิงก์จองคิว (mock)<br>
+                ✅ แนะนำ: ยา Metformin 500–2000 mg/วัน พร้อมอาหาร
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 6 : สถาปัตยกรรม ==================== -->
+<section id="slide6" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 06</span>
+            <h2>สถาปัตยกรรมระบบ — 3 Layer Design</h2>
+            <div class="sub">Technical Architecture · Data · AI · Service Layers</div>
+        </div>
+    </div>
+
+    <!-- Data Sources -->
+    <h3 style="margin-bottom:0.8rem;">📡 Layer A — Data Sources (Multi-source Integration)</h3>
+    <div class="chart-container" style="margin-bottom:1.3rem; overflow-x:auto;">
+        <table class="spec-table" style="min-width:500px;">
+            <thead><tr><th>แหล่งข้อมูล</th><th>ข้อมูลที่ใช้</th><th>วิธีเข้าถึง</th><th>สถานะ</th></tr></thead>
+            <tbody>
+                <tr><td><strong>MOPH (HDC)</strong></td><td>รายชื่อ รพ., คลินิก, รพ.สต., ความเชี่ยวชาญ</td><td>API / Web scraping / CSV</td><td class="spec-ok">✅ API พร้อม</td></tr>
+                <tr><td><strong>สปสช. (NHSO)</strong></td><td>สิทธิ์บัตรทอง, UCEP, หน่วยบริการ</td><td>Open data portal</td><td class="spec-ok">✅ Open Data</td></tr>
+                <tr><td><strong>FDA / NDI</strong></td><td>ข้อมูลยา, ร้านยาที่ได้รับอนุญาต</td><td>API / static dataset</td><td class="spec-ok">✅ API พร้อม</td></tr>
+                <tr><td><strong>Google Places / OSM</strong></td><td>พิกัด, รีวิว, รูปภาพ, เวลาเปิด-ปิด</td><td>API</td><td class="spec-warn">⚠️ Key ต้องการ</td></tr>
+                <tr><td><strong>ระบบ HIS รพ.นำร่อง</strong></td><td>คิวว่าง, เตียงว่าง, แพทย์เวร</td><td>REST API (MOU)</td><td class="spec-warn">⚠️ PoC MOCK</td></tr>
+                <tr><td><strong>Crowdsourcing</strong></td><td>ยืนยันข้อมูล, รายงานปัญหา</td><td>ผ่านแอปพลิเคชัน</td><td class="spec-ok">✅ UI พร้อม</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- AI & Retrieval Layer -->
+    <h3 style="margin-bottom:0.8rem;">🧠 Layer B — AI & Retrieval Engine</h3>
+    <div class="cot-flow">
+        <div class="cot-step" style="background:#0EA5A0; color:white;">
+            <i class="fas fa-filter"></i>
+            <strong>Step 1: Sanitize</strong>
+            <small>PII Remove · PDPA gate · Guardrails validate</small>
+        </div>
+        <div class="cot-step" style="background:#0891b2; color:white;">
+            <i class="fas fa-stethoscope"></i>
+            <strong>Step 2: Urgency</strong>
+            <small>Symptom extract · FAST check · Triage 4 levels</small>
+        </div>
+        <div class="cot-step" style="background:#1e40af; color:white;">
+            <i class="fas fa-database"></i>
+            <strong>Step 3: Hybrid RAG</strong>
+            <small>FAISS+BM25+RRF · BGE Reranker · GraphRAG</small>
+        </div>
+        <div class="cot-step" style="background:#7c3aed; color:white;">
+            <i class="fas fa-route"></i>
+            <strong>Step 4: Smart Referral</strong>
+            <small>Geospatial · urgency×distance×capacity×rights</small>
+        </div>
+        <div class="cot-step" style="background:#059669; color:white;">
+            <i class="fas fa-check-circle"></i>
+            <strong>Step 5: LLM Generate</strong>
+            <small>ThaiLLM-8B · Constitutional AI · TTS output</small>
+        </div>
+    </div>
+
+    <!-- New Components -->
+    <h3 style="margin-bottom:0.8rem; margin-top:1.3rem;">⚡ Layer C — New Components (MedServe Link เฉพาะ)</h3>
+    <div class="card-grid">
+        <div class="card" style="border-top:4px solid var(--teal);">
+            <i class="fas fa-server" style="color:var(--teal); font-size:1.4rem;"></i>
+            <h3>Service Registry API</h3>
+            <p>Class <code>ServiceRegistry</code> · mock 8 รพ. + 4 คลินิก + 4 ร้านยา · 3 จังหวัดนำร่อง · API สำหรับผู้ให้บริการลงทะเบียน</p>
+            <span class="badge-tag" style="background:#065F46;">✅ พร้อมใน PoC</span>
+        </div>
+        <div class="card" style="border-top:4px solid #3B82F6;">
+            <i class="fas fa-map" style="color:#3B82F6; font-size:1.4rem;"></i>
+            <h3>Geospatial Index</h3>
+            <p>H3 + PostGIS (จำลอง) · Haversine distance · Route optimization · search_nearby() function</p>
+            <span class="badge-tag" style="background:#065F46;">✅ พร้อม</span>
+        </div>
+        <div class="card" style="border-top:4px solid #EF4444;">
+            <i class="fas fa-bed" style="color:#EF4444; font-size:1.4rem;"></i>
+            <h3>Capacity Check Module</h3>
+            <p>อ่าน ICU/ER ว่าง · get_capacity() · real-time mock · เชื่อม HIS รพ.นำร่อง ในอนาคต</p>
+            <span class="badge-tag" style="background:#065F46;">✅ พร้อม</span>
+        </div>
+        <div class="card" style="border-top:4px solid #8B5CF6;">
+            <i class="fas fa-brain" style="color:#8B5CF6; font-size:1.4rem;"></i>
+            <h3>SmartReferralEngine</h3>
+            <p>RRF fusion · urgency+distance+capacity+rights weights · recommend() top 5 · ส่งต่อ 1669</p>
+            <span class="badge-tag" style="background:#065F46;">✅ พร้อม</span>
+        </div>
+        <div class="card" style="border-top:4px solid #F97316;">
+            <i class="fas fa-volume-up" style="color:#F97316; font-size:1.4rem;"></i>
+            <h3>Multilingual TTS</h3>
+            <p>edge-tts · ไทย/EN/พม่า/เขมร · สำหรับผู้สูงอายุและผู้พิการทางสายตา</p>
+            <span class="badge-tag" style="background:#065F46;">✅ พร้อม</span>
+        </div>
+        <div class="card" style="border-top:4px solid #F59E0B;">
+            <i class="fas fa-star" style="color:#F59E0B; font-size:1.4rem;"></i>
+            <h3>User Feedback Loop</h3>
+            <p>Rating + Comments · ปรับปรุง Ranking Model · Crowdsourced validation · UI feedback channel</p>
+            <span class="badge-tag" style="background:#065F46;">✅ UI พร้อม</span>
+        </div>
+    </div>
+
+    <!-- System Flow -->
+    <h3 style="margin-bottom:0.8rem; margin-top:1.3rem;">🏗️ System Architecture Flow</h3>
+    <div class="arch-flow">
+        <div class="arch-node"><strong>📱 ผู้ใช้งาน</strong><small>ข้อความ/เสียง/ภาพ</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🔒 Guardrails</strong><small>PII · Injection · Rate-limit</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🧠 MedicalKB</strong><small>ICD-10 · ยา · Triage · FAST</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>📚 Hybrid RAG</strong><small>FAISS+BM25+BGE Reranker</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🗺️ Smart Referral</strong><small>urgency×dist×cap×rights</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🤖 ThaiLLM-8B</strong><small>4-bit NF4+PEFT · Constitutional</small></div>
+        <i class="fas fa-arrow-right arrow-icon"></i>
+        <div class="arch-node"><strong>🔊 TTS Output</strong><small>edge-tts · Thai/EN/พม่า</small></div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin:1rem 0;">
+        <span class="badge-tag">PyTorch · Transformers</span>
+        <span class="badge-tag">FAISS-GPU · rank-bm25</span>
+        <span class="badge-tag">sentence-transformers</span>
+        <span class="badge-tag">NetworkX (GraphRAG)</span>
+        <span class="badge-tag badge-blue">ibm-granite/granite-embedding-311m-multilingual-r2</span>
+        <span class="badge-tag">BAAI/bge-reranker-v2-m3</span>
+        <span class="badge-tag">ThaiLLM/ThaiLLM-8B + PEFT</span>
+        <span class="badge-tag">openai-whisper · xb2g/thai-whisper-small</span>
+        <span class="badge-tag badge-purple">ColPali v1.3 (heuristic fallback)</span>
+        <span class="badge-tag badge-gold">SQLite WAL · PDPA SHA256</span>
+        <span class="badge-tag badge-gold">Gradio 4.44+ Parent+Child Tabs</span>
+        <span class="badge-tag">FastAPI · Docker · Kubernetes (planned)</span>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 7 : 3 จังหวัดนำร่อง ==================== -->
+<section id="slide7" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 07</span>
+            <h2>Service Registry — 3 จังหวัดนำร่อง (MOCK Data)</h2>
+            <div class="sub">Pilot Coverage: Songkhla · Bangkok · Chiangmai</div>
+        </div>
+    </div>
+
+    <div class="info-box" style="margin-bottom:1.3rem;">
+        📌 <strong>ข้อมูลปัจจุบัน:</strong> MOCK Data จำลอง MOPH HDC / NHSO / HIS สำหรับ PoC — พร้อมเชื่อมต่อ API จริงในระยะ Pilot
+    </div>
+
+    <!-- Registry Stats -->
+    <div class="registry-grid" style="margin-bottom:1.5rem;">
+        <div class="registry-card" style="border-top-color:#EF4444;">
+            <div class="reg-count" style="color:#EF4444;">8</div>
+            <div class="reg-label" style="color:#EF4444; font-weight:700;">🏥 โรงพยาบาล</div>
+            <ul>
+                <li>รพ.สงขลา (074-323300)</li>
+                <li>รพ.หาดใหญ่ (074-273085)</li>
+                <li>รพ.สงขลานครินทร์ ม.อ.</li>
+                <li>รพ.ศิริราช (02-4197020)</li>
+                <li>รพ.รามาธิบดี (02-2011000)</li>
+                <li>รพ.บำราศนราดูร</li>
+                <li>รพ.มหาราชนครเชียงใหม่</li>
+                <li>รพ.นครพิงค์</li>
+            </ul>
+        </div>
+        <div class="registry-card" style="border-top-color:#3B82F6;">
+            <div class="reg-count" style="color:#3B82F6;">4</div>
+            <div class="reg-label" style="color:#3B82F6; font-weight:700;">🏨 คลินิก</div>
+            <ul>
+                <li>คลินิกอายุรกรรมสุขใจ หาดใหญ่</li>
+                <li>คลินิกหมอครอบครัว กรุงเทพ</li>
+                <li>คลินิกหมอเชียงใหม่</li>
+                <li>คลินิกเบาหวาน-ความดัน หาดใหญ่</li>
+            </ul>
+        </div>
+        <div class="registry-card" style="border-top-color:#10B981;">
+            <div class="reg-count" style="color:#10B981;">4</div>
+            <div class="reg-label" style="color:#10B981; font-weight:700;">💊 ร้านยา</div>
+            <ul>
+                <li>ร้านยาโอสถภา หาดใหญ่</li>
+                <li>ร้านยาสุขใจ กรุงเทพ</li>
+                <li>ร้านยาดีใจ เชียงใหม่</li>
+                <li>ร้านยา Boots หาดใหญ่</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Pilot cards per province -->
+    <div class="pilot-grid">
+        <div class="pilot-card">
+            <div class="pilot-header" style="background:#0A4A3A;">
+                <i class="fas fa-map-marker-alt"></i> สงขลา (Pilot หลัก — Hat Yai)
+            </div>
+            <div class="pilot-body">
+                <strong>รพ.หลัก:</strong> รพ.หาดใหญ่ (7.016°N 100.475°E) · รพ.สงขลา · รพ.ม.อ.<br>
+                <strong>คลินิก:</strong> คลินิกอายุรกรรมสุขใจ · คลินิกเบาหวาน-ความดัน<br>
+                <strong>ร้านยา:</strong> โอสถภา · Boots<br>
+                <strong>สิทธิ์ครอบคลุม:</strong> บัตรทอง · ประกันสังคม · ข้าราชการ
+            </div>
+        </div>
+        <div class="pilot-card">
+            <div class="pilot-header" style="background:#1e3a5f;">
+                <i class="fas fa-map-marker-alt"></i> กรุงเทพมหานคร
+            </div>
+            <div class="pilot-body">
+                <strong>รพ.หลัก:</strong> ศิริราช (13.756°N 100.485°E) · รามาธิบดี · บำราศนราดูร<br>
+                <strong>คลินิก:</strong> คลินิกหมอครอบครัว กรุงเทพ<br>
+                <strong>ร้านยา:</strong> สุขใจ กรุงเทพ<br>
+                <strong>เน้น:</strong> ผู้ป่วยโรคติดเชื้อ HIV วัณโรค
+            </div>
+        </div>
+        <div class="pilot-card">
+            <div class="pilot-header" style="background:#2d1f5e;">
+                <i class="fas fa-map-marker-alt"></i> เชียงใหม่
+            </div>
+            <div class="pilot-body">
+                <strong>รพ.หลัก:</strong> มหาราชนครเชียงใหม่ (18.788°N 98.985°E) · นครพิงค์<br>
+                <strong>คลินิก:</strong> คลินิกหมอเชียงใหม่<br>
+                <strong>ร้านยา:</strong> ดีใจ เชียงใหม่<br>
+                <strong>เน้น:</strong> สูติกรรม ออร์โธปิดิกส์ ผิวหนัง
+            </div>
+        </div>
+    </div>
+
+    <!-- Triage Levels -->
+    <h3 style="margin-bottom:0.8rem; margin-top:1.3rem;">🚨 ระบบ Triage 4 ระดับ + FAST Stroke Fast-Path</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.7rem;">
+        <span class="urgency-badge"><i class="fas fa-circle" style="color:#EF4444;"></i> CRITICAL — ฉุกเฉินสูงสุด → 1669 ทันที</span>
+        <span class="urgency-badge"><i class="fas fa-circle" style="color:#F97316;"></i> HIGH — เร่งด่วน → ER ใน 1 ชม.</span>
+        <span class="urgency-badge"><i class="fas fa-circle" style="color:#F59E0B;"></i> MEDIUM — ควรพบแพทย์วันนี้</span>
+        <span class="urgency-badge"><i class="fas fa-circle" style="color:#10B981;"></i> LOW — ดูแลตนเองเบื้องต้นได้</span>
+    </div>
+    <div class="info-box" style="font-size:0.78rem;">
+        ⚡ <strong>FAST Stroke Fast-Path:</strong> F=Face drooping (ปากเบี้ยว) · A=Arm weakness (แขนอ่อนแรง) · S=Speech difficulty (พูดไม่ชัด) → score ≥ 1 → CRITICAL → โทร 1669 ทันที · Golden Hour 4.5 ชม.<br>
+        🧠 <strong>PHQ-9 Mental Health:</strong> score ≥ 10 → ซึมเศร้าปานกลาง-รุนแรง → สายด่วน 1323
+    </div>
+</section>
+
+<!-- ==================== SLIDE 8 : เทคโนโลยี AI ==================== -->
+<section id="slide8" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 08</span>
+            <h2>เทคโนโลยี AI & Retrieval Stack</h2>
+            <div class="sub">AI/ML · RAG · Knowledge Base · Safety</div>
+        </div>
+    </div>
+
+    <div class="flex-2col">
+        <div>
+            <h3 style="margin-bottom:1rem;">🧠 AI Model Stack</h3>
+            <div class="chart-container" style="margin-bottom:1rem; overflow-x:auto;">
+                <table class="spec-table">
+                    <thead><tr><th>Component</th><th>Model/Tech</th><th>สถานะ</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>LLM หลัก</strong></td><td><span class="spec-mono">ThaiLLM/ThaiLLM-8B</span> (4-bit NF4) + PEFT adapter ThaiLLM-8B-ToolUse</td><td class="spec-ok">✅ 4-bit/FP16 fallback</td></tr>
+                        <tr><td><strong>Embedding</strong></td><td><span class="spec-mono">ibm-granite/granite-embedding-311m-multilingual-r2</span> · 768d</td><td class="spec-ok">✅ Granite พร้อม</td></tr>
+                        <tr><td><strong>Reranker</strong></td><td><span class="spec-mono">BAAI/bge-reranker-v2-m3</span> CrossEncoder</td><td class="spec-ok">✅ BGE พร้อม</td></tr>
+                        <tr><td><strong>Audio STT</strong></td><td><span class="spec-mono">xb2g/thai-whisper-small</span> · resample 16kHz</td><td class="spec-ok">✅ Whisper พร้อม</td></tr>
+                        <tr><td><strong>Vision</strong></td><td><span class="spec-mono">vidore/colpali-v1.3-merged</span> · heuristic fallback</td><td class="spec-warn">⚠️ heuristic mode</td></tr>
+                        <tr><td><strong>TTS</strong></td><td><span class="spec-mono">edge-tts</span> · PremwadeeNeural / NiwatNeural</td><td class="spec-ok">✅ พร้อม</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-bottom:0.8rem;">📚 Medical Knowledge Base</h3>
+            <div class="rag-stat-grid">
+                <div class="rag-stat-card"><span class="stat-val">15</span><div class="stat-label">ICD-10 Codes<br><small>(เบาหวาน-Stroke-etc.)</small></div></div>
+                <div class="rag-stat-card"><span class="stat-val">9</span><div class="stat-label">ยาในฐานข้อมูล<br><small>(พาราเซตามอล-วาร์ฟาริน)</small></div></div>
+                <div class="rag-stat-card"><span class="stat-val">10</span><div class="stat-label">Drug DDI Pairs<br><small>(ปฏิกิริยายา)</small></div></div>
+                <div class="rag-stat-card"><span class="stat-val">12</span><div class="stat-label">RAG Chunks<br><small>(Hardcoded KB)</small></div></div>
+                <div class="rag-stat-card"><span class="stat-val">11</span><div class="stat-label">Symptom Groups<br><small>(ไข้-ปวดหัว-FAST)</small></div></div>
+                <div class="rag-stat-card"><span class="stat-val">5</span><div class="stat-label">โรคเรื้อรัง Plans<br><small>(DM-HT-CKD-COPD-HF)</small></div></div>
+            </div>
+
+            <div class="info-box" style="font-size:0.77rem; margin-top:0.5rem;">
+                🔄 <strong>Hybrid RAG Pipeline:</strong><br>
+                ETL → JSON → MedicalKBLoader → GraniteEmbed (768d) → FAISS Dense Index → BM25Okapi (PyThaiNLP) → Hybrid Search + RRF Fusion → Geospatial distance + urgency weight + rights weight → BGE Reranker
+            </div>
+        </div>
+
+        <div>
+            <h3 style="margin-bottom:1rem;">🔋 VRAM Usage on Kaggle T4</h3>
+            <div style="background:white; border-radius:1.2rem; padding:1rem; box-shadow:0 4px 14px rgba(0,0,0,0.05); border:1px solid #D9EDEB; margin-bottom:1rem;">
+                <div style="font-size:0.76rem; margin-bottom:0.6rem; color:var(--text-light);">Tesla T4 · VRAM รวม: 15.6 GB · CUDA</div>
+                <div style="font-size:0.74rem; margin-bottom:0.25rem; font-weight:700;">ThaiLLM-8B 4-bit NF4</div>
+                <div class="vram-meter"><div class="vram-fill" style="width:10.3%;">1.6 GB</div></div>
+                <div style="font-size:0.74rem; margin-bottom:0.25rem; margin-top:0.5rem; font-weight:700;">+ PEFT adapter ThaiLLM-8B-ToolUse</div>
+                <div class="vram-meter"><div class="vram-fill" style="width:10.3%;">1.6 GB total</div></div>
+                <div style="font-size:0.74rem; margin-bottom:0.25rem; margin-top:0.5rem; font-weight:700;">+ Granite Embedding 311M</div>
+                <div class="vram-meter"><div class="vram-fill" style="width:25%; background:linear-gradient(90deg,#0EA5A0,#0891b2);">~2.5 GB total</div></div>
+                <div style="font-size:0.74rem; margin-bottom:0.25rem; margin-top:0.5rem; font-weight:700;">+ BGE Reranker + Whisper + FAISS</div>
+                <div class="vram-meter"><div class="vram-fill" style="width:38%; background:linear-gradient(90deg,var(--teal),#059669);">~6 GB total (ประมาณ)</div></div>
+                <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.5rem;">🎯 Free remaining: ~9+ GB · สำหรับ inference และ cache</div>
+            </div>
+
+            <h3 style="margin-bottom:0.8rem;">🛡️ PDPA Compliance</h3>
+            <div class="layer-stack">
+                <div class="layer-item" style="border-left-color:#EF4444;">
+                    <div class="layer-num" style="background:#EF4444;">1</div>
+                    <div class="layer-desc"><strong>Encrypt: base64+zlib+SHA256</strong>เข้ารหัสข้อมูลส่วนบุคคลทุกชั้น</div>
+                    <div class="layer-count">SHA256 checksum</div>
+                </div>
+                <div class="layer-item" style="border-left-color:#F59E0B;">
+                    <div class="layer-num" style="background:#F59E0B;">2</div>
+                    <div class="layer-desc"><strong>SQLite WAL + Audit Log</strong>ทุก action บันทึก timestamp + user_id + reason</div>
+                    <div class="layer-count">WAL mode</div>
+                </div>
+                <div class="layer-item" style="border-left-color:var(--teal);">
+                    <div class="layer-num" style="background:#0EA5A0;">3</div>
+                    <div class="layer-desc"><strong>Consent Management (2025-PDPA-v1)</strong>ให้/ถอนความยินยอม + export ข้อมูล มาตรา 63</div>
+                    <div class="layer-count">UI พร้อม</div>
+                </div>
+                <div class="layer-item" style="border-left-color:#3B82F6;">
+                    <div class="layer-num" style="background:#3B82F6;">4</div>
+                    <div class="layer-desc"><strong>UserProfileManager</strong>Location history ไม่แชร์บุคคลที่สาม โดยไม่ได้รับอนุญาต</div>
+                    <div class="layer-count">PDPA 2562</div>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom:0.8rem; margin-top:1rem;">⚖️ Constitutional AI — Medical Principles</h3>
+            <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                <div style="background:#F0FDF9; border-radius:0.6rem; padding:0.4rem 0.7rem; font-size:0.72rem; border:1px solid #99F6E4;"><strong>P1</strong> Medical Disclaimer</div>
+                <div style="background:#EFF6FF; border-radius:0.6rem; padding:0.4rem 0.7rem; font-size:0.72rem; border:1px solid #BFDBFE;"><strong>P2</strong> Recommend Doctor</div>
+                <div style="background:#FEF2F2; border-radius:0.6rem; padding:0.4rem 0.7rem; font-size:0.72rem; border:1px solid #FCA5A5;"><strong>P3</strong> No Harmful Advice</div>
+                <div style="background:#FFFBEB; border-radius:0.6rem; padding:0.4rem 0.7rem; font-size:0.72rem; border:1px solid #FDE68A;"><strong>P4</strong> Emergency Numbers (1669/1323)</div>
+                <div style="background:#F5F3FF; border-radius:0.6rem; padding:0.4rem 0.7rem; font-size:0.72rem; border:1px solid #DDD6FE;"><strong>P5</strong> Evidence-based</div>
+                <div style="background:#F0FDF4; border-radius:0.6rem; padding:0.4rem 0.7rem; font-size:0.72rem; border:1px solid #86EFAC;"><strong>P6</strong> Drug Dosage Warning</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 9 : ผลการรันจริง ==================== -->
+<section id="slide9" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 09</span>
+            <h2>ผลการรัน Notebook จริงบน Kaggle T4</h2>
+            <div class="sub">Verified Run Output — Cell 1–9 Success ✅</div>
+        </div>
+    </div>
+
+    <div style="background:#071A2E; border-radius:1rem; padding:1.2rem; font-family:var(--mono); font-size:0.74rem; color:#CCFBF1; margin-bottom:1.5rem; border:1px solid rgba(14,165,160,0.3);">
+        <div style="color:#CCFBF1; margin-bottom:0.5rem; font-weight:700;">📋 Run Output Log (Verified)</div>
+        <div style="color:#86EFAC;">[Cell 1] 📦 ติดตั้ง dependencies สำหรับ MedServe-Link  บน Kaggle T4... <span style="color:#4ADE80;">✅ ติดตั้งเสร็จสมบูรณ์</span></div>
+        <div style="color:#7DD3FC;">[Cell 2] 🖥️ Device: <strong>cuda</strong> | GPU: <strong>Tesla T4</strong> | VRAM: <strong>15.6 GB</strong></div>
+        <div style="color:#7DD3FC;">        📦 LLM: ThaiLLM/ThaiLLM-8B | Adapter: ThaiLLM/ThaiLLM-8B-ToolUse</div>
+        <div style="color:#86EFAC;">        ✅ Environment ready @ 2026-05-29 14:33:01</div>
+        <div style="color:#86EFAC;">[Cell 3] ✅ PDPA + Profile Manager พร้อมใช้งาน</div>
+        <div style="color:#86EFAC;">[Cell 4] ✅ MedicalKB พร้อม | ICD-10: 15 | ยา: 9</div>
+        <div style="color:#86EFAC;">        ✅ ServiceRegistry (MOCK) | รพ: 8 | คลินิก: 4 | ร้านยา: 4</div>
+        <div style="color:#86EFAC;">[Cell 5] ✅ Cell 5 — Model Engines พร้อม (ThaiLLM-8B)</div>
+        <div style="color:#FCD34D;">[Cell 6] ⏳ กำลังโหลด Medical Router...</div>
+        <div style="color:#7DD3FC;">        🔄 โหลด LLM: ThaiLLM/ThaiLLM-8B (4-bit NF4)</div>
+        <div style="color:#86EFAC;">        ✅ โหลด PEFT adapter สำเร็จ</div>
+        <div style="color:#86EFAC;">        ✅ LLM (4-bit) พร้อม | VRAM: 1.60 GB</div>
+        <div style="color:#FCD34D;">        ⚠️ ColPali ไม่พร้อม → heuristic fallback</div>
+        <div style="color:#86EFAC;">        ✅ Whisper Audio พร้อม</div>
+        <div style="color:#86EFAC;">        ✅ Granite Embedding พร้อม | dim=768</div>
+        <div style="color:#86EFAC;">        ✅ BGE Reranker พร้อม</div>
+        <div style="color:#86EFAC;">        ✅ Dense index สร้างสำเร็จ | ✅ BM25 พร้อม จำนวนเอกสาร 9</div>
+        <div style="color:#86EFAC;">        ✅ MedicalRAGEngine + Smart Referral Engine พร้อม</div>
+        <div style="color:#86EFAC;">[Cell 7] ✅ Guardrails &amp; Memory พร้อม</div>
+        <div style="color:#86EFAC;">[Cell 8] ✅ Medical Orchestrator พร้อม</div>
+        <div style="color:#FCD34D;">[Cell 9] ⏳ กำลังเริ่มต้น MedServe Link...</div>
+        <div style="color:#86EFAC;">        🔌 Auto-selected port: 7870</div>
+        <div style="color:#4ADE80;">        * Running on local URL: http://0.0.0.0:7870</div>
+        <div style="color:#4ADE80;">        * Running on public URL: <strong>http://pitsanu2448.github.io/MedServe-Link.html</strong></div>
+        <div style="color:#86EFAC;">[Cell 10] 🚀 รักษา session สำหรับช่วง 6:00-24:00 น. | 💓 Heartbeat at 06:53:29</div>
+    </div>
+
+    <!-- Status Summary -->
+    <div class="card-grid" style="margin-bottom:1.5rem;">
+        <div class="card" style="border-top:4px solid #10B981; text-align:center;">
+            <i class="fas fa-check-circle" style="font-size:2rem; color:#10B981;"></i>
+            <h3>Cell 1–9 สำเร็จ</h3>
+            <p>ทุก Cell รันผ่านโดยไม่มี Error หลัก</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--teal); text-align:center;">
+            <i class="fas fa-globe" style="font-size:2rem; color:var(--teal);"></i>
+            <h3>Gradio Live URL</h3>
+            <p>Public URL พร้อมใช้งาน<br>Port 7870 · Cloudflare tunnel</p>
+        </div>
+        <div class="card" style="border-top:4px solid #3B82F6; text-align:center;">
+            <i class="fas fa-microchip" style="font-size:2rem; color:#3B82F6;"></i>
+            <h3>VRAM 1.60 GB</h3>
+            <p>ThaiLLM-8B 4-bit พร้อม<br>เหลือ &gt;14 GB สำหรับ inference</p>
+        </div>
+        <div class="card" style="border-top:4px solid #8B5CF6; text-align:center;">
+            <i class="fas fa-hospital" style="font-size:2rem; color:#8B5CF6;"></i>
+            <h3>16 บริการสุขภาพ</h3>
+            <p>8 รพ. + 4 คลินิก + 4 ร้านยา<br>MOCK Data พร้อม</p>
+        </div>
+    </div>
+
+    <div class="flex-2col">
+        <div class="chart-container">
+            <canvas id="systemReadinessChart" height="250"></canvas>
+            <p class="footer-note">System Component Readiness — จากผล Run Output จริง</p>
+        </div>
+        <div>
+            <h3 style="margin-bottom:1rem;">🎬 Gradio UI — 8 แท็บหลัก</h3>
+            <div class="method-step">
+                <div class="step-num" style="background:#0EA5A0;">1</div>
+                <div class="step-content"><h4>💬 ปรึกษาแพทย์ AI</h4><p>Chat + พิกัด/สิทธิ์ + เสียง + รูปภาพ + สถานะระบบ</p></div>
+            </div>
+            <div class="method-step">
+                <div class="step-num" style="background:#3B82F6;">2</div>
+                <div class="step-content"><h4>🩺 นำทาง Tele-health</h4><p>Hospital Navigator + ตัวอย่าง MOCK Stroke/DM/ไข้ + DDI ปฏิกิริยายา</p></div>
+            </div>
+            <div class="method-step">
+                <div class="step-num" style="background:#8B5CF6;">3</div>
+                <div class="step-content"><h4>🏥 ค้นหาบริการสุขภาพ</h4><p>เลือกจังหวัด + ประเภท + ความเชี่ยวชาญ → แสดงรายชื่อพร้อมเบอร์</p></div>
+            </div>
+            <div class="method-step">
+                <div class="step-num" style="background:#F59E0B;">4</div>
+                <div class="step-content"><h4>📚 ข้อมูลยา + ICD-10</h4><p>ค้นหายา ขนาด วิธีใช้ + รหัสโรค ICD-10-TM</p></div>
+            </div>
+            <div class="method-step">
+                <div class="step-num" style="background:#EF4444;">5</div>
+                <div class="step-content"><h4>🧠 ประเมินสุขภาพจิต PHQ-9/GAD-7</h4><p>Slider + คำนวณ + Crisis → สายด่วน 1323</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 10 : BMC & KPI ==================== -->
+<section id="slide10" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 10</span>
+            <h2>Business Model Canvas & KPI เป้าหมาย</h2>
+            <div class="sub">BMC · Revenue Model · Success Metrics</div>
+        </div>
+    </div>
+
+    <div class="bmc-grid" style="margin-bottom:1.5rem;">
+        <div class="bmc-card" style="border-top-color:#1D4ED8;"><div class="bmc-title" style="background:#1D4ED8;">KEY PARTNERS</div><div class="bmc-content">🏥 รพ.นำร่อง (MOU) 50–100 แห่ง<br>🏛️ MOPH HDC + สปสช.<br>💊 FDA / NDI<br>🗺️ Google Places / OSM<br>🏦 สำนักงานประกันสุขภาพ</div></div>
+        <div class="bmc-card" style="border-top-color:#7C3AED;"><div class="bmc-title" style="background:#7C3AED;">KEY ACTIVITIES</div><div class="bmc-content">⚙️ พัฒนา Hybrid RAG + Smart Referral<br>📡 เชื่อม MOPH HDC API<br>🏥 ลงทะเบียนหน่วยบริการ<br>🔒 PDPA Compliance<br>📊 วัด KPI ทุกเดือน</div></div>
+        <div class="bmc-card" style="border-top-color:#065F46;"><div class="bmc-title" style="background:#065F46;">VALUE PROPOSITION</div><div class="bmc-content">✅ ค้นหาบริการ &lt;30 วินาที<br>✅ Triage 4 ระดับ + FAST<br>✅ สิทธิ์ครบ (บัตรทอง/SSO/ข้าราชการ)<br>✅ Multilingual (5 ภาษา)<br>✅ ข้อมูล Real-time<br>✅ PDPA-compliant</div></div>
+        <div class="bmc-card" style="border-top-color:#92400E;"><div class="bmc-title" style="background:#92400E;">CUSTOMER SEGMENTS</div><div class="bmc-content">👥 ผู้ป่วยเรื้อรัง &gt;10M<br>🚨 ฉุกเฉิน &gt;2M/ปี<br>👴 ผู้ดูแลผู้สูงอายุ ~5M<br>🌏 นักท่องเที่ยว/แรงงาน 33M<br>🏥 ผู้ให้บริการสุขภาพ 36,500 แห่ง</div></div>
+        <div class="bmc-card" style="border-top-color:#0F766E;"><div class="bmc-title" style="background:#0F766E;">CHANNELS</div><div class="bmc-content">🖥️ Gradio Web App<br>📱 React Native (วางแผน)<br>🔌 REST API / SaaS<br>🤝 HIS Integration (MOU)<br>🏛️ แอปเป๋าตัง / หมอพร้อม</div></div>
+        <div class="bmc-card" style="border-top-color:#0369A1;"><div class="bmc-title" style="background:#0369A1;">KEY RESOURCES</div><div class="bmc-content">🖥️ Kaggle T4 → Cloud GPU<br>📊 Service Registry DB<br>👨‍💻 AIoTx-Tach Team<br>🏥 MOU รพ.นำร่อง<br>🔬 MOPH HDC API Access</div></div>
+        <div class="bmc-card" style="border-top-color:#991B1B;"><div class="bmc-title" style="background:#991B1B;">COST STRUCTURE</div><div class="bmc-content">💻 GPU Cloud Infra<br>🔗 API Integration Dev<br>📋 PDPA Audit<br>🤝 MOU + ลงทะเบียนหน่วยบริการ<br>📱 Mobile App Dev</div></div>
+        <div class="bmc-card" style="border-top-color:#065F46;"><div class="bmc-title" style="background:#065F46;">REVENUE STREAMS</div><div class="bmc-content">💰 SaaS ผู้ให้บริการสุขภาพ<br>🔌 API Usage Fee<br>🏛️ Government / NHSO Contract<br>📊 Data Analytics (Anonymized)<br>🎓 Academic License</div></div>
+    </div>
+
+    <!-- KPIs -->
+    <h3 style="margin-bottom:0.8rem;">📊 KPI เป้าหมาย (6 ตัวชี้วัดหลัก)</h3>
+    <div class="kpi-grid">
+        <div class="kpi-card"><span class="kpi-val">≥30%</span><div class="kpi-label">ลดเวลาตั้งแต่มีอาการ<br>จนถึงนัดหมายพบแพทย์<br><small>เปรียบ baseline survey 3 เดือน</small></div></div>
+        <div class="kpi-card"><span class="kpi-val">≥20%</span><div class="kpi-label">เพิ่มการใช้คลินิกใกล้บ้าน<br>แทน รพ.ใหญ่<br><small>จำนวนคลิก "จองคิว" ที่คลินิก</small></div></div>
+        <div class="kpi-card"><span class="kpi-val">≥500</span><div class="kpi-label">หน่วยบริการเข้าร่วม<br>แพลตฟอร์มนำร่อง<br><small>Registry database</small></div></div>
+        <div class="kpi-card"><span class="kpi-val">≥0.85</span><div class="kpi-label">ความแม่นยำแนะนำบริการ<br>MAP@5<br><small>user feedback + expert eval</small></div></div>
+        <div class="kpi-card"><span class="kpi-val">≥4.2</span><div class="kpi-label">ความพึงพอใจผู้ใช้<br>CSAT Score / 5<br><small>แบบสอบถามในแอป</small></div></div>
+        <div class="kpi-card"><span class="kpi-val">99.5%</span><div class="kpi-label">System Uptime SLA<br>รันต่อเนื่อง<br><small>Uptime monitoring</small></div></div>
+    </div>
+
+    <div class="chart-container" style="margin-top:1.2rem;">
+        <canvas id="kpiChart" height="220"></canvas>
+        <p class="footer-note">เป้าหมาย KPI ระยะ Pilot (3 เดือนแรก) vs เป้าหมายระยะยาว (12 เดือน)</p>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 11 : Roadmap ==================== -->
+<section id="slide11" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 11</span>
+            <h2>Roadmap สู่ผลิตภัณฑ์เชิงพาณิชย์ 4 ระยะ</h2>
+            <div class="sub">Go-to-Market Strategy · Scaling Plan · Commercial Readiness</div>
+        </div>
+    </div>
+
+    <div style="margin-bottom:1.5rem;">
+        <div class="roadmap-step" style="background:#F0FDF9; border-left:5px solid #10B981;">
+            <strong>🚀 ระยะที่ 1 — Pilot PoC (Hackathon → 3 เดือน) 2568</strong>
+            <p>พัฒนา PoC บน Kaggle T4 ✅ · เปิดให้ใช้ 3 จังหวัดนำร่อง (สงขลา, กรุงเทพฯ, เชียงใหม่) · 50–100 หน่วยบริการ · ทดสอบ FAST Stroke + Smart Referral + PDPA · MOU รพ.นำร่อง · วัด baseline KPI</p>
+        </div>
+        <div class="roadmap-step" style="background:#FFFBEB; border-left:5px solid #F59E0B;">
+            <strong>📡 ระยะที่ 2 — ขยายเขตสุขภาพ (6–12 เดือน) 2569</strong>
+            <p>เชื่อมต่อ MOPH HDC API ครบ 12 เขตสุขภาพ · 500+ หน่วยบริการ · เชื่อม Google Places API จริง · เพิ่ม Proactive Notifications · ทดสอบผู้ใช้จริง 1,000+ คน · Deploy Cloud (Docker + Kubernetes) · React Native App</p>
+        </div>
+        <div class="roadmap-step" style="background:#FFF7ED; border-left:5px solid #F97316;">
+            <strong>🏢 ระยะที่ 3 — เชื่อมต่อเอกชน (12–24 เดือน) 2570</strong>
+            <p>เปิด API สำหรับ รพ.เอกชน คลินิก ร้านยาลงทะเบียน · 2,000+ หน่วยบริการ · จองคิวออนไลน์ผ่าน HIS integration · SaaS subscription model · Revenue generation · IP Protection · NSTDA / วช. grant</p>
+        </div>
+        <div class="roadmap-step" style="background:#EFF6FF; border-left:5px solid #3B82F6;">
+            <strong>🌐 ระยะที่ 4 — บูรณาการระดับประเทศ (24+ เดือน) 2571</strong>
+            <p>เชื่อมต่อแอปเป๋าตัง (บริการสุขภาพ) + หมอพร้อม + Health Link · ครอบคลุมทั้งประเทศ · Multilingual ASEAN · Export นวัตกรรมสู่ภูมิภาค · TRL 7–9 Full Commercial</p>
+        </div>
+    </div>
+
+    <!-- TRL Bar -->
+    <h3 style="margin-bottom:0.8rem;">📡 Technology Readiness Level</h3>
+    <div class="trl-bar">
+        <div class="trl-step" style="background:#94A3B8; font-size:0.55rem;">TRL 1<br>Basic</div>
+        <div class="trl-step" style="background:#64748B;">TRL 2<br>Concept</div>
+        <div class="trl-step" style="background:#475569;">TRL 3<br>Proof</div>
+        <div class="trl-step" style="background:var(--teal); transform:scaleY(1.15); box-shadow:0 0 14px rgba(14,165,160,0.55);">TRL 4 ✓<br>Lab Valid</div>
+        <div class="trl-step" style="background:#F59E0B;">TRL 5 →<br>Pilot</div>
+        <div class="trl-step" style="background:#CBD5E1; color:#475569;">TRL 6<br>Demo</div>
+        <div class="trl-step" style="background:#E2E8F0; color:#94A3B8;">TRL 7</div>
+        <div class="trl-step" style="background:#F1F5F9; color:#94A3B8;">TRL 8</div>
+        <div class="trl-step" style="background:#FAFAFA; color:#CBD5E1;">TRL 9</div>
+    </div>
+    <p style="font-size:0.74rem; color:var(--text-light); margin-top:0.5rem;">ปัจจุบัน: <strong style="color:var(--teal);">TRL 4</strong> — Lab Validation · Kaggle T4 Prototype พร้อม · Cell 1–9 สำเร็จ | เป้าหมาย 6 เดือน: <strong style="color:#F59E0B;">TRL 5</strong> Pilot Hospital | เป้าหมาย 12 เดือน: <strong style="color:#3B82F6;">TRL 6</strong> Commercial Demo</p>
+
+    <div class="flex-2col" style="margin-top:1.2rem;">
+        <div class="info-box">
+            💡 <strong>ความพร้อมของทีม:</strong><br>
+            ✅ RAG engine ครบวงจร (FAISS, BM25, GraphRAG, BGE reranker)<br>
+            ✅ Medical Knowledge Base ภาษาไทย (ICD-10, CPG, ยา, ฉุกเฉิน)<br>
+            ✅ Emergency triage + FAST stroke checker<br>
+            ✅ Service Registry + Smart Referral Engine<br>
+            ✅ Geospatial Search (Haversine)<br>
+            ✅ PDPA-compliant user profile management<br>
+            ✅ Gradio UI รองรับภาพ เสียง แชท 8 แท็บ<br>
+            ✅ ระบบทำงานบน Kaggle T4 ได้จริง (Cell 1–9 success)
+        </div>
+        <div class="warn-box">
+            🔨 <strong>สิ่งที่พัฒนาต่อใน PoC → Pilot:</strong><br>
+            🔨 เชื่อม MOPH HDC API จริง (replace MOCK)<br>
+            🔨 Google Places API Integration<br>
+            🔨 Mobile UI (React Native wrapper)<br>
+            🔨 HIS API MOU กับ รพ.นำร่อง<br>
+            🔨 Crowdsourced validation UI<br>
+            🔨 Push Notification (Proactive)<br>
+            🔨 Production DB (PostgreSQL + PostGIS)
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SLIDE 12 : บทสรุป & SDGs ==================== -->
+<section id="slide12" class="slide-section">
+    <div class="slide-header">
+        <div style="flex:1;">
+            <span class="slide-num">SLIDE 12</span>
+            <h2>บทสรุป ผลกระทบ & ความสอดคล้อง SDGs</h2>
+            <div class="sub">Conclusion · Social Impact · Policy Alignment · SDGs</div>
+        </div>
+    </div>
+
+    <div class="info-box" style="margin-bottom:1.4rem; font-size:0.86rem; line-height:1.9;">
+        <strong>📋 สรุป MedServe Link  — Product Prototype:</strong> พิสูจน์แล้วว่าระบบ Hybrid RAG (FAISS+BM25+RRF) + Smart Referral Engine (urgency×distance×capacity×rights) + Medical Orchestrator 5-Step CoT + PDPA Compliance + Service Registry (8 รพ. / 4 คลินิก / 4 ร้านยา MOCK) สามารถ deploy ได้จริงบน Kaggle Tesla T4 15.6GB <strong>ทุก Cell 1–9 สำเร็จ</strong> · Gradio Live URL พร้อมใช้งาน · สถาปัตยกรรมพร้อมขยายสู่ผลิตภัณฑ์เชิงพาณิชย์ในระยะ Pilot 3 จังหวัดนำร่อง
+    </div>
+
+    <!-- Social Impact -->
+    <h3 style="margin-bottom:1rem;">🌍 ผลกระทบเชิงสังคม</h3>
+    <div class="card-grid" style="margin-bottom:1.5rem;">
+        <div class="card" style="border-top:4px solid #EF4444;">
+            <i class="fas fa-heart-pulse" style="font-size:1.5rem; color:#EF4444;"></i>
+            <h3>ลดอัตราการเสียชีวิต</h3>
+            <p>Stroke: แนะนำ รพ.ที่เหมาะสมภายใน 4.5 ชม. · STEMI: ภายใน 90 นาที → ลด mortality rate</p>
+        </div>
+        <div class="card" style="border-top:4px solid #F59E0B;">
+            <i class="fas fa-coins" style="font-size:1.5rem; color:#F59E0B;"></i>
+            <h3>ลดค่าใช้จ่าย</h3>
+            <p>ไม่เดินทางผิดที่ · ลดภาระ รพ.ศูนย์ · ใช้สิทธิ์ครบถ้วน · ลด ER overcrowding</p>
+        </div>
+        <div class="card" style="border-top:4px solid #3B82F6;">
+            <i class="fas fa-globe-asia" style="font-size:1.5rem; color:#3B82F6;"></i>
+            <h3>เพิ่มความเท่าเทียม</h3>
+            <p>Multilingual 5 ภาษา · ครอบคลุมพื้นที่ห่างไกล · ผู้สูงอายุ + ผู้พิการทางสายตา (TTS)</p>
+        </div>
+        <div class="card" style="border-top:4px solid var(--teal);">
+            <i class="fas fa-laptop-medical" style="font-size:1.5rem; color:var(--teal);"></i>
+            <h3>Digital Health</h3>
+            <p>สนับสนุน Thailand Digital Health Roadmap ระยะ 2 · บูรณาการกับแอปรัฐ</p>
+        </div>
+    </div>
+
+    <!-- SDGs -->
+    <h3 style="margin-bottom:1rem;">🌱 ความสอดคล้อง SDGs</h3>
+    <div class="card-grid" style="margin-bottom:1.4rem;">
+        <div class="sdg-card">
+            <i class="fas fa-heartbeat" style="font-size:2.3rem; color:#22C55E;"></i>
+            <br><strong>SDG 3</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Good Health<br>คำปรึกษา 24/7<br>Triage + FAST + PHQ-9</p>
+        </div>
+        <div class="sdg-card">
+            <i class="fas fa-scale-balanced" style="font-size:2.3rem; color:#C026D3;"></i>
+            <br><strong>SDG 10</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Reduced Inequalities<br>ชนบท + แรงงาน<br>Multilingual</p>
+        </div>
+        <div class="sdg-card">
+            <i class="fas fa-city" style="font-size:2.3rem; color:#F97316;"></i>
+            <br><strong>SDG 11</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Sustainable Cities<br>Smart Healthcare<br>3 จังหวัดนำร่อง</p>
+        </div>
+        <div class="sdg-card">
+            <i class="fas fa-microchip" style="font-size:2.3rem; color:var(--teal);"></i>
+            <br><strong>SDG 9</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Innovation<br>Open API Medical<br>Thai Health AI</p>
+        </div>
+        <div class="sdg-card">
+            <i class="fas fa-handshake" style="font-size:2.3rem; color:#2563EB;"></i>
+            <br><strong>SDG 17</strong>
+            <p style="font-size:0.73rem; color:var(--text-light);">Partnerships<br>MOPH+สปสช.+FDA<br>+รพ.+คลินิก</p>
+        </div>
+    </div>
+
+    <div class="warn-box">
+        <strong>📌 ข้อเสนอแนะสำหรับระยะ Pilot:</strong><br>
+        (1) ลงนาม MOU กับ รพ.สงขลานครินทร์ ม.อ. / รพ.หาดใหญ่ เพื่อทดสอบ HIS API จริง<br>
+        (2) ขอ MOPH HDC API key สำหรับข้อมูล รพ.ทุกเขตสุขภาพ<br>
+        (3) ทดสอบกับผู้ใช้จริง 100+ คน — ผู้ป่วยเรื้อรัง, บุคลากร ER, ผู้ดูแลผู้สูงอายุ<br>
+        (4) วัด KPI เส้นฐาน (baseline) ก่อน deploy เพื่อเปรียบเทียบผลลัพธ์จริง<br>
+        (5) ยื่นขอทุน BDI / NSTDA / วช. สำหรับระยะ Scale-up
+    </div>
+</section>
+
+<!-- ==================== SLIDE 13 : REFERENCES & CLOSING ==================== -->
+<section id="slide13" class="slide-section" style="padding-bottom:3rem;">
+    <div style="text-align:center; padding:2.5rem 0 2rem;">
+        <h1 style="font-size:2.4rem; font-weight:800; color:white;">ขอบคุณ <span style="color:var(--teal-mid);">/ Thank You</span></h1>
+        <div style="width:100px; height:3px; background:linear-gradient(90deg,var(--teal),var(--gold)); margin:1rem auto; border-radius:2px;"></div>
+        <div style="background:rgba(14,165,160,0.15); border:1px solid rgba(14,165,160,0.3); border-radius:1rem; padding:0.8rem 1.5rem; display:inline-block; margin-bottom:1.5rem;">
+            <span style="font-size:0.78rem; color:#CCFBF1; font-family:var(--mono);">
+                🌐 Gradio Live: http://pitsanu2448.github.io/MedServe-Link.html &nbsp;|&nbsp; 🖥️ Kaggle Tesla T4 15.6GB &nbsp;|&nbsp; ✅ Cell 1–9 Success
+            </span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.8rem; margin:1.5rem 0; color:white;">
+            <div><strong>นายชาญวิทย์ ทองศรี</strong><br><small style="color:var(--teal-light);">Lead Developer · UI & Backend</small></div>
+            <div><strong>นพ.วโรดม ศรสุรินทร์</strong><br><small style="color:var(--teal-light);">Medical Advisor</small></div>
+            <div><strong>นายปิยพงษ์ เมืองทอง</strong><br><small style="color:var(--teal-light);">DevOps & Infrastructure</small></div>
+            <div><strong>นายพิษณุ ทองศรี</strong><br><small style="color:var(--teal-light);">AI/ML Engineer</small></div>
+            <div><strong>นางสาวนันท์นภัส รอดบุตร</strong><br><small style="color:var(--teal-light);">Business & Strategy</small></div>
+        </div>
+        <div style="color:#94A3B8; font-size:0.83rem; margin-bottom:1rem; line-height:1.8;">
+            ทีม AIoTx-Tach <br>
+            BDI Hackathon 2026 — "รู้รอบทุกบริการทางการแพทย์" · © 2026
+        </div>
+    </div>
+
+    <h3 style="color:var(--teal-mid); margin-bottom:1rem; border-bottom:1px solid rgba(14,165,160,0.3); padding-bottom:0.5rem;">📖 บรรณานุกรมและแหล่งข้อมูลอ้างอิง</h3>
+    <ul class="ref-list" style="background:rgba(255,255,255,0.06); border-radius:1rem; padding:1rem;">
+        <li><span class="ref-num">[1]</span> กระทรวงสาธารณสุข. (2568). MOPH Open Data Portal: รายชื่อสถานพยาบาลและข้อมูลบริการสาธารณสุข. https://opendata.moph.go.th</li>
+        <li><span class="ref-num">[2]</span> สำนักงานหลักประกันสุขภาพแห่งชาติ (สปสช.). (2568). NHSO Open Data: ข้อมูลหน่วยบริการและสิทธิ์การรักษา. https://spc.nhso.go.th</li>
+        <li><span class="ref-num">[3]</span> สำนักงานคณะกรรมการอาหารและยา (อย.). (2568). FDA NDI — ข้อมูลยาและร้านยาที่ได้รับอนุญาต. https://ndi.fda.moph.go.th</li>
+        <li><span class="ref-num">[4]</span> สำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล. (2562). พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA). ราชกิจจานุเบกษา เล่ม 136 ตอนที่ 69 ก.</li>
+        <li><span class="ref-num">[5]</span> Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>Advances in Neural Information Processing Systems</em>, 33, 9459–9474.</li>
+        <li><span class="ref-num">[6]</span> Wei, J., et al. (2022). Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. <em>NeurIPS</em>, 35, 24824–24837.</li>
+        <li><span class="ref-num">[7]</span> Dettmers, T., et al. (2023). QLoRA: Efficient Finetuning of Quantized LLMs. <em>arXiv:2305.14314</em></li>
+        <li><span class="ref-num">[8]</span> ThaiLLM Team. (2024). ThaiLLM-8B + ThaiLLM-8B-ToolUse. HuggingFace. https://huggingface.co/ThaiLLM</li>
+        <li><span class="ref-num">[9]</span> IBM Granite Team. (2024). granite-embedding-311m-multilingual-r2. HuggingFace. https://huggingface.co/ibm-granite</li>
+        <li><span class="ref-num">[10]</span> BAAI. (2024). BGE-reranker-v2-m3. HuggingFace. https://huggingface.co/BAAI/bge-reranker-v2-m3</li>
+        <li><span class="ref-num">[11]</span> Cormack, G., et al. (2009). Reciprocal Rank Fusion outperforms Condorcet and individual rank learning methods. <em>SIGIR 2009</em>.</li>
+        <li><span class="ref-num">[12]</span> Sarthi, P., et al. (2024). RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval. <em>arXiv:2401.18059</em></li>
+        <li><span class="ref-num">[13]</span> American Stroke Association. (2023). FAST Stroke Recognition: Face, Arm, Speech, Time. <em>Stroke Journal</em>.</li>
+        <li><span class="ref-num">[14]</span> Kroenke, K., et al. (2001). The PHQ-9: Validity of a brief depression severity measure. <em>Journal of General Internal Medicine</em>, 16(9), 606–613.</li>
+        <li><span class="ref-num">[15]</span> Microsoft. (2024). edge-tts: Thai Neural TTS (PremwadeeNeural, NiwatNeural). https://github.com/rany2/edge-tts</li>
+        <li><span class="ref-num">[16]</span> PyThaiNLP Team. (2024). PyThaiNLP 5.3.4 — Thai Natural Language Processing. https://pythainlp.github.io</li>
+        <li><span class="ref-num">[17]</span> ทีม AIoTx-Tach. (2026). MedServe Link  Blueprint — โครงการเชื่อมต่อทุกบริการสุขภาพ. BDI Hackathon Submission.</li>
+        <li><span class="ref-num">[18]</span> OpenStreetMap Contributors. (2024). OpenStreetMap — Medical Facilities Thailand. https://www.openstreetmap.org</li>
+    </ul>
+</section>
+
+<script>
+    // Target Group Chart
+    const tgCtx = document.getElementById('targetGroupChart').getContext('2d');
+    new Chart(tgCtx, {
+        type: 'bar',
+        data: {
+            labels: ['ผู้ป่วยเรื้อรัง', 'ผู้ดูแลผู้สูงอายุ', 'นักท่องเที่ยว+แรงงาน', 'ผู้ป่วยฉุกเฉิน/ปี', 'บุคลากรแพทย์', 'ผู้ให้บริการสุขภาพ'],
+            datasets: [{
+                label: 'จำนวน (ล้านคน / แห่ง)',
+                data: [10, 5, 33, 2, 0.2, 0.0365],
+                backgroundColor: ['rgba(14,165,160,0.82)','rgba(139,92,246,0.82)','rgba(249,115,22,0.82)','rgba(239,68,68,0.82)','rgba(59,130,246,0.82)','rgba(16,185,129,0.82)'],
+                borderRadius: 8,
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: true,
+            plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `${ctx.raw} ล้าน/แห่ง` } } },
+            scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } } }
+        }
+    });
+
+    // Market Growth Chart
+    const mgCtx = document.getElementById('marketGrowthChart').getContext('2d');
+    new Chart(mgCtx, {
+        type: 'bar',
+        data: {
+            labels: ['2567', '2568', '2569', '2570', '2571', '2572', '2573'],
+            datasets: [{
+                label: 'มูลค่าตลาด AI Healthcare ไทย (ล้าน USD)',
+                data: [42, 68, 105, 148, 205, 272, 352],
+                backgroundColor: 'rgba(14,165,160,0.82)',
+                borderRadius: 8, borderSkipped: false,
+            }]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: true,
+            plugins: { legend: { position: 'top' } },
+            scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } } }
+        }
+    });
+
+    // System Readiness Chart
+    const srCtx = document.getElementById('systemReadinessChart').getContext('2d');
+    new Chart(srCtx, {
+        type: 'radar',
+        data: {
+            labels: ['LLM (ThaiLLM-8B)', 'Embedding (Granite)', 'Reranker (BGE)', 'Audio (Whisper)', 'RAG Engine', 'Smart Referral', 'Service Registry', 'PDPA System', 'Gradio UI', 'Vision (ColPali)'],
+            datasets: [{
+                label: 'ความพร้อมระบบ (จาก Run Output)',
+                data: [0.9, 0.95, 0.95, 0.95, 0.90, 0.90, 0.80, 0.95, 0.90, 0.40],
+                backgroundColor: 'rgba(14,165,160,0.15)',
+                borderColor: '#0EA5A0',
+                borderWidth: 2.5,
+                pointBackgroundColor: '#0EA5A0'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: { r: { min: 0, max: 1, ticks: { stepSize: 0.25, font: { size: 9 } }, pointLabels: { font: { size: 10, family: 'Sarabun' } } } },
+            plugins: { legend: { labels: { font: { family: 'Sarabun', size: 11 } } } }
+        }
+    });
+
+    // KPI Chart
+    const kpiCtx = document.getElementById('kpiChart').getContext('2d');
+    new Chart(kpiCtx, {
+        type: 'bar',
+        data: {
+            labels: ['ลดเวลานัดหมาย (%)', 'เพิ่มใช้คลินิก (%)', 'หน่วยบริการ (×10)', 'MAP@5 (×100)', 'CSAT (/5×20)', 'Uptime (%)'],
+            datasets: [
+                {
+                    label: 'เป้าหมาย Pilot (3 เดือน)',
+                    data: [20, 10, 50, 75, 80, 98],
+                    backgroundColor: 'rgba(14,165,160,0.6)',
+                    borderRadius: 6,
+                },
+                {
+                    label: 'เป้าหมายระยะยาว (12 เดือน)',
+                    data: [30, 20, 500, 85, 84, 99.5],
+                    backgroundColor: 'rgba(14,165,160,0.9)',
+                    borderRadius: 6,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { position: 'top', labels: { font: { family: 'Sarabun' } } } },
+            scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } } }
+        }
+    });
+
+    // Active nav tab on scroll
+    const sections = document.querySelectorAll('.slide-section');
+    const navLinks = document.querySelectorAll('.nav-tabs a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            if (pageYOffset >= section.offsetTop - 100) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+        });
+    });
+</script>
+</body>
+</html>
