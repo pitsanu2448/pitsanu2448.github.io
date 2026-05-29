@@ -494,14 +494,15 @@
                     <strong style="color:white;">บทสรุปโครงการ ( — Product Prototype):</strong>
                     MedServe Link คือ <em>Product Prototype</em> แพลตฟอร์มเชื่อมต่อข้อมูลบริการสุขภาพจากหลายแหล่ง (MOPH HDC, NHSO, FDA, Google Places, OSM) แบบ Real-time โดยผู้ใช้สามารถพิมพ์หรือพูดเป็นภาษาไทย แล้วระบบจะวิเคราะห์อาการ + ประเมิน urgency + แนะนำสถานพยาบาล/ร้านยา/คลินิกที่เหมาะสมภายใน &lt;30 วินาที ด้วย <strong>Hybrid RAG</strong> (FAISS + BM25 + RRF) + <strong>Smart Referral Engine</strong> (urgency + distance + capacity + rights) + <strong>Medical Orchestrator 5-Step CoT</strong> พร้อม Constitutional AI และ PDPA 2562 สอดคล้อง
                     <br><br>
-                    ทดสอบบน <span class="gpu-tag t4">⚡ Kaggle Tesla T4</span> — Cell 1–9 รันสำเร็จ · Gradio live: <code style="font-size:0.72rem; background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:4px;">http://pitsanu2448.github.io/MedServe-Link.html</code> · VRAM: 15.6 GB
+                    ทดสอบบน <span class="gpu-tag t4">⚡ Kaggle Tesla T4</span> — Cell 1–9 รันสำเร็จ · Gradio live: <code style="font-size:0.72rem; background:rgba(255,255,255,0.1); padding:2px 5px; border-radius:4px;">
+		<a href="http://pitsanu2448.github.io/MedServe-Link.html">🌐 Gradio Live: http://pitsanu2448.github.io/MedServe-Link.html</a></code> · VRAM: 15.6 GB
                 </p>
             </div>
 
             <!-- Team -->
             <div style="font-size:0.79rem; color:#94A3B8; line-height:2.1;">
                 <p>👨‍💻 <strong style="color:white;">Lead:</strong> นายชาญวิทย์ ทองศรี (Lead Dev) · นพ.วโรดม ศรสุรินทร์ (Medical) · นายปิยพงษ์ เมืองทอง (DevOps) · นายพิษณุ ทองศรี (AI) · นางสาวนันท์นภัส รอดบุตร (Business)</p>
-                <p>🏛️ <strong style="color:white;">ทีม:</strong> AIoTx-Tach </p>
+                <p>🏛️ <strong style="color:white;">ทีม:</strong> AIoTx-Tech  </p>
                 <p>🖥️ <strong style="color:white;">Platform:</strong> Kaggle · Tesla T4 15.6 GB · CUDA · Gradio 4.44+ · Python 3.12</p>
             </div>
         </div>
@@ -1212,7 +1213,7 @@
         <div class="bmc-card" style="border-top-color:#065F46;"><div class="bmc-title" style="background:#065F46;">VALUE PROPOSITION</div><div class="bmc-content">✅ ค้นหาบริการ &lt;30 วินาที<br>✅ Triage 4 ระดับ + FAST<br>✅ สิทธิ์ครบ (บัตรทอง/SSO/ข้าราชการ)<br>✅ Multilingual (5 ภาษา)<br>✅ ข้อมูล Real-time<br>✅ PDPA-compliant</div></div>
         <div class="bmc-card" style="border-top-color:#92400E;"><div class="bmc-title" style="background:#92400E;">CUSTOMER SEGMENTS</div><div class="bmc-content">👥 ผู้ป่วยเรื้อรัง &gt;10M<br>🚨 ฉุกเฉิน &gt;2M/ปี<br>👴 ผู้ดูแลผู้สูงอายุ ~5M<br>🌏 นักท่องเที่ยว/แรงงาน 33M<br>🏥 ผู้ให้บริการสุขภาพ 36,500 แห่ง</div></div>
         <div class="bmc-card" style="border-top-color:#0F766E;"><div class="bmc-title" style="background:#0F766E;">CHANNELS</div><div class="bmc-content">🖥️ Gradio Web App<br>📱 React Native (วางแผน)<br>🔌 REST API / SaaS<br>🤝 HIS Integration (MOU)<br>🏛️ แอปเป๋าตัง / หมอพร้อม</div></div>
-        <div class="bmc-card" style="border-top-color:#0369A1;"><div class="bmc-title" style="background:#0369A1;">KEY RESOURCES</div><div class="bmc-content">🖥️ Kaggle T4 → Cloud GPU<br>📊 Service Registry DB<br>👨‍💻 AIoTx-Tach Team<br>🏥 MOU รพ.นำร่อง<br>🔬 MOPH HDC API Access</div></div>
+        <div class="bmc-card" style="border-top-color:#0369A1;"><div class="bmc-title" style="background:#0369A1;">KEY RESOURCES</div><div class="bmc-content">🖥️ Kaggle T4 → Cloud GPU<br>📊 Service Registry DB<br>👨‍💻 AIoTx-Tech  Team<br>🏥 MOU รพ.นำร่อง<br>🔬 MOPH HDC API Access</div></div>
         <div class="bmc-card" style="border-top-color:#991B1B;"><div class="bmc-title" style="background:#991B1B;">COST STRUCTURE</div><div class="bmc-content">💻 GPU Cloud Infra<br>🔗 API Integration Dev<br>📋 PDPA Audit<br>🤝 MOU + ลงทะเบียนหน่วยบริการ<br>📱 Mobile App Dev</div></div>
         <div class="bmc-card" style="border-top-color:#065F46;"><div class="bmc-title" style="background:#065F46;">REVENUE STREAMS</div><div class="bmc-content">💰 SaaS ผู้ให้บริการสุขภาพ<br>🔌 API Usage Fee<br>🏛️ Government / NHSO Contract<br>📊 Data Analytics (Anonymized)<br>🎓 Academic License</div></div>
     </div>
@@ -1400,7 +1401,7 @@
             <div><strong>นางสาวนันท์นภัส รอดบุตร</strong><br><small style="color:var(--teal-light);">Business & Strategy</small></div>
         </div>
         <div style="color:#94A3B8; font-size:0.83rem; margin-bottom:1rem; line-height:1.8;">
-            ทีม AIoTx-Tach <br>
+            ทีม AIoTx-Tech  <br>
             BDI Hackathon 2026 — "รู้รอบทุกบริการทางการแพทย์" · © 2026
         </div>
     </div>
@@ -1423,7 +1424,7 @@
         <li><span class="ref-num">[14]</span> Kroenke, K., et al. (2001). The PHQ-9: Validity of a brief depression severity measure. <em>Journal of General Internal Medicine</em>, 16(9), 606–613.</li>
         <li><span class="ref-num">[15]</span> Microsoft. (2024). edge-tts: Thai Neural TTS (PremwadeeNeural, NiwatNeural). https://github.com/rany2/edge-tts</li>
         <li><span class="ref-num">[16]</span> PyThaiNLP Team. (2024). PyThaiNLP 5.3.4 — Thai Natural Language Processing. https://pythainlp.github.io</li>
-        <li><span class="ref-num">[17]</span> ทีม AIoTx-Tach. (2026). MedServe Link  Blueprint — โครงการเชื่อมต่อทุกบริการสุขภาพ. BDI Hackathon Submission.</li>
+        <li><span class="ref-num">[17]</span> ทีม AIoTx-Tech . (2026). MedServe Link  Blueprint — โครงการเชื่อมต่อทุกบริการสุขภาพ. BDI Hackathon Submission.</li>
         <li><span class="ref-num">[18]</span> OpenStreetMap Contributors. (2024). OpenStreetMap — Medical Facilities Thailand. https://www.openstreetmap.org</li>
     </ul>
 </section>
